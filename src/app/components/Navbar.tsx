@@ -12,7 +12,7 @@ const nav = [
 
 export default function Navbar() {
   return (
-    <div className="flex w-full items-center justify-between px-6 md:px-20 md:pt-4">
+    <div className="flex w-screen items-center  px-6 md:w-full md:px-20 md:pt-4">
       <Link href={"/"}>
         <Image src={hanroroLogo} alt={"Logo"} className="w-28" priority />
       </Link>
@@ -21,7 +21,7 @@ export default function Navbar() {
         {nav.map(({ href, title }) => (
           <li key={title} className="hidden md:flex ">
             <Link href={href} className=" text-lg">
-              {title}{" "}
+              {title}
             </Link>
           </li>
         ))}
