@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import useResizeObserver from "../hooks/useResizeObserver";
+import { motion } from "framer-motion";
 
 type Color = "red" | "blue" | "green" | "yellow";
 type Props = {
@@ -11,11 +12,6 @@ type Props = {
 };
 
 export default function Line({ text, deg, color, direction }: Props) {
-  // const newText = ()=>{
-  //   const arr=[]
-  //   arr.push(...text)
-  // for(let i =0;i<arr.length;i++)
-  // }
   const textDivRef = useRef<HTMLDivElement | null>(null);
   const requestRef = useRef<number>(0);
   const numberRef = useRef<number>(0);
@@ -67,27 +63,57 @@ export default function Line({ text, deg, color, direction }: Props) {
   }, [animate]);
 
   return (
-    <div ref={ref} className={getBaseStyle(color, deg)}>
+    <motion.div
+      ref={ref}
+      initial={{
+        opacity: 0,
+        scale: 0.5,
+        rotate: rotateSelect(color),
+      }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.4,
+        ease: [0, 0.71, 0.2, 1.01],
+        stiffness: 400,
+        damping: 15,
+      }}
+      whileHover={{ scale: 1.3 }}
+      className={getBaseStyle(color, deg)}
+    >
       <div
         ref={textDivRef}
         className={`flex whitespace-nowrap  text-2xl  tracking-widest`}
       >
         {divText}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 const colorSelect = (color: Color): string => {
   switch (color) {
     case "red":
-      return "bg-[#FF0060] rotate-[1.758deg]";
+      return "bg-[#FF0060] ";
     case "yellow":
-      return "bg-[#F6FA70] rotate-[-1.344deg]";
+      return "bg-[#F6FA70] ";
     case "green":
-      return "bg-[#00DFA2] rotate-[0.042deg]";
+      return "bg-[#00DFA2] ";
     case "blue":
-      return "bg-[#0079FF] rotate-[-2.717deg]";
+      return "bg-[#0079FF] ";
+    default:
+      throw new Error("color Error");
+  }
+};
+const rotateSelect = (color: Color): string => {
+  switch (color) {
+    case "red":
+      return "1.758deg";
+    case "yellow":
+      return "-1.344deg";
+    case "green":
+      return "1.5deg";
+    case "blue":
+      return "-2.717deg";
     default:
       throw new Error("color Error");
   }
