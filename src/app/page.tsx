@@ -14,15 +14,27 @@ export default function Home() {
     return randomNftImg;
   };
   return (
-    <main className="h-full">
-      <section className="flex h-screen w-full  items-center justify-center ">
+    <>
+      <main className="scrollbar-hide h-full w-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll">
+        <section className="relative flex h-screen w-full snap-start  items-center justify-center ">
+          <CircleImage image={circlePhotoList} />
+          <Lines />
+        </section>
+        <section className="relative flex h-screen w-full snap-start  items-center justify-center ">
+          <CircleImage image={circlePhotoList} />
+          <Lines />
+        </section>
+      </main>
+      {/* <main className="h-full w-screen snap-x snap-mandatory"> */}
+      {/* <section className="relative flex h-screen w-full  items-center justify-center ">
         <CircleImage image={circlePhotoList} />
         <Lines />
       </section>
-      <section className="flex h-screen w-full  items-center justify-center ">
+      <section className="relative flex h-screen w-full  items-center justify-center ">
         <CircleImage image={circlePhotoList} />
         <Lines />
-      </section>
-    </main>
+      </section> */}
+      {/* </main> */}
+    </>
   );
 }
