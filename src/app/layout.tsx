@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${libreFranklin.className} dark `}>
-      <body className="h-screen	 w-full   dark:bg-[#101010]">
+      <body className="z-1 h-screen	 w-full   dark:bg-[#101010]">
         <header className="fixed top-0 z-40">
           <div className=" mx-auto w-full  text-white">
             <Navbar />

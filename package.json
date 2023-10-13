@@ -11,6 +11,7 @@
   "dependencies": {
     "framer-motion": "^10.16.4",
     "next": "13.5.4",
+    "next-videos": "^1.4.1",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-scrollbar-hide": "^1.1.7"
