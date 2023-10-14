@@ -22,17 +22,17 @@ export default function CircleImage({ image }: Props) {
           damping: 15,
         }}
         whileHover={{ scale: 1.1 }}
-        className="absolute z-30 flex h-64 w-64 items-center justify-center rounded-full bg-[#323030] md:mt-10 md:h-[34rem] md:w-[34rem]"
+        className="absolute z-30 flex h-64 w-64 items-center justify-center rounded-full bg-[#323030] md:mt-10 md:h-[50vh] md:w-[50vh]"
       >
         <Image
           src={image[0]}
           priority
-          className="absolute w-60	rounded-full md:w-[32rem]"
+          className="absolute w-60	rounded-full md:w-[46vh]"
           alt="circlePhoto"
         />
         <Image
           src={hanroroLogo}
-          className="relative left-16 top-24 z-40 w-20 md:left-40 md:top-60 md:w-48"
+          className="relative left-20 top-24 z-40 w-20 md:left-[17vh] md:top-[19vh] md:w-[17vh]"
           alt={"logo"}
         />
       </motion.div>

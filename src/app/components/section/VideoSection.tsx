@@ -1,9 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { Variants, motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-
+import Link from "next/link";
+import Image from "next/image";
+import youtube from "/public/youtube.svg";
+import Typed from "react-typed";
+import { useInView } from "react-intersection-observer";
+import ReactTyped from "react-typed";
 type SongType = "입춘" | "정류장" | "화해" | "사랑하게 될 거야";
 type PropsType = { title: SongType };
 type ContentType = {
@@ -129,38 +134,54 @@ const getPropsContent: GetPropsContent = {
   },
 };
 export default function VideoSection({ title }: PropsType) {
+  const { ref: typeRef, inView } = useInView({
+    threshold: 0.8,
+  });
+
   return (
-    <motion.section
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: false, amount: 0.8 }}
-      exit="offscreen"
-      className="relative z-10 flex h-screen w-screen snap-start overflow-x-hidden  overflow-y-hidden   "
-    >
+    <section className="relative z-10 flex h-full w-screen snap-start overflow-x-hidden  overflow-y-hidden   ">
       <video
-        className=" z-30 h-full w-screen overflow-y-hidden object-cover opacity-30 md:opacity-90 "
+        className="absolute z-30 h-full w-screen overflow-y-hidden object-cover opacity-30 md:object-cover md:opacity-90"
         src={getPropsContent[title].video}
         autoPlay
         muted
         playsInline
         loop
       ></video>
-      <div className="absolute top-0 z-30 h-full w-screen bg-transparent bg-gradient-to-l from-transparent from-40%  via-[#101010] to-[#101010] md:from-0% md:via-70%" />
+      <div className="absolute top-0 z-30 flex h-full w-screen bg-transparent bg-gradient-to-l from-transparent from-40%  via-[#101010] to-[#101010] md:from-0% md:via-70%" />
       <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: false, amount: 0.8 }}
+        // exit="offscreen"
         variants={cardVariants}
         className="absolute top-0 z-40 h-full w-screen bg-[#101010]"
       />
-      <div className="absolute left-6 top-20 z-40 flex flex-col justify-start md:left-20 md:top-56">
-        <div className=" z-40 mb-4  flex font-poorStory  text-2xl text-white md:mb-5 md:text-4xl">
+      <div className="absolute left-6 z-40 mt-20   h-full flex-col justify-start md:left-20 md:top-52">
+        <div
+          ref={typeRef}
+          className=" z-40 mb-4  flex font-poorStory  text-2xl  text-slate-300 md:mb-5 md:text-4xl "
+        >
           {getPropsContent[title].title}
+          <Link href="https://www.youtube.com/watch?v=hxktjr-wQa0"></Link>
+          <Image
+            src={youtube}
+            alt="youtube"
+            className="z-40 w-10 fill-white stroke-white"
+            priority
+          />
         </div>
-        <TypeAnimation
-          style={{ whiteSpace: "pre-line" }}
-          className="z-40  w-60 font-poorStory  text-base  text-slate-200"
-          sequence={[getPropsContent[title].text, 5000]}
-          speed={70}
-        />
+        {inView ? (
+          <TypeAnimation
+            style={{ whiteSpace: "pre-line" }}
+            className="z-40  w-40 font-poorStory  text-base  text-slate-300"
+            sequence={[getPropsContent[title].text]}
+            speed={70}
+          />
+        ) : (
+          ""
+        )}
       </div>
-    </motion.section>
+    </section>
   );
 }
