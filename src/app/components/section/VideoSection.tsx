@@ -1,20 +1,19 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { Variants, motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import Link from "next/link";
 import Image from "next/image";
 import youtube from "/public/youtube.svg";
-import Typed from "react-typed";
 import { useInView } from "react-intersection-observer";
-import ReactTyped from "react-typed";
 type SongType = "입춘" | "정류장" | "화해" | "사랑하게 될 거야";
 type PropsType = { title: SongType };
 type ContentType = {
   title: SongType;
   text: string;
   video: string;
+  youtube: string;
 };
 
 type GetPropsContent = {
@@ -27,7 +26,7 @@ const cardVariants: Variants = {
   onscreen: {
     opacity: 0,
     transition: {
-      duration: 1.3,
+      duration: 1.2,
     },
   },
 };
@@ -54,6 +53,7 @@ const getPropsContent: GetPropsContent = {
     이 벅찬 봄날이 시들 때        
     한 번만 나를 돌아봐요`,
     video: require("/public/video/video1.mp4"),
+    youtube: "https://www.youtube.com/watch?v=kIiW3XRP7bU",
   },
   정류장: {
     title: "정류장",
@@ -81,6 +81,7 @@ const getPropsContent: GetPropsContent = {
     그럴 때 마침 일어설래요
     `,
     video: require("/public/video/video2.mp4"),
+    youtube: "https://www.youtube.com/watch?v=2EMgY5E5Ook",
   },
   화해: {
     title: "화해",
@@ -107,6 +108,7 @@ const getPropsContent: GetPropsContent = {
     차가운 세상도 녹여내고 싶단
     꿈을 가득 품어냈으니`,
     video: require("/public/video/video3.mp4"),
+    youtube: "https://www.youtube.com/watch?v=gC2zA8NRzXk",
   },
   "사랑하게 될 거야": {
     title: "사랑하게 될 거야",
@@ -131,6 +133,7 @@ const getPropsContent: GetPropsContent = {
     깨진 조각 틈 새어 나온 눈물
     터뜨려 보네`,
     video: require("/public/video/video4.mp4"),
+    youtube: "https://www.youtube.com/watch?v=h0KIWaUEIgQ",
   },
 };
 export default function VideoSection({ title }: PropsType) {
@@ -157,19 +160,24 @@ export default function VideoSection({ title }: PropsType) {
         variants={cardVariants}
         className="absolute top-0 z-40 h-full w-screen bg-[#101010]"
       />
-      <div className="absolute left-6 z-40 mt-20   h-full flex-col justify-start md:left-20 md:top-52">
+      <div className="absolute left-6 z-40 mt-20   h-full flex-col justify-start md:left-20 md:top-40">
         <div
           ref={typeRef}
-          className=" z-40 mb-4  flex font-poorStory  text-2xl  text-slate-300 md:mb-5 md:text-4xl "
+          className=" z-40 mb-4 flex	 font-poorStory text-2xl  font-bold  text-slate-300 md:mb-5 md:text-4xl"
         >
           {getPropsContent[title].title}
-          <Link href="https://www.youtube.com/watch?v=hxktjr-wQa0"></Link>
-          <Image
-            src={youtube}
-            alt="youtube"
-            className="z-40 w-10 fill-white stroke-white"
-            priority
-          />
+          <Link
+            href={getPropsContent[title].youtube}
+            className="flex items-center justify-center gap-8"
+            target="_blank"
+          >
+            <Image
+              src={youtube}
+              alt="youtube"
+              className="z-40 ml-4 w-6"
+              priority
+            />
+          </Link>
         </div>
         {inView ? (
           <TypeAnimation
