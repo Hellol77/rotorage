@@ -1,0 +1,17 @@
+import React from "react";
+import hanroroMainImage from "/public/photo/circle/hanroromain.png";
+import hanroro1 from "/public//photo/circle/hanroro1.png";
+import hanroro2 from "/public//photo/circle/hanroro2.png";
+import CircleImage from "../CircleImage";
+import Lines from "../Lines";
+
+export default function CircleImageSection() {
+  const circlePhotoList = [hanroroMainImage, hanroro1, hanroro2];
+
+  return (
+    <section className="z-1 relative flex h-screen w-full snap-start items-center justify-center">
+      <CircleImage image={circlePhotoList} />
+      <Lines />
+    </section>
+  );
+}
