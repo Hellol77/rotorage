@@ -15,7 +15,9 @@ const itemIds = ["About", "Music", "Photo", "Board"];
 export const Navigation = ({ isOpen }: { isOpen: boolean }) => (
   <motion.ul
     variants={variants}
-    className={`absolute top-10 w-20 p-2 ${isOpen ? " h-screen" : "hidden"}`}
+    className={`absolute right-10 top-10 w-20 p-2  ${
+      isOpen ? " h-screen" : "hidden"
+    }`}
   >
     {itemIds.map((i) => (
       <MenuItem text={i} key={i} />

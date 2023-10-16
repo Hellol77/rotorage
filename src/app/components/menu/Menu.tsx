@@ -1,12 +1,13 @@
 "use client";
 import * as React from "react";
-import { motion, useCycle } from "framer-motion";
+import { AnimatePresence, motion, useCycle } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
 import { Navigation } from "./Navigation";
 
 const sidebar = {
   open: (height = 1000) => ({
     clipPath: `circle(${height * 2 + 200}px at 132px 42px)`,
+    display: "block",
     transition: {
       type: "spring",
       stiffness: 20,
@@ -15,6 +16,7 @@ const sidebar = {
   }),
   closed: {
     clipPath: "circle(0.1px at 132px 42px)",
+    transitionEnd: { display: "none" },
     transition: {
       delay: 0.1,
       type: "spring",
@@ -29,26 +31,34 @@ export const Menu = () => {
 
   return (
     <>
-      <motion.div
-        className={`absolute bottom-0 left-0 top-0 flex w-screen bg-black opacity-50 ${
-          isOpen ? " h-screen" : "hidden"
-        } md:hidden`}
-        onClick={() => toggleOpen()}
-      />
-      <motion.nav
-        className={`z-1000 absolute right-0 top-0 flex w-40 items-center justify-end md:hidden  ${
-          isOpen ? "h-screen" : ""
-        }`}
-        initial={false}
-        animate={isOpen ? "open" : "closed"}
-      >
+      <AnimatePresence mode="wait">
         <motion.div
-          className="z-1000  bottom-0 right-0 top-0 h-full w-40  bg-slate-200"
-          variants={sidebar}
+          className={`absolute bottom-0 left-0 top-0 hidden h-screen w-screen bg-black opacity-50  md:hidden`}
+          animate={
+            isOpen
+              ? {
+                  display: "flex",
+                }
+              : {
+                  display: "none",
+                }
+          }
+          transition={{ duration: 3 }}
+          onClick={() => toggleOpen()}
         />
-        <Navigation isOpen={isOpen} />
-        <MenuToggle toggle={() => toggleOpen()} />
-      </motion.nav>
+        <motion.nav
+          className={`z-1000 w-34 absolute right-0 top-0 flex h-screen items-center justify-end md:hidden  `}
+          initial={false}
+          animate={isOpen ? "open" : "closed"}
+        >
+          <motion.div
+            className="z-900  absolute bottom-0 right-0 top-0 h-full w-40  bg-slate-200"
+            variants={sidebar}
+          />
+          <Navigation isOpen={isOpen} />
+          <MenuToggle toggle={() => toggleOpen()} />
+        </motion.nav>
+      </AnimatePresence>
     </>
   );
 };
