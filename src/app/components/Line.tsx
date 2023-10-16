@@ -42,7 +42,6 @@ export default function Line({ text, deg, color, direction }: Props) {
       numberRef.current = 0;
     }
     if (textDivRef.current) {
-      console.log("done");
       textDivRef.current.style.transform = `translateX(${
         numberRef.current * direction
       }px)`;

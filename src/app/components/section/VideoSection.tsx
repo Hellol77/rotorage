@@ -127,7 +127,7 @@ const getPropsContent: GetPropsContent = {
     그럼에도 불구하고
     나는 너를 용서하고
     사랑하게 될 거야
-    
+
     아파했지만 또 아파도 되는 기억
     불안한 내게 모난 돌을 쥐여주던
     깨진 조각 틈 새어 나온 눈물
@@ -142,7 +142,7 @@ export default function VideoSection({ title }: PropsType) {
   });
 
   return (
-    <section className="relative z-10 flex h-full w-screen snap-start overflow-x-hidden  overflow-y-hidden   ">
+    <section className="relative z-10 flex h-full w-screen snap-start overflow-x-hidden  overflow-y-hidden ">
       <video
         className="absolute z-30 h-full w-screen overflow-y-hidden object-cover opacity-30 md:object-cover md:opacity-90"
         src={getPropsContent[title].video}
@@ -160,7 +160,7 @@ export default function VideoSection({ title }: PropsType) {
         variants={cardVariants}
         className="absolute top-0 z-40 h-full w-screen bg-[#101010]"
       />
-      <div className="absolute left-6 z-40 mt-20   h-full flex-col justify-start md:left-20 md:top-40">
+      <div className="absolute left-6 z-40 mt-20   h-full flex-col justify-start md:left-20 md:top-36">
         <div
           ref={typeRef}
           className=" z-40 mb-4 flex	 font-poorStory text-2xl  font-bold  text-slate-300 md:mb-5 md:text-4xl"
@@ -182,7 +182,7 @@ export default function VideoSection({ title }: PropsType) {
         {inView ? (
           <TypeAnimation
             style={{ whiteSpace: "pre-line" }}
-            className="z-40  w-40 font-poorStory  text-base  text-slate-300"
+            className="z-40  w-40 font-poorStory text-sm  text-slate-300 md:text-base lg:text-lg"
             sequence={[getPropsContent[title].text]}
             speed={70}
           />

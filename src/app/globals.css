@@ -7,4 +7,9 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
+  min-height: 100vh;
+
+  @supports (-webkit-touch-callout: none) {
+    min-height: -webkit-fill-available;
+  }
 }

@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";
 import Navbar from "./components/Navbar";
+import { Menu } from "./components/menu/Menu";
 
 const libreFranklin = Libre_Franklin({ subsets: ["latin"] });
 
@@ -18,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${libreFranklin.className} dark `}>
       <body className="z-1 h-screen	 w-full   dark:bg-[#101010]">
-        <header className="fixed top-0 z-40">
+        <header className="fixed top-0 z-40 w-screen items-center justify-between md:w-auto">
           <div className=" mx-auto w-full  text-white">
             <Navbar />
           </div>
