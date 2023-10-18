@@ -142,7 +142,7 @@ export default function VideoSection({ title }: PropsType) {
   });
 
   return (
-    <section className="relative inset-0 z-10 flex min-h-[100vh] w-screen snap-start overflow-x-hidden  overflow-y-hidden ">
+    <section className="relative inset-0 z-10 flex min-h-[100lvh] w-screen snap-start  overflow-hidden ">
       <video
         className="absolute z-30 h-full w-screen overflow-y-hidden object-cover opacity-30 md:object-cover md:opacity-90"
         src={getPropsContent[title].video}

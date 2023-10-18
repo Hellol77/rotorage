@@ -1,13 +1,15 @@
-import Image from "next/image";
+"use client";
 import React from "react";
-import Profile1 from "/public/photo/profile/profile1.png";
-import Profile2 from "/public/photo/profile/profile2.png";
+
+import { images } from "../components/carousel/profileImage";
+import { Carousel } from "../components/carousel/Carousel";
+
 export default function AboutPage() {
   return (
-    <main className="z-1 h-full w-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scrollbar-hide">
-      <section>
-        <Image src={Profile1} className="w-40" alt="hanroroProfile" />
-        <Image src={Profile2} className="w-60" alt="hanroroProfile" />
+    <main className=" flex h-screen w-screen overflow-hidden scrollbar-hide">
+      <section className="relative inset-0 flex h-screen w-screen flex-col  overflow-hidden md:flex-row">
+        <div className=" w-1/2 bg-[#999999]"></div>
+        <Carousel images={images} />
       </section>
     </main>
   );
