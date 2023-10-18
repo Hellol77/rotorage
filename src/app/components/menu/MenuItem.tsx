@@ -1,5 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const variants = {
   open: {
@@ -21,17 +22,27 @@ const variants = {
   },
 };
 
-export const MenuItem = ({ text }: { text: string }) => {
+export const MenuItem = ({
+  text,
+  toggle,
+}: {
+  text: string;
+  toggle: React.MouseEventHandler;
+}) => {
   return (
     <motion.li
       className="m-2 flex list-none"
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
+      onClick={toggle}
     >
-      <div className=" z-300 w-26 border-2 border-solid font-poorStory text-2xl font-extrabold  text-[#101010]">
+      <Link
+        href={`/${text.toLowerCase()}`}
+        className=" z-300 w-26 border-2 border-solid font-poorStory text-2xl font-extrabold  text-[#101010]"
+      >
         {text}
-      </div>
+      </Link>
     </motion.li>
   );
 };

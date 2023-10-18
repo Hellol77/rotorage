@@ -12,13 +12,13 @@ const variants = {
 };
 const itemIds = ["About", "Music", "Photo", "Board"];
 
-export const Navigation = ({ isOpen }: { isOpen: boolean }) => (
+export const Navigation = ({ toggle }: { toggle: React.MouseEventHandler }) => (
   <motion.ul
     variants={variants}
     className={`absolute right-10 top-10 w-20 p-2`}
   >
     {itemIds.map((i) => (
-      <MenuItem text={i} key={i} />
+      <MenuItem text={i} key={i} toggle={toggle} />
     ))}
   </motion.ul>
 );
