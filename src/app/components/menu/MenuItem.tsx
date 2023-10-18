@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 
 const variants = {
   open: {
+    display: "block",
+
     y: 0,
     opacity: 1,
     transition: {
@@ -10,6 +12,7 @@ const variants = {
     },
   },
   closed: {
+    transitionEnd: { display: "none" },
     y: 50,
     opacity: 0,
     transition: {

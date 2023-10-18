@@ -7,8 +7,8 @@ import { Navigation } from "./Navigation";
 const sidebar = {
   open: (height = 1000) => ({
     clipPath: `circle(${height * 2 + 200}px at 132px 42px)`,
-    display: "block",
     transition: {
+      duration: 0.5,
       type: "spring",
       stiffness: 20,
       restDelta: 2,
@@ -16,7 +16,6 @@ const sidebar = {
   }),
   closed: {
     clipPath: "circle(0.1px at 132px 42px)",
-    transitionEnd: { display: "none" },
     transition: {
       delay: 0.1,
       type: "spring",
@@ -31,7 +30,6 @@ export const Menu = () => {
 
   return (
     <>
-      <AnimatePresence mode="wait">
         <motion.div
           className={`absolute bottom-0 left-0 top-0 hidden h-screen w-screen bg-black opacity-50  md:hidden`}
           animate={
@@ -43,11 +41,10 @@ export const Menu = () => {
                   display: "none",
                 }
           }
-          transition={{ duration: 3 }}
           onClick={() => toggleOpen()}
         />
         <motion.nav
-          className={`z-1000 w-34 absolute right-0 top-0 flex h-screen items-center justify-end md:hidden  `}
+          className={`z-1000 absolute right-0 top-0 flex h-screen items-center justify-end md:hidden  `}
           initial={false}
           animate={isOpen ? "open" : "closed"}
         >
@@ -58,7 +55,6 @@ export const Menu = () => {
           <Navigation isOpen={isOpen} />
           <MenuToggle toggle={() => toggleOpen()} />
         </motion.nav>
-      </AnimatePresence>
     </>
   );
 };

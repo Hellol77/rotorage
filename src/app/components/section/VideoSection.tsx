@@ -20,10 +20,10 @@ type GetPropsContent = {
   [key in SongType]: ContentType;
 };
 const cardVariants: Variants = {
-  offscreen: {
+  onscreen: {
     opacity: 1,
   },
-  onscreen: {
+  offscreen: {
     opacity: 0,
     transition: {
       duration: 1.2,
@@ -142,7 +142,7 @@ export default function VideoSection({ title }: PropsType) {
   });
 
   return (
-    <section className="relative z-10 flex h-full w-screen snap-start overflow-x-hidden  overflow-y-hidden ">
+    <section className="relative inset-0 z-10 flex min-h-[100vh] w-screen snap-start overflow-x-hidden  overflow-y-hidden ">
       <video
         className="absolute z-30 h-full w-screen overflow-y-hidden object-cover opacity-30 md:object-cover md:opacity-90"
         src={getPropsContent[title].video}
@@ -153,14 +153,13 @@ export default function VideoSection({ title }: PropsType) {
       ></video>
       <div className="absolute top-0 z-30 flex h-full w-screen bg-transparent bg-gradient-to-l from-transparent from-40%  via-[#101010] to-[#101010] md:from-0% md:via-70%" />
       <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
+        initial="onscreen"
+        whileInView="offscreen"
         viewport={{ once: false, amount: 0.8 }}
-        // exit="offscreen"
         variants={cardVariants}
         className="absolute top-0 z-40 h-full w-screen bg-[#101010]"
       />
-      <div className="absolute left-6 z-40 mt-20   h-full flex-col justify-start md:left-20 md:top-36">
+      <div className="absolute left-6 top-40 z-40  h-full flex-col justify-start md:left-20 md:top-36">
         <div
           ref={typeRef}
           className=" z-40 mb-4 flex	 font-poorStory text-2xl  font-bold  text-slate-300 md:mb-5 md:text-4xl"
