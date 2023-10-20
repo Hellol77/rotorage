@@ -8,10 +8,10 @@ type Props = {
   text: string;
   deg: string;
   color: Color;
-  direction: 1 | -1;
+  vector: number;
 };
 
-export default function Line({ text, deg, color, direction }: Props) {
+export default function Line({ text, deg, color, vector }: Props) {
   const textDivRef = useRef<HTMLDivElement | null>(null);
   const requestRef = useRef<number>(0);
   const numberRef = useRef<number>(0);
@@ -32,7 +32,7 @@ export default function Line({ text, deg, color, direction }: Props) {
 
   const ref = useResizeObserver(onResize);
 
-  const calculateCount = useCallback((direction: number) => {
+  const calculateCount = useCallback((vector: number) => {
     if (
       textDivRef.current &&
       numberRef.current > textDivRef.current.scrollWidth / 2
@@ -43,7 +43,7 @@ export default function Line({ text, deg, color, direction }: Props) {
     }
     if (textDivRef.current) {
       textDivRef.current.style.transform = `translateX(${
-        numberRef.current * direction
+        numberRef.current * vector
       }px)`;
     }
     return numberRef.current;
@@ -51,10 +51,10 @@ export default function Line({ text, deg, color, direction }: Props) {
 
   const animate = useCallback(() => {
     numberRef.current += 0.5;
-    numberRef.current = calculateCount(direction);
+    numberRef.current = calculateCount(vector);
 
     window.requestAnimationFrame(animate);
-  }, [calculateCount, direction]);
+  }, [calculateCount, vector]);
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
@@ -67,7 +67,7 @@ export default function Line({ text, deg, color, direction }: Props) {
       initial={{
         opacity: 0,
         scale: 0.5,
-        rotate: rotateSelect(color),
+        rotate: deg,
       }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
@@ -77,14 +77,12 @@ export default function Line({ text, deg, color, direction }: Props) {
         damping: 15,
       }}
       whileHover={{ scale: 1.3 }}
-      className={getBaseStyle(color, deg)}
+      className={`${getBaseStyle(
+        color,
+        vector,
+      )} flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest `}
     >
-      <div
-        ref={textDivRef}
-        className={`flex whitespace-nowrap  text-2xl  tracking-widest`}
-      >
-        {divText}
-      </div>
+      <div ref={textDivRef}>{divText}</div>
     </motion.div>
   );
 }
@@ -103,28 +101,11 @@ const colorSelect = (color: Color): string => {
       throw new Error("color Error");
   }
 };
-const rotateSelect = (color: Color): string => {
-  switch (color) {
-    case "red":
-      return "1.758deg";
-    case "yellow":
-      return "-1.344deg";
-    case "green":
-      return "1.5deg";
-    case "blue":
-      return "-2.717deg";
-    default:
-      throw new Error("color Error");
-  }
-};
 
-// const getRotateStyle = (deg: string): string => {
-//   return `rotate-[${deg}]`;
-// };
-
-const getBaseStyle = (color: Color, deg: string) => {
-  const baseStyle = "flex w-screen font-yellowTail overflow-hidden";
+const getBaseStyle = (color: Color, vector: number) => {
+  // const baseStyle = "flex w-screen font-yellowTail overflow-hidden";
+  const vectorStyle = vector < 0 ? "" : "justify-end";
   const bgColorStyle = colorSelect(color);
   // const degStyle = getRotateStyle(deg);
-  return `${baseStyle} ${bgColorStyle}`;
+  return `${bgColorStyle} ${vectorStyle}`;
 };
