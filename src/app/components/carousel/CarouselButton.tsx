@@ -12,7 +12,7 @@ export default function CarouselButton({
 }) {
   return (
     <motion.div
-      className={`${className} absolute z-50 flex  select-none items-center justify-center rounded-full fill-slate-200 stroke-slate-200 text-lg font-bold`}
+      className={`${className} absolute z-50 flex select-none items-center  justify-center rounded-full fill-slate-200 stroke-slate-500 text-lg font-bold md:static md:mt-[60vh]`}
       onClick={paginate}
       whileTap={{ scale: 0.9 }}
       whileHover={{ scale: 1.2 }}
