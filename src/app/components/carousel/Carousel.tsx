@@ -31,20 +31,19 @@ export const Carousel = ({ images }: { images: StaticImageData[] }) => {
   const imageIndex = wrap(0, images.length, page);
 
   const paginate = (newDirection: number) => {
-    console.log(page);
     setPage([page + newDirection, newDirection]);
   };
 
   return (
     <>
-      <div className="relative mb-4 h-[80vh] bg-[#101010]   md:fixed md:bottom-0 md:left-1/2   md:z-10 md:justify-center md:bg-transparent md:pt-4">
+      <div className="relative mb-8 h-[80vh] bg-[#101010] md:fixed   md:bottom-0 md:left-1/2 md:z-10  md:mb-0 md:justify-center md:bg-transparent md:pt-4">
         <div className="absolute bottom-0 z-30 flex h-[40vh] w-screen bg-transparent bg-gradient-to-b from-transparent from-[1%] to-[#101010] md:hidden" />
-        <div className="absolute top-0 z-30 flex h-[10vh] w-screen bg-transparent bg-gradient-to-t from-transparent from-[1%] to-[#101010] md:hidden" />
+        {/* <div className="absolute top-0 z-30 flex h-[10vh] w-screen bg-transparent bg-gradient-to-t from-transparent from-[1%] to-[#101010] md:hidden" /> */}
         <div className=" md:flex md:justify-center  ">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={page}
-              className="absolute z-0 h-full w-screen  object-cover md:bottom-0 md:h-screen md:w-[40vw]  md:max-w-[80vw] "
+              className="absolute z-0 h-full w-screen object-cover md:bottom-0 md:h-[90vh] md:w-[40vw]  md:max-w-[80vw] "
               src={images[imageIndex].src}
               custom={direction}
               variants={variants}
@@ -69,16 +68,18 @@ export const Carousel = ({ images }: { images: StaticImageData[] }) => {
               }}
             />
           </AnimatePresence>
-          <CarouselButton
-            paginate={() => paginate(-1)}
-            direction={false}
-            className="left-0 top-80"
-          />
-          <CarouselButton
-            paginate={() => paginate(1)}
-            direction={true}
-            className=" right-0 top-80"
-          />
+          <div className="relative top-64 z-50 flex select-none   justify-between fill-slate-200 stroke-slate-200 text-lg font-bold md:fixed  md:top-80  md:w-screen">
+            <CarouselButton
+              paginate={() => paginate(-1)}
+              direction={false}
+              className="right-20 top-40"
+            />
+            <CarouselButton
+              paginate={() => paginate(1)}
+              direction={true}
+              className=" right-0 top-80"
+            />
+          </div>
         </div>
       </div>
     </>
