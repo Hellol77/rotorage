@@ -37,7 +37,6 @@ export default function Line({ text, deg, color, vector }: Props) {
       textDivRef.current &&
       numberRef.current > textDivRef.current.scrollWidth / 2
     ) {
-      console.log(textDivRef.current.scrollWidth);
       textDivRef.current.style.transform = "translateX(0)";
       numberRef.current = 0;
     }
