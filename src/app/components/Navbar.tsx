@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import hanroroLogo from "/public/HanroroLogoSVG.svg";
-import menuImage from "/public/menu.svg";
 import { Menu } from "./menu/Menu";
 const nav = [
   { href: "/about", title: "About" },

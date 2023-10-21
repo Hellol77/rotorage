@@ -80,7 +80,7 @@ export default function Line({ text, deg, color, vector }: Props) {
       className={`${getBaseStyle(
         color,
         vector,
-      )} flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest `}
+      )} relative -z-20 flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest `}
     >
       <div ref={textDivRef}>{divText}</div>
     </motion.div>

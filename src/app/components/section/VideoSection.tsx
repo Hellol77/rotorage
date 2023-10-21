@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import youtube from "/public/youtube.svg";
 import { useInView } from "react-intersection-observer";
+import YoutubeIcon from "@/app/icon/YoutubeIcon";
 type SongType = "입춘" | "정류장" | "화해" | "사랑하게 될 거야";
 type PropsType = { title: SongType };
 type ContentType = {
@@ -170,12 +171,7 @@ export default function VideoSection({ title }: PropsType) {
             className="flex items-center justify-center gap-8"
             target="_blank"
           >
-            <Image
-              src={youtube}
-              alt="youtube"
-              className="z-40 ml-4 w-6"
-              priority
-            />
+            <YoutubeIcon size="24" className="ml-4" />
           </Link>
         </div>
         {inView ? (

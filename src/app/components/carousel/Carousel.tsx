@@ -37,14 +37,14 @@ export const Carousel = ({ images }: { images: StaticImageData[] }) => {
 
   return (
     <>
-      <div className="flex h-screen  bg-[#101010] md:mx-20 md:mt-20 md:h-[85vh] md:min-h-[40rem] md:w-screen md:justify-center md:bg-transparent  md:py-4">
+      <div className="relative mb-4 h-[80vh] bg-[#101010]   md:fixed md:bottom-0 md:left-1/2   md:z-10 md:justify-center md:bg-transparent md:pt-4">
         <div className="absolute bottom-0 z-30 flex h-[40vh] w-screen bg-transparent bg-gradient-to-b from-transparent from-[1%] to-[#101010] md:hidden" />
         <div className="absolute top-0 z-30 flex h-[10vh] w-screen bg-transparent bg-gradient-to-t from-transparent from-[1%] to-[#101010] md:hidden" />
-        <div className=" md:flex md:justify-center md:gap-[25vw] ">
+        <div className=" md:flex md:justify-center  ">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={page}
-              className=" h-screen w-screen  object-cover opacity-30 md:fixed md:bottom-0 md:h-[85vh] md:min-h-[40rem] md:w-[30vw] md:min-w-[30rem] "
+              className="absolute z-0 h-full w-screen  object-cover md:bottom-0 md:h-screen md:w-[40vw]  md:max-w-[80vw] "
               src={images[imageIndex].src}
               custom={direction}
               variants={variants}
