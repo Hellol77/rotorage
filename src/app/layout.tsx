@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${libreFranklin.className} dark `}>
-      <body className="z-1  w-full scrollbar-hide  dark:bg-[#101010]">
+      <body className="z-1  w-full text-white scrollbar-hide dark:bg-[#101010]">
         <header className="fixed top-0 z-40 w-screen items-center justify-between md:w-auto">
           <div className=" mx-auto w-full  text-white">
             <Navbar />

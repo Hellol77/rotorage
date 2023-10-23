@@ -10,7 +10,7 @@ const variants = {
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
 };
-const itemIds = ["About", "Music", "Photo", "Board"];
+const itemIds = ["About", "Video", "Gallery", "Board"];
 
 export const Navigation = ({ toggle }: { toggle: React.MouseEventHandler }) => (
   <motion.ul

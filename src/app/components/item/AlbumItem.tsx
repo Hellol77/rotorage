@@ -36,7 +36,7 @@ export default function AlbumItem({
             <YoutubeIcon size="24" />
           </Link>
         </p>
-        <p className="w-full text-sm">{subtitle}</p>
+        <p className="w-full text-sm text-slate-300">{subtitle}</p>
       </div>
     </ol>
   );

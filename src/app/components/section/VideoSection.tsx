@@ -4,8 +4,6 @@ import React from "react";
 import { Variants, motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import Link from "next/link";
-import Image from "next/image";
-import youtube from "/public/youtube.svg";
 import { useInView } from "react-intersection-observer";
 import YoutubeIcon from "@/app/icon/YoutubeIcon";
 type SongType = "입춘" | "정류장" | "화해" | "사랑하게 될 거야";
@@ -160,7 +158,7 @@ export default function VideoSection({ title }: PropsType) {
         variants={cardVariants}
         className="absolute top-0 z-40 h-full w-screen bg-[#101010]"
       />
-      <div className="absolute left-6 top-40 z-40  h-full flex-col justify-start md:left-20 md:top-36">
+      <div className="absolute left-6 top-20 z-40  h-full flex-col justify-start md:left-20 md:top-36">
         <div
           ref={typeRef}
           className=" z-40 mb-4 flex	 font-poorStory text-2xl  font-bold  text-slate-300 md:mb-5 md:text-4xl"

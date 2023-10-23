@@ -5,8 +5,8 @@ import hanroroLogo from "/public/HanroroLogoSVG.svg";
 import { Menu } from "./menu/Menu";
 const nav = [
   { href: "/about", title: "About" },
-  { href: "/music", title: "Music" },
-  { href: "/photo", title: "Photo" },
+  { href: "/video", title: "Video" },
+  { href: "/gallery", title: "Gallery" },
   { href: "/board", title: "Board" },
 ];
 

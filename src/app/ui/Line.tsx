@@ -81,7 +81,9 @@ export default function Line({ text, deg, color, vector }: Props) {
         vector,
       )} relative -z-20 flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest `}
     >
-      <div ref={textDivRef}>{divText}</div>
+      <div ref={textDivRef} className="text-black">
+        {divText}
+      </div>
     </motion.div>
   );
 }
