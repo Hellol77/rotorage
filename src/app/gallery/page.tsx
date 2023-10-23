@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
 
 import gallery1 from "/public/photo/gallery/gallery1.png";
 import gallery2 from "/public/photo/gallery/gallery2.png";
@@ -15,59 +13,34 @@ import gallery9 from "/public/photo/gallery/gallery9.png";
 import gallery10 from "/public/photo/gallery/gallery10.png";
 import gallery11 from "/public/photo/gallery/gallery11.png";
 import MotionImage from "../ui/MotionImage";
+import NextIcon from "../icon/NextIcon";
+import PrevIcon from "../icon/PrevIcon";
+
 export default function PhotoPage() {
   return (
-    // <motion.div
-    //   className="h-[200px] w-[200px] rounded-sm bg-red-500"
-    //   initial={{ opacity: 0, scale: 0.5 }}
-    //   animate={{ opacity: 1, scale: 1 }}
-    //   transition={{
-    //     duration: 0.8,
-    //     delay: 0.5,
-    //     ease: [0, 0.71, 0.2, 1.01],
-    //   }}
-    // />
     <main className="z-1 h-full overflow-x-hidden overflow-y-scroll px-6 scrollbar-hide md:snap-mandatory md:px-20">
       <section className="flex flex-col items-center ">
         <div className="mb-6 mt-20 text-2xl font-bold tracking-wider  md:mb-16 md:mt-40 md:text-5xl md:tracking-widest">
           GALLERY
         </div>
         <div className="grid h-full  w-full  grid-cols-2 grid-rows-2 gap-2 md:gap-4">
-          <motion.div
-            className="row-span-2 h-full "
-            whileHover={{ scale: 1.02 }}
-          >
-            <Image
-              src={gallery1}
-              className="row-span-2 h-full object-cover"
-              alt="1"
-            />
-          </motion.div>
-          {/* <MotionImage className="row-span-2 h-full" /> */}
-          <Image
-            src={gallery2}
-            className=" col-span-1 row-span-1 h-full object-cover"
-            alt="1"
-          />
-          <Image
-            src={gallery3}
-            className=" col-span-1 row-span-1 h-full object-cover"
-            alt="1"
-          />
+          <MotionImage image={gallery1} gridSpanType="row-span-2" />
+          <MotionImage image={gallery2} />
+          <MotionImage image={gallery3} />
         </div>
         <div className="mt-2 grid h-full w-full grid-cols-3 grid-rows-3 gap-2 md:mt-4 md:gap-4">
-          <Image
-            src={gallery7}
-            className="row-span-2 h-full object-cover"
-            alt="1"
-          />
-          <Image src={gallery4} className=" h-full object-cover" alt="1" />
-          <Image src={gallery5} className=" h-full object-cover" alt="1" />
-          <Image src={gallery6} className=" h-full object-cover" alt="1" />
-          <Image src={gallery8} className="  h-full object-cover" alt="1" />
-          <Image src={gallery9} className="  h-full object-cover" alt="1" />
-          <Image src={gallery10} className=" h-full   object-cover" alt="1" />
-          <Image src={gallery11} className="  h-full  object-cover" alt="1" />
+          <MotionImage image={gallery7} gridSpanType="row-span-2" />
+          <MotionImage image={gallery4} />
+          <MotionImage image={gallery5} />
+          <MotionImage image={gallery6} />
+          <MotionImage image={gallery8} />
+          <MotionImage image={gallery9} />
+          <MotionImage image={gallery10} />
+          <MotionImage image={gallery11} />
+        </div>
+        <div className="mb-10  mt-10 flex">
+          <PrevIcon />
+          <NextIcon />
         </div>
       </section>
     </main>

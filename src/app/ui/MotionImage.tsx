@@ -5,14 +5,17 @@ import Image from "next/image";
 
 export default function MotionImage({
   image,
-  className,
+  gridSpanType,
 }: {
   image: StaticImageData;
-  className: string;
+  gridSpanType?: string;
 }) {
   return (
-    <motion.div className={`${className} h-full `} whileHover={{ scale: 1.02 }}>
-      <Image src={image} className="object-cover" alt={`${image}`} />
+    <motion.div
+      className={`${gridSpanType} h-full `}
+      whileHover={{ scale: 1.02 }}
+    >
+      <Image src={image} className="h-full object-cover" alt={`${image}`} />
     </motion.div>
   );
 }
