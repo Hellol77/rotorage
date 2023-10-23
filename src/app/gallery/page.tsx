@@ -18,7 +18,7 @@ import PrevIcon from "../icon/PrevIcon";
 
 export default function PhotoPage() {
   return (
-    <main className="z-1 h-full overflow-x-hidden overflow-y-scroll px-6 scrollbar-hide md:snap-mandatory md:px-20">
+    <main className="z-1 h-full overflow-x-hidden overflow-y-scroll px-6 scrollbar-hide  md:px-20">
       <section className="flex flex-col items-center ">
         <div className="mb-6 mt-20 text-2xl font-bold tracking-wider  md:mb-16 md:mt-40 md:text-5xl md:tracking-widest">
           GALLERY
@@ -38,8 +38,9 @@ export default function PhotoPage() {
           <MotionImage image={gallery10} />
           <MotionImage image={gallery11} />
         </div>
-        <div className="mb-10  mt-10 flex">
+        <div className="mb-6 mt-6 flex w-40 justify-between  md:mb-10 md:mt-10">
           <PrevIcon />
+          1/1
           <NextIcon />
         </div>
       </section>
