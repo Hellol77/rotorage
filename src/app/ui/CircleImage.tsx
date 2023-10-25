@@ -3,6 +3,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import hanroroLogo from "/public/HanroroLogoSVG.svg";
 import { motion } from "framer-motion";
+import MainLogoIcon from "../icon/MainLogoIcon";
 
 // 배열을 넣어서 누를때마다 사진 바뀌게
 type Props = {
@@ -30,10 +31,10 @@ export default function CircleImage({ image }: Props) {
           className="absolute w-60	rounded-full md:w-[46vh]"
           alt="circlePhoto"
         />
-        <Image
-          src={hanroroLogo}
+        <MainLogoIcon
+          textColor="black"
+          bgColor="white"
           className="relative left-20 top-24 z-40 w-20 md:left-[17vh] md:top-[19vh] md:w-[17vh]"
-          alt={"logo"}
         />
       </motion.div>
     </>

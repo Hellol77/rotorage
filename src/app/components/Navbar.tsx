@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import hanroroLogo from "/public/HanroroLogoSVG.svg";
 import { Menu } from "./menu/Menu";
+import MainLogoIcon from "../icon/MainLogoIcon";
 const nav = [
   { href: "/about", title: "About" },
   { href: "/video", title: "Video" },
@@ -13,8 +14,8 @@ const nav = [
 export default function Navbar() {
   return (
     <div className=" mr-2 flex w-screen items-center px-6 md:w-full md:px-20 md:pt-4">
-      <Link href={"/"}>
-        <Image src={hanroroLogo} alt={"Logo"} className="w-28" priority />
+      <Link href={"/"} className="mr-4">
+        <MainLogoIcon className="h-20 w-20" textColor="black" bgColor="white" />
       </Link>
 
       <ul className="flex h-20 w-full items-center justify-end gap-8 font-extrabold">
