@@ -1,15 +1,16 @@
 "use client";
-import Image from "next/image";
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
 
 import gallery3 from "/public/photo/gallery/gallery3.png";
 import gallery5 from "/public/photo/gallery/gallery5.png";
 import gallery11 from "/public/photo/gallery/gallery11.png";
 import gif1 from "/public/photo/gallery/gif1.gif";
-import { useRouter } from "next/navigation";
-import BoardPhoto from "../components/modal/BoardPhoto";
+import BoardPhotoCard from "../components/card/BoardPhotoCard";
+import ModalTriggerButton from "../components/button/ModalTriggerButton";
+import UploadModal from "../components/modal/UploadModal";
 export default function BoradPage() {
+  const [onClick, setOnClick] = useState(false);
+
   return (
     <main className="z-1 relative h-full min-h-screen overflow-x-hidden overflow-y-scroll px-6 scrollbar-hide  md:px-20">
       <section className="relative flex flex-col items-center ">
@@ -17,43 +18,30 @@ export default function BoradPage() {
           <div className="text-2xl font-bold tracking-wider md:text-5xl md:tracking-widest">
             Board
           </div>
-          <div>등록하기</div>
+          <ModalTriggerButton text={"등록하기"} setOnClick={setOnClick}>
+            <UploadModal setOnClick={setOnClick} onClick={onClick} />
+          </ModalTriggerButton>
         </div>
         <div className="   grid  grid-cols-2 gap-5 md:w-full md:grid-cols-4 md:gap-4">
-          {/* <motion.div className="relative h-44 w-40  md:h-[35vh]  md:w-[20vw]">
-            <Image
-              src={gif1}
-              alt="1"
-              className=" h-full w-full rounded-md object-cover"
-            />
-            <div className="absolute top-0 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2 md:h-full md:w-full md:px-4 md:py-4">
-              <div className="text-md truncate font-poorStory font-bold md:mb-1 md:text-2xl">
-                자색고구마로로
-              </div>
-              <div className="flex-nowrap truncate  font-poorStory text-sm text-slate-200">
-                생일 축하해!qwdqwdwqdwqdwqdwqdqwqwdqwwqwqdqwdqwdwqdqwd
-              </div>
-            </div>
-          </motion.div> */}
-          <BoardPhoto
+          <BoardPhotoCard
             image={gallery5}
             title={"자색고구마로로"}
             content="생일 축하해!qwdqwdwqdwqdwqdwqdqwqwdqwwqwqdqwdqwdwqdqwd"
             id={"1"}
           />
-          <BoardPhoto
+          <BoardPhotoCard
             image={gif1}
             title={"자색고구마로로"}
             content="생일 축하해!qwdqwdwqdwqdwqdwqdqwqwdqwwqwqdqwdqwdwqdqwd"
             id={"2"}
           />
-          <BoardPhoto
+          <BoardPhotoCard
             image={gallery3}
             title={"자색고구마로로"}
-            content="생일 축하해!qwdqwdwqdwqdwqdwqdqwqwdqwwqwqdqwdqwdwqdqwd"
+            content="생일 축하해!qwdqwdwqdwqdwqdwqdqwqwdqwwqwqdqwdqwd생일 "
             id={"3"}
           />
-          <BoardPhoto
+          <BoardPhotoCard
             image={gallery3}
             title={"자색고구마로로"}
             content="생일 축하해!qwdqwdwqdwqdwqdwqdqwqwdqwwqwqdqwdqwdwqdqwd"
