@@ -104,7 +104,7 @@ export default function UploadModal({
                   onChange={handleChange}
                 />
                 <label
-                  className={`mx-4 mt-4 flex h-[100vw]  w-[80vw] items-center justify-center md:h-[36vw] md:w-[28vw]  ${
+                  className={`mx-4 mt-4 flex h-[100vw]  w-[80vw] items-center justify-center hover:bg-slate-800 md:h-[36vw] md:w-[28vw] ${
                     !file && "border-2 border-dashed border-sky-500"
                   } `}
                   htmlFor="input-upload"
@@ -119,7 +119,9 @@ export default function UploadModal({
                   {!file && (
                     <div className="pointer-events-none flex flex-col items-center">
                       <PhotoAlbumIcon color="#3e3e45" className="h-8 w-8" />
-                      <p className=" text-slate-300">사진 업로드</p>
+                      <p className=" text-slate-300">
+                        Drag and Drop a image here or click
+                      </p>
                     </div>
                   )}
                   {file && (
