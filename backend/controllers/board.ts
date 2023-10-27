@@ -11,7 +11,6 @@ exports.postAddBoard = async (
   const title = req.body.title;
   const content = req.body.content;
   const image = req.file as Express.MulterS3.File;
-  console.log(image.location);
   const imageUrl = image.location;
   const board = new Board({
     title,
@@ -29,6 +28,11 @@ exports.postAddBoard = async (
 };
 
 exports.getBoard = async (req: Request, res: Response, next: NextFunction) => {
-  const posts = await Board.find({});
-  return res.status(200).send(posts);
+  Board.find({})
+    .then((posts) => {
+      return res.status(200).send(posts);
+    })
+    .catch((err) => {
+      return res.status(400).send("Can't read posts");
+    });
 };
