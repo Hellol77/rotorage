@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-const Board = require("../models/board.ts");
+import { Board } from "../models/board";
 
 exports.postAddBoard = async (
   req: Request,
@@ -28,6 +28,7 @@ exports.postAddBoard = async (
     .catch((err: Error) => res.status(400).send("db 저장 실패"));
 };
 
-exports.getBoard = (req: Request, res: Response, next: NextFunction) => {
-  Board.find().then();
+exports.getBoard = async (req: Request, res: Response, next: NextFunction) => {
+  const posts = await Board.find({});
+  return res.status(200).send(posts);
 };
