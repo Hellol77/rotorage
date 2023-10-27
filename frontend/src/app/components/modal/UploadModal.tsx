@@ -97,7 +97,7 @@ export default function UploadModal({
                 <input
                   accept="image/*"
                   type="file"
-                  name="input"
+                  name="imgFile"
                   id="input-upload"
                   required
                   className="relative z-50 hidden h-[100vw] w-[80vw] rounded-md object-cover md:h-[40vw] md:w-[30vw]"
