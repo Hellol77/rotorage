@@ -1,6 +1,6 @@
 import hanroroMainImage from "/public/photo/circle/hanroromain.png";
 import hanroro2 from "/public//photo/circle/hanroro2.png";
-import CircleImageSection from "./components/section/CircleImageSection";
+import CircleImageSection from "../components/section/CircleImageSection";
 
 export default function Home() {
   const circlePhotoList = [hanroroMainImage, hanroro2];

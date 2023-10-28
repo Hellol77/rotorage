@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import { images } from "../components/carousel/profileImage";
-import { Carousel } from "../components/carousel/Carousel";
+import { images } from "../../components/carousel/profileImage";
+import { Carousel } from "../../components/carousel/Carousel";
 import profile14 from "/public/photo/profile/profile14.png";
 import Line from "../ui/Line";
 import Link from "next/link";
@@ -114,7 +114,7 @@ const discographyList: MusicListType = [
   },
 ];
 
-import AlbumItem from "../components/item/AlbumItem";
+import AlbumItem from "../../components/item/AlbumItem";
 import MoreText from "../ui/MoreText";
 import Image, { StaticImageData } from "next/image";
 import { TypeAnimation } from "react-type-animation";
