@@ -6,7 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "cd .. && husky install frontend/.husky",
+    "lint-staged": "lint-staged",
+    "postinstall": "npm run prepare"
+  },
+  "lint-staged": {
+    "**/*.{ts.tsx}": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@nextui-org/react": "^2.1.13",
@@ -28,6 +36,7 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.5",
