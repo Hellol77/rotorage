@@ -5,12 +5,11 @@ import gallery3 from "/public/photo/gallery/gallery3.png";
 import gallery5 from "/public/photo/gallery/gallery5.png";
 import gallery11 from "/public/photo/gallery/gallery11.png";
 import gif1 from "/public/photo/gallery/gif1.gif";
-import BoardPhotoCard from "../components/card/BoardPhotoCard";
-import ModalTriggerButton from "../components/button/ModalTriggerButton";
-import UploadModal from "../components/modal/UploadModal";
+import BoardPhotoCard from "../../components/card/BoardPhotoCard";
+import ModalTriggerButton from "../../components/button/ModalTriggerButton";
+import UploadModal from "../../components/modal/UploadModal";
 export default function BoradPage() {
   const [onClick, setOnClick] = useState(false);
-
   return (
     <main className="z-1 relative h-full min-h-screen overflow-x-hidden overflow-y-scroll px-6 scrollbar-hide  md:px-20">
       <section className="relative flex flex-col items-center ">
