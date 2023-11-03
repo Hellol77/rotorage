@@ -7,10 +7,10 @@ import React, {
   useState,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import CloseIcon from "@/app/icon/CloseIcon";
 import { Button, Textarea } from "@nextui-org/react";
 import PhotoAlbumIcon from "@/app/icon/PhotoAlbumIcon";
 import Image from "next/image";
+import { uploadBoardPost } from "@/app/api/board";
 
 export default function UploadModal({
   onClick,
@@ -53,10 +53,10 @@ export default function UploadModal({
       setFile(files[0]);
     }
   };
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!file) return;
-
+    // uploadBoardPost(file);
     // setLoading(true);
     // const formData = new FormData();
     // formData.append("file", file);

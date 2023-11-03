@@ -6,6 +6,7 @@ import { TypeAnimation } from "react-type-animation";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import YoutubeIcon from "@/app/icon/YoutubeIcon";
+
 type SongType = "입춘" | "정류장" | "화해" | "사랑하게 될 거야";
 type PropsType = { title: SongType };
 type ContentType = {

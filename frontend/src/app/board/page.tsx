@@ -8,8 +8,10 @@ import gif1 from "/public/photo/gallery/gif1.gif";
 import BoardPhotoCard from "../../components/card/BoardPhotoCard";
 import ModalTriggerButton from "../../components/button/ModalTriggerButton";
 import UploadModal from "../../components/modal/UploadModal";
+import BoardGrid from "@/components/card/BoardGrid";
 export default function BoradPage() {
   const [onClick, setOnClick] = useState(false);
+
   return (
     <main className="z-1 relative h-full min-h-screen overflow-x-hidden overflow-y-scroll px-6 scrollbar-hide  md:px-20">
       <section className="relative flex flex-col items-center ">
@@ -21,7 +23,7 @@ export default function BoradPage() {
             <UploadModal setOnClick={setOnClick} onClick={onClick} />
           </ModalTriggerButton>
         </div>
-        <div className="   grid  grid-cols-2 gap-5 md:w-full md:grid-cols-4 md:gap-4">
+        {/* <div className="   grid  grid-cols-2 gap-5 md:w-full md:grid-cols-4 md:gap-4">
           <BoardPhotoCard
             image={gallery5}
             title={"자색고구마로로"}
@@ -46,7 +48,8 @@ export default function BoradPage() {
             content="생일 축하해!qwdqwdwqdwqdwqdwqdqwqwdqwwqwqdqwdqwdwqdqwd"
             id={"4"}
           />
-        </div>
+        </div> */}
+        <BoardGrid />
       </section>
     </main>
   );
