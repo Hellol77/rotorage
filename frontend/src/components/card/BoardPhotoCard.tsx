@@ -6,13 +6,13 @@ import Image, { StaticImageData } from "next/image";
 import PhotoModal from "../modal/PhotoModal";
 
 export default function BoardPhotoCard({
-  image,
+  imageUrl,
   title,
   content,
   id,
   ...props
 }: {
-  image: StaticImageData;
+  imageUrl: string;
   title: string;
   content: string;
   id: string;
@@ -27,7 +27,7 @@ export default function BoardPhotoCard({
           <>
             <PhotoModal
               title={title}
-              image={image}
+              imageUrl={imageUrl}
               content={content}
               id={id}
               setPhotoClicked={setOnPhotoClicked}
@@ -43,11 +43,16 @@ export default function BoardPhotoCard({
           transition={{ duration: 0.2 }}
           className="relative z-30 h-44 w-full md:h-[35vh] "
         >
-          <Image
-            src={image}
-            alt="1"
-            className="relative z-10 h-full w-full rounded-md object-cover"
-          />
+          <div className="relative h-full w-full rounded-md">
+            <Image
+              src={imageUrl}
+              alt={id}
+              priority
+              fill
+              objectFit="cover"
+              className="relative z-10 rounded-md object-cover"
+            />
+          </div>
           <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2  md:px-4 md:py-4">
             <div className="text-md truncate font-poorStory font-bold tracking-wider md:mb-1 md:text-2xl">
               {title}

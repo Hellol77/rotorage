@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-module.exports = nextConfig;
-
 const withVideos = require("next-videos");
-module.exports = withVideos();
+const nextConfig = {
+  ...withVideos(),
+  images: {
+    domains: ["hanroro-fanpage.s3.ap-northeast-2.amazonaws.com"],
+  },
+};
+module.exports = nextConfig;

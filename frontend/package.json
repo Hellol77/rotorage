@@ -12,7 +12,7 @@
     "postinstall": "npm run prepare"
   },
   "lint-staged": {
-    "**/*.{ts.tsx}": [
+    "**/*.ts.tsx": [
       "eslint --fix"
     ]
   },

@@ -5,15 +5,17 @@ import UploadIcon from "@/app/icon/UploadIcon";
 export default function ModalTriggerButton({
   text,
   children,
-  setOnClick,
+  // setOnClick,
 }: {
   text: string;
   children: ReactNode;
   setOnClick: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const [onClick, setOnClick] = useState(false);
   const handleOnClick = () => {
     setOnClick(true);
   };
+
   return (
     <>
       <Button
