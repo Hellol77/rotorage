@@ -43,7 +43,12 @@ export default function PhotoModal({
         </div>
 
         <div className="relative h-[100vw] w-[80vw] rounded-md md:h-[40vw] md:w-[30vw]">
-          <Image src={imageUrl} alt={id} fill={true} />
+          <Image
+            src={imageUrl}
+            alt={id}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
         <div className=" relative z-50 mt-4 w-full justify-end px-4 font-poorStory text-2xl tracking-wider">
           {title}

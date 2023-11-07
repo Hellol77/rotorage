@@ -1,5 +1,4 @@
-export type post = {
-  _id: string;
+export type Post = {
   title: string;
   content: string;
   imageUrl: string;

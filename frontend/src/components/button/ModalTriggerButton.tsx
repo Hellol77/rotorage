@@ -1,3 +1,4 @@
+"use client";
 import React, { ReactNode, useState } from "react";
 import { Button } from "@nextui-org/react";
 import UploadIcon from "@/app/icon/UploadIcon";
@@ -5,17 +6,14 @@ import UploadIcon from "@/app/icon/UploadIcon";
 export default function ModalTriggerButton({
   text,
   children,
-  // setOnClick,
 }: {
   text: string;
-  children: ReactNode;
-  setOnClick: React.Dispatch<React.SetStateAction<boolean>>;
+  children: JSX.Element;
 }) {
   const [onClick, setOnClick] = useState(false);
   const handleOnClick = () => {
     setOnClick(true);
   };
-
   return (
     <>
       <Button
@@ -28,7 +26,10 @@ export default function ModalTriggerButton({
       >
         {text}
       </Button>
-      {children}
+      {React.cloneElement(children, {
+        setOnClick: setOnClick,
+        onClick: onClick,
+      })}
     </>
   );
 }
