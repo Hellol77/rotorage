@@ -38,8 +38,8 @@ export function useUploadBoardPost() {
       const previousBoardPosts = queryClient.getQueryData(["boardPosts"]);
 
       queryClient.setQueryData(["boardPosts"], (old: Post[]) => [
-        ...old,
         copyNewPost,
+        ...old,
       ]);
 
       return { previousBoardPosts };
@@ -47,8 +47,8 @@ export function useUploadBoardPost() {
     onError: (err, newPost, context) => {
       queryClient.setQueryData(["boardPosts"], context?.previousBoardPosts);
     },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["boardPosts"] });
-    },
+    // onSettled: () => {
+    //   queryClient.invalidateQueries({ queryKey: ["boardPosts"] });
+    // },
   });
 }
