@@ -1,7 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import hanroroLogo from "/public/HanroroLogoSVG.svg";
 import { Menu } from "./menu/Menu";
 import MainLogoIcon from "../app/icon/MainLogoIcon";
 const nav = [

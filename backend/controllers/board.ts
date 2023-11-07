@@ -28,7 +28,7 @@ exports.postAddBoard = async (
 };
 
 exports.getBoard = async (req: Request, res: Response, next: NextFunction) => {
-  Board.find({})
+  Board.find({}, { title: 1, content: 1, imageUrl: 1, _id: 0 })
     .then((posts) => {
       return res.status(200).send(posts);
     })

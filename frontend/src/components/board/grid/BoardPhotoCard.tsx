@@ -9,13 +9,11 @@ export default function BoardPhotoCard({
   imageUrl,
   title,
   content,
-  id,
   ...props
 }: {
   imageUrl: string;
   title: string;
   content: string;
-  id: string;
 }) {
   const [onPhotoClicked, setOnPhotoClicked] = useState(false);
   const handlePhotoClicked = () => setOnPhotoClicked(true);
@@ -29,7 +27,7 @@ export default function BoardPhotoCard({
               title={title}
               imageUrl={imageUrl}
               content={content}
-              id={id}
+              id={imageUrl}
               setPhotoClicked={setOnPhotoClicked}
             />
           </>
@@ -38,18 +36,18 @@ export default function BoardPhotoCard({
         )}
         <motion.div
           onClick={handlePhotoClicked}
-          key={id}
-          layoutId={id}
+          key={imageUrl}
+          layoutId={imageUrl}
           transition={{ duration: 0.2 }}
-          className="relative z-30 h-44 w-full md:h-[35vh] "
+          className="relative z-30 h-44 w-full md:h-[44vh] "
         >
           <div className="relative h-full w-full rounded-md">
             <Image
               src={imageUrl}
-              alt={id}
+              alt={imageUrl}
               priority
               fill
-              objectFit="cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="relative z-10 rounded-md object-cover"
             />
           </div>
