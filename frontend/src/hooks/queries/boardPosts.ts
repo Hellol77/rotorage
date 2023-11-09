@@ -31,9 +31,12 @@ export function useUploadBoardPost() {
     },
     onMutate: async (newPost) => {
       await queryClient.cancelQueries({ queryKey: ["boardPosts"] });
+
+      const newImageUrl = URL.createObjectURL(newPost.imageUrl);
+
       let copyNewPost = {
         ...newPost,
-        imageUrl: URL.createObjectURL(newPost.imageUrl),
+        imageUrl: newImageUrl,
       };
       const previousBoardPosts = queryClient.getQueryData(["boardPosts"]);
 

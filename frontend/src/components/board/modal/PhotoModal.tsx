@@ -33,7 +33,7 @@ export default function PhotoModal({
       <motion.div
         key={`${id}-modal`}
         layoutId={id}
-        className="absolute left-0 right-0 top-20 z-50  m-auto flex h-fit w-fit   flex-col items-center  justify-center  overflow-hidden  rounded-lg  bg-black"
+        className="  fixed left-0 right-0 top-20 z-50  m-auto flex h-fit w-fit   flex-col items-center  justify-center  overflow-hidden  rounded-lg  bg-black"
       >
         <div
           className=" absolute right-1 top-2 z-[60] flex h-10  w-10 items-center justify-center"
@@ -48,6 +48,7 @@ export default function PhotoModal({
             alt={id}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
           />
         </div>
         <div className=" relative z-50 mt-4 w-full justify-end px-4 font-poorStory text-2xl tracking-wider">
