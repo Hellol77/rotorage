@@ -39,7 +39,7 @@ export default function BoardPhotoCard({
           key={imageUrl}
           layoutId={imageUrl}
           transition={{ duration: 0.2 }}
-          className="relative z-30 h-44 w-full md:h-[44vh] "
+          className="relative z-30 h-44 w-full cursor-pointer md:h-[44vh]"
         >
           <div className="relative h-full w-full rounded-md">
             <Image
@@ -48,7 +48,7 @@ export default function BoardPhotoCard({
               priority
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="relative z-10 rounded-md object-cover"
+              className="relative z-10 rounded-md object-cover "
             />
           </div>
           <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2  md:px-4 md:py-4">
