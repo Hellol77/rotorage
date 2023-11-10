@@ -39,9 +39,9 @@ export default function PhotoPage() {
           <MotionImage image={gallery11} />
         </div>
         <div className="mb-6 mt-6 flex w-40 justify-between  md:mb-10 md:mt-10">
-          <PrevIcon />
+          <PrevIcon className=" cursor-pointer" />
           1/1
-          <NextIcon />
+          <NextIcon className=" cursor-pointer" />
         </div>
       </section>
     </main>

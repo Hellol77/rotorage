@@ -27,9 +27,18 @@ exports.postAddBoard = async (
     .catch((err: Error) => res.status(400).send("db 저장 실패"));
 };
 
-exports.getBoard = async (req: Request, res: Response, next: NextFunction) => {
+exports.getBoard = async (
+  req: Request<{ page: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  const page = Number(req.params.page);
+  const limit = 12;
   Board.find({}, { title: 1, content: 1, imageUrl: 1, _id: 0 })
     .sort({ _id: -1 })
+    .limit(limit)
+    .skip((page - 1) * limit)
+    .exec()
     .then((posts) => {
       return res.status(200).send(posts);
     })

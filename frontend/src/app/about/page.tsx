@@ -3,7 +3,6 @@ import React from "react";
 
 import { images } from "../../components/carousel/profileImage";
 import { Carousel } from "../../components/carousel/Carousel";
-import profile14 from "/public/photo/profile/profile14.png";
 import Line from "../ui/Line";
 import Link from "next/link";
 import YoutubeIcon from "../icon/YoutubeIcon";
@@ -116,22 +115,13 @@ const discographyList: MusicListType = [
 
 import AlbumItem from "../../components/item/AlbumItem";
 import MoreText from "../ui/MoreText";
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 import { TypeAnimation } from "react-type-animation";
 export default function AboutPage() {
   return (
     <main className=" flex h-full w-screen overflow-x-hidden scrollbar-hide">
       <section className="relative z-20 h-full w-screen md:pt-48 ">
         <Carousel images={images} />
-        {/* <div className="relative">
-          <div className="absolute bottom-0 z-30 flex h-[40vh] w-screen bg-transparent bg-gradient-to-b from-transparent from-[1%] to-[#101010] md:hidden" />
-          <Image
-            src={profile14}
-            className="bottom-0 mb-10 h-[35rem] w-[30rem] object-cover md:fixed"
-            alt="profile"
-          />
-        </div> */}
-
         <Line text={`Even if you leave `} color="red" deg="4deg" vector={-1} />
         <ul className="relative z-20 mb-4 mt-4 w-fit border-slate-400 bg-[#101010] bg-opacity-40 px-4 text-white md:ml-20 md:border-l-4 md:pl-7">
           <li className=" text-3xl font-bold tracking-wider text-white">

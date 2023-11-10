@@ -14,6 +14,6 @@ const router = express.Router();
 router.use(cors(corsOptions));
 router.post("/", awsUpload.single("imgFile"), boardController.postAddBoard);
 
-router.get("/", boardController.getBoard);
+router.get("/:page", boardController.getBoard);
 
 module.exports = router;
