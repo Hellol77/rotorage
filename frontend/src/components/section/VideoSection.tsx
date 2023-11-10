@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { Variants, motion } from "framer-motion";
+import React, { useRef } from "react";
+import { Variants, motion, useInView } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import Link from "next/link";
-import { useInView } from "react-intersection-observer";
 import YoutubeIcon from "@/app/icon/YoutubeIcon";
 
 type SongType = "입춘" | "정류장" | "화해" | "사랑하게 될 거야";
@@ -137,9 +136,8 @@ const getPropsContent: GetPropsContent = {
   },
 };
 export default function VideoSection({ title }: PropsType) {
-  const { ref: typeRef, inView } = useInView({
-    threshold: 0.8,
-  });
+  const ref = useRef(null);
+  const isInView = useInView(ref);
 
   return (
     <section className="relative inset-0 z-10 flex min-h-[100lvh] w-screen snap-start  overflow-hidden ">
@@ -161,7 +159,7 @@ export default function VideoSection({ title }: PropsType) {
       />
       <div className="absolute left-6 top-20 z-40  h-full flex-col justify-start md:left-20 md:top-36">
         <div
-          ref={typeRef}
+          ref={ref}
           className=" z-40 mb-4 flex	 font-poorStory text-2xl  font-bold  text-slate-300 md:mb-5 md:text-4xl"
         >
           {getPropsContent[title].title}
@@ -173,7 +171,7 @@ export default function VideoSection({ title }: PropsType) {
             <YoutubeIcon size="24" className="ml-4" />
           </Link>
         </div>
-        {inView ? (
+        {isInView ? (
           <TypeAnimation
             style={{ whiteSpace: "pre-line" }}
             className="z-40  w-40 font-poorStory text-sm  text-slate-300 md:text-base lg:text-lg"

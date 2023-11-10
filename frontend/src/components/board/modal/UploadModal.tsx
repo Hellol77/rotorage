@@ -3,11 +3,12 @@ import React, {
   ChangeEvent,
   DragEvent,
   FormEvent,
+  useEffect,
   useRef,
   useState,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button, Textarea } from "@nextui-org/react";
+import { Button, Input, Textarea } from "@nextui-org/react";
 import PhotoAlbumIcon from "@/app/icon/PhotoAlbumIcon";
 import Image from "next/image";
 
@@ -27,17 +28,34 @@ export default function UploadModal({
   const titleTextRef = useRef<HTMLInputElement>(null);
   const contentTextRef = useRef<HTMLInputElement>(null);
   const { mutate } = useUploadBoardPost();
+
+  useEffect(() => {
+    if (file) {
+      fileSizeCheck(file);
+    }
+  }, [file]);
+
+  const fileSizeCheck = (file: File) => {
+    if (file.size > 1024 * 1024 * 10) {
+      setFile(null);
+      alert("파일 사이즈는 10MB를 넘을 수 없습니다.");
+    }
+  };
+
   const handleCloseOnClick = () => {
     setOnClick(false);
     setFile(null);
   };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const files = e.target?.files;
+
     if (files && files[0]) {
       setFile(files[0]);
     }
   };
+
   const handleDrag = (e: DragEvent) => {
     if (e.type === "dragenter") {
       setDragging(true);
@@ -66,25 +84,10 @@ export default function UploadModal({
     const imageUrl = file;
     const title = titleTextRef.current?.value ?? "";
     const content = contentTextRef.current?.value ?? "";
-    // const formData = new FormData();
-    // formData.append("imgFile", file);
-    // formData.append("title", titleTextRef.current?.value ?? "");
-    // formData.append("content", contentTextRef.current?.value ?? "");
 
-    // let value = [
-    //   {
-    //     title: JSON.stringify(titleTextRef.current?.value),
-    //     content: JSON.stringify(contentTextRef.current),
-    //   },
-    // ];
-    // const blob = new Blob([JSON.stringify(value)], {
-    //   type: "application/json",
-    // });
-    // formData.append("post", blob);
     mutate({ imageUrl, title, content });
     handleCloseOnClick();
-    // const formData = new FormData(e.currentTarget);
-    // console.log(formData);
+
   };
   return (
     <>
@@ -148,17 +151,17 @@ export default function UploadModal({
                 )}
               </label>
               <Textarea
-                placeholder="제목을 입력해주세요"
+                placeholder="내용을 입력해주세요"
                 className=" relative z-50 mt-2 w-full px-4 font-poorStory text-2xl tracking-wider"
                 name="title"
                 id="input-text"
                 ref={titleTextRef}
                 required
               />
-              <Textarea
+              <Input
                 name="content"
-                placeholder="내용을 입력해주세요"
-                className=" relative z-50 mb-2  w-full break-all px-4 font-poorStory tracking-wide "
+                placeholder="닉네임을 입력해주세요"
+                className="  z-50 mb-2 h-10  w-full break-all px-4 font-poorStory tracking-wide "
                 ref={contentTextRef}
                 required
               />

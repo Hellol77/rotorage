@@ -9,7 +9,7 @@ export default function BoradPage() {
     <main className="z-1 relative h-full min-h-screen overflow-x-hidden overflow-y-scroll px-6 scrollbar-hide  md:px-20">
       <section className="relative flex flex-col items-center ">
         <div className="mb-6 mt-20 flex w-full items-center justify-between    md:mb-16 md:mt-40 ">
-          <div className="font-bseold text-2xl tracking-wider md:text-5xl md:tracking-widest">
+          <div className="font-bold text-2xl tracking-wider md:text-5xl md:tracking-widest">
             Board
           </div>
           <ModalTriggerButton text={"등록하기"}>

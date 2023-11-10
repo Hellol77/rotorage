@@ -1,13 +1,24 @@
 import { uploadBoardPost } from "@/app/api/board";
 import { getBoardPosts } from "./../../app/api/board/index";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 import React from "react";
 import { Post } from "@/model/post";
 
 export function useGetBoardPosts() {
-  return useQuery({
-    queryKey: ["boardPosts"],
-    queryFn: getBoardPosts,
+  return useInfiniteQuery({
+    queryKey: ["projects"],
+    queryFn: async ({ pageParam }) => {
+      const res = await getBoardPosts({ pageParam });
+      return res;
+    },
+    initialPageParam: 1,
+    // 아래 코드를 타입스크립트로 바꿔줘
+    getNextPageParam: (lastPage, allPage) =>
+      lastPage.data.length != 0 ? lastPage.pageParam : undefined,
   });
 }
 
