@@ -1,5 +1,4 @@
 import { Post } from "@/model/post";
-import React from "react";
 
 export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {
   const api = fetch(process.env.NEXT_PUBLIC_BASE_URL + `board/${pageParam}`)
@@ -18,7 +17,6 @@ export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {
 export const uploadBoardPost = async (formData: FormData) => {
   return fetch(process.env.NEXT_PUBLIC_BASE_URL + "board", {
     method: "POST",
-
     body: formData,
   });
 };

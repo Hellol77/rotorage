@@ -7,7 +7,7 @@ import { useInView } from "framer-motion";
 import BoardLoadingIcon from "@/app/icon/BoardLoadingIcon";
 
 export default function BoardGrid() {
-  const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
+  const { data, fetchNextPage, isFetchingNextPage } =
     useGetBoardPosts();
   const ref = useRef(null);
   const isInView = useInView(ref);

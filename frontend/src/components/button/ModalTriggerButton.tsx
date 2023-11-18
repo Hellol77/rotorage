@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@nextui-org/react";
 import UploadIcon from "@/app/icon/UploadIcon";
 

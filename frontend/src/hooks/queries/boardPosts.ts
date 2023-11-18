@@ -5,7 +5,6 @@ import {
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
-import React from "react";
 import { Post } from "@/model/post";
 
 export function useGetBoardPosts() {
