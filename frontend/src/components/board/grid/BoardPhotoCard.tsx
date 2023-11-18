@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import PhotoModal from "../modal/PhotoModal";
 
 export default function BoardPhotoCard({

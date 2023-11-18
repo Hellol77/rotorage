@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import hanroroLogo from "/public/HanroroLogoSVG.svg";
 import { motion } from "framer-motion";
 import MainLogoIcon from "../icon/MainLogoIcon";
 
