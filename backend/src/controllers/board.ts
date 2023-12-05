@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 
 import { Board } from "../models/board";
 
-exports.postAddBoard = async (
+export const postAddBoard = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -12,6 +12,7 @@ exports.postAddBoard = async (
   const content = req.body.content;
   const image = req.file as Express.MulterS3.File;
   const imageUrl = image.location;
+  
   const board = new Board({
     title,
     content,
@@ -27,7 +28,7 @@ exports.postAddBoard = async (
     .catch((err: Error) => res.status(400).send("db 저장 실패"));
 };
 
-exports.getBoard = async (
+export const getBoard = async (
   req: Request<{ page: string }>,
   res: Response,
   next: NextFunction

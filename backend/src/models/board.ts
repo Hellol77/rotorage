@@ -30,6 +30,5 @@ const boardSchema = new Schema({
     required: true,
   },
 });
-const Board = mongoose.model("Board", boardSchema);
-export { Board };
+export const Board = mongoose.model("Board", boardSchema);
 // module.exports = mongoose.model<any, BoardModelInterface>("Board", boardSchema);
