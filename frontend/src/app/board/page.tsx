@@ -1,6 +1,6 @@
 import React from "react";
 
-import ModalTriggerButton from "../../components/button/ModalTriggerButton";
+import ModalTriggerButton from "../../components/board/modal/button/ModalTriggerButton";
 import UploadModal from "../../components/board/modal/UploadModal";
 import BoardGrid from "@/components/board/grid/BoardGrid";
 

@@ -16,9 +16,7 @@ import { useUploadBoardPost } from "@/hooks/queries/boardPosts";
 
 export default function UploadModal({
   onClick,
-  setOnClick = function (value: React.SetStateAction<boolean>): void {
-    throw new Error("Function not implemented.");
-  },
+  setOnClick,
 }: {
   onClick?: boolean;
   setOnClick?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -43,7 +41,9 @@ export default function UploadModal({
   };
 
   const handleCloseOnClick = () => {
-    setOnClick(false);
+    if (setOnClick) {
+      setOnClick(false);
+    }
     setFile(null);
   };
 
@@ -76,18 +76,16 @@ export default function UploadModal({
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (!file) return;
     if (!titleTextRef.current?.value) return;
     if (!contentTextRef.current?.value) return;
     const imageUrl = file;
     const title = titleTextRef.current?.value ?? "";
     const content = contentTextRef.current?.value ?? "";
-
-    mutate({ imageUrl, title, content });
+    const formData = { imageUrl, title, content };
+    mutate(formData);
     handleCloseOnClick();
-
   };
   return (
     <>
