@@ -1,44 +1,41 @@
-import { uploadBoardPost } from "@/app/api/board";
-import { getBoardPosts } from "./../../app/api/board/index";
+import { uploadBoardPost } from "@/apis/board";
+import { getBoardPosts } from "../../apis/board/index";
 import {
+  InfiniteData,
   useInfiniteQuery,
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
-import { Post } from "@/model/post";
+import { Post, UpdatedPost } from "@/model/post";
+import axios from "axios";
+
+interface BoardPosts {
+  pages: Post[];
+  pageParams: number;
+}
 
 export function useGetBoardPosts() {
   return useInfiniteQuery({
-    queryKey: ["projects"],
+    queryKey: ["boardPosts"],
     queryFn: async ({ pageParam }) => {
       const res = await getBoardPosts({ pageParam });
       return res;
     },
     initialPageParam: 1,
-    // 아래 코드를 타입스크립트로 바꿔줘
     getNextPageParam: (lastPage, allPage) =>
-      lastPage.data.length != 0 ? lastPage.pageParam : undefined,
+      lastPage.pages.length >= 12 ? lastPage.pageParams : undefined,
   });
 }
 
 export function useUploadBoardPost() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({
-      imageUrl,
-      title,
-      content,
-    }: {
-      imageUrl: File;
-      title: string;
-      content: string;
-    }) => {
-      const formData = new FormData();
-      formData.append("imgFile", imageUrl);
-      formData.append("title", title);
-      formData.append("content", content);
-      return uploadBoardPost(formData);
-    },
+    mutationFn: (formData: UpdatedPost) =>
+      uploadBoardPost({
+        imageUrl: formData.imageUrl,
+        title: formData.title,
+        content: formData.content,
+      }),
     onMutate: async (newPost) => {
       await queryClient.cancelQueries({ queryKey: ["boardPosts"] });
 
@@ -48,20 +45,24 @@ export function useUploadBoardPost() {
         ...newPost,
         imageUrl: newImageUrl,
       };
-      const previousBoardPosts = queryClient.getQueryData(["boardPosts"]);
+      const previousBoardPosts = queryClient.getQueryData<
+        InfiniteData<BoardPosts>
+      >(["boardPosts"]);
 
-      queryClient.setQueryData(["boardPosts"], (old: Post[]) => [
-        copyNewPost,
-        ...old,
-      ]);
+      queryClient.setQueryData(
+        ["boardPosts"],
+        (old: InfiniteData<BoardPosts>) => {
+          const newArray = [...old.pages[0].pages];
+          newArray.unshift(copyNewPost);
+          return { ...old, pages: [{ ...old.pages[0], pages: newArray }] };
+        },
+      );
 
       return { previousBoardPosts };
     },
     onError: (err, newPost, context) => {
+      console.log("err", err);
       queryClient.setQueryData(["boardPosts"], context?.previousBoardPosts);
     },
-    // onSettled: () => {
-    //   queryClient.invalidateQueries({ queryKey: ["boardPosts"] });
-    // },
   });
 }
