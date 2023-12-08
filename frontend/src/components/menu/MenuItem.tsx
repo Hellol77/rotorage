@@ -23,10 +23,10 @@ const variants = {
 };
 
 export const MenuItem = ({
-  text,
+  title,
   toggle,
 }: {
-  text: string;
+  title: string;
   toggle: React.MouseEventHandler;
 }) => {
   return (
@@ -38,10 +38,10 @@ export const MenuItem = ({
       onClick={toggle}
     >
       <Link
-        href={`/${text.toLowerCase()}`}
+        href={`/${title.toLowerCase()}`}
         className=" z-300 w-26 border-2 border-solid font-poorStory text-2xl font-extrabold  text-[#101010]"
       >
-        {text}
+        {title}
       </Link>
     </motion.li>
   );

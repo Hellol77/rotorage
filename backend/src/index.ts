@@ -17,8 +17,8 @@ app.use(cors(corsOptions));
 
 mongoose
   .connect(process.env.MONGO_DB_SRV)
-  .catch((err: Error) => console.log(err))
-  .finally(() => console.log("success"));
+  .then(() => console.log("success"))
+  .catch((err: Error) => console.log(err));
 
 app.use("/board", boardRouter);
 export const handler = serverless(app);

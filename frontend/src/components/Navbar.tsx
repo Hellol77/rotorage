@@ -4,12 +4,8 @@ import React from "react";
 import { Menu } from "./menu/Menu";
 import MainLogoIcon from "../app/icon/MainLogoIcon";
 import { usePathname } from "next/navigation";
-const nav = [
-  { href: "/about", title: "About" },
-  { href: "/video", title: "Video" },
-  { href: "/gallery", title: "Gallery" },
-  { href: "/board", title: "Board" },
-];
+import { NAVIGATION_TITLE } from "@/constants/navigation";
+
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -24,9 +20,9 @@ export default function Navbar() {
       </Link>
 
       <ul className="flex h-20 w-full items-center justify-end gap-8 font-extrabold">
-        {nav.map(({ href, title }) => (
+        {NAVIGATION_TITLE.map(({ title }) => (
           <li key={title} className="hidden md:flex ">
-            <Link href={href} className=" text-lg">
+            <Link href={`/${title.toLowerCase()}`} className=" text-lg">
               {title}
             </Link>
           </li>
