@@ -3,15 +3,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
-import { BoardsModule } from './boards/boards.module';
+import { BoardModule } from './board/board.module';
+import { BoardController } from './board/board.controller';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(process.env.MONGOOSE_CONNECT_STRING),
-    BoardsModule,
+    BoardModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, BoardController],
   providers: [AppService],
 })
 export class AppModule {}
