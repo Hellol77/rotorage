@@ -30,9 +30,10 @@ export class Post extends Document {
 
 const PostSchema = SchemaFactory.createForClass(Post);
 
-PostSchema.pre<Post>('save', function (next) {
-  this.updatedAt = new Date();
-  next();
-});
+// save하면 updatedAt이 자동으로 현재 시간으로 설정되도록 설정
+// PostSchema.pre<Post>('save', function (next) {
+//   this.updatedAt = new Date();
+//   next();
+// });
 
 export { PostSchema };
