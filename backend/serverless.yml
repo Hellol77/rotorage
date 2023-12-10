@@ -1,0 +1,29 @@
+service: hanroro-fanpage
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-northeast-2
+  environment:
+    NODE_ENV: production
+functions:
+  uploadBoard:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: POST
+          path: /board
+          cors: true
+  getBoards:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: GET
+          path: /board/{proxy+}
+          cors: true
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+  - serverless-dotenv-plugin
+custom:
+  serverless-offline:
+    httpPort: 8080

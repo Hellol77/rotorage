@@ -20,11 +20,13 @@ export const uploadBoardPost = async ({
   imageUrl,
   title,
   content,
+  password,
 }: UpdatedPost) => {
   const formData = new FormData();
   formData.append("imgFile", imageUrl);
   formData.append("title", title);
   formData.append("content", content);
+  formData.append("password", password);
 
   const api = await axios
     .post(process.env.NEXT_PUBLIC_BASE_URL + "board", formData)
@@ -32,9 +34,12 @@ export const uploadBoardPost = async ({
       return;
     })
     .catch((err) => {
-      console.log(err);
-      alert("게시글을 업로드하는데 실패했습니다.");
-      return;
+      console.log(err.response);
+      if (err.response.data === "password")
+        alert("게시글을 업로드하는데 실패했습니다.");
+      else if (err.response.data === "file")
+        alert("이미지 파일을 업로드하는데 실패했습니다.");
+      else alert("서버에 문제가 발생했습니다.");
     });
   return api;
 };

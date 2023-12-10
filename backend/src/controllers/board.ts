@@ -7,25 +7,33 @@ export const postAddBoard = async (
   res: Response,
   next: NextFunction
 ) => {
-  if (!req.file) return res.status(400).send("파일 전송 실패");
+  if (req.body.password == "") {
+    return res.status(400).send("password");
+  }
+  if (!req.file) {
+    return res.status(400).send("file");
+  }
   const title = req.body.title;
   const content = req.body.content;
   const image = req.file as Express.MulterS3.File;
+  const password = req.body.password;
   const imageUrl = image.location;
-  
   const board = new Board({
     title,
     content,
     imageUrl,
+    password,
   });
 
   board
     .save()
     .then(() => {
       console.log("Create board");
-      res.status(200).send("db 저장 성공");
+      return res.status(200).send("db 저장 성공");
     })
-    .catch((err: Error) => res.status(400).send("db 저장 실패"));
+    .catch((err: Error) => {
+      return res.status(400).send("db 저장 실패");
+    });
 };
 
 export const getBoard = async (

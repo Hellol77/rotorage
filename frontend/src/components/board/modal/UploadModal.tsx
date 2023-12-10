@@ -25,6 +25,7 @@ export default function UploadModal({
   const [file, setFile] = useState<File | null>(null);
   const titleTextRef = useRef<HTMLInputElement>(null);
   const contentTextRef = useRef<HTMLInputElement>(null);
+  const passwordTextRef = useRef<HTMLInputElement>(null);
   const { mutate } = useUploadBoardPost();
 
   useEffect(() => {
@@ -83,7 +84,8 @@ export default function UploadModal({
     const imageUrl = file;
     const title = titleTextRef.current?.value ?? "";
     const content = contentTextRef.current?.value ?? "";
-    const formData = { imageUrl, title, content };
+    const password = passwordTextRef.current?.value ?? "";
+    const formData = { imageUrl, title, content, password };
     mutate(formData);
     handleCloseOnClick();
   };
@@ -150,7 +152,7 @@ export default function UploadModal({
               </label>
               <Textarea
                 placeholder="내용을 입력해주세요"
-                className=" relative z-50 mt-2 w-full px-4 font-poorStory text-2xl tracking-wider"
+                className=" relative z-50 mb-1 mt-2 w-full px-4 font-poorStory text-2xl tracking-wider"
                 name="title"
                 id="input-text"
                 ref={titleTextRef}
@@ -161,6 +163,14 @@ export default function UploadModal({
                 placeholder="닉네임을 입력해주세요"
                 className="  z-50 mb-2 h-10  w-full break-all px-4 font-poorStory tracking-wide "
                 ref={contentTextRef}
+                required
+              />
+              <Input
+                name="password"
+                type="password"
+                placeholder="비밀번호를 입력해주세요"
+                className="  z-50 mb-2 h-10  w-full break-all px-4 font-poorStory tracking-wide "
+                ref={passwordTextRef}
                 required
               />
               <div className="mb-3 flex  w-full items-center justify-center gap-2 px-4 font-poorStory">

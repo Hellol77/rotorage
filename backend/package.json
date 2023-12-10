@@ -12,7 +12,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^7.6.3",
+    "mongoose": "^8.0.3",
     "multer": "^1.4.5-lts.1",
     "multer-s3": "^3.0.1",
     "serverless-http": "^3.2.0"
@@ -23,6 +23,7 @@
     "@types/multer": "^1.4.9",
     "@types/multer-s3": "^3.0.2",
     "@types/node": "^20.8.9",
+    "serverless-dotenv-plugin": "^6.0.0",
     "serverless-offline": "^13.3.0",
     "serverless-plugin-typescript": "^2.1.5",
     "ts-node": "^10.9.1",

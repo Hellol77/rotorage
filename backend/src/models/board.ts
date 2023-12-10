@@ -29,6 +29,10 @@ const boardSchema = new Schema({
     type: String,
     required: true,
   },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 export const Board = mongoose.model("Board", boardSchema);
 // module.exports = mongoose.model<any, BoardModelInterface>("Board", boardSchema);

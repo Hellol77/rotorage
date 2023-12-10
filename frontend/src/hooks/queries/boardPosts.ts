@@ -35,6 +35,7 @@ export function useUploadBoardPost() {
         imageUrl: formData.imageUrl,
         title: formData.title,
         content: formData.content,
+        password: formData.password,
       }),
     onMutate: async (newPost) => {
       await queryClient.cancelQueries({ queryKey: ["boardPosts"] });
@@ -63,6 +64,9 @@ export function useUploadBoardPost() {
     onError: (err, newPost, context) => {
       console.log("err", err);
       queryClient.setQueryData(["boardPosts"], context?.previousBoardPosts);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["boardPosts"] });
     },
   });
 }
