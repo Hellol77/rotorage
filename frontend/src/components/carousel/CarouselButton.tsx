@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import NextIcon from "@/app/icon/NextIcon";
-import PrevIcon from "@/app/icon/PrevIcon";
+import NextIcon from "../common/icon/NextIcon";
+import PrevIcon from "../common/icon/PrevIcon";
 
 export default function CarouselButton({
   paginate,

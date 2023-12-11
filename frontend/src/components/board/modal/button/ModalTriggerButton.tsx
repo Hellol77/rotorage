@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "@nextui-org/react";
-import UploadIcon from "@/app/icon/UploadIcon";
+import UploadIcon from "@/components/common/icon/UploadIcon";
 
 export default function ModalTriggerButton({
   text,

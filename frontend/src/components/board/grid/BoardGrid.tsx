@@ -4,7 +4,7 @@ import BoardPhotoCard from "./BoardPhotoCard";
 import { useGetBoardPosts } from "@/hooks/queries/boardPosts";
 import { Post } from "@/model/post";
 import { useInView } from "framer-motion";
-import BoardLoadingIcon from "@/app/icon/BoardLoadingIcon";
+import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 
 export default function BoardGrid() {
   const { data, fetchNextPage, isFetchingNextPage } = useGetBoardPosts();

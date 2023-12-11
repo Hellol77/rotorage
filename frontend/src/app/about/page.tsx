@@ -5,8 +5,7 @@ import { images } from "../../components/carousel/profileImage";
 import { Carousel } from "../../components/carousel/Carousel";
 import Line from "../../components/common/ui/Line";
 import Link from "next/link";
-import YoutubeIcon from "../icon/YoutubeIcon";
-import InstagramIcon from "../icon/InstagramIcon";
+
 import album1 from "/public/photo/album/1.jpg";
 import album2 from "/public/photo/album/2.jpg";
 import album3 from "/public/photo/album/3.jpg";
@@ -117,6 +116,8 @@ import AlbumItem from "../../components/item/AlbumItem";
 import MoreText from "../../components/common/ui/MoreText";
 import { StaticImageData } from "next/image";
 import { TypeAnimation } from "react-type-animation";
+import YoutubeIcon from "@/components/common/icon/YoutubeIcon";
+import InstagramIcon from "@/components/common/icon/InstagramIcon";
 export default function AboutPage() {
   return (
     <main className=" flex h-full w-screen overflow-x-hidden scrollbar-hide">

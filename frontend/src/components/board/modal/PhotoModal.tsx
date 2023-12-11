@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import CloseIcon from "@/app/icon/CloseIcon";
+import CloseIcon from "@/components/common/icon/CloseIcon";
 
 export default function PhotoModal({
   imageUrl,

@@ -1,7 +1,7 @@
-import YoutubeIcon from "@/app/icon/YoutubeIcon";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React from "react";
+import YoutubeIcon from "../common/icon/YoutubeIcon";
 
 export default function AlbumItem({
   title,

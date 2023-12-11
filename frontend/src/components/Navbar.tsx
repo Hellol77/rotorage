@@ -2,10 +2,9 @@
 import Link from "next/link";
 import React from "react";
 import { Menu } from "./menu/Menu";
-import MainLogoIcon from "../app/icon/MainLogoIcon";
 import { usePathname } from "next/navigation";
 import { NAVIGATION_TITLE } from "@/constants/navigation";
-
+import MainLogoIcon from "./common/icon/MainLogoIcon";
 
 export default function Navbar() {
   const pathname = usePathname();
