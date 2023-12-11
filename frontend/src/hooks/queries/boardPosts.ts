@@ -7,7 +7,6 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { Post, UpdatedPost } from "@/model/post";
-import axios from "axios";
 
 interface BoardPosts {
   pages: Post[];

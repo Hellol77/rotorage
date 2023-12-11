@@ -150,7 +150,7 @@ export default function UploadModal({
                 )}
               </label>
               <Textarea
-                placeholder="내용을 입력해주세요"
+                placeholder="제목을 입력해주세요"
                 className=" relative z-50 mb-1 mt-2 w-full px-4 font-poorStory text-2xl tracking-wider"
                 name="title"
                 id="input-text"
@@ -159,19 +159,19 @@ export default function UploadModal({
               />
               <Input
                 name="content"
-                placeholder="닉네임을 입력해주세요"
+                placeholder="내용을 입력해주세요"
                 className="  z-50 mb-2 h-10  w-full break-all px-4 font-poorStory tracking-wide "
                 ref={contentTextRef}
                 required
               />
-              <Input
+              {/* <Input
                 name="password"
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
                 className="  z-50 mb-2 h-10  w-full break-all px-4 font-poorStory tracking-wide "
                 ref={passwordTextRef}
                 required
-              />
+              /> */}
               <div className="mb-3 flex  w-full items-center justify-center gap-2 px-4 font-poorStory">
                 <Button
                   onClick={handleCloseOnClick}

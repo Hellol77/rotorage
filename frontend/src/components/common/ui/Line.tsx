@@ -79,7 +79,7 @@ export default function Line({ text, deg, color, vector }: Props) {
       className={`${getBaseStyle(
         color,
         vector,
-      )} relative z-10 flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest `}
+      )} relative flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest `}
     >
       <div ref={textDivRef} className="text-black">
         {divText}

@@ -4,3 +4,4 @@ export const NAVIGATION_TITLE = [
   { title: "Gallery" },
   { title: "Board" },
 ];
+

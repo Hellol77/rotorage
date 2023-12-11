@@ -33,7 +33,7 @@ export default function CircleImage({ image }: Props) {
         <MainLogoIcon
           textColor="black"
           bgColor="white"
-          className="w-18 relative left-20 top-24 z-40 md:left-[17vh] md:top-[19vh] md:w-[14vh]"
+          className="w-18 relative left-20 top-24 z-40 md:left-[35%] md:top-[35%] md:w-[14vw]"
         />
       </motion.div>
     </>
