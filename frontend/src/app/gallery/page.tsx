@@ -12,9 +12,9 @@ import gallery8 from "/public/photo/gallery/gallery8.png";
 import gallery9 from "/public/photo/gallery/gallery9.png";
 import gallery10 from "/public/photo/gallery/gallery10.png";
 import gallery11 from "/public/photo/gallery/gallery11.png";
-import MotionImage from "../ui/MotionImage";
-import NextIcon from "../icon/NextIcon";
-import PrevIcon from "../icon/PrevIcon";
+import MotionImage from "../../components/common/ui/MotionImage";
+import NextIcon from "@/components/common/icon/NextIcon";
+import PrevIcon from "@/components/common/icon/PrevIcon";
 
 export default function PhotoPage() {
   return (

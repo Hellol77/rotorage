@@ -3,7 +3,7 @@ import React from "react";
 
 import { images } from "../../components/carousel/profileImage";
 import { Carousel } from "../../components/carousel/Carousel";
-import Line from "../ui/Line";
+import Line from "../../components/common/ui/Line";
 import Link from "next/link";
 import YoutubeIcon from "../icon/YoutubeIcon";
 import InstagramIcon from "../icon/InstagramIcon";
@@ -114,7 +114,7 @@ const discographyList: MusicListType = [
 ];
 
 import AlbumItem from "../../components/item/AlbumItem";
-import MoreText from "../ui/MoreText";
+import MoreText from "../../components/common/ui/MoreText";
 import { StaticImageData } from "next/image";
 import { TypeAnimation } from "react-type-animation";
 export default function AboutPage() {

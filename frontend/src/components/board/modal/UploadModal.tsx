@@ -8,10 +8,10 @@ import React, {
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button, Input, Textarea } from "@nextui-org/react";
-import PhotoAlbumIcon from "@/app/icon/PhotoAlbumIcon";
 import Image from "next/image";
 
 import { useUploadBoardPost } from "@/hooks/queries/boardPosts";
+import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
 
 export default function UploadModal({
   onClick,
