@@ -22,18 +22,18 @@ export default function CircleImage({ image }: Props) {
           damping: 15,
         }}
         whileHover={{ scale: 1.1 }}
-        className="absolute z-30 flex h-64 w-64 items-center justify-center rounded-full bg-[#323030] md:mt-10 md:h-[50vh] md:w-[50vh]"
+        className="absolute  z-30 flex h-64 w-64 items-center justify-center rounded-full bg-[#323030] md:mt-10 md:h-[28vw] md:max-h-[40rem] md:w-[28vw] md:max-w-[40rem]"
       >
         <Image
           src={image[0]}
           priority
-          className="absolute w-60	rounded-full md:w-[46vh]"
+          className="absolute w-60	rounded-full md:h-[26vw] md:max-h-[36rem] md:w-[26vw] md:max-w-[36rem]"
           alt="circlePhoto"
         />
         <MainLogoIcon
           textColor="black"
           bgColor="white"
-          className="relative left-20 top-24 z-40 w-20 md:left-[17vh] md:top-[19vh] md:w-[17vh]"
+          className="w-18 relative left-20 top-24 z-40 md:left-[17vh] md:top-[19vh] md:w-[14vh]"
         />
       </motion.div>
     </>

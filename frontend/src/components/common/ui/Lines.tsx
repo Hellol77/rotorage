@@ -3,7 +3,7 @@ import Line from "./Line";
 
 export default function Lines() {
   return (
-    <div className="flex w-full flex-col gap-16 md:mt-10 md:gap-20 2xl:gap-56">
+    <div className=" z-0 flex h-full w-full flex-col items-center justify-center gap-16 md:mt-10 md:gap-20 2xl:gap-40">
       <Line
         text={`Even if you leave `}
         color="red"

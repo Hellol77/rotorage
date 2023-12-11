@@ -8,7 +8,7 @@ export default function CircleImageSection() {
   const circlePhotoList = [hanroroMainImage, hanroro2];
 
   return (
-    <section className="relative flex h-screen w-full snap-start items-center justify-center">
+    <section className=" relative   mb-20 mt-24 flex w-screen  snap-start  items-center justify-center">
       <CircleImage image={circlePhotoList} />
       <Lines />
     </section>
