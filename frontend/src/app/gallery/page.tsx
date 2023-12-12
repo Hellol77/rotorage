@@ -16,7 +16,7 @@ import MotionImage from "../../components/common/ui/MotionImage";
 import NextIcon from "@/components/common/icon/NextIcon";
 import PrevIcon from "@/components/common/icon/PrevIcon";
 
-export default function PhotoPage() {
+export default function GalleryPage() {
   return (
     <main className="z-1 h-full overflow-x-hidden overflow-y-scroll px-6 scrollbar-hide  md:px-20">
       <section className="flex flex-col items-center ">

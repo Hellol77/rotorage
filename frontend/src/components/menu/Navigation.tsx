@@ -19,6 +19,7 @@ export const Navigation = ({ toggle }: { toggle: React.MouseEventHandler }) => (
   >
     {NAVIGATION_TITLE.map(({ title }) => (
       <MenuItem title={title} key={title} toggle={toggle} />
+      // 로그인 했으면 로그아웃으로 바꾸기
     ))}
   </motion.ul>
 );

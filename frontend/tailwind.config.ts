@@ -18,6 +18,9 @@ const config: Config = {
       fontFamily: {
         poorStory: ["Poor Story", "sans-serif"],
         yellowTail: ["Yellowtail", "sans-serif"],
+        "Pretendard-Regular": ["Pretendard-Regular"],
+        "Pretendard-ExtraBold": ["Pretendard-ExtraBold"],
+        "Pretendard-SemiBold": ["Pretendard-SemiBold"],
       },
     },
   },

@@ -3,5 +3,5 @@ export const NAVIGATION_TITLE = [
   { title: "Video" },
   { title: "Gallery" },
   { title: "Board" },
+  { title: "Login" },
 ];
-

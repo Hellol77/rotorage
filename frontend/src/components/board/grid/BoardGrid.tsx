@@ -1,5 +1,5 @@
 "use client";
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, Suspense, useEffect, useRef } from "react";
 import BoardPhotoCard from "./BoardPhotoCard";
 import { useGetBoardPosts } from "@/hooks/queries/boardPosts";
 import { Post } from "@/model/post";
@@ -29,12 +29,13 @@ export default function BoardGrid() {
           }) => (
             <Fragment key={pageParams || 0}>
               {pages.map(({ title, content, imageUrl, password }) => (
-                <BoardPhotoCard
-                  key={imageUrl}
-                  title={title}
-                  content={content}
-                  imageUrl={imageUrl}
-                />
+                <Suspense key={imageUrl} fallback={<BoardLoadingIcon />}>
+                  <BoardPhotoCard
+                    title={title}
+                    content={content}
+                    imageUrl={imageUrl}
+                  />
+                </Suspense>
               ))}
             </Fragment>
           ),
