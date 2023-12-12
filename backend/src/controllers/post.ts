@@ -1,34 +1,29 @@
 import { Request, Response, NextFunction } from "express";
 
-import { Board } from "../models/board";
+import { Post } from "../models/post";
 
-export const postAddBoard = async (
+export const uploadPost = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  if (req.body.password == "") {
-    return res.status(400).send("password");
-  }
   if (!req.file) {
     return res.status(400).send("file");
   }
   const title = req.body.title;
   const content = req.body.content;
   const image = req.file as Express.MulterS3.File;
-  const password = req.body.password;
   const imageUrl = image.location;
-  const board = new Board({
+  const post = new Post({
     title,
     content,
     imageUrl,
-    password,
   });
 
-  board
+  post
     .save()
     .then(() => {
-      console.log("Create board");
+      console.log("Create post");
       return res.status(200).send("db 저장 성공");
     })
     .catch((err: Error) => {
@@ -36,14 +31,14 @@ export const postAddBoard = async (
     });
 };
 
-export const getBoard = async (
+export const getPosts = async (
   req: Request<{ page: string }>,
   res: Response,
   next: NextFunction
 ) => {
   const page = Number(req.params.page);
   const limit = 12;
-  Board.find({}, { title: 1, content: 1, imageUrl: 1, _id: 0 })
+  Post.find({}, { title: 1, content: 1, imageUrl: 1, _id: 0 })
     .sort({ _id: -1 })
     .limit(limit)
     .skip((page - 1) * limit)

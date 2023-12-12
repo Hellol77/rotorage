@@ -5,7 +5,8 @@ import cors from "cors";
 
 const mongoose = require("mongoose");
 
-import { boardRouter } from "./routes/board";
+import { postRouter } from "./routes/post";
+import { loginRouter } from "./routes/login";
 
 const app = express();
 
@@ -20,5 +21,6 @@ mongoose
   .then(() => console.log("success"))
   .catch((err: Error) => console.log(err));
 
-app.use("/board", boardRouter);
+app.use("/post", postRouter);
+app.use("/login", loginRouter);
 export const handler = serverless(app);

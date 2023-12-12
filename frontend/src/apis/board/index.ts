@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {
   const api = axios
-    .get(process.env.NEXT_PUBLIC_BASE_URL + `board/${pageParam}`)
+    .get(process.env.NEXT_PUBLIC_BASE_URL + `post/${pageParam}`)
     .then(async (data) => {
       // const data: Post[] = await res.json();
       return { pages: data.data, pageParams: pageParam + 1 };
@@ -29,7 +29,7 @@ export const uploadBoardPost = async ({
   formData.append("password", password);
 
   const api = await axios
-    .post(process.env.NEXT_PUBLIC_BASE_URL + "board", formData)
+    .post(process.env.NEXT_PUBLIC_BASE_URL + "post", formData)
     .then(() => {
       return;
     })

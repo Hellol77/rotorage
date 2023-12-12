@@ -6,19 +6,27 @@ provider:
   environment:
     NODE_ENV: production
 functions:
-  uploadBoard:
+  uploadPost:
     handler: src/index.handler
     events:
       - httpApi:
           method: POST
-          path: /board
+          path: /post
           cors: true
-  getBoards:
+  getPosts:
     handler: src/index.handler
     events:
       - httpApi:
           method: GET
-          path: /board/{proxy+}
+          path: /post/{proxy+}
+          cors: true
+
+  getLogin:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: GET
+          path: /login/kakao
           cors: true
 plugins:
   - serverless-offline

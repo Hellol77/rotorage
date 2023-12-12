@@ -1,9 +1,13 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import kakao from "/public/kakao-Login.png";
 import LoginButton from "@/components/common/ui/LoginButton";
 
 export default function LoginPage() {
+  const kakaoLogin = () => {
+    window.location.href =
+      "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=bf50e9da1525510f5999f77c97a730b4&redirect_uri=http://localhost:3000/login/auth/kakao";
+  };
   return (
     <main className="flex h-screen w-screen justify-center overflow-x-hidden px-6 scrollbar-hide">
       <section className="mt-40 flex w-96 flex-col items-center">
@@ -12,7 +16,7 @@ export default function LoginPage() {
           이미지 저장이 가능합니다.
         </h1>
         <div className="relative mb-16 w-full border-1 md:w-full " />
-        <LoginButton title="kakao" image={kakao} onClick={() => {}} />
+        <LoginButton title="kakao" image={kakao} onClick={kakaoLogin} />
       </section>
     </main>
   );
