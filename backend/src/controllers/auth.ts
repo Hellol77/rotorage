@@ -1,12 +1,12 @@
+import { setRefreshTokenCookie } from "./../utils/setRefreshToken";
 import { Request, Response } from "express";
 import { User } from "../models/user";
 import axios from "axios";
 
 export const getKakaoLogin = async (req: Request, res: Response) => {
   const code = req.query.code;
-  console.log("code", code);
   try {
-    const getLoginAccessToken = await axios.post(
+    const getLoginInfo = await axios.post(
       "https://kauth.kakao.com/oauth/token",
       {},
       {
@@ -22,28 +22,19 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
         },
       }
     );
-    console.log("getLoginAccessToken", getLoginAccessToken.data);
-    console.log("token", getLoginAccessToken.data.access_token);
+    setRefreshTokenCookie(res, getLoginInfo.data.refresh_token);
 
-    res.cookie("refreshToken", getLoginAccessToken.data.refresh_token, {
-      sameSite: "none",
-      domain: "localhost",
-      secure: true,
-      httpOnly: true,
-    });
-
-    console.log("res header", res.getHeaders()["set-cookie"]);
     const getUserInfo = await axios.post(
       "https://kapi.kakao.com/v2/user/me",
       {},
       {
         headers: {
-          Authorization: "Bearer " + getLoginAccessToken.data.access_token,
+          Authorization: "Bearer " + getLoginInfo.data.access_token,
           "Content-type": "application/x-www-form-urlencoded",
         },
       }
     );
-    console.log("info id", getUserInfo.data.id);
+
     const userExists = await User.exists({ id: getUserInfo.data.id });
     if (!userExists) {
       const newUser = new User({
@@ -54,11 +45,40 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
         console.log("create new User");
       });
     }
-    console.log("refresh token", getLoginAccessToken.data.refresh_token);
-    console.log("info nickname", getUserInfo.data.properties.nickname);
+
     return res.status(200).send(getUserInfo.data);
   } catch (err) {
     console.log("error");
+    res.status(401).send("Unauthorized");
+  }
+};
+
+export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
+  try {
+    console.log("refreshtoken", req.cookies.refreshToken);
+    const refreshInfo = await axios.post(
+      "https://kauth.kakao.com/oauth/token",
+      {},
+      {
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded",
+        },
+        params: {
+          grant_type: "refresh_token",
+          client_id: process.env.KAKAO_REST_API_KEY,
+          client_secret: process.env.KAKAO_CLIENT_SECRET,
+          refresh_token: req.cookies.refreshToken,
+        },
+      }
+    );
+    if (refreshInfo.data.refresh_token) {
+      setRefreshTokenCookie(res, refreshInfo.data.refresh_token);
+      
+    }
+    console.log("refreshInfo", refreshInfo.data);
+    res.status(200).send(refreshInfo.data);
+  } catch (err) {
+    console.log("refresh error");
     res.status(401).send("Unauthorized");
   }
 };

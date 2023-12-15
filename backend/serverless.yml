@@ -26,7 +26,14 @@ functions:
     events:
       - httpApi:
           method: GET
-          path: /login/kakao
+          path: /auth/login/kakao
+          cors: true
+  refreshToken:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: POST
+          path: /auth/refresh/kakao
           cors: true
 plugins:
   - serverless-offline

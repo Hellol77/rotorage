@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 const mongoose = require("mongoose");
 
 import { postRouter } from "./routes/post";
-import { loginRouter } from "./routes/login";
+import { authRouter } from "./routes/auth";
 
 const app = express();
 
@@ -19,10 +19,10 @@ app.use(cors(corsOptions));
 
 mongoose
   .connect(process.env.MONGO_DB_SRV)
-  .then(() => console.log("success"))
+  .then(() => console.log("mongodb connect"))
   .catch((err: Error) => console.log(err));
-  
+
 app.use(cookieParser());
 app.use("/post", postRouter);
-app.use("/login", loginRouter);
+app.use("/auth", authRouter);
 export const handler = serverless(app);

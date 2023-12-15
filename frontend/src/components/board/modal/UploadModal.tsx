@@ -98,7 +98,6 @@ export default function UploadModal({
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
-              onClick={handleCloseOnClick}
               className="fixed left-0 top-0 z-40 h-full w-screen bg-[#101010] opacity-70"
             ></motion.div>
             <motion.div
@@ -164,14 +163,6 @@ export default function UploadModal({
                 ref={contentTextRef}
                 required
               />
-              {/* <Input
-                name="password"
-                type="password"
-                placeholder="비밀번호를 입력해주세요"
-                className="  z-50 mb-2 h-10  w-full break-all px-4 font-poorStory tracking-wide "
-                ref={passwordTextRef}
-                required
-              /> */}
               <div className="mb-3 flex  w-full items-center justify-center gap-2 px-4 font-poorStory">
                 <Button
                   onClick={handleCloseOnClick}
