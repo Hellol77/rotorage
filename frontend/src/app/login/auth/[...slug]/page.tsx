@@ -8,8 +8,9 @@ export default function AuthPage() {
   const router = useRouter();
   const search = searchParams.get("code");
   useEffect(() => {
+    console.log("login");
     axios
-      .get(`http://localhost:8080/login/kakao?code=${search}`)
+      .get(`/api/login/kakao?code=${search}`)
       .then(() => {
         router.push("/");
       })
