@@ -74,7 +74,25 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
     if (refreshInfo.data.refresh_token) {
       setRefreshTokenCookie(res, refreshInfo.data.refresh_token);
     }
-    res.status(200).send(refreshInfo.data);
+    const getTokenInfo = await axios.get(
+      "https://kapi.kakao.com/v1/user/access_token_info",
+      {
+        headers: {
+          Authorization: "Bearer " + refreshInfo.data.access_token,
+        },
+      }
+    );
+    // https://kapi.kakao.com/v1/user/access_token_info 토큰 정보 확인한 다음 id로 유저 정보 가져오기
+    const userInfo = await User.findOne(
+      { id: getTokenInfo.data.id },
+      { nickname: 1, _id: 0, id: 1 }
+    );
+    console.log("ddd", userInfo);
+    const userData = {
+      user: userInfo,
+      accessToken: refreshInfo.data.access_token,
+    };
+    res.status(200).send(userData);
   } catch (err) {
     console.log("refresh error");
     res.status(401).send("Unauthorized");

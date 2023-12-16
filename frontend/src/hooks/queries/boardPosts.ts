@@ -6,7 +6,7 @@ import {
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
-import { Post, UpdatedPost } from "@/model/post";
+import { Post, UpdatedPost } from "@/types/post";
 
 interface BoardPosts {
   pages: Post[];

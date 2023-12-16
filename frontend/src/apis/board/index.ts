@@ -1,4 +1,4 @@
-import { Post, UpdatedPost } from "@/model/post";
+import { Post, UpdatedPost } from "@/types/post";
 import axios from "axios";
 
 export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {

@@ -2,7 +2,7 @@
 import React, { Fragment, Suspense, useEffect, useRef } from "react";
 import BoardPhotoCard from "./BoardPhotoCard";
 import { useGetBoardPosts } from "@/hooks/queries/boardPosts";
-import { Post } from "@/model/post";
+import { Post } from "@/types/post";
 import { useInView } from "framer-motion";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 
