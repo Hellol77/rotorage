@@ -45,8 +45,7 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
         console.log("create new User");
       });
     }
-
-    return res.status(200).send(getUserInfo.data);
+    return res.status(200).send(getLoginInfo.data);
   } catch (err) {
     console.log("error");
     res.status(401).send("Unauthorized");
@@ -54,8 +53,9 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
 };
 
 export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
+  if (req.cookies.refreshToken === undefined)
+    return res.status(401).send("don't have refresh token");
   try {
-    console.log("refreshtoken", req.cookies.refreshToken);
     const refreshInfo = await axios.post(
       "https://kauth.kakao.com/oauth/token",
       {},
@@ -73,9 +73,7 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
     );
     if (refreshInfo.data.refresh_token) {
       setRefreshTokenCookie(res, refreshInfo.data.refresh_token);
-      
     }
-    console.log("refreshInfo", refreshInfo.data);
     res.status(200).send(refreshInfo.data);
   } catch (err) {
     console.log("refresh error");

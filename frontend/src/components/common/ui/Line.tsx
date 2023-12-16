@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import useResizeObserver from "../../../hooks/useResizeObserver";
 import { motion } from "framer-motion";
+import useResizeObserver from "@/hooks/useResizeObserver";
 
 type Color = "red" | "blue" | "green" | "yellow";
 type Props = {

@@ -1,23 +1,13 @@
 "use client";
-import axios from "axios";
-import { useRouter, useSearchParams } from "next/navigation";
+import useAuth from "@/hooks/useAuth";
 import React, { useEffect } from "react";
 
 export default function AuthPage() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const search = searchParams.get("code");
+  const { login } = useAuth();
   useEffect(() => {
-    console.log("login");
-    axios
-      .get(`/api/login/kakao?code=${search}`)
-      .then(() => {
-        router.push("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [router, search]);
+    login();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return <div>page</div>;
 }
