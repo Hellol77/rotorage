@@ -22,6 +22,10 @@ interface MusicType {
 
 type MusicListType = MusicType[];
 
+export const INTRODUCE = {
+  text: "다가올 미래를 두려워하는 청춘에게 손을 건네는 것으로 그의 작품은 시작됩니다. 누구보다 자신의 두려움이 크지만, 못지않은 용기로 한로로는 분연히 시대의 아픔을 관통하고 우리와 유대합니다.",
+};
+
 export const MUSIC_LIST: MusicListType = [
   {
     title: "입춘",

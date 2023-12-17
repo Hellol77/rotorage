@@ -1,9 +1,9 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React from "react";
-import YoutubeIcon from "../common/icon/YoutubeIcon";
+import YoutubeIcon from "../../common/icon/YoutubeIcon";
 
-export default function AlbumItem({
+export default function MusicItem({
   title,
   subtitle,
   album,
