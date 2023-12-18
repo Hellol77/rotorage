@@ -1,9 +1,11 @@
 import { UserData } from "@/types/user";
 import axios from "axios";
 
-export const refreshAccessTokenApi = async (oAuthType: string) => {
-  const api: UserData = await axios.post(`/api/auth/${oAuthType}/refresh`);
-  return api;
+export const refreshAccessTokenApi = async <T = UserData>(
+  oAuthType: string,
+): Promise<T> => {
+  const { data } = await axios.post<T>(`/api/auth/${oAuthType}/refresh`);
+  return data;
 };
 
 export const logoutApi = async (accessToken: string, id: number) => {
@@ -14,7 +16,7 @@ export const logoutApi = async (accessToken: string, id: number) => {
   return api;
 };
 
-export const loginApi = async (search: string) => {
-  const api: UserData = await axios.get(`/api/auth/kakao/login?code=${search}`);
-  return api;
+export const loginApi = async <T = UserData>(search: string): Promise<T> => {
+  const { data } = await axios.get(`/api/auth/kakao/login?code=${search}`);
+  return data;
 };

@@ -38,13 +38,13 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     if (pathname !== "/login/auth/kakao") {
       refreshAccessTokenApi("kakao")
         .then((data) => {
-          console.log(data.data);
-          setUserData(data.data);
+          setUserData(data);
         })
         .catch((err) => {
           console.log(err);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleLogout = () => {
     console.log("isLogin", isLogin);
@@ -57,9 +57,6 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setLogin(checkLoginStatus());
-    console.log("checklogin", checkLoginStatus());
-    console.log("hasToken", hasToken);
-    console.log("userData", userData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasToken]);
   return (

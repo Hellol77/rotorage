@@ -1,4 +1,5 @@
 "use client";
+
 import { useContext } from "react";
 import {
   LogoutContext,
@@ -21,12 +22,12 @@ export default function useAuth() {
       return;
     }
     try {
-      const { data: userData } = await loginApi(search);
+      const userData = await loginApi(search);
       if (setUserData) {
         setUserData(userData);
       }
     } catch (err) {
-      console.log(err);
+      console.log("Login Failed", err);
     } finally {
       router.push("/"); // 로그인 실패시 메인페이지로 이동
     }
@@ -36,12 +37,11 @@ export default function useAuth() {
       const accessToken = userData?.accessToken;
       const id = userData?.user.id;
       if (accessToken && handleLogout && id) {
-        console.log("acesstoken", accessToken);
         await logoutApi(accessToken, id);
         handleLogout();
       }
     } catch (err) {
-      console.log("logout failed", err);
+      console.log("Logout failed", err);
     }
   };
   return { login, logout };
