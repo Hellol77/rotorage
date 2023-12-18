@@ -5,11 +5,34 @@ import { Menu } from "./menu/Menu";
 import { usePathname } from "next/navigation";
 import { NAVIGATION_TITLE } from "@/constants/navigation";
 import MainLogoIcon from "./common/icon/MainLogoIcon";
-import { isLoginContext } from "@/contexts/AuthContext";
+import { IsLoginContext, LogoutContext } from "@/contexts/AuthContext";
+import useAuth from "@/hooks/useAuth";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isLogin = useContext(isLoginContext);
+  const isLogin = useContext(IsLoginContext);
+  const { logout } = useAuth();
+  const isLoginNavigation = () => {
+    return (
+      <ul className="flex gap-8 text-sm font-extrabold">
+        {isLogin ? (
+          <>
+            <Link className="hidden justify-end md:block" href={"/mypage"}>
+              MyPage
+            </Link>
+            <button className="hidden justify-end md:block" onClick={logout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link className="hidden justify-end md:block" href={"/login"}>
+            Login
+          </Link>
+        )}
+      </ul>
+    );
+  };
+
   return (
     <div
       className={`mr-2 flex w-screen items-center ${
@@ -26,9 +49,9 @@ export default function Navbar() {
           </li>
         ))}
       </ul>
-      <Link className=" justify-end" href={isLogin ? "/profile" : "/login"}>
-        {isLogin ? "profile" : "Login"}
-      </Link>
+      <ul className="flex gap-8 text-sm font-extrabold">
+        {isLoginNavigation()}
+      </ul>
       <Menu />
     </div>
   );

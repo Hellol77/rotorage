@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 const mongoose = require("mongoose");
 
 import { postRouter } from "./routes/post";
-import { authRouter } from "./routes/auth";
+import { kakaoAuthRouter } from "./routes/kakaoAuth";
 
 const app = express();
 
@@ -23,6 +23,7 @@ mongoose
   .catch((err: Error) => console.log(err));
 
 app.use(cookieParser());
+app.use(express.json());
 app.use("/post", postRouter);
-app.use("/auth", authRouter);
+app.use("/auth/kakao", kakaoAuthRouter);
 export const handler = serverless(app);

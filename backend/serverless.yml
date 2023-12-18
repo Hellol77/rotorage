@@ -20,21 +20,23 @@ functions:
           method: GET
           path: /post/{proxy+}
           cors: true
-
-  getLogin:
-    handler: src/index.handler
-    events:
-      - httpApi:
-          method: GET
-          path: /auth/login/kakao
-          cors: true
-  refreshToken:
+  authKakao:
     handler: src/index.handler
     events:
       - httpApi:
           method: POST
-          path: /auth/refresh/kakao
+          path: /auth/kakao/logout
           cors: true
+      - httpApi:
+          method: GET
+          path: /auth/kakao/login
+          cors: true
+      - httpApi:
+          method: POST
+          path: /auth/kakao/refresh
+          cors: true
+
+  logout:
 plugins:
   - serverless-offline
   - serverless-plugin-typescript

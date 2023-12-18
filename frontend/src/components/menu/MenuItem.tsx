@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const variants = {
   open: {
@@ -29,20 +29,26 @@ export const MenuItem = ({
   title: string;
   toggle: React.MouseEventHandler;
 }) => {
+  const router = useRouter();
+  const handleOnclick = (e: React.MouseEvent) => {
+    toggle(e);
+    if (title === "Logout") {
+      router.push("/");
+      return;
+    }
+    router.push(`/${title.toLowerCase()}`);
+  };
   return (
     <motion.li
       className="m-2 flex list-none"
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      onClick={toggle}
+      onClick={handleOnclick}
     >
-      <Link
-        href={`/${title.toLowerCase()}`}
-        className=" z-300 w-26 border-2 border-solid font-poorStory text-2xl font-extrabold  text-[#101010]"
-      >
+      <p className=" z-300 w-26 border-2 border-solid font-poorStory text-2xl font-extrabold  text-[#101010]">
         {title}
-      </Link>
+      </p>
     </motion.li>
   );
 };

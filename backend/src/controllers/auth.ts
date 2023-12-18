@@ -36,16 +36,22 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
     );
 
     const userExists = await User.exists({ id: getUserInfo.data.id });
+    const userInfo = {
+      id: getUserInfo.data.id,
+      nickname: getUserInfo.data.properties.nickname,
+    };
+
     if (!userExists) {
-      const newUser = new User({
-        id: getUserInfo.data.id,
-        nickname: getUserInfo.data.properties.nickname,
-      });
+      const newUser = new User(userInfo);
       newUser.save().then(() => {
         console.log("create new User");
       });
     }
-    return res.status(200).send(getLoginInfo.data);
+    const userData = {
+      user: userInfo,
+      accessToken: getLoginInfo.data.access_token,
+    };
+    return res.status(200).send(userData);
   } catch (err) {
     console.log("error");
     res.status(401).send("Unauthorized");
@@ -71,9 +77,11 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
         },
       }
     );
+
     if (refreshInfo.data.refresh_token) {
       setRefreshTokenCookie(res, refreshInfo.data.refresh_token);
     }
+
     const getTokenInfo = await axios.get(
       "https://kapi.kakao.com/v1/user/access_token_info",
       {
@@ -82,12 +90,12 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
         },
       }
     );
-    // https://kapi.kakao.com/v1/user/access_token_info 토큰 정보 확인한 다음 id로 유저 정보 가져오기
+
     const userInfo = await User.findOne(
       { id: getTokenInfo.data.id },
       { nickname: 1, _id: 0, id: 1 }
     );
-    console.log("ddd", userInfo);
+
     const userData = {
       user: userInfo,
       accessToken: refreshInfo.data.access_token,
@@ -96,5 +104,31 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
   } catch (err) {
     console.log("refresh error");
     res.status(401).send("Unauthorized");
+  }
+};
+
+export const logoutKakao = async (req: Request, res: Response) => {
+  const accessToken = req.body.accessToken;
+  const userId = req.body.id;
+  try {
+    console.log("accc", accessToken);
+    await axios.post(
+      "https://kapi.kakao.com/v1/user/logout",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        params: {
+          target_id_type: "user_id",
+          target_id: userId,
+        },
+      }
+    );
+    res.clearCookie("refreshToken");
+    res.status(200).send("Success Logout");
+  } catch (err) {
+    // console.log("logout error", err);
+    res.status(400).send("Unauthorized");
   }
 };
