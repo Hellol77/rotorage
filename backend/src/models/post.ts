@@ -17,7 +17,7 @@ const Schema = mongoose.Schema;
 // }
 
 const postSchema = new Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
   title: {
     type: String,
     required: true,

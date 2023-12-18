@@ -1,5 +1,5 @@
 export type Post = {
-  userId: string | { userId: string; nickname: string };
+  user: { userId: string; nickname: string };
   title: string;
   content: string;
   comments?: Comment[];
@@ -8,7 +8,7 @@ export type Post = {
 };
 
 export type UpdatedPost = {
-  userId: string;
+  user: string;
   title: string;
   content: string;
   imageUrl: File;

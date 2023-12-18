@@ -37,7 +37,7 @@ export function useUploadBoardPost() {
         imageUrl: formData.imageUrl,
         title: formData.title,
         content: formData.content,
-        userId: formData.userId,
+        user: formData.user,
       }),
     onMutate: async (newPost) => {
       await queryClient.cancelQueries({ queryKey: ["boardPosts"] });
@@ -49,9 +49,9 @@ export function useUploadBoardPost() {
       }
       let copyNewPost = {
         ...newPost,
-        userId: {
+        user: {
           userId: userData.user.userId,
-          nickname: userData?.user.nickname,
+          nickname: userData.user.nickname,
         },
         imageUrl: newImageUrl,
       };

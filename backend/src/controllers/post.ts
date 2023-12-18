@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { Request, Response, NextFunction } from "express";
 
 import { Post } from "../models/post";
@@ -16,7 +15,7 @@ export const uploadPost = async (
   const content = req.body.content;
   const image = req.file as Express.MulterS3.File;
   const imageUrl = image.location;
-  const userId = req.body.userId;
+  const userId = req.body.user;
   const user = await User.findOne({ userId });
   if (!user) {
     return res.status(404).json({ error: "User not found" });
@@ -25,7 +24,7 @@ export const uploadPost = async (
     title,
     content,
     imageUrl,
-    userId: user._id,
+    user: user._id,
   });
 
   post
@@ -50,9 +49,9 @@ export const getPosts = async (
 
     const posts = await Post.find(
       {},
-      { title: 1, content: 1, imageUrl: 1, _id: 0, userId: 1 }
+      { title: 1, content: 1, imageUrl: 1, _id: 0, user: 1 }
     )
-      .populate({ path: "userId", select: "userId nickname" })
+      .populate({ path: "user", select: "userId nickname" })
       .sort({ _id: -1 })
       .limit(limit)
       .skip((page - 1) * limit)

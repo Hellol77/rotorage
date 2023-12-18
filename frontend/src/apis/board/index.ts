@@ -1,4 +1,4 @@
-import { Post, UpdatedPost } from "@/types/post";
+import { UpdatedPost } from "@/types/post";
 import axios from "axios";
 
 export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {
@@ -20,13 +20,13 @@ export const uploadBoardPost = async ({
   imageUrl,
   title,
   content,
-  userId,
+  user,
 }: UpdatedPost) => {
   const formData = new FormData();
   formData.append("imgFile", imageUrl);
   formData.append("title", title);
   formData.append("content", content);
-  formData.append("userId", userId);
+  formData.append("user", user);
 
   const api = await axios
     .post("/api/post", formData)

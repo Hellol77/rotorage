@@ -2,7 +2,6 @@ import { setRefreshTokenCookie } from "./../utils/setRefreshToken";
 import { Request, Response } from "express";
 import { User } from "../models/user";
 import axios from "axios";
-import mongoose from "mongoose";
 
 export const getKakaoLogin = async (req: Request, res: Response) => {
   const code = req.query.code;
@@ -94,7 +93,7 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
 
     const userInfo = await User.findOne(
       { userId: getTokenInfo.data.id },
-      { nickname: 1, _id: 0, id: 1 }
+      { nickname: 1, _id: 0, userId: 1 }
     );
 
     const userData = {
@@ -112,7 +111,6 @@ export const logoutKakao = async (req: Request, res: Response) => {
   const accessToken = req.body.accessToken;
   const userId = req.body.id;
   try {
-    console.log("accc", accessToken);
     await axios.post(
       "https://kapi.kakao.com/v1/user/logout",
       {},

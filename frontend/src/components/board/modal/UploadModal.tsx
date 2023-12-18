@@ -86,11 +86,11 @@ export default function UploadModal({
     const title = titleTextRef.current?.value ?? "";
     const content = contentTextRef.current?.value ?? "";
     const userId = userData?.user.userId;
-    if (!userId) {
+    if (!userId || userId === "") {
       alert("로그인이 필요합니다.");
       return;
     }
-    const formData = { imageUrl, title, content, userId };
+    const formData = { imageUrl, title, content, user: userId };
     mutate(formData);
     handleCloseOnClick();
   };
