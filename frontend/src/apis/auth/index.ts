@@ -8,7 +8,7 @@ export const refreshAccessTokenApi = async <T = UserData>(
   return data;
 };
 
-export const logoutApi = async (accessToken: string, id: number) => {
+export const logoutApi = async (accessToken: string, id: string) => {
   const userData = { accessToken, id };
   const api = await axios.post("/api/auth/kakao/logout", userData, {
     headers: { "Content-Type": "application/json" },

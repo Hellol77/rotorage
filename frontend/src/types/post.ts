@@ -1,13 +1,23 @@
 export type Post = {
+  userId: string | { userId: string; nickname: string };
   title: string;
   content: string;
+  comments?: Comment[];
+  likes?: number;
   imageUrl: string;
-  password: string;
 };
 
 export type UpdatedPost = {
+  userId: string;
   title: string;
   content: string;
   imageUrl: File;
-  password: string;
+  comments?: Comment[];
+  likes?: number;
 };
+
+export interface Comment {
+  user: string;
+  content: string;
+  createdAt: Date;
+}

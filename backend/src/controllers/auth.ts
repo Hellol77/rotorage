@@ -2,6 +2,7 @@ import { setRefreshTokenCookie } from "./../utils/setRefreshToken";
 import { Request, Response } from "express";
 import { User } from "../models/user";
 import axios from "axios";
+import mongoose from "mongoose";
 
 export const getKakaoLogin = async (req: Request, res: Response) => {
   const code = req.query.code;
@@ -35,9 +36,9 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
       }
     );
 
-    const userExists = await User.exists({ id: getUserInfo.data.id });
+    const userExists = await User.exists({ userId: getUserInfo.data.id });
     const userInfo = {
-      id: getUserInfo.data.id,
+      userId: getUserInfo.data.id,
       nickname: getUserInfo.data.properties.nickname,
     };
 
@@ -92,7 +93,7 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
     );
 
     const userInfo = await User.findOne(
-      { id: getTokenInfo.data.id },
+      { userId: getTokenInfo.data.id },
       { nickname: 1, _id: 0, id: 1 }
     );
 

@@ -13,7 +13,7 @@ import { UserData } from "@/types/user";
 
 export const initailState: UserData = {
   user: {
-    id: 0,
+    userId: "",
     nickname: "",
   },
   accessToken: "",
@@ -33,6 +33,9 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     return userData && !!userData.accessToken ? true : false;
   };
   const [isLogin, setLogin] = useState<boolean>(checkLoginStatus());
+  const handleLogout = () => {
+    setUserData(null);
+  };
 
   useEffect(() => {
     if (pathname !== "/login/auth/kakao") {
@@ -41,15 +44,12 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
           setUserData(data);
         })
         .catch((err) => {
+          handleLogout();
           console.log(err);
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const handleLogout = () => {
-    console.log("isLogin", isLogin);
-    setUserData(null);
-  };
   const hasToken = useMemo(
     () => (userData?.accessToken ? true : false),
     [userData],

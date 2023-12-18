@@ -28,7 +28,7 @@ export default function BoardGrid() {
             pageParams: number | undefined;
           }) => (
             <Fragment key={pageParams || 0}>
-              {pages.map(({ title, content, imageUrl, password }) => (
+              {pages.map(({ title, content, imageUrl }) => (
                 <Suspense key={imageUrl} fallback={<BoardLoadingIcon />}>
                   <BoardPhotoCard
                     title={title}

@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { uploadBoardPost } from "@/apis/board";
 import { getBoardPosts } from "../../apis/board/index";
 import {
@@ -7,6 +8,7 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { Post, UpdatedPost } from "@/types/post";
+import { UserDataContext } from "@/contexts/AuthContext";
 
 interface BoardPosts {
   pages: Post[];
@@ -28,21 +30,29 @@ export function useGetBoardPosts() {
 
 export function useUploadBoardPost() {
   const queryClient = useQueryClient();
+  const userData = useContext(UserDataContext);
   return useMutation({
     mutationFn: (formData: UpdatedPost) =>
       uploadBoardPost({
         imageUrl: formData.imageUrl,
         title: formData.title,
         content: formData.content,
-        password: formData.password,
+        userId: formData.userId,
       }),
     onMutate: async (newPost) => {
       await queryClient.cancelQueries({ queryKey: ["boardPosts"] });
 
       const newImageUrl = URL.createObjectURL(newPost.imageUrl);
-
+      if (!userData) {
+        alert("로그인이 필요합니다.");
+        return;
+      }
       let copyNewPost = {
         ...newPost,
+        userId: {
+          userId: userData.user.userId,
+          nickname: userData?.user.nickname,
+        },
         imageUrl: newImageUrl,
       };
       const previousBoardPosts = queryClient.getQueryData<

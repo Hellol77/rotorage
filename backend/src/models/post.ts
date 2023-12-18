@@ -17,7 +17,7 @@ const Schema = mongoose.Schema;
 // }
 
 const postSchema = new Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
   title: {
     type: String,
     required: true,
@@ -31,7 +31,7 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comment" }],
 });
-export const Post = mongoose.model("Post", postSchema);
+export const Post = mongoose.model("post", postSchema);
 // module.exports = mongoose.model<any, BoardModelInterface>("Board", boardSchema);

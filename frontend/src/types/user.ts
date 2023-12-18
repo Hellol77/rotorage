@@ -1,6 +1,6 @@
 export interface UserData {
   user: {
-    id: number;
+    userId: string;
     nickname: string;
   };
   accessToken: string | null;

@@ -20,13 +20,13 @@ export const uploadBoardPost = async ({
   imageUrl,
   title,
   content,
-  password,
+  userId,
 }: UpdatedPost) => {
   const formData = new FormData();
   formData.append("imgFile", imageUrl);
   formData.append("title", title);
   formData.append("content", content);
-  formData.append("password", password);
+  formData.append("userId", userId);
 
   const api = await axios
     .post("/api/post", formData)

@@ -21,7 +21,7 @@ export default function BoardPhotoCard({
   return (
     <>
       <AnimatePresence>
-        {onPhotoClicked ? (
+        {onPhotoClicked && (
           <>
             <PhotoModal
               title={title}
@@ -31,8 +31,6 @@ export default function BoardPhotoCard({
               setPhotoClicked={setOnPhotoClicked}
             />
           </>
-        ) : (
-          ""
         )}
         <motion.div
           onClick={handlePhotoClicked}

@@ -33,15 +33,18 @@ export default function useAuth() {
     }
   };
   const logout = async () => {
-    try {
-      const accessToken = userData?.accessToken;
-      const id = userData?.user.id;
-      if (accessToken && handleLogout && id) {
-        await logoutApi(accessToken, id);
+    if (handleLogout) {
+      try {
+        const accessToken = userData?.accessToken;
+        const id = userData?.user.userId;
+        if (accessToken && id) {
+          await logoutApi(accessToken, id);
+        }
+      } catch (err) {
+        console.log("Logout failed", err);
+      } finally {
         handleLogout();
       }
-    } catch (err) {
-      console.log("Logout failed", err);
     }
   };
   return { login, logout };

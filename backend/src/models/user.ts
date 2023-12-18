@@ -6,11 +6,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  id: {
+  userId: {
     type: String,
     required: true,
   },
-  myPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }], // 추가된 부분
-  likedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
+  myPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }], // 추가된 부분
+  likedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }],
 });
-export const User = mongoose.model("User", userSchema);
+export const User = mongoose.model("user", userSchema);

@@ -2,6 +2,7 @@
 import React, {
   ChangeEvent,
   DragEvent,
+  useContext,
   useEffect,
   useRef,
   useState,
@@ -12,6 +13,7 @@ import Image from "next/image";
 
 import { useUploadBoardPost } from "@/hooks/queries/boardPosts";
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
+import { UserDataContext } from "@/contexts/AuthContext";
 
 export default function UploadModal({
   onClick,
@@ -24,7 +26,7 @@ export default function UploadModal({
   const [file, setFile] = useState<File | null>(null);
   const titleTextRef = useRef<HTMLInputElement>(null);
   const contentTextRef = useRef<HTMLInputElement>(null);
-  const passwordTextRef = useRef<HTMLInputElement>(null);
+  const userData = useContext(UserDataContext);
   const { mutate } = useUploadBoardPost();
 
   useEffect(() => {
@@ -83,8 +85,12 @@ export default function UploadModal({
     const imageUrl = file;
     const title = titleTextRef.current?.value ?? "";
     const content = contentTextRef.current?.value ?? "";
-    const password = passwordTextRef.current?.value ?? "";
-    const formData = { imageUrl, title, content, password };
+    const userId = userData?.user.userId;
+    if (!userId) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
+    const formData = { imageUrl, title, content, userId };
     mutate(formData);
     handleCloseOnClick();
   };
