@@ -10,7 +10,7 @@ export default function Introduce() {
     <ul className="relative z-20 mb-4 mt-4 w-fit border-slate-400 bg-[#101010] bg-opacity-40 px-4 text-white md:ml-20 md:border-l-4 md:pl-7">
       <li className=" text-3xl font-bold tracking-wider text-white">
         <TypeAnimation
-          sequence={["Singer", 3000, "Song-writer", 3000]}
+          sequence={["Singer", 1000, "Song-writer", 1000]}
           repeat={Infinity}
         />
       </li>
