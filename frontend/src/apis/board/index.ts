@@ -1,9 +1,9 @@
-import { UpdatedPost } from "@/types/post";
+import { Post, UpdatedPost } from "@/types/post";
 import axios from "axios";
 
 export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {
   const api = axios
-    .get(`/api/post/${pageParam}`)
+    .get(`/api/post/page/${pageParam}`)
     .then(async (data) => {
       // const data: Post[] = await res.json();
       return { pages: data.data, pageParams: pageParam + 1 };
@@ -42,4 +42,11 @@ export const uploadBoardPost = async ({
       else alert("서버에 문제가 발생했습니다.");
     });
   return api;
+};
+
+export const getRecentPosts = async <T = Post[]>(): Promise<T> => {
+  const { data } = await axios.get<T>(
+    process.env.NEXT_PUBLIC_BASE_URL + `post/recent`,
+  );
+  return data;
 };

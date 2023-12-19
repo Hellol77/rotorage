@@ -1,10 +1,10 @@
 import { Router } from "express";
 import awsUpload from "../../config/multerConfig";
 
-import { uploadPost, getPosts } from "../controllers/post";
+import { uploadPost, getPosts, getRecentPosts } from "../controllers/post";
 
 const postRouter = Router();
 postRouter.post("/", awsUpload.single("imgFile"), uploadPost);
-postRouter.get("/:page", getPosts);
-
+postRouter.get("/page/:page", getPosts);
+postRouter.get("/recent", getRecentPosts);
 export { postRouter };

@@ -18,7 +18,11 @@ functions:
     events:
       - httpApi:
           method: GET
-          path: /post/{proxy+}
+          path: /post/recent
+          cors: true
+      - httpApi:
+          method: GET
+          path: /post/page/{proxy+}
           cors: true
   authKakao:
     handler: src/index.handler

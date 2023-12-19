@@ -1,6 +1,6 @@
-import { setRefreshTokenCookie } from "./../utils/setRefreshToken";
+import { setRefreshTokenCookie } from "../../utils/setRefreshToken";
 import { Request, Response } from "express";
-import { User } from "../models/user";
+import { User } from "../../models/user";
 import axios from "axios";
 
 export const getKakaoLogin = async (req: Request, res: Response) => {

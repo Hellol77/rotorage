@@ -56,11 +56,40 @@ export const getPosts = async (
       .limit(limit)
       .skip((page - 1) * limit)
       .exec();
-
-    console.log(posts);
+    console.log(posts.length);
     return res.status(200).json(posts);
   } catch (error) {
     console.error("Error reading posts:", error);
     return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getRecentPosts = async (
+  req: Request<{ page: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const limit = 4;
+
+    const posts = await Post.find(
+      {},
+      { title: 1, content: 1, imageUrl: 1, _id: false, user: 1 }
+    )
+      .populate({
+        path: "user",
+        select: "userId nickname",
+      })
+      .sort({ _id: -1 })
+      .limit(4)
+      .exec();
+    console.log("re", posts.length);
+    console.log("recent", posts);
+    res.status(200).json(posts);
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .json({ error: "Recent Posts Internal Server Error " });
   }
 };

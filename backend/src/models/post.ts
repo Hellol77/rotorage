@@ -26,6 +26,7 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
+  created_at: { type: Date, default: Date.now, required: true },
   likes: { type: Number, default: 0 },
   imageUrl: {
     type: String,

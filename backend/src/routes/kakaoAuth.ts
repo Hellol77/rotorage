@@ -4,7 +4,7 @@ import {
   logoutKakao,
   refreshKakaoAccessToken,
   validateAccessToken,
-} from "./../controllers/auth";
+} from "../controllers/auth/kakaoAuth";
 
 const kakaoAuthRouter = Router();
 
