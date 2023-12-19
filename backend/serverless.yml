@@ -35,6 +35,10 @@ functions:
           method: POST
           path: /auth/kakao/refresh
           cors: true
+      - httpApi:
+          method: POST
+          path: /auth/kakao/validate
+          cors: true
 
   logout:
 plugins:

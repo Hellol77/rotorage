@@ -131,3 +131,49 @@ export const logoutKakao = async (req: Request, res: Response) => {
     res.status(400).send("Unauthorized");
   }
 };
+
+export const validateAccessToken = async (req: Request, res: Response) => {
+  try {
+    const accessToken = req.body.accessToken;
+    const tokenInfo = await axios.get(
+      "https://kapi.kakao.com/v1/user/access_token_info	",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const id = tokenInfo.data.id.toString();
+
+    if (tokenInfo.data.expires_in < 60 * 60) {
+      const refreshInfo = await axios.post(
+        "https://kauth.kakao.com/oauth/token",
+        {},
+        {
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded",
+          },
+          params: {
+            grant_type: "refresh_token",
+            client_id: process.env.KAKAO_REST_API_KEY,
+            client_secret: process.env.KAKAO_CLIENT_SECRET,
+            refresh_token: req.cookies.refreshToken,
+          },
+        }
+      );
+
+      if (refreshInfo.data.refresh_token) {
+        setRefreshTokenCookie(res, refreshInfo.data.refresh_token);
+      }
+      const refreshedAccessToken = refreshInfo.data.access_token;
+
+      const data = { id, accessToken: refreshedAccessToken };
+      res.status(200).send(data);
+    }
+
+    const data = { id };
+    res.status(200).send(data);
+  } catch (err) {
+    console.log(err);
+  }
+};

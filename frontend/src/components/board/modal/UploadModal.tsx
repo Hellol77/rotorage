@@ -14,6 +14,7 @@ import Image from "next/image";
 import { useUploadBoardPost } from "@/hooks/queries/boardPosts";
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
+import useAuth from "@/hooks/useAuth";
 
 export default function UploadModal({
   onClick,
@@ -28,7 +29,7 @@ export default function UploadModal({
   const contentTextRef = useRef<HTMLInputElement>(null);
   const userData = useContext(UserDataContext);
   const { mutate } = useUploadBoardPost();
-
+  const { validateLogin } = useAuth();
   useEffect(() => {
     if (file) {
       fileSizeCheck(file);
@@ -78,7 +79,7 @@ export default function UploadModal({
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!file) return;
     if (!titleTextRef.current?.value) return;
     if (!contentTextRef.current?.value) return;
@@ -86,7 +87,7 @@ export default function UploadModal({
     const title = titleTextRef.current?.value ?? "";
     const content = contentTextRef.current?.value ?? "";
     const userId = userData?.user.userId;
-    if (!userId || userId === "") {
+    if (!userId || !(await validateLogin())) {
       alert("로그인이 필요합니다.");
       return;
     }

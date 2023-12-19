@@ -7,7 +7,7 @@ import {
   UserDataContext,
 } from "@/contexts/AuthContext";
 import { useRouter, useSearchParams } from "next/navigation";
-import { loginApi, logoutApi } from "@/apis/auth";
+import { loginApi, logoutApi, validateAccessTokenApi } from "@/apis/auth";
 
 export default function useAuth() {
   const searchParams = useSearchParams();
@@ -29,7 +29,7 @@ export default function useAuth() {
     } catch (err) {
       console.log("Login Failed", err);
     } finally {
-      router.push("/"); // 로그인 실패시 메인페이지로 이동
+      router.push("/");
     }
   };
   const logout = async () => {
@@ -47,5 +47,27 @@ export default function useAuth() {
       }
     }
   };
-  return { login, logout };
+  const validateLogin = async () => {
+    const userId = userData?.user.userId;
+    const accessToken = userData?.accessToken;
+    if (!userId || !accessToken) return false;
+    try {
+      const tokenInfo = await validateAccessTokenApi(accessToken);
+      console.log(tokenInfo);
+      if (tokenInfo.accessToken !== undefined && setUserData) {
+        setUserData((prev) => {
+          if (!prev) return prev;
+          return { ...prev, accessToken: tokenInfo.accessToken };
+        });
+      }
+      if (userId === tokenInfo.id) {
+        return true;
+      }
+
+      return false;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  return { login, logout, validateLogin };
 }

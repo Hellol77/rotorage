@@ -1,4 +1,4 @@
-import { UserData } from "@/types/user";
+import { UserData, ValidateAccessToken } from "@/types/user";
 import axios from "axios";
 
 export const refreshAccessTokenApi = async <T = UserData>(
@@ -18,5 +18,14 @@ export const logoutApi = async (accessToken: string, id: string) => {
 
 export const loginApi = async <T = UserData>(search: string): Promise<T> => {
   const { data } = await axios.get(`/api/auth/kakao/login?code=${search}`);
+  return data;
+};
+
+export const validateAccessTokenApi = async <T = ValidateAccessToken>(
+  accessToken: string,
+): Promise<T> => {
+  const { data } = await axios.post("/api/auth/kakao/validate", {
+    accessToken,
+  });
   return data;
 };
