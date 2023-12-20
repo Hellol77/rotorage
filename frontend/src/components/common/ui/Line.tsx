@@ -75,7 +75,6 @@ export default function Line({ text, deg, color, vector }: Props) {
         stiffness: 400,
         damping: 15,
       }}
-      whileHover={{ scale: 1.3 }}
       className={`${getBaseStyle(
         color,
         vector,

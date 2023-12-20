@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import CloseIcon from "@/components/common/icon/CloseIcon";
@@ -20,6 +21,18 @@ export default function PhotoModal({
   const handleClose = () => {
     setPhotoClicked(false);
   };
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
   return (
     <>
       <motion.div
@@ -28,7 +41,7 @@ export default function PhotoModal({
         animate={{ opacity: 0.7 }}
         exit={{ opacity: 0 }}
         onClick={handleClose}
-        className=" fixed left-0 top-0 z-40 h-full w-screen bg-[#101010] opacity-20"
+        className=" fixed left-0 top-0 z-40 h-screen w-screen bg-[#101010] opacity-20"
       ></motion.div>
       <motion.div
         key={`${id}-modal`}
