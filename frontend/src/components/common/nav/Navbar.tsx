@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import { Menu } from "./menu/Menu";
 import { usePathname } from "next/navigation";
 import { NAVIGATION_TITLE } from "@/constants/navigation";
-import MainLogoIcon from "./common/icon/MainLogoIcon";
+import MainLogoIcon from "../icon/MainLogoIcon";
 import { IsLoginContext, LogoutContext } from "@/contexts/AuthContext";
 import useAuth from "@/hooks/useAuth";
 

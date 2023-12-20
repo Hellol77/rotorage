@@ -5,6 +5,7 @@ import { useGetBoardPosts } from "@/hooks/queries/boardPosts";
 import { Post } from "@/types/post";
 import { useInView } from "framer-motion";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
+import BoardGridContainer from "./BoardGridContainer";
 
 export default function BoardGrid() {
   const { data, fetchNextPage, isFetchingNextPage } = useGetBoardPosts();
@@ -18,7 +19,7 @@ export default function BoardGrid() {
   }, [fetchNextPage, isInView, data]);
   return (
     <>
-      <div className="grid w-full grid-cols-2 gap-5  md:grid-cols-4 md:gap-4">
+      <BoardGridContainer>
         {data?.pages?.map(
           ({
             pages,
@@ -40,7 +41,7 @@ export default function BoardGrid() {
             </Fragment>
           ),
         )}
-      </div>
+      </BoardGridContainer>
       <div ref={ref} className="my-12 flex h-4 w-full justify-center">
         <div className="h-8 w-8 text-black">
           {isFetchingNextPage ? <BoardLoadingIcon /> : ""}

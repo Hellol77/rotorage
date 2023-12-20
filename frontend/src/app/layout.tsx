@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/common/nav/Navbar";
 import { Providers } from "./providers";
 
 const libreFranklin = Libre_Franklin({ subsets: ["latin"] });

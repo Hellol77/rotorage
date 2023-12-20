@@ -47,16 +47,13 @@ export const getPosts = async (
     const page = Number(req.params.page);
     const limit = 12;
 
-    const posts = await Post.find(
-      {},
-      { title: 1, content: 1, imageUrl: 1, _id: 0, user: 1 }
-    )
+    const posts = await Post.find({}, { _id: 0 })
       .populate({ path: "user", select: "userId nickname" })
       .sort({ _id: -1 })
       .limit(limit)
       .skip((page - 1) * limit)
       .exec();
-    console.log(posts.length);
+    console.log(posts);
     return res.status(200).json(posts);
   } catch (error) {
     console.error("Error reading posts:", error);
@@ -71,17 +68,13 @@ export const getRecentPosts = async (
 ) => {
   try {
     const limit = 4;
-
-    const posts = await Post.find(
-      {},
-      { title: 1, content: 1, imageUrl: 1, _id: false, user: 1 }
-    )
+    const posts = await Post.find({}, { _id: false })
       .populate({
         path: "user",
         select: "userId nickname",
       })
       .sort({ _id: -1 })
-      .limit(4)
+      .limit(limit)
       .exec();
     console.log("re", posts.length);
     console.log("recent", posts);
