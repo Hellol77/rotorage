@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import CloseIcon from "@/components/common/icon/CloseIcon";
+import { usePathname } from "next/navigation";
 
 export default function PhotoModal({
   imageUrl,
@@ -21,18 +22,7 @@ export default function PhotoModal({
   const handleClose = () => {
     setPhotoClicked(false);
   };
-  useEffect(() => {
-    document.body.style.cssText = `
-      position: fixed; 
-      top: -${window.scrollY}px;
-      overflow-y: scroll;
-      width: 100%;`;
-    return () => {
-      const scrollY = document.body.style.top;
-      document.body.style.cssText = "";
-      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-    };
-  }, []);
+
   return (
     <>
       <motion.div
@@ -41,10 +31,10 @@ export default function PhotoModal({
         animate={{ opacity: 0.7 }}
         exit={{ opacity: 0 }}
         onClick={handleClose}
-        className=" fixed left-0 top-0 z-40 h-screen w-screen bg-[#101010] opacity-20"
+        className=" fixed left-0 top-0 z-40 h-screen w-screen overflow-hidden bg-[#101010] opacity-20"
       ></motion.div>
       <motion.div
-        key={`${id}-modal`}
+        key={id}
         layoutId={id}
         className="  fixed left-0 right-0 top-20 z-50  m-auto flex h-fit w-fit   flex-col items-center  justify-center  overflow-hidden  rounded-lg  bg-black"
       >

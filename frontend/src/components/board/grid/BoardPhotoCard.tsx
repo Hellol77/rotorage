@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import PhotoModal from "../modal/PhotoModal";
+import { usePathname } from "next/navigation";
 
 export default function BoardPhotoCard({
   imageUrl,
@@ -15,8 +16,22 @@ export default function BoardPhotoCard({
   title: string;
   content: string;
 }) {
+  const pathname = usePathname();
   const [onPhotoClicked, setOnPhotoClicked] = useState(false);
   const handlePhotoClicked = () => setOnPhotoClicked(true);
+  useEffect(() => {
+    if (onPhotoClicked) {
+      document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    }
+  }, [onPhotoClicked]);
 
   return (
     <>
@@ -27,7 +42,7 @@ export default function BoardPhotoCard({
               title={title}
               imageUrl={imageUrl}
               content={content}
-              id={imageUrl}
+              id={`${pathname}-${imageUrl}`}
               setPhotoClicked={setOnPhotoClicked}
             />
           </>
@@ -35,7 +50,7 @@ export default function BoardPhotoCard({
         <motion.div
           onClick={handlePhotoClicked}
           key={imageUrl}
-          layoutId={imageUrl}
+          layoutId={`${pathname}-${imageUrl}`}
           transition={{ duration: 0.2 }}
           className="relative z-30 h-44 w-full cursor-pointer md:h-[44vh]"
         >
