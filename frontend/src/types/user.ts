@@ -1,12 +1,14 @@
 export interface UserData {
-  user: {
-    userId: string;
-    nickname: string;
-  };
-  accessToken?: string | null;
+  user: UserType;
+  accessToken: string;
 }
 
 export interface ValidateAccessToken {
-  id: string;
-  accessToken?: string;
+  userId: string;
+  accessToken: string;
+}
+
+interface UserType {
+  userId: string;
+  nickname: string;
 }

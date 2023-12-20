@@ -38,12 +38,12 @@ export default function useAuth() {
     }
   };
   const logout = async () => {
-    if (handleLogout) {
+    if (handleLogout && userData) {
       try {
-        const accessToken = userData?.accessToken;
-        const id = userData?.user.userId;
-        if (accessToken && id) {
-          await logoutApi(accessToken, id);
+        const accessToken = userData.accessToken;
+        const { userId } = userData.user;
+        if (accessToken && userId) {
+          await logoutApi(accessToken, userId);
         }
       } catch (err) {
         console.log("Logout failed", err);
@@ -56,24 +56,21 @@ export default function useAuth() {
   // access token 갱신, 만약 유효하지 않거나 refresh token을 통해 재발급, refresh
   const validateLogin = async () => {
     if (!userData) return false;
-    const userId = userData.user.userId;
+
     const accessToken = userData.accessToken;
+    const { userId } = userData.user;
+
     if (!userId || !accessToken) return false;
+
     try {
       const tokenInfo = await validateAccessTokenApi(accessToken);
       console.log(tokenInfo);
       if (tokenInfo.accessToken !== undefined && setUserData) {
-        setUserData((prev) => {
-          if (!prev) return prev;
-          return { ...prev, accessToken: tokenInfo.accessToken };
-        });
+        setUserData((prev) =>
+          prev ? { ...prev, accessToken: tokenInfo.accessToken } : prev,
+        );
       }
-      if (userId === tokenInfo.id) {
-        return true;
-      }
-      
-      console.log("eee",typeof userId, typeof tokenInfo.id);
-      return false;
+      return userId === tokenInfo.userId;
     } catch (err) {
       const userData = await refreshAccessTokenApi("kakao");
       if (setUserData) {
@@ -84,5 +81,6 @@ export default function useAuth() {
       return false;
     }
   };
+
   return { login, logout, validateLogin };
 }

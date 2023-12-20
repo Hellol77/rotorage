@@ -143,7 +143,7 @@ export const validateAccessToken = async (req: Request, res: Response) => {
         },
       }
     );
-    const id = tokenInfo.data.id.toString();
+    const userId = tokenInfo.data.id.toString();
 
     if (tokenInfo.data.expires_in < 60 * 60) {
       const refreshInfo = await axios.post(
@@ -167,11 +167,11 @@ export const validateAccessToken = async (req: Request, res: Response) => {
       }
       const refreshedAccessToken = refreshInfo.data.access_token;
 
-      const data = { id, accessToken: refreshedAccessToken };
+      const data = { userId, accessToken: refreshedAccessToken };
       res.status(200).send(data);
     }
 
-    const data = { id };
+    const data = { userId, accessToken };
     res.status(200).send(data);
   } catch (err) {
     console.log(err);
