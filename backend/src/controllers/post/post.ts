@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
-import { Post } from "../models/post";
-import { User } from "../models/user";
+import { Post } from "../../models/post";
+import { User } from "../../models/user";
 
 export const uploadPost = async (
   req: Request,

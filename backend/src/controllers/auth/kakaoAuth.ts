@@ -34,10 +34,10 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
         },
       }
     );
-
-    const userExists = await User.exists({ userId: getUserInfo.data.id });
+    const userId = getUserInfo.data.id.toString();
+    const userExists = await User.exists({ userId });
     const userInfo = {
-      userId: getUserInfo.data.id,
+      userId,
       nickname: getUserInfo.data.properties.nickname,
     };
 

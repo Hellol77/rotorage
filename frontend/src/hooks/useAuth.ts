@@ -7,7 +7,12 @@ import {
   UserDataContext,
 } from "@/contexts/AuthContext";
 import { useRouter, useSearchParams } from "next/navigation";
-import { loginApi, logoutApi, validateAccessTokenApi } from "@/apis/auth";
+import {
+  loginApi,
+  logoutApi,
+  refreshAccessTokenApi,
+  validateAccessTokenApi,
+} from "@/apis/auth";
 
 export default function useAuth() {
   const searchParams = useSearchParams();
@@ -47,9 +52,12 @@ export default function useAuth() {
       }
     }
   };
+
+  // access token 갱신, 만약 유효하지 않거나 refresh token을 통해 재발급, refresh
   const validateLogin = async () => {
-    const userId = userData?.user.userId;
-    const accessToken = userData?.accessToken;
+    if (!userData) return false;
+    const userId = userData.user.userId;
+    const accessToken = userData.accessToken;
     if (!userId || !accessToken) return false;
     try {
       const tokenInfo = await validateAccessTokenApi(accessToken);
@@ -63,10 +71,17 @@ export default function useAuth() {
       if (userId === tokenInfo.id) {
         return true;
       }
-
+      
+      console.log("eee",typeof userId, typeof tokenInfo.id);
       return false;
     } catch (err) {
-      console.log(err);
+      const userData = await refreshAccessTokenApi("kakao");
+      if (setUserData) {
+        console.log("401 refresh token");
+        setUserData(userData);
+        return true;
+      }
+      return false;
     }
   };
   return { login, logout, validateLogin };
