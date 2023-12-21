@@ -93,7 +93,7 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
 
     const userInfo = await User.findOne(
       { userId: getTokenInfo.data.id },
-      { nickname: 1, _id: 0, userId: 1 }
+      { _id: 0 }
     );
 
     const userData = {
@@ -175,5 +175,6 @@ export const validateAccessToken = async (req: Request, res: Response) => {
     res.status(200).send(data);
   } catch (err) {
     console.log(err);
+    res.status(401).send("Unauthorized");
   }
 };

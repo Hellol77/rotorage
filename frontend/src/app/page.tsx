@@ -5,7 +5,6 @@ import BoardGridContainer from "@/components/board/grid/BoardGridContainer";
 
 export default async function Home() {
   const data = await getRecentPosts();
-  console.log("recent", data);
   return (
     <main className="z-1  h-full  w-screen overflow-y-scroll scrollbar-hide ">
       <CircleImageSection />

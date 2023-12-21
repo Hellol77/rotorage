@@ -60,7 +60,10 @@ export default function useAuth() {
     const accessToken = userData.accessToken;
     const { userId } = userData.user;
 
-    if (!userId || !accessToken) return false;
+    if (!userId || !accessToken) {
+      handleLogout();
+      return false;
+    }
 
     try {
       const tokenInfo = await validateAccessTokenApi(accessToken);
@@ -78,6 +81,7 @@ export default function useAuth() {
         setUserData(userData);
         return true;
       }
+      handleLogout();
       return false;
     }
   };

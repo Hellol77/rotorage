@@ -76,8 +76,6 @@ export const getRecentPosts = async (
       .sort({ _id: -1 })
       .limit(limit)
       .exec();
-    console.log("re", posts.length);
-    console.log("recent", posts);
     res.status(200).json(posts);
   } catch (err) {
     console.log(err);

@@ -11,10 +11,10 @@ export default function Interview() {
         </li>
         {INTERVIEW.map(({ content, url }) => {
           return (
-            <>
+            <ol key={url}>
               <p className="font-poorStory text-slate-300">{content}</p>
               <MoreText text="MORE" url={url} />
-            </>
+            </ol>
           );
         })}
       </div>

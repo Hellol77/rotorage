@@ -14,13 +14,13 @@ export default function LoginButton({
   href: string;
 }) {
   return (
-    <Link href={href}>
+    <Link href={href} className="w-full">
       <Image
         src={image}
-        width={300}
+        width={500}
         height={50}
         alt={title}
-        className="w-full "
+        className="w-full"
       />
     </Link>
   );

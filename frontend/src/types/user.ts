@@ -1,5 +1,5 @@
-export interface UserData {
-  user: UserType;
+export interface ClientData {
+  user: UserData;
   accessToken: string;
 }
 
@@ -8,7 +8,7 @@ export interface ValidateAccessToken {
   accessToken: string;
 }
 
-interface UserType {
+export interface UserData {
   userId: string;
   nickname: string;
 }

@@ -44,7 +44,14 @@ functions:
           path: /auth/kakao/validate
           cors: true
 
-  logout:
+  user:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: POST
+          path: /user/profile
+          cors: true
+
 plugins:
   - serverless-offline
   - serverless-plugin-typescript

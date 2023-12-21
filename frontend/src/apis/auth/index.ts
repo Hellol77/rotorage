@@ -1,7 +1,7 @@
-import { UserData, ValidateAccessToken } from "@/types/user";
+import { ClientData, UserData, ValidateAccessToken } from "@/types/user";
 import axios from "axios";
 
-export const refreshAccessTokenApi = async <T = UserData>(
+export const refreshAccessTokenApi = async <T = ClientData>(
   oAuthType: string,
 ): Promise<T> => {
   const { data } = await axios.post<T>(`/api/auth/${oAuthType}/refresh`);
@@ -16,7 +16,7 @@ export const logoutApi = async (accessToken: string, id: string) => {
   return api;
 };
 
-export const loginApi = async <T = UserData>(search: string): Promise<T> => {
+export const loginApi = async <T = ClientData>(search: string): Promise<T> => {
   const { data } = await axios.get(`/api/auth/kakao/login?code=${search}`);
   return data;
 };

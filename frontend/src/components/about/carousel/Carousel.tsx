@@ -42,7 +42,7 @@ export const Carousel = ({ images }: { images: StaticImageData[] }) => {
         <div className=" md:flex md:justify-center  ">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
-              key={page}
+              key={images[imageIndex].src}
               className="absolute z-0 h-full w-screen object-cover md:bottom-0 md:h-[90vh] md:w-[40vw]  md:max-w-[80vw] "
               src={images[imageIndex].src}
               custom={direction}

@@ -9,9 +9,9 @@ import React, {
 } from "react";
 import { refreshAccessTokenApi } from "@/apis/auth";
 import { usePathname } from "next/navigation";
-import { UserData } from "@/types/user";
+import { ClientData, UserData } from "@/types/user";
 
-export const initailState: UserData = {
+export const initailState: ClientData = {
   user: {
     userId: "",
     nickname: "",
@@ -20,21 +20,21 @@ export const initailState: UserData = {
 };
 
 export const IsLoginContext = createContext<boolean>(false);
-export const UserDataContext = createContext<UserData | null>(initailState);
+export const UserDataContext = createContext<ClientData>(initailState);
 export const SetUserDataContext = createContext<React.Dispatch<
-  React.SetStateAction<UserData | null>
+  React.SetStateAction<ClientData>
 > | null>(null);
-export const LogoutContext = createContext<(() => void) | null>(null);
+export const LogoutContext = createContext<() => void>(() => {});
 
 export default function AuthProvider({ children }: { children: ReactNode }) {
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userData, setUserData] = useState<ClientData>(initailState);
   const pathname = usePathname();
   const checkLoginStatus = () => {
     return userData && !!userData.accessToken ? true : false;
   };
   const [isLogin, setLogin] = useState<boolean>(checkLoginStatus());
   const handleLogout = () => {
-    setUserData(null);
+    setUserData(initailState);
   };
 
   useEffect(() => {
