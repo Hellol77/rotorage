@@ -47,7 +47,7 @@ export const getPosts = async (
     const page = Number(req.params.page);
     const limit = 12;
 
-    const posts = await Post.find({}, { _id: 0 })
+    const posts = await Post.find({}, {})
       .populate({ path: "user", select: "userId nickname" })
       .sort({ _id: -1 })
       .limit(limit)
@@ -62,13 +62,13 @@ export const getPosts = async (
 };
 
 export const getRecentPosts = async (
-  req: Request<{ page: string }>,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const limit = 4;
-    const posts = await Post.find({}, { _id: false })
+    const posts = await Post.find({}, {})
       .populate({
         path: "user",
         select: "userId nickname",
@@ -84,3 +84,10 @@ export const getRecentPosts = async (
       .json({ error: "Recent Posts Internal Server Error " });
   }
 };
+
+// export const deletePost = async (req: Request, res: Response) => {
+// try{
+
+// }
+
+// };

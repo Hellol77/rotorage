@@ -9,20 +9,19 @@ export default function PhotoModal({
   imageUrl,
   title,
   content,
-  id,
+  _id,
   setPhotoClicked,
   ...props
 }: {
   imageUrl: string;
   title: string;
   content: string;
-  id: string;
+  _id: string;
   setPhotoClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const handleClose = () => {
     setPhotoClicked(false);
   };
-
   return (
     <>
       <motion.div
@@ -34,9 +33,9 @@ export default function PhotoModal({
         className=" fixed left-0 top-0 z-40 h-screen w-screen overflow-hidden bg-[#101010] opacity-20"
       ></motion.div>
       <motion.div
-        key={id}
-        layoutId={id}
-        className="  fixed left-0 right-0 top-20 z-50  m-auto flex h-fit w-fit   flex-col items-center  justify-center  overflow-hidden  rounded-lg  bg-black"
+        key={_id}
+        layoutId={_id}
+        className="  fixed left-0 right-0 top-20 z-50 m-auto  flex h-fit w-fit   flex-col items-center  justify-center  overflow-hidden  rounded-lg  bg-black"
       >
         <div
           className=" absolute right-1 top-2 z-[60] flex h-10  w-10 items-center justify-center"
@@ -48,7 +47,7 @@ export default function PhotoModal({
         <div className="relative h-[100vw] w-[80vw] rounded-md md:h-[40vw] md:w-[30vw]">
           <Image
             src={imageUrl}
-            alt={id}
+            alt={_id}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"

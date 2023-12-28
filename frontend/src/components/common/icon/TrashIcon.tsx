@@ -1,8 +1,16 @@
 import React from "react";
 
-export default function TrashIcon() {
+export default function TrashIcon({
+  className,
+  onClick,
+}: {
+  className?: string;
+  onClick: () => void;
+}) {
   return (
     <svg
+      onClick={onClick}
+      className={className}
       width="24"
       height="24"
       viewBox="0 0 24 24"

@@ -1,6 +1,4 @@
-"use client";
 import React from "react";
-
 import { images } from "../../components/about/carousel/profileImage";
 import { Carousel } from "../../components/about/carousel/Carousel";
 import Line from "../../components/common/ui/Line";

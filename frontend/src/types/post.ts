@@ -5,16 +5,17 @@ export type Post = {
   comments?: Comment[];
   likes?: number;
   imageUrl: string;
+  _id: string;
 };
 
-export type UpdatedPost = {
+export interface UpdatedPost {
   user: string;
   title: string;
   content: string;
   imageUrl: File;
   comments?: Comment[];
   likes?: number;
-};
+}
 
 export interface Comment {
   user: string;

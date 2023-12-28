@@ -48,5 +48,10 @@ export const getRecentPosts = async <T = Post[]>(): Promise<T> => {
   const { data } = await axios.get<T>(
     process.env.NEXT_PUBLIC_BASE_URL + `post/recent`,
   );
+  try {
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
   return data;
 };

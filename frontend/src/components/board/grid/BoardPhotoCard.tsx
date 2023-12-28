@@ -10,11 +10,13 @@ export default function BoardPhotoCard({
   imageUrl,
   title,
   content,
+  _id,
   ...props
 }: {
   imageUrl: string;
   title: string;
   content: string;
+  _id: string;
 }) {
   const pathname = usePathname();
   const [onPhotoClicked, setOnPhotoClicked] = useState(false);
@@ -42,7 +44,7 @@ export default function BoardPhotoCard({
               title={title}
               imageUrl={imageUrl}
               content={content}
-              id={`${pathname}-${imageUrl}`}
+              _id={_id}
               setPhotoClicked={setOnPhotoClicked}
             />
           </>
@@ -50,7 +52,7 @@ export default function BoardPhotoCard({
         <motion.div
           onClick={handlePhotoClicked}
           key={imageUrl}
-          layoutId={`${pathname}-${imageUrl}`}
+          layoutId={_id}
           transition={{ duration: 0.2 }}
           className="relative z-30 h-44 w-full cursor-pointer md:h-[44vh]"
         >
