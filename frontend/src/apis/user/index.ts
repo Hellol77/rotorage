@@ -4,7 +4,7 @@ import axios from "axios";
 export const getProfileInfo = async (
   accessToken: string,
 ): Promise<UserData> => {
-  const { data } = await axios.post("http://localhost:8080/user/profile", {
+  const { data } = await axios.post("/api/user/profile", {
     accessToken: accessToken,
   });
   return data;
