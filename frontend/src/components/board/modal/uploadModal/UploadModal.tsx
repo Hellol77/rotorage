@@ -15,6 +15,7 @@ import { useUploadBoardPost } from "@/hooks/queries/boardPosts";
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useAuth from "@/hooks/useAuth";
+import useScrollFixed from "@/hooks/useScrollFixed";
 
 export default function UploadModal({
   onClick,
@@ -30,11 +31,8 @@ export default function UploadModal({
   const userData = useContext(UserDataContext);
   const { mutate } = useUploadBoardPost();
   const { validateLogin } = useAuth();
-  useEffect(() => {
-    if (file) {
-      fileSizeCheck(file);
-    }
-  }, [file]);
+
+  useScrollFixed(onClick);
 
   const fileSizeCheck = (file: File) => {
     if (file.size > 1024 * 1024 * 10) {
@@ -42,6 +40,12 @@ export default function UploadModal({
       alert("파일 사이즈는 10MB를 넘을 수 없습니다.");
     }
   };
+
+  useEffect(() => {
+    if (file) {
+      fileSizeCheck(file);
+    }
+  }, [file]);
 
   const handleCloseOnClick = () => {
     if (setOnClick) {
@@ -95,6 +99,7 @@ export default function UploadModal({
     mutate(formData);
     handleCloseOnClick();
   };
+
   return (
     <>
       <AnimatePresence>
@@ -112,7 +117,7 @@ export default function UploadModal({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className=" absolute left-0 right-0 top-5 z-50  m-auto  flex h-fit  w-fit  flex-col  items-center  justify-center rounded-xl bg-black"
+              className=" absolute -top-20 left-0 right-0 z-50  m-auto  flex h-fit  w-fit  flex-col  items-center  justify-center rounded-xl bg-black"
             >
               <input
                 accept="image/*"

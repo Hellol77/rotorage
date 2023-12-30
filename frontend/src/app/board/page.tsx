@@ -1,14 +1,14 @@
 import React from "react";
 
-import ModalTriggerButton from "../../components/board/modal/button/ModalTriggerButton";
-import UploadModal from "../../components/board/modal/UploadModal";
 import BoardGrid from "@/components/board/grid/BoardGrid";
+import UploadModal from "@/components/board/modal/uploadModal/UploadModal";
+import ModalTriggerButton from "@/components/board/modal/button/ModalTriggerButton";
 
 export default function BoradPage() {
   return (
-    <main className="z-1 relative h-full min-h-screen overflow-x-hidden overflow-y-scroll px-6 scrollbar-hide  md:px-20">
-      <section className="relative flex flex-col items-center ">
-        <div className="mb-6 mt-20 flex w-full items-center justify-between    md:mb-16 md:mt-40 ">
+    <main className="z-1 h-full min-h-screen overflow-y-scroll px-6 pt-20 scrollbar-hide md:px-20   md:pt-36">
+      <section className="relative flex flex-col items-center">
+        <div className="mb-6  flex w-full items-center justify-between    md:mb-16  ">
           <div className="text-2xl font-bold tracking-wider md:text-5xl md:tracking-widest">
             Board
           </div>

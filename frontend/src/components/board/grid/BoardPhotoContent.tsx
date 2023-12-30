@@ -1,0 +1,29 @@
+import { Post } from "@/types/post";
+import React from "react";
+import Image from "next/image";
+
+export default function BoardPhotoContent({ post }: { post: Post }) {
+  const { title, content, imageUrl } = post;
+  return (
+    <>
+      <div className="relative h-full w-full rounded-md">
+        <Image
+          src={imageUrl}
+          alt={title}
+          priority
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="relative z-10 rounded-md object-cover "
+        />
+      </div>
+      <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2  md:px-4 md:py-4">
+        <div className="text-md truncate font-poorStory font-bold tracking-wider md:mb-1 md:text-2xl">
+          {title}
+        </div>
+        <div className=" flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
+          {content}
+        </div>
+      </div>
+    </>
+  );
+}

@@ -11,6 +11,7 @@ export const uploadPost = async (
   if (!req.file) {
     return res.status(400).send("file");
   }
+  console.log("file", req.file);
   const title = req.body.title;
   const content = req.body.content;
   const image = req.file as Express.MulterS3.File;
@@ -53,7 +54,6 @@ export const getPosts = async (
       .limit(limit)
       .skip((page - 1) * limit)
       .exec();
-    console.log(posts);
     return res.status(200).json(posts);
   } catch (error) {
     console.error("Error reading posts:", error);

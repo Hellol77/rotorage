@@ -5,11 +5,7 @@
 
 html,
 body {
-  max-width: 100%;
-  overflow-x: hidden;
-  min-height: 100vh;
   -webkit-overflow-scrolling: touch;
-
   @supports (-webkit-touch-callout: none) {
     min-height: -webkit-fill-available;
   }

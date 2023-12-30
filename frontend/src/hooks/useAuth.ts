@@ -37,6 +37,7 @@ export default function useAuth() {
       router.push("/");
     }
   };
+  
   const logout = async () => {
     if (handleLogout && userData) {
       try {
@@ -49,6 +50,7 @@ export default function useAuth() {
         console.log("Logout failed", err);
       } finally {
         handleLogout();
+        router.push('/')
       }
     }
   };
