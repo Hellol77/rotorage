@@ -3,6 +3,9 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: ap-northeast-2
+  apiGateway:
+    binaryMediaTypes:
+      - "*/*"
   environment:
     NODE_ENV: production
 functions:
@@ -51,11 +54,14 @@ functions:
           method: POST
           path: /user/profile
           cors: true
-
 plugins:
+  - serverless-webpack
+  # - serverless-dotenv-plugin
+  # - serverless-plugin-typescript
   - serverless-offline
-  - serverless-plugin-typescript
-  - serverless-dotenv-plugin
 custom:
+  webpack:
+    webpackConfig: "webpack.config.js"
+    includeModules: true
   serverless-offline:
     httpPort: 8080
