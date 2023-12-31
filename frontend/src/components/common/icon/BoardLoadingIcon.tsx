@@ -1,12 +1,17 @@
 import React from "react";
 
-export default function BoardLoadingIcon() {
+export default function BoardLoadingIcon({
+  className,
+}: {
+  className?: string;
+}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
+      className={className}
     >
       <circle cx="84" cy="50" r="10" fill="#ffffff">
         <animate
