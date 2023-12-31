@@ -13,6 +13,7 @@ import {
   refreshAccessTokenApi,
   validateAccessTokenApi,
 } from "@/apis/auth";
+import { toast } from "react-toastify";
 
 export default function useAuth() {
   const searchParams = useSearchParams();
@@ -23,7 +24,7 @@ export default function useAuth() {
   const handleLogout = useContext(LogoutContext);
   const login = async () => {
     if (search === null) {
-      alert("유효하지 않은 로그인 코드입니다.");
+      toast.error("유효하지 않은 로그인 코드입니다.");
       return;
     }
     try {
@@ -37,7 +38,7 @@ export default function useAuth() {
       router.push("/");
     }
   };
-  
+
   const logout = async () => {
     if (handleLogout && userData) {
       try {
@@ -50,7 +51,8 @@ export default function useAuth() {
         console.log("Logout failed", err);
       } finally {
         handleLogout();
-        router.push('/')
+        toast("로그아웃 되었습니다.", {});
+        router.push("/");
       }
     }
   };

@@ -5,7 +5,6 @@ export type Post = {
   comments?: Comment[];
   likes?: number;
   imageUrl: string;
-  _id: string;
 };
 
 export interface UpdatedPost {

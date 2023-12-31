@@ -1,5 +1,6 @@
 import { Post, UpdatedPost } from "@/types/post";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {
   const api = axios
@@ -10,7 +11,7 @@ export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {
     })
     .catch((err) => {
       console.log(err);
-      alert("게시글을 불러오는데 실패했습니다.");
+      toast.error("게시글을 불러오는데 실패했습니다.");
       return { pages: [], pageParams: undefined };
     });
   return api;
@@ -35,11 +36,7 @@ export const uploadBoardPost = async ({
     })
     .catch((err) => {
       console.log(err.response);
-      if (err.response.data === "password")
-        alert("게시글을 업로드하는데 실패했습니다.");
-      else if (err.response.data === "file")
-        alert("이미지 파일을 업로드하는데 실패했습니다.");
-      else alert("서버에 문제가 발생했습니다.");
+      toast.error("이미지 파일을 업로드하는데 실패했습니다.");
     });
   return api;
 };

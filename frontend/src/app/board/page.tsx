@@ -1,8 +1,10 @@
-import React from "react";
+"use client";
+import React, { Suspense } from "react";
 
 import BoardGrid from "@/components/board/grid/BoardGrid";
 import UploadModal from "@/components/board/modal/uploadModal/UploadModal";
 import ModalTriggerButton from "@/components/board/modal/button/ModalTriggerButton";
+import Loading from "./loading";
 
 export default function BoradPage() {
   return (
@@ -16,11 +18,14 @@ export default function BoradPage() {
             loginRequired
             content="uploadIcon"
             text={"등록하기"}
-          >
-            <UploadModal />
-          </ModalTriggerButton>
+            modal={(onClick, setOnClick) => (
+              <UploadModal onClick={onClick} setOnClick={setOnClick} />
+            )}
+          />
         </div>
-        <BoardGrid />
+        <Suspense fallback={<Loading />}>
+          <BoardGrid />
+        </Suspense>
       </section>
     </main>
   );

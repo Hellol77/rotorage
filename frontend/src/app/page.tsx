@@ -2,7 +2,6 @@ import { getRecentPosts } from "@/apis/board";
 import CircleImageSection from "../components/section/CircleImageSection";
 import BoardPhotoCard from "@/components/board/grid/BoardPhotoCard";
 import BoardGridContainer from "@/components/board/grid/BoardGridContainer";
-import BoardPhotoContent from "@/components/board/grid/BoardPhotoContent";
 
 export default async function Home() {
   const data = await getRecentPosts();
@@ -13,7 +12,7 @@ export default async function Home() {
         <h1 className=" mb-8 font-poorStory text-3xl">Recent Posts</h1>
         <BoardGridContainer>
           {data.map((post) => (
-            <BoardPhotoCard key={post._id} post={post} />
+            <BoardPhotoCard key={post.imageUrl} post={post} />
           ))}
         </BoardGridContainer>
       </section>

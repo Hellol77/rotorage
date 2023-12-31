@@ -4,6 +4,7 @@ import { Button } from "@nextui-org/react";
 import UploadIcon from "@/components/common/icon/UploadIcon";
 import PostMoreIcon from "@/components/common/icon/PostMoreIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
+import { toast } from "react-toastify";
 
 const ContentIcon = {
   uploadIcon: <UploadIcon color="white" className="h-4 w-4" />,
@@ -12,12 +13,15 @@ const ContentIcon = {
 
 export default function ModalTriggerButton({
   text,
-  children,
+  modal,
   content,
   loginRequired = false,
 }: {
   text: string;
-  children: JSX.Element;
+  modal: (
+    onClick: boolean,
+    setOnClick: React.Dispatch<React.SetStateAction<boolean>>,
+  ) => React.ReactNode;
   content: keyof typeof ContentIcon;
   loginRequired: boolean;
 }) {
@@ -25,7 +29,7 @@ export default function ModalTriggerButton({
   const [onClick, setOnClick] = useState(false);
   const handleOnClick = () => {
     if (loginRequired && !userData?.user.userId) {
-      alert("로그인이 필요합니다.");
+      toast.warn("로그인이 필요합니다.");
       return;
     }
     setOnClick(true);
@@ -42,10 +46,7 @@ export default function ModalTriggerButton({
       >
         {text}
       </Button>
-      {React.cloneElement(children, {
-        setOnClick: setOnClick,
-        onClick: onClick,
-      })}
+      {modal(onClick, setOnClick)}
     </>
   );
 }

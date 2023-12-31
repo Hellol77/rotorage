@@ -11,12 +11,12 @@ export default function PhotoModalContent({
   handleModalClose: () => void;
   post: Post;
 }) {
-  const { _id, title, content, imageUrl } = post;
+  const { title, content, imageUrl } = post;
   return (
     <>
       <motion.div
-        key={_id}
-        layoutId={_id}
+        key={imageUrl}
+        layoutId={imageUrl}
         className="  fixed left-0 right-0 top-20 z-50 m-auto  flex h-fit w-fit   flex-col items-center  justify-center  overflow-hidden  rounded-lg  bg-black"
       >
         <div
@@ -29,7 +29,7 @@ export default function PhotoModalContent({
         <div className="relative h-[100vw] w-[80vw] rounded-md md:h-[40vw] md:w-[30vw]">
           <Image
             src={imageUrl}
-            alt={_id}
+            alt={title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"

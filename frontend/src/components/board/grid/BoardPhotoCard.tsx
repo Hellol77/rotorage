@@ -9,7 +9,7 @@ import BoardPhotoContent from "./BoardPhotoContent";
 import PhotoModalContent from "../modal/photoModal/PhotoModalContent";
 
 export default function BoardPhotoCard({ post }: { post: Post }) {
-  const { _id } = post;
+  const { imageUrl } = post;
   const [onPhotoClicked, setOnPhotoClicked] = useState(false);
   useScrollFixed(onPhotoClicked);
 
@@ -25,6 +25,7 @@ export default function BoardPhotoCard({ post }: { post: Post }) {
     () => <BoardPhotoContent post={post} />,
     [post],
   );
+
   return (
     <>
       <AnimatePresence>
@@ -40,8 +41,8 @@ export default function BoardPhotoCard({ post }: { post: Post }) {
         )}
         <motion.div
           onClick={handleModalOpen}
-          key={_id}
-          layoutId={_id}
+          key={imageUrl}
+          layoutId={imageUrl}
           transition={{ duration: 0.2 }}
           className="relative z-30 h-44 w-full cursor-pointer md:h-[44vh]"
         >

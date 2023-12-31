@@ -1,9 +1,10 @@
+import { toast } from "react-toastify";
 import { useContext } from "react";
 import { uploadBoardPost } from "@/apis/board";
 import { getBoardPosts } from "../../apis/board/index";
 import {
   InfiniteData,
-  useInfiniteQuery,
+  useSuspenseInfiniteQuery,
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
@@ -16,7 +17,7 @@ interface BoardPosts {
 }
 
 export function useGetBoardPosts() {
-  return useInfiniteQuery({
+  return useSuspenseInfiniteQuery({
     queryKey: ["boardPosts"],
     queryFn: async ({ pageParam }) => {
       const res = await getBoardPosts({ pageParam });
@@ -44,7 +45,7 @@ export function useUploadBoardPost() {
 
       const newImageUrl = URL.createObjectURL(newPost.imageUrl);
       if (!userData) {
-        alert("로그인이 필요합니다.");
+        toast.warn("로그인이 필요합니다.");
         return;
       }
       let copyNewPost = {

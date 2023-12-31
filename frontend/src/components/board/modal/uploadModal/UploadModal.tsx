@@ -16,13 +16,14 @@ import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useAuth from "@/hooks/useAuth";
 import useScrollFixed from "@/hooks/useScrollFixed";
+import { toast } from "react-toastify";
 
 export default function UploadModal({
   onClick,
   setOnClick,
 }: {
-  onClick?: boolean;
-  setOnClick?: React.Dispatch<React.SetStateAction<boolean>>;
+  onClick: boolean;
+  setOnClick: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [dragging, setDragging] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -37,7 +38,7 @@ export default function UploadModal({
   const fileSizeCheck = (file: File) => {
     if (file.size > 1024 * 1024 * 10) {
       setFile(null);
-      alert("파일 사이즈는 10MB를 넘을 수 없습니다.");
+      toast.warn("파일 사이즈는 10MB를 넘을 수 없습니다.");
     }
   };
 
@@ -48,9 +49,7 @@ export default function UploadModal({
   }, [file]);
 
   const handleCloseOnClick = () => {
-    if (setOnClick) {
-      setOnClick(false);
-    }
+    setOnClick(false);
     setFile(null);
   };
 
@@ -92,7 +91,7 @@ export default function UploadModal({
     const content = contentTextRef.current?.value ?? "";
     const userId = userData?.user.userId;
     if (!userId || !(await validateLogin())) {
-      alert("로그인이 필요합니다.");
+      toast.warn("로그인이 필요합니다.");
       return;
     }
     const formData = { imageUrl, title, content, user: userId };
