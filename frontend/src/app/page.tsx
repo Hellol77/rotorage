@@ -1,7 +1,7 @@
 import { getRecentPosts } from "@/apis/board";
 import CircleImageSection from "../components/section/CircleImageSection";
-import BoardPhotoCard from "@/components/board/grid/BoardPhotoCard";
-import BoardGridContainer from "@/components/board/grid/BoardGridContainer";
+import BoardPhotoCard from "@/components/board/grid/card/BoardPhotoCard";
+import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
 
 export default async function Home() {
   const data = await getRecentPosts();

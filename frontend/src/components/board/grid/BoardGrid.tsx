@@ -1,11 +1,11 @@
 "use client";
 import React, { Fragment, useEffect, useRef } from "react";
-import BoardPhotoCard from "./BoardPhotoCard";
+import BoardPhotoCard from "./card/BoardPhotoCard";
 import { useGetBoardPosts } from "@/hooks/queries/boardPosts";
 import { Post } from "@/types/post";
 import { useInView } from "framer-motion";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
-import BoardGridContainer from "./BoardGridContainer";
+import BoardGridContainer from "../../common/ui/container/BoardGridContainer";
 
 export default function BoardGrid() {
   const { data, fetchNextPage, isFetchingNextPage } = useGetBoardPosts();
@@ -29,9 +29,11 @@ export default function BoardGrid() {
         ))}
       </BoardGridContainer>
       <div ref={ref} className="my-12 flex h-4 w-full justify-center">
-        <div className="h-8 w-8 text-black">
-          {isFetchingNextPage ? <BoardLoadingIcon /> : ""}
-        </div>
+        {isFetchingNextPage ? (
+          <BoardLoadingIcon className="h-8 w-8 text-black" />
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

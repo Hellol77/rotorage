@@ -2,11 +2,11 @@
 
 import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import PhotoModal from "../modal/photoModal/PhotoModal";
+import PhotoModal from "../../modal/photoModal/PhotoModal";
 import { Post } from "@/types/post";
 import useScrollFixed from "@/hooks/useScrollFixed";
 import BoardPhotoContent from "./BoardPhotoContent";
-import PhotoModalContent from "../modal/photoModal/PhotoModalContent";
+import PhotoModalContent from "../../modal/photoModal/PhotoModalContent";
 
 export default function BoardPhotoCard({ post }: { post: Post }) {
   const { imageUrl } = post;

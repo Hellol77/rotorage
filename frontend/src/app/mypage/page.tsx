@@ -2,7 +2,7 @@ import React from "react";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import MainContainer from "@/components/common/container/MainContainer";
+import MainContainer from "@/components/common/ui/container/MainContainer";
 import ModalTriggerButton from "@/components/board/modal/button/ModalTriggerButton";
 
 export default function MyPage() {

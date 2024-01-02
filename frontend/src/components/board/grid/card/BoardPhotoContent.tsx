@@ -1,6 +1,7 @@
 import { Post } from "@/types/post";
 import React from "react";
 import Image from "next/image";
+import LikeButton from "@/components/common/button/LikeButton";
 
 export default function BoardPhotoContent({ post }: { post: Post }) {
   const { title, content, imageUrl } = post;
@@ -17,9 +18,10 @@ export default function BoardPhotoContent({ post }: { post: Post }) {
         />
       </div>
       <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2  md:px-4 md:py-4">
-        <div className="text-md truncate font-poorStory font-bold tracking-wider md:mb-1 md:text-2xl">
+        <h1 className="text-md truncate font-poorStory font-bold tracking-wider md:mb-1 md:text-2xl">
           {title}
-        </div>
+        </h1>
+        <LikeButton isLiked={true} onClick={() => {}} />
         <div className=" flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
           {content}
         </div>
