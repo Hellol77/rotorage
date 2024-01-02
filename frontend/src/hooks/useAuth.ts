@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import {
+  IsLoginContext,
   LogoutContext,
   SetUserDataContext,
   UserDataContext,
@@ -19,6 +20,7 @@ export default function useAuth() {
   const searchParams = useSearchParams();
   const search = searchParams.get("code");
   const router = useRouter();
+  const isLogin = useContext(IsLoginContext);
   const setUserData = useContext(SetUserDataContext);
   const userData = useContext(UserDataContext);
   const handleLogout = useContext(LogoutContext);
@@ -90,5 +92,5 @@ export default function useAuth() {
     }
   };
 
-  return { login, logout, validateLogin };
+  return { isLogin, login, logout, validateLogin };
 }

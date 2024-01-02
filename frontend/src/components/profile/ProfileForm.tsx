@@ -7,9 +7,9 @@ export default function ProfileForm() {
   const { data, isError } = useGetProfile();
   return (
     <>
-      <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-2xl ">
+      {/* <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-2xl ">
         닉네임
-      </h1>
+      </h1> */}
       <div></div>
       <Input defaultValue={data?.nickname} />
     </>

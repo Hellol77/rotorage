@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import { refreshAccessTokenApi } from "@/apis/auth";
 import { usePathname } from "next/navigation";
-import { ClientData, UserData } from "@/types/user";
+import { ClientData } from "@/types/user";
 
 export const initailState: ClientData = {
   user: {

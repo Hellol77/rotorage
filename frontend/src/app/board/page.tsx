@@ -11,7 +11,7 @@ export default function BoradPage() {
     <main className="z-1 h-full min-h-screen overflow-y-scroll px-6 pt-20 scrollbar-hide md:px-20   md:pt-36">
       <section className="relative flex flex-col items-center">
         <div className="mb-6  flex w-full items-center justify-between    md:mb-16  ">
-          <div className="text-2xl font-bold tracking-wider md:text-5xl md:tracking-widest">
+          <div className="text-xl font-bold tracking-wider md:text-3xl md:tracking-widest">
             Board
           </div>
           <ModalTriggerButton

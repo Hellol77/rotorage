@@ -1,17 +1,15 @@
 "use client";
+import React from "react";
 import Link from "next/link";
-import React, { useContext } from "react";
 import { Menu } from "./menu/Menu";
 import { usePathname } from "next/navigation";
 import { NAVIGATION_TITLE } from "@/constants/navigation";
 import MainLogoIcon from "../icon/MainLogoIcon";
-import { IsLoginContext, LogoutContext } from "@/contexts/AuthContext";
 import useAuth from "@/hooks/useAuth";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isLogin = useContext(IsLoginContext);
-  const { logout } = useAuth();
+  const { logout, isLogin } = useAuth();
   const isLoginNavigation = () => {
     return (
       <ul className="flex gap-8 text-sm font-extrabold">
