@@ -50,6 +50,9 @@ export function useUploadBoardPost() {
       }
       let copyNewPost = {
         ...newPost,
+        _id: "",
+        comments: [],
+        likeCount: 0,
         user: {
           userId: userData.user.userId,
           nickname: userData.user.nickname,

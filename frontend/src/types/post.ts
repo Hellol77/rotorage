@@ -2,19 +2,21 @@ export type Post = {
   user: { userId: string; nickname: string };
   title: string;
   content: string;
-  comments?: Comment[];
-  likes?: number;
+  comments: Comment[];
+  likeCount: number;
   imageUrl: string;
+  _id: string;
 };
 
-export interface UpdatedPost {
+export type UpdatedPost = Omit<
+  Post,
+  "user" | "_id" | "comments" | "likeCount" | "imageUrl"
+> & {
   user: string;
-  title: string;
-  content: string;
   imageUrl: File;
-  comments?: Comment[];
-  likes?: number;
-}
+};
+
+// export type UpdatedPost = Omit<Post, 'user'> & { user: string; imageUrl: File };
 
 export interface Comment {
   user: string;

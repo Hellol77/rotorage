@@ -1,18 +1,26 @@
+import { likePost } from "@/apis/board";
+import { UserDataContext } from "@/contexts/AuthContext";
 import { motion } from "framer-motion";
-import React, { MouseEvent, useState } from "react";
+import React, { MouseEvent, useContext, useState } from "react";
 
 export default function LikeButton({
   isLiked,
   onClick,
+  _id,
 }: {
   isLiked: boolean;
   onClick: () => void;
+  _id: string;
 }) {
   const [hasClicked, setHasClicked] = useState(isLiked);
+  const { accessToken } = useContext(UserDataContext);
   const handleOnClick = (e: MouseEvent) => {
+    onClick();
     setHasClicked((prev) => !prev);
+    likePost(accessToken,_id);
     e.stopPropagation();
   };
+
   return (
     <div className="flex items-center justify-center">
       <motion.div

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {
   const api = axios
-    .get(`/api/post/page/${pageParam}`)
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/post/page/${pageParam}`)
     .then(async (data) => {
       // const data: Post[] = await res.json();
       return { pages: data.data, pageParams: pageParam + 1 };
@@ -43,7 +43,7 @@ export const uploadBoardPost = async ({
 
 export const getRecentPosts = async <T = Post[]>(): Promise<T> => {
   const { data } = await axios.get<T>(
-    process.env.NEXT_PUBLIC_BASE_URL + `post/recent`,
+    process.env.NEXT_PUBLIC_BASE_URL + `/post/recent`,
   );
   try {
     return data;
@@ -51,4 +51,14 @@ export const getRecentPosts = async <T = Post[]>(): Promise<T> => {
     console.log(err);
   }
   return data;
+};
+
+export const likePost = async (accessToken: string, _id: string) => {
+  const api = await axios
+    .post("/api/post/like", { accessToken, _id })
+    .then()
+    .catch((err) => {
+      console.log(err);
+    });
+  return api;
 };

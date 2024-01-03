@@ -11,12 +11,12 @@ export default function PhotoModalContent({
   handleModalClose: () => void;
   post: Post;
 }) {
-  const { title, content, imageUrl } = post;
+  const { title, content, imageUrl, _id } = post;
   return (
     <>
       <motion.div
         key={imageUrl}
-        layoutId={imageUrl}
+        layoutId={_id}
         className="  fixed left-0 right-0 top-20 z-50 m-auto  flex h-fit w-fit   flex-col items-center  justify-center  overflow-hidden  rounded-lg  bg-black"
       >
         <div
