@@ -46,6 +46,9 @@ export const getPosts = async (
   next: NextFunction
 ) => {
   try {
+    const accessToken = req.body.accessToken || null;
+    const _id = await getUserObjectId(req, res, accessToken);
+
     const page = Number(req.params.page);
     const limit = 12;
 
@@ -54,8 +57,15 @@ export const getPosts = async (
       .sort({ _id: -1 })
       .limit(limit)
       .skip((page - 1) * limit)
-      .exec();
-    return res.status(200).json(posts);
+      .lean();
+      
+    const postsWithLikeStatus = posts.map((post) => {
+      return {
+        ...post,
+        isLiked: _id ? post.likers.includes(_id) : false,
+      };
+    });
+    return res.status(200).json(postsWithLikeStatus);
   } catch (error) {
     console.error("Error reading posts:", error);
     return res.status(500).json({ error: "Internal Server Error" });
@@ -99,14 +109,13 @@ export const likePost = async (req: Request, res: Response) => {
     res.status(401).send("you need to login (Don't have accesToken)");
   }
 
-  const userData = await getUserObjectId(req, res, accessToken);
-  if (!userData) {
+  const _id = await getUserObjectId(req, res, accessToken);
+  if (!_id) {
     return res.status(401).send("Unauthorized. Fail to get user object id");
   }
   try {
     const postId = req.body._id;
-    const _id = userData._id;
-    console.log(userData);
+    console.log(_id);
     const post = await Post.findById(postId);
     if (!post) {
       return res.status(404).json({ error: "Post not found" });

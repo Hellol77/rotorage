@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-query";
 import { Post, UpdatedPost } from "@/types/post";
 import { UserDataContext } from "@/contexts/AuthContext";
+import { DEFAULT_UPDATED_POST } from "@/constants/updatedPost";
 
 interface BoardPosts {
   pages: Post[];
@@ -49,10 +50,8 @@ export function useUploadBoardPost() {
         return;
       }
       let copyNewPost = {
+        ...DEFAULT_UPDATED_POST,
         ...newPost,
-        _id: "",
-        comments: [],
-        likeCount: 0,
         user: {
           userId: userData.user.userId,
           nickname: userData.user.nickname,

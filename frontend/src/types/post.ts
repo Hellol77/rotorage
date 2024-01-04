@@ -5,17 +5,22 @@ export type Post = {
   comments: Comment[];
   likeCount: number;
   imageUrl: string;
+  isLiked: boolean;
   _id: string;
 };
 
 export type UpdatedPost = Omit<
   Post,
-  "user" | "_id" | "comments" | "likeCount" | "imageUrl"
+  "user" | "_id" | "comments" | "likeCount" | "imageUrl" | "isLiked"
 > & {
   user: string;
   imageUrl: File;
 };
 
+export type DefaultUpdatePostType = Omit<
+  Post,
+  "user" | "imageUrl" | "title" | "content"
+>;
 // export type UpdatedPost = Omit<Post, 'user'> & { user: string; imageUrl: File };
 
 export interface Comment {
