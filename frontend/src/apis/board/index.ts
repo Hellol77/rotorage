@@ -6,7 +6,6 @@ export const getBoardPosts = async ({ pageParam }: { pageParam: number }) => {
   const api = axios
     .get(`${process.env.NEXT_PUBLIC_BASE_URL}/post/page/${pageParam}`)
     .then(async (data) => {
-      // const data: Post[] = await res.json();
       return { pages: data.data, pageParams: pageParam + 1 };
     })
     .catch((err) => {

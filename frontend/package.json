@@ -59,5 +59,6 @@
     "storybook": "^7.6.6",
     "tailwindcss": "^3",
     "typescript": "^5"
-  }
+  },
+  "sideEffects": false
 }

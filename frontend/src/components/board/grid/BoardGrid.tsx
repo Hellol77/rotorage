@@ -1,4 +1,3 @@
-"use client";
 import React, { Fragment, useEffect, useRef } from "react";
 import BoardPhotoCard from "./card/BoardPhotoCard";
 import { useGetBoardPosts } from "@/hooks/queries/boardPosts";

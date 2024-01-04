@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 
 import gallery1 from "/public/photo/gallery/gallery1.png";
