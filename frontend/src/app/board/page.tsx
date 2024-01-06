@@ -1,11 +1,12 @@
 "use client";
-import React, { Suspense } from "react";
+import React from "react";
 import BoardGrid from "@/components/board/grid/BoardGrid";
 import UploadModal from "@/components/board/modal/uploadModal/UploadModal";
 import ModalTriggerButton from "@/components/board/modal/button/ModalTriggerButton";
-import Loading from "./loading";
+import useRefreshScrollReset from "@/utils/useRefreshScrollReset";
 
 export default function BoradPage() {
+  useRefreshScrollReset();
   return (
     <main className="z-1 h-full min-h-screen overflow-y-scroll px-6 pt-20 scrollbar-hide md:px-20   md:pt-36">
       <section className="relative flex flex-col items-center">

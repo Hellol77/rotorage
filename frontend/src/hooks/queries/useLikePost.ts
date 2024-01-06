@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { likePost } from "@/apis/post";
 import { queryKeys } from "@/apis/querykeys";
 import { BoardPosts } from "@/types/post";
@@ -6,7 +7,6 @@ import {
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
-import { off } from "process";
 
 export default function useLikePost({
   _id,
@@ -48,6 +48,7 @@ export default function useLikePost({
         [queryKeys.boardPosts],
         context?.previousBoardPosts,
       );
+      toast.error("다시 시도해주세요.");
     },
     onSettled: () => {},
   });

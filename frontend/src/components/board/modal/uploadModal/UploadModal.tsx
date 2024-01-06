@@ -14,7 +14,7 @@ import Image from "next/image";
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useAuth from "@/hooks/useAuth";
-import useScrollFixed from "@/hooks/useScrollFixed";
+import useScrollFixed from "@/utils/useScrollFixed";
 import { toast } from "react-toastify";
 import { useUploadBoardPost } from "@/hooks/queries/useUploadBoardPost";
 

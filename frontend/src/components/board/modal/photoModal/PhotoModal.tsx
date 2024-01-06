@@ -1,7 +1,7 @@
 "use client";
 import React, { ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import useScrollFixed from "@/hooks/useScrollFixed";
+import useScrollFixed from "@/utils/useScrollFixed";
 
 export default function PhotoModal({
   children,
