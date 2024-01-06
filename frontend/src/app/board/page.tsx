@@ -1,6 +1,5 @@
 "use client";
 import React, { Suspense } from "react";
-
 import BoardGrid from "@/components/board/grid/BoardGrid";
 import UploadModal from "@/components/board/modal/uploadModal/UploadModal";
 import ModalTriggerButton from "@/components/board/modal/button/ModalTriggerButton";
@@ -23,9 +22,7 @@ export default function BoradPage() {
             )}
           />
         </div>
-        <Suspense fallback={<Loading />}>
-          <BoardGrid />
-        </Suspense>
+        <BoardGrid />
       </section>
     </main>
   );

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Input } from "@nextui-org/react";
-import { useGetProfile } from "@/hooks/queries/profileData";
+import { useGetProfile } from "@/hooks/queries/useProfileData";
 
 export default function ProfileForm() {
   const { data, isError } = useGetProfile();

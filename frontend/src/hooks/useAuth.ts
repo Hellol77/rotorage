@@ -1,5 +1,3 @@
-"use client";
-
 import { useContext } from "react";
 import {
   IsLoginContext,
@@ -15,8 +13,10 @@ import {
   validateAccessTokenApi,
 } from "@/apis/auth";
 import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function useAuth() {
+  const queryClient = useQueryClient();
   const searchParams = useSearchParams();
   const search = searchParams.get("code");
   const router = useRouter();
@@ -24,6 +24,7 @@ export default function useAuth() {
   const setUserData = useContext(SetUserDataContext);
   const userData = useContext(UserDataContext);
   const handleLogout = useContext(LogoutContext);
+
   const login = async () => {
     if (search === null) {
       toast.error("유효하지 않은 로그인 코드입니다.");
@@ -34,6 +35,7 @@ export default function useAuth() {
       if (setUserData) {
         setUserData(userData);
       }
+      queryClient.clear();
     } catch (err) {
       console.log("Login Failed", err);
     } finally {
@@ -46,6 +48,7 @@ export default function useAuth() {
       try {
         const accessToken = userData.accessToken;
         const { userId } = userData.user;
+
         if (accessToken && userId) {
           await logoutApi(accessToken, userId);
         }
@@ -54,6 +57,7 @@ export default function useAuth() {
       } finally {
         handleLogout();
         toast("로그아웃 되었습니다.", {});
+        queryClient.clear();
         router.push("/");
       }
     }
@@ -73,20 +77,23 @@ export default function useAuth() {
 
     try {
       const tokenInfo = await validateAccessTokenApi(accessToken);
-      console.log(tokenInfo);
+
       if (tokenInfo.accessToken !== undefined && setUserData) {
         setUserData((prev) =>
           prev ? { ...prev, accessToken: tokenInfo.accessToken } : prev,
         );
       }
+
       return userId === tokenInfo.userId;
     } catch (err) {
       const userData = await refreshAccessTokenApi("kakao");
+
       if (setUserData) {
         console.log("401 refresh token");
         setUserData(userData);
         return true;
       }
+
       handleLogout();
       return false;
     }

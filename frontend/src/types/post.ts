@@ -28,3 +28,8 @@ export interface Comment {
   content: string;
   createdAt: Date;
 }
+
+export interface BoardPosts {
+  pages: Post[];
+  pageParams: number;
+}

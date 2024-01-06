@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import { Post } from "../../models/post";
 import { User } from "../../models/user";
 import { getUserObjectId } from "../../utils/getUserObjectId";
+import { getAccessTokenToheader } from "../../utils/getAccessTokenToHeader";
 
 export const uploadPost = async (
   req: Request,
@@ -12,7 +13,6 @@ export const uploadPost = async (
   if (!req.file) {
     return res.status(400).send("file");
   }
-  console.log("file", req.file);
   const title = req.body.title;
   const content = req.body.content;
   const image = req.file as Express.MulterS3.File;
@@ -46,9 +46,8 @@ export const getPosts = async (
   next: NextFunction
 ) => {
   try {
-    const accessToken = req.body.accessToken || null;
+    const accessToken = getAccessTokenToheader(req);
     const _id = await getUserObjectId(req, res, accessToken);
-
     const page = Number(req.params.page);
     const limit = 12;
 
@@ -58,11 +57,14 @@ export const getPosts = async (
       .limit(limit)
       .skip((page - 1) * limit)
       .lean();
-      
-    const postsWithLikeStatus = posts.map((post) => {
+
+    const postsWithLikeStatus = posts.map((post: any) => {
+      const likers = post.likers || [];
       return {
         ...post,
-        isLiked: _id ? post.likers.includes(_id) : false,
+        isLiked: _id
+          ? likers.some((likerId: any) => likerId.equals(_id))
+          : false,
       };
     });
     return res.status(200).json(postsWithLikeStatus);
@@ -78,6 +80,9 @@ export const getRecentPosts = async (
   next: NextFunction
 ) => {
   try {
+    const accessToken = getAccessTokenToheader(req);
+    console.log("accessToken", accessToken);
+    const _id = await getUserObjectId(req, res, accessToken);
     const limit = 4;
     const posts = await Post.find({}, {})
       .populate({
@@ -86,8 +91,19 @@ export const getRecentPosts = async (
       })
       .sort({ _id: -1 })
       .limit(limit)
-      .exec();
-    res.status(200).json(posts);
+      .lean();
+
+    const postsWithLikeStatus = posts.map((post: any) => {
+      const likers = post.likers || [];
+      return {
+        ...post,
+        isLiked: _id
+          ? likers.some((likerId: any) => likerId.equals(_id))
+          : false,
+      };
+    });
+    console.log(postsWithLikeStatus);
+    res.status(200).json(postsWithLikeStatus);
   } catch (err) {
     console.log(err);
     return res
@@ -104,18 +120,20 @@ export const getRecentPosts = async (
 // };
 
 export const likePost = async (req: Request, res: Response) => {
-  const accessToken = req.body.accessToken;
+  const accessToken = getAccessTokenToheader(req);
+
+  console.log("accessToken", accessToken);
   if (!accessToken) {
     res.status(401).send("you need to login (Don't have accesToken)");
   }
 
   const _id = await getUserObjectId(req, res, accessToken);
+  console.log("_id", _id);
   if (!_id) {
     return res.status(401).send("Unauthorized. Fail to get user object id");
   }
   try {
     const postId = req.body._id;
-    console.log(_id);
     const post = await Post.findById(postId);
     if (!post) {
       return res.status(404).json({ error: "Post not found" });
@@ -141,7 +159,6 @@ export const likePost = async (req: Request, res: Response) => {
     }
     const likeStatus = isLiked;
 
-    console.log(post);
     return res.status(200).send({ likeStatus });
   } catch (err) {}
 };

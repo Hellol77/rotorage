@@ -11,12 +11,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Button, Input, Textarea } from "@nextui-org/react";
 import Image from "next/image";
 
-import { useUploadBoardPost } from "@/hooks/queries/boardPosts";
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useAuth from "@/hooks/useAuth";
 import useScrollFixed from "@/hooks/useScrollFixed";
 import { toast } from "react-toastify";
+import { useUploadBoardPost } from "@/hooks/queries/useUploadBoardPost";
 
 export default function UploadModal({
   onClick,

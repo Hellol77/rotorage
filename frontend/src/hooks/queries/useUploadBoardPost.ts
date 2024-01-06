@@ -1,34 +1,15 @@
 import { toast } from "react-toastify";
 import { useContext } from "react";
-import { uploadBoardPost } from "@/apis/board";
-import { getBoardPosts } from "../../apis/board/index";
+import { uploadBoardPost } from "@/apis/post";
 import {
   InfiniteData,
-  useSuspenseInfiniteQuery,
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
-import { Post, UpdatedPost } from "@/types/post";
+import { BoardPosts, UpdatedPost } from "@/types/post";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { DEFAULT_UPDATED_POST } from "@/constants/updatedPost";
-
-interface BoardPosts {
-  pages: Post[];
-  pageParams: number;
-}
-
-export function useGetBoardPosts() {
-  return useSuspenseInfiniteQuery({
-    queryKey: ["boardPosts"],
-    queryFn: async ({ pageParam }) => {
-      const res = await getBoardPosts({ pageParam });
-      return res;
-    },
-    initialPageParam: 1,
-    getNextPageParam: (lastPage, allPage) =>
-      lastPage.pages.length >= 12 ? lastPage.pageParams : undefined,
-  });
-}
+import { queryKeys } from "@/apis/querykeys";
 
 export function useUploadBoardPost() {
   const queryClient = useQueryClient();
@@ -42,7 +23,7 @@ export function useUploadBoardPost() {
         user: formData.user,
       }),
     onMutate: async (newPost) => {
-      await queryClient.cancelQueries({ queryKey: ["boardPosts"] });
+      await queryClient.cancelQueries({ queryKey: [queryKeys.boardPosts] });
 
       const newImageUrl = URL.createObjectURL(newPost.imageUrl);
       if (!userData) {
@@ -60,10 +41,10 @@ export function useUploadBoardPost() {
       };
       const previousBoardPosts = queryClient.getQueryData<
         InfiniteData<BoardPosts>
-      >(["boardPosts"]);
+      >([queryKeys.boardPosts]);
 
       queryClient.setQueryData(
-        ["boardPosts"],
+        [queryKeys.boardPosts],
         (old: InfiniteData<BoardPosts>) => {
           const newArray = [...old.pages[0].pages];
           newArray.unshift(copyNewPost);
@@ -75,10 +56,13 @@ export function useUploadBoardPost() {
     },
     onError: (err, newPost, context) => {
       console.log("err", err);
-      queryClient.setQueryData(["boardPosts"], context?.previousBoardPosts);
+      queryClient.setQueryData(
+        [queryKeys.boardPosts],
+        context?.previousBoardPosts,
+      );
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["boardPosts"] });
+      queryClient.invalidateQueries({ queryKey: [queryKeys.boardPosts] });
     },
   });
 }

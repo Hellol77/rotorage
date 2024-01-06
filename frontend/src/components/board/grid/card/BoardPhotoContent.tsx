@@ -4,7 +4,8 @@ import Image from "next/image";
 import LikeButton from "@/components/common/button/LikeButton";
 
 export default function BoardPhotoContent({ post }: { post: Post }) {
-  const { title, content, imageUrl,_id } = post;
+  const { title, content, imageUrl, _id, isLiked } = post;
+
   return (
     <>
       <div className="relative h-full w-full rounded-md">
@@ -21,7 +22,7 @@ export default function BoardPhotoContent({ post }: { post: Post }) {
         <h1 className="text-md truncate font-poorStory font-bold tracking-wider md:mb-1 md:text-2xl">
           {title}
         </h1>
-        <LikeButton isLiked={true} _id={_id} onClick={() => {}} />
+        <LikeButton isLiked={isLiked} _id={_id} onClick={() => {}} />
         <div className=" flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
           {content}
         </div>

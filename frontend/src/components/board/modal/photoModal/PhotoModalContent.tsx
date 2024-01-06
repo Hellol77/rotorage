@@ -15,7 +15,7 @@ export default function PhotoModalContent({
   return (
     <>
       <motion.div
-        key={imageUrl}
+        key={_id}
         layoutId={_id}
         className="  fixed left-0 right-0 top-20 z-50 m-auto  flex h-fit w-fit   flex-col items-center  justify-center  overflow-hidden  rounded-lg  bg-black"
       >

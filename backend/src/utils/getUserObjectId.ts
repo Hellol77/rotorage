@@ -5,7 +5,7 @@ import { User } from "../models/user";
 export const getUserObjectId = async (
   req: Request,
   res: Response,
-  accessToken: string
+  accessToken: string | null
 ) => {
   try {
     const profileInfo = await axios.get(
@@ -20,9 +20,9 @@ export const getUserObjectId = async (
       { userId: profileInfo.data.id },
       { _id: 1 }
     );
-
     return userData?._id;
   } catch (err) {
+    console.log("getUserObjectId error", err);
     return;
   }
 };

@@ -19,6 +19,16 @@ export const initailState: ClientData = {
   accessToken: "",
 };
 
+export const logoutState: ClientData = {
+  user: {
+    userId: "",
+    nickname: "",
+  },
+  accessToken: "logout",
+};
+
+const exceptPathname = ["/login/auth/kakao"];
+
 export const IsLoginContext = createContext<boolean>(false);
 export const UserDataContext = createContext<ClientData>(initailState);
 export const SetUserDataContext = createContext<React.Dispatch<
@@ -34,11 +44,11 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   };
   const [isLogin, setLogin] = useState<boolean>(checkLoginStatus());
   const handleLogout = () => {
-    setUserData(initailState);
+    setUserData(logoutState);
   };
 
   useEffect(() => {
-    if (pathname !== "/login/auth/kakao") {
+    if (!exceptPathname.includes(pathname)) {
       refreshAccessTokenApi("kakao")
         .then((data) => {
           setUserData(data);
@@ -51,7 +61,10 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const hasToken = useMemo(
-    () => (userData?.accessToken ? true : false),
+    () =>
+      userData?.accessToken !== "logout" && userData?.accessToken !== ""
+        ? true
+        : false,
     [userData],
   );
 

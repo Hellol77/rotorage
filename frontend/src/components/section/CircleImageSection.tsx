@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import hanroroMainImage from "/public/photo/circle/hanroromain.png";
 import hanroro2 from "/public//photo/circle/hanroro2.png";
