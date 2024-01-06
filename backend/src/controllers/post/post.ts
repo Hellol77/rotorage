@@ -102,7 +102,6 @@ export const getRecentPosts = async (
           : false,
       };
     });
-    console.log(postsWithLikeStatus);
     res.status(200).json(postsWithLikeStatus);
   } catch (err) {
     console.log(err);

@@ -33,3 +33,5 @@ export interface BoardPosts {
   pages: Post[];
   pageParams: number;
 }
+
+export type PostGridType = "recent" | "infinite";

@@ -28,7 +28,7 @@ export default function BoardGrid() {
           {data?.pages?.map(({ pages, pageParams }) => (
             <Fragment key={pageParams || 0}>
               {pages.map((post: Post) => (
-                <BoardPhotoCard key={post._id} post={post} />
+                <BoardPhotoCard key={post._id} post={post} type="infinite" />
               ))}
             </Fragment>
           ))}

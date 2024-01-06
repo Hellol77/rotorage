@@ -8,7 +8,7 @@ export default function LoginPage() {
     <CenterContainer>
       <h1 className="md:w-50 mb-8 flex w-full justify-start font-Pretendard-SemiBold text-2xl ">
         로그인시 이미지 업로드와<br></br>
-        이미지 저장이 가능합니다.
+        좋아요한 이미지 저장이 가능합니다.
       </h1>
       <div className="relative mb-16 w-full border-1 md:w-full " />
       <LoginButton

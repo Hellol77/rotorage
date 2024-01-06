@@ -1,5 +1,4 @@
 "use client";
-import { getRecentPosts } from "@/apis/post";
 import CircleImageSection from "../components/section/CircleImageSection";
 import BoardPhotoCard from "@/components/board/grid/card/BoardPhotoCard";
 import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
@@ -14,7 +13,7 @@ export default function Home() {
         <h1 className=" mb-8 font-poorStory text-3xl">Recent Posts</h1>
         <BoardGridContainer>
           {data?.map((post) => (
-            <BoardPhotoCard key={post.imageUrl} post={post} />
+            <BoardPhotoCard key={post.imageUrl} post={post} type="recent" />
           ))}
         </BoardGridContainer>
       </section>

@@ -1,24 +1,15 @@
-import { likePost } from "@/apis/post";
-import { UserDataContext } from "@/contexts/AuthContext";
-import useLikePost from "@/hooks/queries/useLikePost";
 import { motion } from "framer-motion";
-import React, { MouseEvent, useContext } from "react";
+import React, { MouseEvent } from "react";
 
 export default function LikeButton({
   isLiked,
   onClick,
-  _id,
 }: {
   isLiked: boolean;
   onClick: () => void;
-  _id: string;
 }) {
-  const { accessToken } = useContext(UserDataContext);
-  const { mutate } = useLikePost({ _id, accessToken });
   const handleOnClick = (e: MouseEvent) => {
     onClick();
-    mutate();
-    // likePost({ _id, accessToken });
     e.stopPropagation();
   };
   return (
