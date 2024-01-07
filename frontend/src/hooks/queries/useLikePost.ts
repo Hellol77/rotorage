@@ -42,7 +42,9 @@ export default function useLikePost({
         );
         toast.error("다시 시도해주세요.");
       },
-      onSettled: () => {},
+      onSettled: () => {
+        queryClient.invalidateQueries({ queryKey: [queryKeys.recentPosts] });
+      },
     });
   };
 
@@ -79,9 +81,11 @@ export default function useLikePost({
           [queryKeys.boardPosts],
           context?.previousBoardPosts,
         );
-        toast.error("다시 시도해주세요.hkgjh");
+        toast.error("다시 시도해주세요.");
       },
-      onSettled: () => {},
+      onSettled: () => {
+        queryClient.invalidateQueries({ queryKey: [queryKeys.boardPosts] });
+      },
     });
   };
 

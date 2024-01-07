@@ -10,6 +10,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  introduce: {
+    type: String,
+    default: "",
+  },
   myPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }], // 추가된 부분
   likedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }],
 });

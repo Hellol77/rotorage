@@ -1,10 +1,11 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { ReactNode, useContext, useState } from "react";
 import { Button } from "@nextui-org/react";
 import UploadIcon from "@/components/common/icon/UploadIcon";
 import PostMoreIcon from "@/components/common/icon/PostMoreIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { toast } from "react-toastify";
+import ModalTriggerButtonProvider from "@/contexts/ModalTriggerButton.context";
 
 const ContentIcon = {
   uploadIcon: <UploadIcon color="white" className="h-4 w-4" />,
@@ -13,17 +14,16 @@ const ContentIcon = {
 
 export default function ModalTriggerButton({
   text,
-  modal,
   content,
+  children,
+  isLoading,
   loginRequired = false,
 }: {
   text: string;
-  modal: (
-    onClick: boolean,
-    setOnClick: React.Dispatch<React.SetStateAction<boolean>>,
-  ) => React.ReactNode;
-  content: keyof typeof ContentIcon;
-  loginRequired: boolean;
+  children: ReactNode;
+  content?: keyof typeof ContentIcon;
+  loginRequired?: boolean;
+  isLoading?: boolean;
 }) {
   const userData = useContext(UserDataContext);
   const [onClick, setOnClick] = useState(false);
@@ -34,19 +34,28 @@ export default function ModalTriggerButton({
     }
     setOnClick(true);
   };
+  const handleCloseOnClick = () => {
+    setOnClick(false);
+  };
   return (
     <>
       <Button
         className=" flex items-center justify-center font-poorStory"
         size="lg"
-        variant="bordered"
-        color="default"
-        endContent={ContentIcon[content]}
+        // variant="bordered"
+        isLoading={isLoading}
+        color="primary"
+        endContent={content ? ContentIcon[content] : null}
         onClick={handleOnClick}
       >
         {text}
       </Button>
-      {modal(onClick, setOnClick)}
+      <ModalTriggerButtonProvider
+        onClick={onClick}
+        handleCloseOnClick={handleCloseOnClick}
+      >
+        {children}
+      </ModalTriggerButtonProvider>
     </>
   );
 }

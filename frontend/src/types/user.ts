@@ -11,4 +11,5 @@ export interface ValidateAccessToken {
 export interface UserData {
   userId: string;
   nickname: string;
+  introduce: string | null;
 }

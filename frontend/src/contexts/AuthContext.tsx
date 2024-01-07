@@ -15,6 +15,7 @@ export const initailState: ClientData = {
   user: {
     userId: "",
     nickname: "",
+    introduce: "",
   },
   accessToken: "",
 };
@@ -23,6 +24,7 @@ export const logoutState: ClientData = {
   user: {
     userId: "",
     nickname: "",
+    introduce: "",
   },
   accessToken: "logout",
 };

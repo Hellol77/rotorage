@@ -17,7 +17,7 @@ export default function BoardGrid() {
     if (isInView && !isPending) {
       fetchNextPage();
     }
-  }, [fetchNextPage, isInView, data]);
+  }, [fetchNextPage, isInView, data, isPending]);
 
   return (
     <>

@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import PhotoModal from "../../modal/photoModal/PhotoModal";
 import { Post, PostGridType } from "@/types/post";
 import BoardPhotoContent from "./BoardPhotoContent";
-import PhotoModalContent from "../../modal/photoModal/PhotoModalContent";
 
 export default function BoardPhotoCard({
   post,
@@ -27,17 +26,16 @@ export default function BoardPhotoCard({
 
   const useMemoBoardPhotoContent = useMemo(
     () => <BoardPhotoContent post={post} type={type} />,
-    [post],
+    [post, type],
   );
 
   return (
     <>
       <PhotoModal
+        post={post}
+        onClick={onPhotoClicked}
         handleModalClose={handleModalClose}
-        onPhotoClicked={onPhotoClicked}
-      >
-        <PhotoModalContent post={post} handleModalClose={handleModalClose} />
-      </PhotoModal>
+      />
       <motion.div
         onClick={handleModalOpen}
         key={_id}

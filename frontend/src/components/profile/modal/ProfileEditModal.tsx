@@ -1,15 +1,13 @@
-"use client";
-import React from "react";
-
 import ModalContainer from "@/components/common/modal/ModalContainer";
-import UploadModalContent from "./UploadModalContent";
+import React from "react";
+import ProfileEditModalContent from "./ProfileEditModalContent";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
 
-export default function UploadModal() {
+export default function ProfileEditModal() {
   const { onClick } = useModalTriggerButtonContext();
   return (
     <ModalContainer onClick={onClick}>
-      <UploadModalContent />
+      <ProfileEditModalContent />
     </ModalContainer>
   );
 }

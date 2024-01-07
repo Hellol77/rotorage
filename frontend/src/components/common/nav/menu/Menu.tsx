@@ -44,7 +44,7 @@ export const Menu = () => {
         onClick={() => toggleOpen()}
       />
       <motion.nav
-        className={`z-1000 absolute right-0 top-0 flex h-screen items-center justify-end md:hidden  `}
+        className={`z-50 absolute right-0 top-0 flex h-screen items-center justify-end md:hidden  `}
         initial={false}
         animate={isOpen ? "open" : "closed"}
       >

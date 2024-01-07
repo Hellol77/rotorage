@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 export const getBoardPosts = async ({
   pageParam,
-  accessToken = "qwdqwd",
+  accessToken,
 }: {
   pageParam: number;
   accessToken?: string;
