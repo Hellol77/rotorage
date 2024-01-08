@@ -54,6 +54,10 @@ functions:
           method: POST
           path: /user/profile
           cors: true
+      - httpApi:
+          method: POST
+          path: /user/profile/edit
+          cors: true
   likePost:
     handler: src/index.handler
     events:

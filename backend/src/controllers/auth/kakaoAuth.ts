@@ -102,7 +102,6 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
     };
     res.status(200).send(userData);
   } catch (err) {
-    console.log("refresh error");
     res.status(401).send("Unauthorized");
   }
 };

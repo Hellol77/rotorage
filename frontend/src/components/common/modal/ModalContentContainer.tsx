@@ -28,12 +28,14 @@ export function ModalEditContentContainer({
   handleSubmit,
   submitText,
   className,
+  disabled,
 }: {
   children: ReactNode;
   handleCloseOnClick: () => void;
   handleSubmit: () => void;
   submitText: string;
   className?: string;
+  disabled?: boolean;
 }) {
   return (
     <motion.div
@@ -58,6 +60,7 @@ export function ModalEditContentContainer({
           color="primary"
           size="md"
           className="w-full"
+          isDisabled={disabled}
         >
           {submitText}
         </Button>

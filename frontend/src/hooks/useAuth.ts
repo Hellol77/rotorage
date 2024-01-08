@@ -71,6 +71,7 @@ export default function useAuth() {
     const { userId } = userData.user;
 
     if (!userId || !accessToken) {
+      toast.warn("로그인이 필요합니다.");
       handleLogout();
       return false;
     }
@@ -86,14 +87,18 @@ export default function useAuth() {
 
       return userId === tokenInfo.userId;
     } catch (err) {
+      // access toke이 만료되었을 경우
       const userData = await refreshAccessTokenApi("kakao");
-
-      if (setUserData) {
+      /*
+    
+    모든 api를 react query로 관리 해야하나
+    **/
+      if (setUserData && userData.accessToken) {
         console.log("401 refresh token");
         setUserData(userData);
         return true;
       }
-
+      toast.warn("로그인이 필요합니다.");
       handleLogout();
       return false;
     }

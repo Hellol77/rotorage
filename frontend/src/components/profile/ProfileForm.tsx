@@ -21,10 +21,12 @@ export default function ProfileForm() {
       <div className="flex w-full min-w-fit items-center justify-between">
         <div className="w-full min-w-fit">
           <span className=" font-Pretendard-SemiBold text-2xl">
-            {user.nickname}
+            {user?.nickname}
           </span>
           <p className=" mt-2 text-sm text-[#c9cedc]">
-            {user.introduce || "한줄 자기소개를 작성해보세요."}
+            {user?.introduce === "loading"
+              ? ""
+              : user?.introduce || "한 줄 소개를 입력해주세요."}
           </p>
         </div>
         <ModalTriggerButton loginRequired text="프로필 편집">

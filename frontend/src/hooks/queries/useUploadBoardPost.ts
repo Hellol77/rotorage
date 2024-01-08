@@ -7,12 +7,16 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { BoardPosts, UpdatedPost } from "@/types/post";
-import { UserDataContext } from "@/contexts/AuthContext";
+import { LogoutContext, UserDataContext } from "@/contexts/AuthContext";
 import { DEFAULT_UPDATED_POST } from "@/constants/updatedPost";
 import { queryKeys } from "@/apis/querykeys";
+import { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 
 export function useUploadBoardPost() {
   const queryClient = useQueryClient();
+  const handleLogout = useContext(LogoutContext);
+  const router = useRouter();
   const userData = useContext(UserDataContext);
   return useMutation({
     mutationFn: (formData: UpdatedPost) =>
@@ -21,6 +25,7 @@ export function useUploadBoardPost() {
         title: formData.title,
         content: formData.content,
         user: formData.user,
+        accessToken: userData?.accessToken,
       }),
     onMutate: async (newPost) => {
       await queryClient.cancelQueries({ queryKey: [queryKeys.boardPosts] });
@@ -54,12 +59,21 @@ export function useUploadBoardPost() {
 
       return { previousBoardPosts };
     },
-    onError: (err, newPost, context) => {
-      console.log("err", err);
+    onError: async (err: AxiosError, newPost, context) => {
+            
       queryClient.setQueryData(
         [queryKeys.boardPosts],
         context?.previousBoardPosts,
       );
+      if (err.request.status === 401) {
+        toast.error("로그인이 만료되었습니다.");
+        handleLogout();
+        router.replace("/");
+        return;
+      }
+
+      toast.error("이미지 파일을 업로드하는데 실패했습니다.");
+      return;
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: [queryKeys.boardPosts] });

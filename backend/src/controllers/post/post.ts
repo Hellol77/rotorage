@@ -10,6 +10,15 @@ export const uploadPost = async (
   res: Response,
   next: NextFunction
 ) => {
+  const accessToken = getAccessTokenToheader(req);
+  if (!accessToken) {
+    res.status(401).send("you need to login (Don't have accesToken)");
+  }
+  const _id = await getUserObjectId(req, res, accessToken);
+  if (!_id) {
+    return res.status(401).send("Unauthorized. Fail to get user object id");
+  }
+
   if (!req.file) {
     return res.status(400).send("file");
   }

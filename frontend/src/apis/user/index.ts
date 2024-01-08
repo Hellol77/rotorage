@@ -9,3 +9,17 @@ export const getProfileInfo = async (
   });
   return data;
 };
+
+export const editProfile = async ({
+  nickname,
+  introduce,
+}: {
+  nickname: string;
+  introduce: string;
+}) => {
+  const api = await axios.post(
+    process.env.NEXT_PUBLIC_BASE_URL + `/user/profile`,
+    { nickname, introduce },
+  );
+  return api;
+};

@@ -1,19 +1,35 @@
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
-import { UserDataContext } from "@/contexts/AuthContext";
-import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
+import useProfileEdit from "@/hooks/useProfileEdit";
+
 import { Avatar, Divider, Input } from "@nextui-org/react";
-import React, { useContext } from "react";
+import React from "react";
+
+export const NicknameMaxLimitByte = 30;
+export const NicknameMinLimitByte = 3;
+export const IntroduceMaxLimitByte = 60;
 
 export default function ProfileEditModalContent() {
-  const { handleCloseOnClick } = useModalTriggerButtonContext();
-  const { user } = useContext(UserDataContext);
-  const handleSubmit = () => {};
+  const {
+    disabled,
+    handleSubmit,
+    handleCloseOnClick,
+    nicknameInputByteCount,
+    handleNicknameInput,
+    nickname,
+    validateNickname,
+    introduce,
+    handleIntroduceInput,
+    introduceInputByteCount,
+    validateIntroduce,
+  } = useProfileEdit();
+
   return (
     <ModalEditContentContainer
       submitText="수정하기"
       handleSubmit={handleSubmit}
       handleCloseOnClick={handleCloseOnClick}
       className="left-0 right-0 top-10 md:-top-20  "
+      disabled={disabled}
     >
       <strong className=" p-4 font-Pretendard-Regular text-lg">
         프로필 편집
@@ -22,16 +38,33 @@ export default function ProfileEditModalContent() {
       <Avatar src="" className="mt-10 h-20 w-20 md:h-36 md:w-36" />
       <div className=" p-10">
         <div>
-          <strong className=" text-sm">닉네임</strong>
-          <Input className="mt-2 w-72" defaultValue={user.nickname} />
-        </div>
-        <div className="mt-8">
-          <strong className=" text-sm">한 줄 자기소개</strong>
+          <div className="flex justify-between text-sm">
+            <strong className=" ">닉네임</strong>
+            <span>{`${nicknameInputByteCount}/${NicknameMaxLimitByte}`}</span>
+          </div>
           <Input
             className="mt-2 w-72"
-            placeholder="자기소개를 입력해주세요."
-            defaultValue={user.introduce || ""}
+            onChange={handleNicknameInput}
+            defaultValue={nickname}
           />
+          <div className="mt-2 px-3 font-Pretendard-Regular text-xs text-red-500">
+            {validateNickname}
+          </div>
+        </div>
+        <div className="mt-8">
+          <div className="flex justify-between text-sm">
+            <strong className=" ">한 줄 자기소개</strong>
+            <span>{`${introduceInputByteCount}/${IntroduceMaxLimitByte}`}</span>
+          </div>
+          <Input
+            className="mt-2 w-72 "
+            placeholder="자기소개를 입력해주세요."
+            defaultValue={introduce || ""}
+            onChange={handleIntroduceInput}
+          />
+          <div className="mt-2 px-3 font-Pretendard-Regular text-xs text-red-500">
+            {validateIntroduce}
+          </div>
         </div>
       </div>
     </ModalEditContentContainer>

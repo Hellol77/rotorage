@@ -15,7 +15,7 @@ export const initailState: ClientData = {
   user: {
     userId: "",
     nickname: "",
-    introduce: "",
+    introduce: "loading",
   },
   accessToken: "",
 };
@@ -42,7 +42,11 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const [userData, setUserData] = useState<ClientData>(initailState);
   const pathname = usePathname();
   const checkLoginStatus = () => {
-    return userData && !!userData.accessToken ? true : false;
+    return userData &&
+      userData?.accessToken !== "logout" &&
+      userData?.accessToken !== ""
+      ? true
+      : false;
   };
   const [isLogin, setLogin] = useState<boolean>(checkLoginStatus());
   const handleLogout = () => {
@@ -57,7 +61,6 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
         })
         .catch((err) => {
           handleLogout();
-          console.log(err);
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

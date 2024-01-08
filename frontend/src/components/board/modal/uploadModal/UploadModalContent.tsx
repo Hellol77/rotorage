@@ -75,6 +75,9 @@ export default function UploadModalContent() {
   };
 
   const handleSubmit = async () => {
+    if (!(await validateLogin())) {
+      return;
+    }
     if (!file) return;
     if (!titleTextRef.current?.value) return;
     if (!contentTextRef.current?.value) return;
@@ -82,10 +85,6 @@ export default function UploadModalContent() {
     const title = titleTextRef.current?.value ?? "";
     const content = contentTextRef.current?.value ?? "";
     const userId = userData?.user.userId;
-    if (!userId || !(await validateLogin())) {
-      toast.warn("로그인이 필요합니다.");
-      return;
-    }
     const formData = { imageUrl, title, content, user: userId };
     mutate(formData);
     handleCloseEvent();

@@ -1,4 +1,4 @@
-import { Post, UpdatedPost } from "@/types/post";
+import { Post, UpdatePostPropsType } from "@/types/post";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -29,22 +29,17 @@ export const uploadBoardPost = async ({
   title,
   content,
   user,
-}: UpdatedPost) => {
+  accessToken,
+}: UpdatePostPropsType) => {
   const formData = new FormData();
   formData.append("imgFile", imageUrl);
   formData.append("title", title);
   formData.append("content", content);
   formData.append("user", user);
+  const api = await axios.post("/api/post", formData, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
 
-  const api = await axios
-    .post("/api/post", formData)
-    .then(() => {
-      return;
-    })
-    .catch((err) => {
-      console.log(err.response);
-      toast.error("이미지 파일을 업로드하는데 실패했습니다.");
-    });
   return api;
 };
 
