@@ -35,18 +35,26 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
       }
     );
     const userId = getUserInfo.data.id.toString();
+
     const userExists = await User.exists({ userId });
-    const userInfo = {
-      userId,
-      nickname: getUserInfo.data.properties.nickname,
-    };
 
     if (!userExists) {
-      const newUser = new User(userInfo);
+      const newUserInfo = {
+        userId,
+        nickname: getUserInfo.data.properties.nickname,
+      };
+      const newUser = new User(newUserInfo);
       newUser.save().then(() => {
         console.log("create new User");
       });
+      const userData = {
+        user: newUserInfo,
+        accessToken: getLoginInfo.data.access_token,
+      };
+      return res.status(200).send(userData);
     }
+
+    const userInfo = await User.findOne({ userId }, { _id: 0 });
     const userData = {
       user: userInfo,
       accessToken: getLoginInfo.data.access_token,

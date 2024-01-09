@@ -47,6 +47,7 @@ export const editProfileInfo = async (req: Request, res: Response) => {
         },
       }
     );
+
     await User.findOneAndUpdate(
       { userId: profileInfo.data.id },
       {
@@ -56,6 +57,6 @@ export const editProfileInfo = async (req: Request, res: Response) => {
     );
     res.status(200).send("Success Edit Profile");
   } catch (err) {
-    res.status(401).send("Fail edit profile");
+    res.status(400).send("Fail edit profile");
   }
 };
