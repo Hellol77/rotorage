@@ -1,14 +1,16 @@
 "use client";
 
 import React, {
-  ReactNode,
   createContext,
+  ReactNode,
   useEffect,
   useMemo,
   useState,
 } from "react";
-import { refreshAccessTokenApi } from "@/apis/auth";
+
 import { usePathname } from "next/navigation";
+
+import { refreshAccessTokenApi } from "@/apis/auth";
 import { ClientData } from "@/types/user";
 
 export const initailState: ClientData = {

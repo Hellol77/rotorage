@@ -1,8 +1,10 @@
 "use client";
 import * as React from "react";
+
 import { motion, useCycle } from "framer-motion";
-import { MenuToggle } from "./MenuToggle";
-import { Navigation } from "./Navigation";
+
+import { MenuToggle } from "@/components/common/nav/menu/MenuToggle";
+import { Navigation } from "@/components/common/nav/menu/Navigation";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -44,7 +46,7 @@ export const Menu = () => {
         onClick={() => toggleOpen()}
       />
       <motion.nav
-        className={`z-50 absolute right-0 top-0 flex h-screen items-center justify-end md:hidden  `}
+        className={`absolute right-0 top-0 z-50 flex h-screen items-center justify-end md:hidden  `}
         initial={false}
         animate={isOpen ? "open" : "closed"}
       >
@@ -52,7 +54,7 @@ export const Menu = () => {
           className="z-900  absolute bottom-0 right-0 top-0 h-full w-40  bg-slate-200"
           variants={sidebar}
         />
-        <Navigation toggle={() => toggleOpen()}/>
+        <Navigation toggle={() => toggleOpen()} />
         <MenuToggle toggle={() => toggleOpen()} />
       </motion.nav>
     </>

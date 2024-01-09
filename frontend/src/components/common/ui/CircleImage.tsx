@@ -1,6 +1,8 @@
 import React from "react";
+
 import Image, { StaticImageData } from "next/image";
-import MainLogoIcon from "../icon/MainLogoIcon";
+
+import MainLogoIcon from "@/components/common/icon/MainLogoIcon";
 
 // 배열을 넣어서 누를때마다 사진 바뀌게
 type Props = {

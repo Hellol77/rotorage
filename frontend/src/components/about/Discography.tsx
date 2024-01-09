@@ -1,6 +1,7 @@
 import React from "react";
+
+import MusicItem from "@/components/about/item/MusicItem";
 import { DISCOGRAPHY_LIST } from "@/constants/about";
-import MusicItem from "./item/MusicItem";
 
 export default function Discography() {
   return (

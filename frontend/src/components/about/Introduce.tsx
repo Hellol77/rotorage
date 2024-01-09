@@ -1,9 +1,11 @@
 "use client";
-import Link from "next/link";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
-import YoutubeIcon from "../common/icon/YoutubeIcon";
-import InstagramIcon from "../common/icon/InstagramIcon";
+
+import Link from "next/link";
+
+import InstagramIcon from "@/components/common/icon/InstagramIcon";
+import YoutubeIcon from "@/components/common/icon/YoutubeIcon";
 import { INTRODUCE } from "@/constants/about";
 
 export default function Introduce() {

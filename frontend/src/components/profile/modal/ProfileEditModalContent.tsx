@@ -1,8 +1,9 @@
-import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
-import useProfileEdit from "@/hooks/useProfileEdit";
+import React from "react";
 
 import { Avatar, Divider, Input } from "@nextui-org/react";
-import React from "react";
+
+import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
+import useProfileEdit from "@/hooks/useProfileEdit";
 
 export const NicknameMaxLimitByte = 30;
 export const NicknameMinLimitByte = 3;

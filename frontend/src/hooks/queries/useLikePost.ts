@@ -1,12 +1,14 @@
 import { toast } from "react-toastify";
-import { likePost } from "@/apis/post";
-import { queryKeys } from "@/apis/querykeys";
-import { BoardPosts, Post } from "@/types/post";
+
 import {
   InfiniteData,
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
+
+import { likePost } from "@/apis/post";
+import { queryKeys } from "@/apis/querykeys";
+import { BoardPosts, Post } from "@/types/post";
 
 export default function useLikePost({
   _id,

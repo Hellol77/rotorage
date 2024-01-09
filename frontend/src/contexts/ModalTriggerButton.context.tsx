@@ -1,6 +1,6 @@
-import React, { ReactNode, useContext, useMemo } from "react";
+import React, { createContext, ReactNode, useContext, useMemo } from "react";
 
-const ModalTriggerButtonContext = React.createContext({
+const ModalTriggerButtonContext = createContext({
   onClick: false,
   handleCloseOnClick: () => {},
 });

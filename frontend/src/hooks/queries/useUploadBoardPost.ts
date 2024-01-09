@@ -1,17 +1,20 @@
-import { toast } from "react-toastify";
 import { useContext } from "react";
-import { uploadBoardPost } from "@/apis/post";
+import { toast } from "react-toastify";
+
 import {
   InfiniteData,
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
-import { BoardPosts, UpdatedPost } from "@/types/post";
-import { LogoutContext, UserDataContext } from "@/contexts/AuthContext";
-import { DEFAULT_UPDATED_POST } from "@/constants/updatedPost";
-import { queryKeys } from "@/apis/querykeys";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+
+import { uploadBoardPost } from "@/apis/post";
+import { queryKeys } from "@/apis/querykeys";
+import { DEFAULT_UPDATED_POST } from "@/constants/updatedPost";
+import { LogoutContext, UserDataContext } from "@/contexts/AuthContext";
+import { BoardPosts, UpdatedPost } from "@/types/post";
+
 
 export function useUploadBoardPost() {
   const queryClient = useQueryClient();
@@ -60,7 +63,6 @@ export function useUploadBoardPost() {
       return { previousBoardPosts };
     },
     onError: async (err: AxiosError, newPost, context) => {
-            
       queryClient.setQueryData(
         [queryKeys.boardPosts],
         context?.previousBoardPosts,

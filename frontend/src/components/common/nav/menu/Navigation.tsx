@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
+
 import { motion } from "framer-motion";
-import { MenuItem } from "./MenuItem";
+
+import { MenuItem } from "@/components/common/nav/menu/MenuItem";
 import { NAVIGATION_TITLE } from "@/constants/navigation";
-import { IsLoginContext } from "@/contexts/AuthContext";
 import useAuth from "@/hooks/useAuth";
 
 const variants = {

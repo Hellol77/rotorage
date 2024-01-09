@@ -1,5 +1,6 @@
 import React from "react";
-import Line from "./Line";
+
+import Line from "@/components/common/ui/Line";
 
 export default function Lines() {
   return (

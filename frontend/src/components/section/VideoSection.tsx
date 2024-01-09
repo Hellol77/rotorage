@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Variants, motion, useInView } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+
+import { motion, useInView, Variants } from "framer-motion";
 import Link from "next/link";
-import YoutubeIcon from "../common/icon/YoutubeIcon";
+
+import YoutubeIcon from "@/components/common/icon/YoutubeIcon";
 
 type SongType = "입춘" | "정류장" | "화해" | "사랑하게 될 거야";
 type PropsType = { title: SongType };

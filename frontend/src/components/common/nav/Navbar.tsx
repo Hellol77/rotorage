@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
+
 import Link from "next/link";
-import { Menu } from "./menu/Menu";
 import { usePathname } from "next/navigation";
+
+import MainLogoIcon from "@/components/common/icon/MainLogoIcon";
+import { Menu } from "@/components/common/nav/menu/Menu";
 import { NAVIGATION_TITLE } from "@/constants/navigation";
-import MainLogoIcon from "../icon/MainLogoIcon";
 import useAuth from "@/hooks/useAuth";
 
 export default function Navbar() {

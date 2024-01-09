@@ -1,12 +1,15 @@
 "use client";
 import React, { Fragment, useEffect, useRef } from "react";
-import BoardPhotoCard from "./card/BoardPhotoCard";
+
+import { useInView } from "framer-motion";
+
+import Loading from "@/app/board/loading";
+import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
+import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
 import { Post } from "@/types/post";
-import { useInView } from "framer-motion";
-import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
-import BoardGridContainer from "../../common/ui/container/BoardGridContainer";
-import Loading from "@/app/board/loading";
+
+import BoardPhotoCard from "./card/BoardPhotoCard";
 
 export default function BoardGrid() {
   const { data, fetchNextPage, isFetchingNextPage, isPending } =

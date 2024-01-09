@@ -1,9 +1,10 @@
 "use client";
 import React, { useContext } from "react";
-import { Avatar } from "@nextui-org/react";
-import ModalTriggerButton from "../common/button/ModalTriggerButton";
 
-import ProfileEditModal from "./modal/ProfileEditModal";
+import { Avatar } from "@nextui-org/react";
+
+import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
+import ProfileEditModal from "@/components/profile/modal/ProfileEditModal";
 import { UserDataContext } from "@/contexts/AuthContext";
 
 export default function ProfileForm() {

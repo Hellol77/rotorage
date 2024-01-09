@@ -1,17 +1,18 @@
-import album1 from "/public/photo/album/1.jpg";
-import album2 from "/public/photo/album/2.jpg";
-import album3 from "/public/photo/album/3.jpg";
-import album4 from "/public/photo/album/4.jpg";
-import album5 from "/public/photo/album/5.jpg";
-import album6 from "/public/photo/album/6.jpg";
-import album7 from "/public/photo/album/7.webp";
-import album8 from "/public/photo/album/8.webp";
-import album9 from "/public/photo/album/9.jpg";
-import album10 from "/public/photo/album/10.jpg";
-import album11 from "/public/photo/album/11.jpg";
-import album12 from "/public/photo/album/12.webp";
-import album13 from "/public/photo/album/13.webp";
 import { StaticImageData } from "next/image";
+
+import album1 from "../../public/photo/album/1.jpg";
+import album10 from "../../public/photo/album/10.jpg";
+import album11 from "../../public/photo/album/11.jpg";
+import album12 from "../../public/photo/album/12.webp";
+import album13 from "../../public/photo/album/13.webp";
+import album2 from "../../public/photo/album/2.jpg";
+import album3 from "../../public/photo/album/3.jpg";
+import album4 from "../../public/photo/album/4.jpg";
+import album5 from "../../public/photo/album/5.jpg";
+import album6 from "../../public/photo/album/6.jpg";
+import album7 from "../../public/photo/album/7.webp";
+import album8 from "../../public/photo/album/8.webp";
+import album9 from "../../public/photo/album/9.jpg";
 
 interface MusicType {
   title: string;

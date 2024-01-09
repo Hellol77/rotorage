@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
+import UploadModalContent from "@/components/board/modal/uploadModal/UploadModalContent";
 import ModalContainer from "@/components/common/modal/ModalContainer";
-import UploadModalContent from "./UploadModalContent";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
 
 export default function UploadModal() {

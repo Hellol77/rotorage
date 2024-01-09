@@ -1,7 +1,9 @@
+import React from "react";
+
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import React from "react";
-import YoutubeIcon from "../../common/icon/YoutubeIcon";
+
+import YoutubeIcon from "@/components/common/icon/YoutubeIcon";
 
 export default function MusicItem({
   title,

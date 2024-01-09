@@ -1,6 +1,7 @@
-import { INTERVIEW } from "@/constants/about";
 import React from "react";
-import MoreText from "../common/ui/MoreText";
+
+import MoreText from "@/components/common/ui/MoreText";
+import { INTERVIEW } from "@/constants/about";
 
 export default function Interview() {
   return (

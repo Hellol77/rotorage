@@ -1,7 +1,8 @@
-import { MUSIC_LIST } from "@/constants/about";
 import React from "react";
-import MoreText from "../../common/ui/MoreText";
-import MusicItem from "../item/MusicItem";
+
+import MusicItem from "@/components/about/item/MusicItem";
+import MoreText from "@/components/common/ui/MoreText";
+import { MUSIC_LIST } from "@/constants/about";
 
 export default function Music() {
   return (

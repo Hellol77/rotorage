@@ -1,10 +1,12 @@
 "use client";
 import * as React from "react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { wrap } from "popmotion";
+
+import { AnimatePresence, motion } from "framer-motion";
 import { StaticImageData } from "next/image";
-import CarouselButton from "./CarouselButton";
+import { wrap } from "popmotion";
+
+import CarouselButton from "@/components/about/carousel/CarouselButton";
 
 const variants = {
   enter: (direction: number) => ({

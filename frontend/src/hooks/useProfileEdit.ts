@@ -1,15 +1,17 @@
+import { ChangeEvent, useContext, useMemo, useState } from "react";
+
 import {
-  NicknameMinLimitByte,
-  NicknameMaxLimitByte,
   IntroduceMaxLimitByte,
+  NicknameMaxLimitByte,
+  NicknameMinLimitByte,
 } from "@/components/profile/modal/ProfileEditModalContent";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
+import useAuth from "@/hooks/useAuth";
 import {
   inputByteCountCalculate,
   validateStringNumEngKor,
 } from "@/utils/input/inputByteCount";
-import { ChangeEvent, useContext, useMemo, useState } from "react";
 
 export default function useProfileEdit() {
   const { handleCloseOnClick } = useModalTriggerButtonContext();
@@ -24,11 +26,10 @@ export default function useProfileEdit() {
   );
   const [nicknameWarning, setNicknameWarning] = useState(false);
   const [introduceWarning, setIntroduceWarning] = useState(false);
-
-  const handleSubmit = () => {
+  const { validateLogin } = useAuth();
+  const handleSubmit = async () => {
     if (disabled) return;
-    
-    
+    if (!validateLogin) return;
   };
   const handleNicknameInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

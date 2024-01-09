@@ -1,11 +1,12 @@
-import { Post, PostGridType } from "@/types/post";
 import React, { useContext } from "react";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 import LikeButton from "@/components/common/button/LikeButton";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useLikePost from "@/hooks/queries/useLikePost";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { Post, PostGridType } from "@/types/post";
 
 export default function BoardPhotoContent({
   post,

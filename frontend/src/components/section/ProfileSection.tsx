@@ -1,6 +1,7 @@
 import React from "react";
-import { Carousel } from "../about/carousel/Carousel";
-import { images } from "../about/carousel/profileImage";
+
+import { Carousel } from "@/components/about/carousel/Carousel";
+import { images } from "@/components/about/carousel/profileImage";
 
 export default function ProfileSection() {
   return (

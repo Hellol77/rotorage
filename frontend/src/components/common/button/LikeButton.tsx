@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
 import React, { MouseEvent } from "react";
+
+import { motion } from "framer-motion";
 
 export default function LikeButton({
   isLiked,

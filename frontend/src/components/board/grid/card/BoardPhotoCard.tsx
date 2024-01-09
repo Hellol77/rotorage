@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+
 import { motion } from "framer-motion";
-import PhotoModal from "../../modal/photoModal/PhotoModal";
+
+import PhotoModal from "@/components/board/modal/photoModal/PhotoModal";
 import { Post, PostGridType } from "@/types/post";
+
 import BoardPhotoContent from "./BoardPhotoContent";
 
 export default function BoardPhotoCard({

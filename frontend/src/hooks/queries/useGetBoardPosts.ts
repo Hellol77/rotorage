@@ -1,8 +1,11 @@
-import { queryKeys } from "@/apis/querykeys";
 import { useContext } from "react";
-import { getBoardPosts } from "../../apis/post/index";
+
 import { useInfiniteQuery } from "@tanstack/react-query";
+
+import { queryKeys } from "@/apis/querykeys";
 import { UserDataContext } from "@/contexts/AuthContext";
+
+import { getBoardPosts } from "../../apis/post/index";
 
 export function useGetBoardPosts() {
   const { accessToken } = useContext(UserDataContext);

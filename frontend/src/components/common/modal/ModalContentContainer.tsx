@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
-import { motion } from "framer-motion";
+
 import { Button } from "@nextui-org/react";
+import { motion } from "framer-motion";
 
 export function ModalContentContainer({
   children,

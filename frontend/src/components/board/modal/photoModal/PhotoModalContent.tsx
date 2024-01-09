@@ -1,6 +1,8 @@
 import React from "react";
-import Image from "next/image";
+
 import { motion } from "framer-motion";
+import Image from "next/image";
+
 import CloseIcon from "@/components/common/icon/CloseIcon";
 import { Post } from "@/types/post";
 

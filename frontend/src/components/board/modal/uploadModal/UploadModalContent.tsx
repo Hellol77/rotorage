@@ -7,16 +7,17 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { toast } from "react-toastify";
+
 import { Input, Textarea } from "@nextui-org/react";
 import Image from "next/image";
 
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
-import { UserDataContext } from "@/contexts/AuthContext";
-import useAuth from "@/hooks/useAuth";
-import { toast } from "react-toastify";
-import { useUploadBoardPost } from "@/hooks/queries/useUploadBoardPost";
-import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
+import { UserDataContext } from "@/contexts/AuthContext";
+import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
+import { useUploadBoardPost } from "@/hooks/queries/useUploadBoardPost";
+import useAuth from "@/hooks/useAuth";
 
 export default function UploadModalContent() {
   const [dragging, setDragging] = useState(false);
