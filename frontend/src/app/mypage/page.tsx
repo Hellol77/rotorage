@@ -1,8 +1,10 @@
 import React from "react";
-import ProfileForm from "@/components/profile/ProfileForm";
+
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+
 import MainContainer from "@/components/common/ui/container/MainContainer";
+import ProfileForm from "@/components/profile/ProfileForm";
 
 export default function MyPage() {
   const cookieStore = cookies();

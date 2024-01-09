@@ -1,5 +1,6 @@
 import React from "react";
-import VideoSection from "../../components/section/VideoSection";
+
+import VideoSection from "@/components/section/VideoSection";
 
 export default function VideoPage() {
   return (

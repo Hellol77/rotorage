@@ -47,8 +47,8 @@ export default function BoardPhotoContent({
           alt={title}
           priority
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="relative z-10 rounded-md object-cover "
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          className="relative z-10 rounded-md object-cover"
         />
       </div>
       <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2  md:px-4 md:py-4">

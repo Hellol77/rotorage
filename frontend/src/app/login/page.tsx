@@ -1,7 +1,9 @@
 import React from "react";
-import kakao from "/public/kakao-Login.png";
-import LoginButton from "@/components/common/ui/LoginButton";
+
 import CenterContainer from "@/components/common/ui/container/CenterContainer";
+import LoginButton from "@/components/common/ui/LoginButton";
+
+import kakao from "../../../public/kakao-Login.png";
 
 export default function LoginPage() {
   return (
