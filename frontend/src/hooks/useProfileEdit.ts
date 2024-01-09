@@ -13,9 +13,11 @@ import {
   validateStringNumEngKor,
 } from "@/utils/input/inputByteCount";
 
+import useEditProfile from "./queries/useEditProfile";
+
 export default function useProfileEdit() {
   const { handleCloseOnClick } = useModalTriggerButtonContext();
-  const { user } = useContext(UserDataContext);
+  const { user, accessToken } = useContext(UserDataContext);
   const [nickname, setNickname] = useState(user?.nickname);
   const [introduce, setIntroduce] = useState(user?.introduce);
   const [nicknameInputByteCount, setNicknameInputByteCount] = useState(
@@ -27,9 +29,12 @@ export default function useProfileEdit() {
   const [nicknameWarning, setNicknameWarning] = useState(false);
   const [introduceWarning, setIntroduceWarning] = useState(false);
   const { validateLogin } = useAuth();
+  const { mutate } = useEditProfile({ nickname, introduce, accessToken });
   const handleSubmit = async () => {
     if (disabled) return;
     if (!validateLogin) return;
+    mutate();
+    handleCloseOnClick();
   };
   const handleNicknameInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

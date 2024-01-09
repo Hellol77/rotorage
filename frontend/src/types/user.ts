@@ -8,8 +8,15 @@ export interface ValidateAccessToken {
   accessToken: string;
 }
 
-export interface UserData {
+export interface UserData extends UserProfile {
   userId: string;
+}
+
+export interface UserProfile {
   nickname: string;
   introduce: string;
+}
+
+export interface UserEditProfileType extends UserProfile {
+  accessToken: string;
 }

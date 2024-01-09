@@ -1,5 +1,6 @@
-import { UserData } from "@/types/user";
 import axios from "axios";
+
+import { UserData, UserEditProfileType } from "@/types/user";
 
 export const getProfileInfo = async (
   accessToken: string,
@@ -13,13 +14,12 @@ export const getProfileInfo = async (
 export const editProfile = async ({
   nickname,
   introduce,
-}: {
-  nickname: string;
-  introduce: string;
-}) => {
+  accessToken,
+}: UserEditProfileType) => {
   const api = await axios.post(
-    process.env.NEXT_PUBLIC_BASE_URL + `/user/profile`,
+    process.env.NEXT_PUBLIC_BASE_URL + `/user/profile/edit`,
     { nickname, introduce },
+    { headers: { Authorization: `Bearer ${accessToken}` } },
   );
   return api;
 };

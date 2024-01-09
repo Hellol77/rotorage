@@ -1,5 +1,6 @@
-import { ClientData, ValidateAccessToken } from "@/types/user";
 import axios from "axios";
+
+import { ClientData, ValidateAccessToken } from "@/types/user";
 
 export const refreshAccessTokenApi = async <T = ClientData>(
   oAuthType: string,

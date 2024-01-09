@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect } from "react";
-import useAuth from "@/hooks/useAuth";
+
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import CenterContainer from "@/components/common/ui/container/CenterContainer";
+import useAuth from "@/hooks/useAuth";
 
 export default function AuthPage() {
   const { login } = useAuth();

@@ -1,6 +1,8 @@
-import { Post, UpdatePostPropsType } from "@/types/post";
-import axios from "axios";
 import { toast } from "react-toastify";
+
+import axios from "axios";
+
+import { Post, UpdatePostPropsType } from "@/types/post";
 
 export const getBoardPosts = async ({
   pageParam,
