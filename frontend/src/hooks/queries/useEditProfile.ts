@@ -6,15 +6,14 @@ import { AxiosError } from "axios";
 
 import { editProfile, getProfileInfo } from "@/apis/user";
 import { LogoutContext, SetUserDataContext } from "@/contexts/AuthContext";
-import useAuth from "@/hooks/useAuth";
 import { UserEditProfileType } from "@/types/user";
 
 export default function useEditProfile({
   nickname,
   introduce,
   accessToken,
-}: UserEditProfileType) {
-  const { logout } = useAuth();
+  handleCloseOnClick,
+}: UserEditProfileType & { handleCloseOnClick: () => void }) {
   const handleLogout = useContext(LogoutContext);
   const setUserData = useContext(SetUserDataContext);
   return useMutation({
@@ -34,8 +33,17 @@ export default function useEditProfile({
         toast.error("로그인이 만료되었습니다.");
         return;
       }
+      if (err.request.status === 409) {
+        toast.warn("이미 존재하는 닉네임입니다.");
+        return;
+      }
+      console.log(err);
       toast.error("수정에 실패했습니다.");
       return;
+    },
+    onSuccess: async () => {
+      toast.success("프로필이 수정되었습니다.");
+      handleCloseOnClick();
     },
   });
 }

@@ -1,8 +1,11 @@
 import React from "react";
+
 import { motion } from "framer-motion";
-import { MenuItem } from "./MenuItem";
+
 import { NAVIGATION_TITLE } from "@/constants/navigation";
 import useAuth from "@/hooks/useAuth";
+
+import { MenuItem } from "./MenuItem";
 
 const variants = {
   open: {

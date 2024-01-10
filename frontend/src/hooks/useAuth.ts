@@ -40,6 +40,7 @@ export default function useAuth() {
       queryClient.clear();
     } catch (err) {
       console.log("Login Failed", err);
+      toast.error("로그인에 실패했습니다.");
     } finally {
       router.push("/");
     }
@@ -56,6 +57,7 @@ export default function useAuth() {
         }
       } catch (err) {
         console.log("Logout failed", err);
+        toast.error("로그아웃에 실패했습니다.");
       } finally {
         handleLogout();
         toast("로그아웃 되었습니다.", {});

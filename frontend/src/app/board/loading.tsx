@@ -1,7 +1,9 @@
 "use client";
-import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
 import React from "react";
+
 import { Card, Skeleton } from "@nextui-org/react";
+
+import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
 
 const n = 8;
 

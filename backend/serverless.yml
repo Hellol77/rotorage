@@ -58,6 +58,10 @@ functions:
           method: POST
           path: /user/profile/edit
           cors: true
+      - httpApi:
+          method: GET
+          path: /user/profile/{proxy+}
+          cors: true
   likePost:
     handler: src/index.handler
     events:

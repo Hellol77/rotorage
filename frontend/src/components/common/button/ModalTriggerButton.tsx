@@ -19,6 +19,7 @@ export default function ModalTriggerButton({
   content,
   children,
   isLoading,
+  size = "lg",
   loginRequired = false,
 }: {
   text: string;
@@ -26,6 +27,7 @@ export default function ModalTriggerButton({
   content?: keyof typeof ContentIcon;
   loginRequired?: boolean;
   isLoading?: boolean;
+  size?: "sm" | "md" | "lg";
 }) {
   const userData = useContext(UserDataContext);
   const [onClick, setOnClick] = useState(false);
@@ -43,7 +45,7 @@ export default function ModalTriggerButton({
     <>
       <Button
         className=" flex items-center justify-center font-poorStory"
-        size="lg"
+        size={size}
         // variant="bordered"
         isLoading={isLoading}
         color="primary"

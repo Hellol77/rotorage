@@ -16,24 +16,27 @@ const Schema = mongoose.Schema;
 //   bulid(attr: BoardType): BoardDoc;
 // }
 
-const postSchema = new Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
-  title: {
-    type: String,
-    required: true,
+const postSchema = new Schema(
+  {
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
+    title: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    created_at: { type: Date, default: Date.now, required: true },
+    likeCount: { type: Number, default: 0 },
+    likers: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
+    imageUrl: {
+      type: String,
+      required: true,
+    },
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comment" }],
   },
-  content: {
-    type: String,
-    required: true,
-  },
-  created_at: { type: Date, default: Date.now, required: true },
-  likeCount: { type: Number, default: 0 },
-  likers: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
-  imageUrl: {
-    type: String,
-    required: true,
-  },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comment" }],
-});
+  { versionKey: false }
+);
 export const Post = mongoose.model("post", postSchema);
 // module.exports = mongoose.model<any, BoardModelInterface>("Board", boardSchema);

@@ -25,7 +25,7 @@ export const Navigation = ({ toggle }: { toggle: React.MouseEventHandler }) => {
     return isLogin ? (
       <>
         <MenuItem title="Logout" key="Logout" toggle={onclickLogout} />
-        <MenuItem title="MyPage" key="MyPage" toggle={toggle} />
+        <MenuItem title="Profile" key="Profile" toggle={toggle} />
       </>
     ) : (
       <>

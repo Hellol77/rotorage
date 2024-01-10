@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 
-import axios from "axios";
-
+import { defaultApi } from "@/apis/index";
 import { Post, UpdatePostPropsType } from "@/types/post";
 
 export const getBoardPosts = async ({
@@ -11,8 +10,8 @@ export const getBoardPosts = async ({
   pageParam: number;
   accessToken?: string;
 }) => {
-  const api = axios
-    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/post/page/${pageParam}`, {
+  const api = defaultApi
+    .get(`/api/post/page/${pageParam}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
     .then(async (data) => {
@@ -38,7 +37,7 @@ export const uploadBoardPost = async ({
   formData.append("title", title);
   formData.append("content", content);
   formData.append("user", user);
-  const api = await axios.post("/api/post", formData, {
+  const api = await defaultApi.post("/api/post", formData, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
@@ -48,12 +47,9 @@ export const uploadBoardPost = async ({
 export const getRecentPosts = async <T = Post[]>(
   accessToken: string,
 ): Promise<T> => {
-  const { data } = await axios.get<T>(
-    process.env.NEXT_PUBLIC_BASE_URL + `/post/recent`,
-    {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    },
-  );
+  const { data } = await defaultApi.get<T>(`/api/post/recent`, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
   try {
     return data;
   } catch (err) {
@@ -69,9 +65,9 @@ export const likePost = async ({
   _id: string;
   accessToken: string;
 }) => {
-  const api = await axios
+  const api = await defaultApi
     .post(
-      process.env.NEXT_PUBLIC_BASE_URL + "/post/like",
+      "/api/post/like",
       { _id },
       { headers: { Authorization: `Bearer ${accessToken}` } },
     )

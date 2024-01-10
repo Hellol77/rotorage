@@ -8,6 +8,7 @@ import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
 import { Post } from "@/types/post";
+import useRefreshScrollReset from "@/utils/useRefreshScrollReset";
 
 import BoardPhotoCard from "./card/BoardPhotoCard";
 
@@ -21,6 +22,7 @@ export default function BoardGrid() {
       fetchNextPage();
     }
   }, [fetchNextPage, isInView, data, isPending]);
+  useRefreshScrollReset();
 
   return (
     <>

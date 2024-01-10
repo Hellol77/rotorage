@@ -29,12 +29,17 @@ export default function useProfileEdit() {
   const [nicknameWarning, setNicknameWarning] = useState(false);
   const [introduceWarning, setIntroduceWarning] = useState(false);
   const { validateLogin } = useAuth();
-  const { mutate } = useEditProfile({ nickname, introduce, accessToken });
+  const { mutate, failureReason } = useEditProfile({
+    nickname,
+    introduce,
+    accessToken,
+    handleCloseOnClick,
+  });
   const handleSubmit = async () => {
     if (disabled) return;
     if (!validateLogin) return;
+
     mutate();
-    handleCloseOnClick();
   };
   const handleNicknameInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -79,8 +84,11 @@ export default function useProfileEdit() {
   }, [introduce, introduceInputByteCount]);
 
   const disabled = useMemo(
-    () => nicknameWarning || introduceWarning,
-    [nicknameWarning, introduceWarning],
+    () =>
+      (nickname === user.nickname && introduce === user.introduce) ||
+      nicknameWarning ||
+      introduceWarning,
+    [nickname, user, introduce, nicknameWarning, introduceWarning],
   );
   return {
     disabled,
@@ -94,5 +102,6 @@ export default function useProfileEdit() {
     handleIntroduceInput,
     introduceInputByteCount,
     validateIntroduce,
+    failureReason,
   };
 }

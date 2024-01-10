@@ -17,8 +17,8 @@ export default function Navbar() {
       <ul className="flex gap-8 text-sm font-extrabold">
         {isLogin ? (
           <>
-            <Link className="hidden justify-end md:block" href={"/mypage"}>
-              MyPage
+            <Link className="hidden justify-end md:block" href={"/profile"}>
+              Profile
             </Link>
             <button className="hidden justify-end md:block" onClick={logout}>
               Logout
