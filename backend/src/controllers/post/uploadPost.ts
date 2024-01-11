@@ -27,7 +27,7 @@ export const uploadPost = async (
   const image = req.file as Express.MulterS3.File;
   const imageUrl = image.location;
   const userId = req.body.user;
-  const user = await User.findOne({ userId });
+  const user = await User.findOne({ _id: userId });
   if (!user) {
     return res.status(404).json({ error: "User not found" });
   }
@@ -35,9 +35,9 @@ export const uploadPost = async (
     title,
     content,
     imageUrl,
-    user: user._id,
+    user: userId,
   });
-
+  await User.updateOne({ _id: userId }, { $push: { myPosts: post._id } });
   post
     .save()
     .then(() => {

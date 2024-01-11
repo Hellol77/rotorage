@@ -34,19 +34,22 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
         },
       }
     );
-    const userId = getUserInfo.data.id.toString();
+    const kakaoUserId = getUserInfo.data.id.toString();
 
-    const userExists = await User.exists({ userId });
+    const userExists = await User.exists({ userId: kakaoUserId });
 
     if (!userExists) {
-      const newUserInfo = {
-        userId,
+      const newUser = new User({
+        userId: kakaoUserId,
         nickname: getUserInfo.data.properties.nickname,
-      };
-      const newUser = new User(newUserInfo);
-      newUser.save().then(() => {
-        console.log("create new User");
       });
+      await newUser.save();
+
+      const userInfo = await User.findOne({ userId: kakaoUserId }).lean();
+      const newUserInfo = {
+        nickname: getUserInfo.data.properties.nickname,
+        userId: userInfo?._id,
+      };
       const userData = {
         user: newUserInfo,
         accessToken: getLoginInfo.data.access_token,
@@ -54,11 +57,17 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
       return res.status(200).send(userData);
     }
 
-    const userInfo = await User.findOne({ userId }, { _id: 0 });
+    const userInfo = await User.findOne({ userId: kakaoUserId }).lean();
+    const newUserInfo = {
+      ...userInfo,
+      userId: userInfo?._id,
+    };
     const userData = {
-      user: userInfo,
+      user: newUserInfo,
       accessToken: getLoginInfo.data.access_token,
     };
+
+    console.log(userData);
     return res.status(200).send(userData);
   } catch (err) {
     console.log("error");
@@ -99,13 +108,15 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
       }
     );
 
-    const userInfo = await User.findOne(
-      { userId: getTokenInfo.data.id },
-      { _id: 0 }
-    );
-
+    const userInfo = await User.findOne({
+      userId: getTokenInfo.data.id,
+    }).lean();
+    const refreshUserInfo = {
+      ...userInfo,
+      userId: userInfo?._id,
+    };
     const userData = {
-      user: userInfo,
+      user: refreshUserInfo,
       accessToken: refreshInfo.data.access_token,
     };
     res.status(200).send(userData);
@@ -151,7 +162,7 @@ export const validateAccessToken = async (req: Request, res: Response) => {
       }
     );
     const userId = tokenInfo.data.id.toString();
-
+    const userInfo = await User.findOne({ _id: userId }, { _id: 1 }).lean();
     if (tokenInfo.data.expires_in < 60 * 60) {
       const refreshInfo = await axios.post(
         "https://kauth.kakao.com/oauth/token",
@@ -174,7 +185,7 @@ export const validateAccessToken = async (req: Request, res: Response) => {
       }
       const refreshedAccessToken = refreshInfo.data.access_token;
 
-      const data = { userId, accessToken: refreshedAccessToken };
+      const data = { userId: userInfo?._id, accessToken: refreshedAccessToken };
       res.status(200).send(data);
     }
 

@@ -11,6 +11,7 @@ import React, {
 import { usePathname } from "next/navigation";
 
 import { refreshAccessTokenApi } from "@/apis/auth";
+import { ACCESS_TOKEN_LOGOUT_STATE } from "@/constants/user";
 import { ClientData } from "@/types/user";
 
 export const initailState: ClientData = {
@@ -19,7 +20,7 @@ export const initailState: ClientData = {
     nickname: "",
     introduce: "loading",
   },
-  accessToken: "",
+  accessToken: ACCESS_TOKEN_LOGOUT_STATE[0],
 };
 
 export const logoutState: ClientData = {
@@ -28,7 +29,7 @@ export const logoutState: ClientData = {
     nickname: "",
     introduce: "",
   },
-  accessToken: "logout",
+  accessToken: ACCESS_TOKEN_LOGOUT_STATE[1],
 };
 
 const exceptPathname = ["/login/auth/kakao"];
@@ -45,8 +46,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const checkLoginStatus = () => {
     return userData &&
-      userData?.accessToken !== "logout" &&
-      userData?.accessToken !== ""
+      !ACCESS_TOKEN_LOGOUT_STATE.includes(userData?.accessToken)
       ? true
       : false;
   };
@@ -62,6 +62,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
           setUserData(data);
         })
         .catch((err) => {
+          setUserData(logoutState);
           handleLogout();
         });
     }
@@ -69,9 +70,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
   const hasToken = useMemo(
     () =>
-      userData?.accessToken !== "logout" && userData?.accessToken !== ""
-        ? true
-        : false,
+      !ACCESS_TOKEN_LOGOUT_STATE.includes(userData?.accessToken) ? true : false,
     [userData],
   );
 

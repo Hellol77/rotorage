@@ -16,7 +16,7 @@ export function useGetBoardPosts() {
       return res;
     },
 
-    enabled: !!accessToken || accessToken === "logout",
+    enabled: accessToken !== "",
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) =>
       lastPage.pages.length >= 12 ? lastPage.pageParams : undefined,

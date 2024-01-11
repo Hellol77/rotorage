@@ -14,6 +14,6 @@ export default function useGetRecentPosts() {
       const res = await getRecentPosts(accessToken);
       return res;
     },
-    enabled: !!accessToken || accessToken === "logout",
+    enabled: accessToken !== "",
   });
 }

@@ -28,7 +28,6 @@ export default function useProfileEdit() {
   );
   const [nicknameWarning, setNicknameWarning] = useState(false);
   const [introduceWarning, setIntroduceWarning] = useState(false);
-  const { validateLogin } = useAuth();
   const { mutate, failureReason } = useEditProfile({
     nickname,
     introduce,
@@ -37,7 +36,6 @@ export default function useProfileEdit() {
   });
   const handleSubmit = async () => {
     if (disabled) return;
-    if (!validateLogin) return;
 
     mutate();
   };

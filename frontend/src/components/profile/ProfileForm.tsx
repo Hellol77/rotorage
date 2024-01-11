@@ -5,12 +5,11 @@ import { Avatar } from "@nextui-org/react";
 
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import ProfileEditModal from "@/components/profile/modal/ProfileEditModal";
-import { UserDataContext } from "@/contexts/AuthContext";
+import { UserData } from "@/types/user";
 
 import ProfileInfoContainer from "../common/ui/container/ProfileInfoContainer";
 
-export default function ProfileForm() {
-  const { user } = useContext(UserDataContext);
+export default function ProfileForm({ user }: { user: UserData }) {
   return (
     <>
       <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-xl ">

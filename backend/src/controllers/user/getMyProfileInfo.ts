@@ -2,7 +2,7 @@ import axios from "axios";
 import { Request, Response } from "express";
 import { User } from "../../models/user";
 
-export const getProfileInfo = async (req: Request, res: Response) => {
+export const getMyProfileInfo = async (req: Request, res: Response) => {
   const accessToken = req.body.accessToken;
   if (!accessToken) {
     console.log("token", accessToken);
@@ -23,11 +23,7 @@ export const getProfileInfo = async (req: Request, res: Response) => {
     );
     res.status(200).send(userData);
   } catch (err) {
-    console.log("err");
-    res.redirect("http://localhost:3000/login");
+    console.log("err", err);
     res.status(401).send("Unauthorized");
   }
 };
-
-
-

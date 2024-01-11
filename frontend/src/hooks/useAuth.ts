@@ -10,6 +10,7 @@ import {
   refreshAccessTokenApi,
   validateAccessTokenApi,
 } from "@/apis/auth";
+import { ACCESS_TOKEN_LOGOUT_STATE } from "@/constants/user";
 import {
   IsLoginContext,
   LogoutContext,
@@ -42,7 +43,7 @@ export default function useAuth() {
       console.log("Login Failed", err);
       toast.error("로그인에 실패했습니다.");
     } finally {
-      router.push("/");
+      router.replace("/");
     }
   };
 
@@ -62,20 +63,23 @@ export default function useAuth() {
         handleLogout();
         toast("로그아웃 되었습니다.", {});
         queryClient.clear();
-        router.push("/");
+        router.replace("/");
       }
     }
   };
 
   // access token 갱신, 만약 유효하지 않거나 refresh token을 통해 재발급, refresh
   const validateLogin = async () => {
-    if (!userData) return false;
-
+    if (!userData) {
+      console.log("not userDAta");
+      return false;
+    }
     const accessToken = userData.accessToken;
     const { userId } = userData.user;
 
-    if (!userId || !accessToken) {
+    if (ACCESS_TOKEN_LOGOUT_STATE.includes(userData?.accessToken)) {
       toast.warn("로그인이 필요합니다.");
+      console.log("validateLogin");
       handleLogout();
       return false;
     }

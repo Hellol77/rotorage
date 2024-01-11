@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 
 import { motion } from "framer-motion";
 
@@ -17,7 +17,7 @@ const variants = {
 
 export const Navigation = ({ toggle }: { toggle: React.MouseEventHandler }) => {
   const { logout, isLogin } = useAuth();
-  const onclickLogout = (e: React.MouseEvent) => {
+  const onclickLogout = (e: MouseEvent) => {
     toggle(e);
     logout();
   };
