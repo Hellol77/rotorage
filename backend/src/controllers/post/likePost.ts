@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import { Post } from "../../models/post";
 import { getUserObjectId } from "../../utils/getUserObjectId";
 import { getAccessTokenToheader } from "../../utils/getAccessTokenToHeader";
+import { User } from "../../models/user";
 
 export const likePost = async (req: Request, res: Response) => {
   const accessToken = getAccessTokenToheader(req);
@@ -24,6 +25,12 @@ export const likePost = async (req: Request, res: Response) => {
       return res.status(404).json({ error: "Post not found" });
     }
     const isLiked = post.likers.includes(_id);
+
+    if (isLiked) {
+      await User.updateOne({ _id: _id }, { $pull: { likedPosts: postId } });
+    } else if (!isLiked) {
+      await User.updateOne({ _id: _id }, { $push: { likedPosts: postId } });
+    }
 
     const updatedPost = await Post.findOneAndUpdate(
       { _id: postId },
