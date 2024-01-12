@@ -8,9 +8,7 @@ export default function ProfileInfoContainer({
   className?: string;
 }) {
   return (
-    <div
-      className={`mb-10 w-full rounded-lg p-8 dark:bg-[#333333] ${className}`}
-    >
+    <div className={`w-full rounded-lg p-8 dark:bg-[#333333] ${className}`}>
       {children}
     </div>
   );

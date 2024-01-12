@@ -22,7 +22,6 @@ export default function ProfileEditModalContent() {
     handleIntroduceInput,
     introduceInputByteCount,
     validateIntroduce,
-    failureReason,
   } = useProfileEdit();
 
   return (

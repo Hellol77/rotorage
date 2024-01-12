@@ -99,3 +99,22 @@ export const getUserPosts = async ({
     return { pages: [], pageParams: undefined };
   }
 };
+
+export const getLikedPosts = async ({
+  pageParam,
+  accessToken,
+}: {
+  pageParam: number;
+  accessToken?: string;
+}) => {
+  try {
+    const { data } = await defaultApi.get(
+      `/api/post/like?page=${pageParam}`,
+      { headers: { Authorization: `Bearer ${accessToken}` } },
+    );
+    return { pages: data, pageParams: pageParam + 1 };
+  } catch (err) {
+    toast.error("게시글을 불러오는데 실패했습니다.");
+    return { pages: [], pageParams: undefined };
+  }
+};

@@ -40,11 +40,12 @@ export default function BoardPhotoCard({
         post={post}
         onClick={onPhotoClicked}
         handleModalClose={handleModalClose}
+        queryKey={queryKey}
       />
       <motion.div
         onClick={handleModalOpen}
         key={_id}
-        layoutId={_id}
+        layoutId={_id + queryKey}
         transition={{ duration: 0.2 }}
         className="relative z-30 h-60 w-full cursor-pointer md:h-96 "
       >

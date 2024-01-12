@@ -9,15 +9,21 @@ export default function PhotoModal({
   handleModalClose,
   onClick,
   post,
+  queryKey,
   ...props
 }: {
   post: Post;
   onClick: boolean;
   handleModalClose: () => void;
+  queryKey: string[];
 }) {
   return (
     <ModalContainer handleModalClose={handleModalClose} onClick={onClick}>
-      <PhotoModalContent post={post} handleModalClose={handleModalClose} />
+      <PhotoModalContent
+        post={post}
+        handleModalClose={handleModalClose}
+        queryKey={queryKey}
+      />
     </ModalContainer>
   );
 }

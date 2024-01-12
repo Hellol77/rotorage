@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { queryKeys } from "@/apis/querykeys";
-import Loading from "@/app/board/loading";
+import Loading from "@/components/common/skeleton/PostSkeletonGrid";
 import BoardPhotoCard from "@/components/common/card/BoardPhotoCard";
 import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
 import { UserDataContext } from "@/contexts/AuthContext";

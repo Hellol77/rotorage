@@ -31,6 +31,10 @@ functions:
           method: GET
           path: /post/user/{proxy+}
           cors: true
+      - httpApi:
+          method: GET
+          path: /post/like
+          cors: true
   authKakao:
     handler: src/index.handler
     events:

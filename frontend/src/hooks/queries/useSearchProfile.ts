@@ -10,5 +10,6 @@ export default function useSearchProfile(_id: string) {
       const data = await searchProfile(_id);
       return data;
     },
+    retry: 1,
   });
 }

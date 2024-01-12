@@ -4,4 +4,5 @@ export const queryKeys = {
   getProfile: ["getProfile"],
   searchProfile: (_id: string) => ["searchProfile", _id],
   getUserPosts: (user_id: string) => ["getUserPosts", user_id],
+  getLikedPosts: ["getLikedPosts"],
 };

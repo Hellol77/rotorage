@@ -1,23 +1,6 @@
-"use client";
-import React from "react";
-
 import { Card, Skeleton } from "@nextui-org/react";
 
-import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
-
-const n = 4;
-
-export default function Loading() {
-  return (
-    <BoardGridContainer>
-      {[...Array(n)].map((_, i) => (
-        <SkeletonCard key={i} />
-      ))}
-    </BoardGridContainer>
-  );
-}
-
-function SkeletonCard() {
+export default function PostSkeletonCard() {
   return (
     <Card className="flex h-full flex-col gap-4 p-4">
       <Skeleton className="rounded-lg">

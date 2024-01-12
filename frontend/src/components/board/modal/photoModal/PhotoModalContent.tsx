@@ -9,9 +9,11 @@ import { Post } from "@/types/post";
 export default function PhotoModalContent({
   handleModalClose,
   post,
+  queryKey,
 }: {
   handleModalClose: () => void;
   post: Post;
+  queryKey: string[];
 }) {
   const { title, content, imageUrl, _id } = post;
   return (
@@ -21,7 +23,7 @@ export default function PhotoModalContent({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        layoutId={_id}
+        layoutId={_id + queryKey}
         className="  fixed left-0 right-0 top-20 z-50 m-auto  flex h-fit w-fit   flex-col items-center  justify-center  overflow-hidden  rounded-lg  bg-black"
       >
         <div

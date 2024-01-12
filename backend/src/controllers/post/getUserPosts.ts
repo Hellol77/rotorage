@@ -2,8 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import { Post } from "../../models/post";
 import { getUserObjectId } from "../../utils/getUserObjectId";
 import { getAccessTokenToheader } from "../../utils/getAccessTokenToHeader";
-import { ObjectId } from "mongodb";
-import mongoose from "mongoose";
 
 export const getUserPosts = async (
   req: Request,
@@ -36,7 +34,7 @@ export const getUserPosts = async (
     // const myPosts = user?.myPosts;
     // console.log("myPosts", myPosts);
 
-    const myPostsWithLikeStatus = posts.map((post: any) => {
+    const myPostsWithLikeStatus = posts.map((post) => {
       const likers = post.likers || [];
       return {
         ...post,
