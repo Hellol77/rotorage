@@ -1,5 +1,6 @@
 "use client";
-import BoardPhotoCard from "@/components/board/grid/card/BoardPhotoCard";
+import { queryKeys } from "@/apis/querykeys";
+import BoardPhotoCard from "@/components/common/card/BoardPhotoCard";
 import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
 import CircleImageSection from "@/components/section/CircleImageSection";
 import useGetRecentPosts from "@/hooks/queries/useGetRecentPosts";
@@ -13,7 +14,12 @@ export default function Home() {
         <h1 className=" mb-8 font-poorStory text-3xl">Recent Posts</h1>
         <BoardGridContainer>
           {data?.map((post) => (
-            <BoardPhotoCard key={post.imageUrl} post={post} type="recent" />
+            <BoardPhotoCard
+              key={post.imageUrl}
+              post={post}
+              type="default"
+              queryKey={queryKeys.recentPosts}
+            />
           ))}
         </BoardGridContainer>
       </section>

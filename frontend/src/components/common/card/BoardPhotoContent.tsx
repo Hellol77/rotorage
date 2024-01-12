@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -11,34 +11,39 @@ import { Post, PostGridType } from "@/types/post";
 export default function BoardPhotoContent({
   post,
   type,
+  queryKey,
 }: {
   post: Post;
   type: PostGridType;
+  queryKey: string[];
 }) {
   const { accessToken } = useContext(UserDataContext);
   const { title, content, imageUrl, _id, isLiked } = post;
-  const { mutateLikeRecentPost, mutateLikeInfinitePost } = useLikePost({
+  const [likeState, setLikeState] = useState(isLiked);
+  const { mutateLikeDefailtPost, mutateLikeInfinitePost } = useLikePost({
     _id,
     accessToken,
+    queryKey,
   });
   const router = useRouter();
+
   const handleLikeButtonOnclick = () => {
     if (accessToken == "logout" || accessToken == "") {
       router.push("login");
       return;
     }
+    setLikeState((prev) => !prev);
 
     switch (type) {
-      case "recent":
-        mutateLikeRecentPost();
-        break;
       case "infinite":
         mutateLikeInfinitePost();
         break;
-      default:
+      case "default":
+        mutateLikeDefailtPost();
         return;
     }
   };
+
   return (
     <>
       <div className="relative h-full w-full rounded-md">
@@ -55,7 +60,7 @@ export default function BoardPhotoContent({
         <h1 className="text-md truncate font-poorStory font-bold tracking-wider md:mb-1 md:text-2xl">
           {title}
         </h1>
-        <LikeButton isLiked={isLiked} onClick={handleLikeButtonOnclick} />
+        <LikeButton isLiked={likeState} onClick={handleLikeButtonOnclick} />
         <div className=" flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
           {content}
         </div>

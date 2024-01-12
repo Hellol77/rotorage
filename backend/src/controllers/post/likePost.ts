@@ -50,7 +50,10 @@ export const likePost = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Failed to toggle like status" });
     }
     const likeStatus = isLiked;
-
+    console.log(likeStatus);
     return res.status(200).send({ likeStatus });
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send("failed to like post");
+  }
 };

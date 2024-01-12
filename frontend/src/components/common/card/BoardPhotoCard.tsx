@@ -12,9 +12,11 @@ import BoardPhotoContent from "./BoardPhotoContent";
 export default function BoardPhotoCard({
   post,
   type,
+  queryKey,
 }: {
   post: Post;
   type: PostGridType;
+  queryKey: string[];
 }) {
   const { _id } = post;
   const [onPhotoClicked, setOnPhotoClicked] = useState(false);
@@ -28,8 +30,8 @@ export default function BoardPhotoCard({
   };
 
   const useMemoBoardPhotoContent = useMemo(
-    () => <BoardPhotoContent post={post} type={type} />,
-    [post, type],
+    () => <BoardPhotoContent post={post} type={type} queryKey={queryKey} />,
+    [post, type, queryKey],
   );
 
   return (

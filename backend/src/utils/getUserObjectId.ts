@@ -19,7 +19,7 @@ export const getUserObjectId = async (
     const userData = await User.findOne(
       { userId: profileInfo.data.id },
       { _id: 1 }
-    );
+    ).lean();
     return userData?._id;
   } catch (err) {
     console.log("getUserObjectId error", err);

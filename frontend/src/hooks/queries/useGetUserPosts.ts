@@ -2,20 +2,20 @@ import { useContext } from "react";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { getBoardPosts } from "@/apis/post/index";
+import { getUserPosts } from "@/apis/post";
 import { queryKeys } from "@/apis/querykeys";
 import { UserDataContext } from "@/contexts/AuthContext";
 
-export function useGetBoardPosts() {
-  const { accessToken } = useContext(UserDataContext);
+export default function useGetUserPosts(userId: string) {
+  const { accessToken, user } = useContext(UserDataContext);
   return useInfiniteQuery({
-    queryKey: [queryKeys.boardPosts],
+    queryKey: [queryKeys.getUserPosts(user.userId)],
     queryFn: async ({ pageParam }) => {
-      const res = await getBoardPosts({ pageParam, accessToken });
+      const res = await getUserPosts({ pageParam, accessToken, userId });
       return res;
     },
 
-    enabled: accessToken !== "",
+    enabled: accessToken !== "" && user.userId !== "",
 
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) =>

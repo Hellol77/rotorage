@@ -34,6 +34,6 @@ export interface BoardPosts {
   pageParams: number;
 }
 
-export type PostGridType = "recent" | "infinite";
+export type PostGridType = "default" | "infinite";
 
 export type UpdatePostPropsType = { accessToken: string } & UpdatedPost;

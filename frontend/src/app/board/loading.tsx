@@ -5,7 +5,7 @@ import { Card, Skeleton } from "@nextui-org/react";
 
 import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
 
-const n = 8;
+const n = 4;
 
 export default function Loading() {
   return (

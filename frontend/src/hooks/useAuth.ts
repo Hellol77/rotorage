@@ -102,7 +102,6 @@ export default function useAuth() {
     모든 api를 react query로 관리 해야하나
     **/
       if (setUserData && userData.accessToken) {
-        console.log("401 refresh token");
         setUserData(userData);
         return true;
       }

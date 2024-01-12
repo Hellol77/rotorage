@@ -10,10 +10,7 @@ export default function useGetRecentPosts() {
   const { accessToken } = useContext(UserDataContext);
   return useQuery({
     queryKey: [queryKeys.recentPosts],
-    queryFn: async () => {
-      const res = await getRecentPosts(accessToken);
-      return res;
-    },
+    queryFn: async () => getRecentPosts(accessToken),
     enabled: accessToken !== "",
   });
 }

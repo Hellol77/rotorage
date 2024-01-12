@@ -14,7 +14,7 @@ export default function LikeButton({
     e.stopPropagation();
   };
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center ">
       <motion.div
         whileTap={{ scale: 3 }}
         whileHover={{ scale: 1.2 }}

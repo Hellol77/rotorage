@@ -4,4 +4,8 @@ export const getLikedPosts = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {};
+) => {
+
+
+
+};

@@ -6,7 +6,6 @@ import { queryKeys } from "@/apis/querykeys";
 import { getProfileInfo } from "@/apis/user";
 import { ACCESS_TOKEN_LOGOUT_STATE } from "@/constants/user";
 import { UserDataContext } from "@/contexts/AuthContext";
-import { UserData } from "@/types/user";
 
 export function useGetProfile() {
   const { accessToken } = useContext(UserDataContext);

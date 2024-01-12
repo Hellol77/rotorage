@@ -27,7 +27,7 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
-    created_at: { type: Date, default: Date.now, required: true },
+    createdAt: { type: Date, default: Date.now, required: true },
     likeCount: { type: Number, default: 0 },
     likers: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
     imageUrl: {

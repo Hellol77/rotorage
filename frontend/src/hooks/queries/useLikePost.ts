@@ -13,20 +13,20 @@ import { BoardPosts, Post } from "@/types/post";
 export default function useLikePost({
   _id,
   accessToken,
+  queryKey,
 }: {
   _id: string;
   accessToken: string;
+  queryKey?: string[];
 }) {
   const queryClient = useQueryClient();
-  const useLikeRecentPost = () => {
+  const useLikeDefaultPost = (queryKey: string[]) => {
     return useMutation({
       mutationFn: () => likePost({ accessToken, _id }),
       onMutate: async () => {
-        const previousBoardPosts = queryClient.getQueryData([
-          queryKeys.recentPosts,
-        ]);
-        await queryClient.cancelQueries({ queryKey: [queryKeys.recentPosts] });
-        queryClient.setQueryData([queryKeys.recentPosts], (old: Post[]) => {
+        const previousBoardPosts = queryClient.getQueryData([queryKey]);
+        await queryClient.cancelQueries({ queryKey: [queryKey] });
+        queryClient.setQueryData([queryKey], (old: Post[]) => {
           const newPosts = old.map((post) => {
             if (post._id === _id) {
               return { ...post, isLiked: !post.isLiked };
@@ -38,28 +38,23 @@ export default function useLikePost({
         return { previousBoardPosts };
       },
       onError: (err, newPost, context) => {
-        queryClient.setQueryData(
-          [queryKeys.recentPosts],
-          context?.previousBoardPosts,
-        );
+        queryClient.setQueryData([queryKey], context?.previousBoardPosts);
         toast.error("다시 시도해주세요.");
       },
       onSettled: () => {
-        queryClient.invalidateQueries({ queryKey: [queryKeys.recentPosts] });
+        queryClient.invalidateQueries({ queryKey: [queryKey] });
       },
     });
   };
 
-  const useLikeInfinitePost = () => {
+  const useLikeInfinitePost = (queryKey: string[]) => {
     return useMutation({
       mutationFn: () => likePost({ accessToken, _id }),
       onMutate: async () => {
-        const previousBoardPosts = queryClient.getQueryData([
-          queryKeys.boardPosts,
-        ]);
-        await queryClient.cancelQueries({ queryKey: [queryKeys.boardPosts] });
+        const previousBoardPosts = queryClient.getQueryData([queryKey]);
+        await queryClient.cancelQueries({ queryKey: [queryKey] });
         queryClient.setQueryData(
-          [queryKeys.boardPosts],
+          [queryKey],
           (old: InfiniteData<BoardPosts>) => {
             const newPages = old.pages.map((page) => {
               const newPost = page.pages.map((post) => {
@@ -79,20 +74,17 @@ export default function useLikePost({
       },
       onError: (err, newPost, context) => {
         console.log("err", err);
-        queryClient.setQueryData(
-          [queryKeys.boardPosts],
-          context?.previousBoardPosts,
-        );
+        queryClient.setQueryData([queryKey], context?.previousBoardPosts);
         toast.error("다시 시도해주세요.");
       },
       onSettled: () => {
-        queryClient.invalidateQueries({ queryKey: [queryKeys.boardPosts] });
+        queryClient.invalidateQueries({ queryKey: [queryKey] });
       },
     });
   };
 
-  const mutateLikeRecentPost = useLikeRecentPost().mutate;
-  const mutateLikeInfinitePost = useLikeInfinitePost().mutate;
+  const mutateLikeDefailtPost = useLikeDefaultPost(queryKey || []).mutate;
+  const mutateLikeInfinitePost = useLikeInfinitePost(queryKey || []).mutate;
 
-  return { mutateLikeRecentPost, mutateLikeInfinitePost };
+  return { mutateLikeDefailtPost, mutateLikeInfinitePost };
 }
