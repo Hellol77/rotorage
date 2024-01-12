@@ -9,7 +9,7 @@ import { UserDataContext } from "@/contexts/AuthContext";
 export default function useGetRecentPosts() {
   const { accessToken } = useContext(UserDataContext);
   return useQuery({
-    queryKey: [queryKeys.recentPosts],
+    queryKey: queryKeys.recentPosts,
     queryFn: async () => getRecentPosts(accessToken),
     enabled: accessToken !== "",
   });

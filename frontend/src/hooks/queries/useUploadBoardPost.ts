@@ -15,7 +15,6 @@ import { DEFAULT_UPDATED_POST } from "@/constants/updatedPost";
 import { LogoutContext, UserDataContext } from "@/contexts/AuthContext";
 import { BoardPosts, UpdatedPost } from "@/types/post";
 
-
 export function useUploadBoardPost() {
   const queryClient = useQueryClient();
   const handleLogout = useContext(LogoutContext);
@@ -31,7 +30,7 @@ export function useUploadBoardPost() {
         accessToken: userData?.accessToken,
       }),
     onMutate: async (newPost) => {
-      await queryClient.cancelQueries({ queryKey: [queryKeys.boardPosts] });
+      await queryClient.cancelQueries({ queryKey: queryKeys.boardPosts });
 
       const newImageUrl = URL.createObjectURL(newPost.imageUrl);
       if (!userData) {
@@ -49,10 +48,10 @@ export function useUploadBoardPost() {
       };
       const previousBoardPosts = queryClient.getQueryData<
         InfiniteData<BoardPosts>
-      >([queryKeys.boardPosts]);
+      >(queryKeys.boardPosts);
 
       queryClient.setQueryData(
-        [queryKeys.boardPosts],
+        queryKeys.boardPosts,
         (old: InfiniteData<BoardPosts>) => {
           const newArray = [...old.pages[0].pages];
           newArray.unshift(copyNewPost);
@@ -64,7 +63,7 @@ export function useUploadBoardPost() {
     },
     onError: async (err: AxiosError, newPost, context) => {
       queryClient.setQueryData(
-        [queryKeys.boardPosts],
+        queryKeys.boardPosts,
         context?.previousBoardPosts,
       );
       if (err.request.status === 401) {
@@ -78,7 +77,7 @@ export function useUploadBoardPost() {
       return;
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: [queryKeys.boardPosts] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.boardPosts });
     },
   });
 }

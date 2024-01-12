@@ -1,20 +1,16 @@
 "use client";
-import React, { useContext } from "react";
+import React from "react";
 
 import { useParams } from "next/navigation";
 
 import MainContainer from "@/components/common/ui/container/MainContainer";
 import ProfileForm from "@/components/profile/ProfileForm";
-import { UserDataContext } from "@/contexts/AuthContext";
+import useSearchProfile from "@/hooks/queries/useSearchProfile";
 
 export default function SearchProfilePage() {
   const { slug } = useParams();
-  console.log(slug);
-  const { user } = useContext(UserDataContext);
-
-  return (
-    <MainContainer>
-      {/* <ProfileForm /> */}dd
-    </MainContainer>
-  );
+  const searchUserId = slug[0];
+  const { data } = useSearchProfile(searchUserId);
+  console.log(data);
+  return <MainContainer>{data && <ProfileForm user={data} />}</MainContainer>;
 }

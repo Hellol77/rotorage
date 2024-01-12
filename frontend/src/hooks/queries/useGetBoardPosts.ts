@@ -9,7 +9,7 @@ import { UserDataContext } from "@/contexts/AuthContext";
 export function useGetBoardPosts() {
   const { accessToken } = useContext(UserDataContext);
   return useInfiniteQuery({
-    queryKey: [queryKeys.boardPosts],
+    queryKey: queryKeys.boardPosts,
     queryFn: async ({ pageParam }) => {
       const res = await getBoardPosts({ pageParam, accessToken });
       return res;

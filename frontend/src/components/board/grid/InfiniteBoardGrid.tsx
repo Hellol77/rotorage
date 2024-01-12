@@ -12,17 +12,10 @@ import Loading from "@/app/board/loading";
 import BoardPhotoCard from "@/components/common/card/BoardPhotoCard";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
-import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
 import { Post } from "@/types/post";
 import useRefreshScrollReset from "@/utils/useRefreshScrollReset";
 
-export default function InfiniteBoardGrid({
-  data,
-  fetchNextPage,
-  isFetchingNextPage,
-  isPending,
-  queryKey,
-}: {
+interface InfiniteBoardGridProps {
   isPending: boolean;
   isFetchingNextPage: boolean;
   fetchNextPage: (options?: FetchNextPageOptions | undefined) => Promise<
@@ -55,7 +48,15 @@ export default function InfiniteBoardGrid({
       >
     | undefined;
   queryKey: string[];
-}) {
+}
+
+export default function InfiniteBoardGrid({
+  data,
+  fetchNextPage,
+  isFetchingNextPage,
+  isPending,
+  queryKey,
+}: InfiniteBoardGridProps) {
   // const { data, fetchNextPage, isFetchingNextPage, isPending } =
   //   useGetBoardPosts();
   const ref = useRef(null);

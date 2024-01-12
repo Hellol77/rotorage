@@ -9,7 +9,7 @@ import { UserDataContext } from "@/contexts/AuthContext";
 export default function useGetUserPosts(userId: string) {
   const { accessToken, user } = useContext(UserDataContext);
   return useInfiniteQuery({
-    queryKey: [queryKeys.getUserPosts(user.userId)],
+    queryKey: queryKeys.getUserPosts(user.userId),
     queryFn: async ({ pageParam }) => {
       const res = await getUserPosts({ pageParam, accessToken, userId });
       return res;

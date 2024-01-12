@@ -11,7 +11,7 @@ export function useGetProfile() {
   const { accessToken } = useContext(UserDataContext);
 
   return useQuery({
-    queryKey: [queryKeys.getProfile],
+    queryKey: queryKeys.getProfile,
     queryFn: async () => {
       const data = await getProfileInfo(accessToken);
       return data;
