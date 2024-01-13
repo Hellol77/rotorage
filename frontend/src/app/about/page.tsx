@@ -1,11 +1,12 @@
 import React from "react";
-import Introduce from "@/components/about/Introduce";
-import Music from "@/components/about/music/Music";
-import Discography from "@/components/about/Discography";
-import Interview from "@/components/about/Interview";
-import Line from "@/components/common/ui/Line";
+
 import { Carousel } from "@/components/about/carousel/Carousel";
 import { images } from "@/components/about/carousel/profileImage";
+import Discography from "@/components/about/Discography";
+import Interview from "@/components/about/Interview";
+import Introduce from "@/components/about/Introduce";
+import Music from "@/components/about/music/Music";
+import Line from "@/components/common/ui/Line";
 
 export default function AboutPage() {
   return (

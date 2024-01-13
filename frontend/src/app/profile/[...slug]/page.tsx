@@ -7,7 +7,6 @@ import { queryKeys } from "@/apis/querykeys";
 import InfiniteBoardGrid from "@/components/board/grid/InfiniteBoardGrid";
 import ExclamationIcon from "@/components/common/icon/ExclamationIcon";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
-import MainContainer from "@/components/common/ui/container/MainContainer";
 import ProfileInfoContainer from "@/components/common/ui/container/ProfileInfoContainer";
 import ProfileForm from "@/components/profile/ProfileForm";
 import useGetUserPosts from "@/hooks/queries/useGetUserPosts";
@@ -20,7 +19,7 @@ export default function SearchProfilePage() {
   const { data, fetchNextPage, isFetchingNextPage, isPending } =
     useGetUserPosts(searchUserId);
   return (
-    <MainContainer>
+    <section className="relative mx-auto h-full w-screen">
       <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-xl ">
         프로필
       </h1>
@@ -52,6 +51,6 @@ export default function SearchProfilePage() {
           queryKey={queryKeys.getUserPosts(searchUserId)}
         />
       </ProfileInfoContainer>
-    </MainContainer>
+    </section>
   );
 }

@@ -36,10 +36,11 @@ export default function ProfilePage() {
     }
   }, [accessToken, router]);
   return (
-    <MainContainer>
-      <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-xl ">
+    <section className="relative mx-auto h-full w-full">
+      <h1 className="md:w-50 mb-4 mt-4 flex w-full  font-Pretendard-SemiBold text-xl ">
         프로필
       </h1>
+
       {accessToken === "" ? (
         <ProfileSkeletonCard />
       ) : (
@@ -49,7 +50,7 @@ export default function ProfilePage() {
           </ModalTriggerButton>
         </ProfileForm>
       )}
-      <h1 className="md:w-50 mb-4 mt-10 flex w-full  font-Pretendard-SemiBold text-xl ">
+      <h1 className="md:w-50 mb-4 mt-4 flex w-full  font-Pretendard-SemiBold text-xl ">
         좋아요한 게시물
       </h1>
       <ProfileInfoContainer>
@@ -73,6 +74,6 @@ export default function ProfilePage() {
           queryKey={queryKeys.getUserPosts(user.userId)}
         />
       </ProfileInfoContainer>
-    </MainContainer>
+    </section>
   );
 }

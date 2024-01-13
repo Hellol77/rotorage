@@ -12,14 +12,16 @@ export default function BoradPage() {
     useGetBoardPosts();
   return (
     <MainContainer>
-      <BoardHeader />
-      <InfiniteBoardGrid
-        data={data}
-        fetchNextPage={fetchNextPage}
-        isFetchingNextPage={isFetchingNextPage}
-        isPending={isPending}
-        queryKey={queryKeys.boardPosts}
-      />
+      <section className="relative mx-auto h-full w-screen">
+        <BoardHeader />
+        <InfiniteBoardGrid
+          data={data}
+          fetchNextPage={fetchNextPage}
+          isFetchingNextPage={isFetchingNextPage}
+          isPending={isPending}
+          queryKey={queryKeys.boardPosts}
+        />
+      </section>
     </MainContainer>
   );
 }
