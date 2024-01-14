@@ -8,7 +8,7 @@ import InstagramIcon from "@/components/common/icon/InstagramIcon";
 import YoutubeIcon from "@/components/common/icon/YoutubeIcon";
 import { INTRODUCE } from "@/constants/about";
 
-export default function Introduce() {
+  export default function Introduce() {
   return (
     <ul className="relative z-20 mb-4 mt-4 w-fit border-slate-400 bg-[#101010] bg-opacity-40 px-4 text-white md:ml-20 md:border-l-4 md:pl-7">
       <li className=" text-3xl font-bold tracking-wider text-white">

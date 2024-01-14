@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Avatar, Divider, Input } from "@nextui-org/react";
+// import { Avatar, Divider, Input } from "@nextui-org/react";
 
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
 import useProfileEdit from "@/hooks/useProfileEdit";
+import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
 
 export const NicknameMaxLimitByte = 30;
 export const NicknameMinLimitByte = 3;
@@ -35,15 +36,16 @@ export default function ProfileEditModalContent() {
       <strong className=" p-4 font-Pretendard-Regular text-lg">
         프로필 편집
       </strong>
-      <Divider />
-      <Avatar src="" className="mt-10 h-20 w-20 md:h-36 md:w-36" />
+      {/* <Divider /> */}
+      {/* <Avatar src="" className="mt-10 h-20 w-20 md:h-36 md:w-36" /> */}
+      <ProfileAvatar />
       <div className=" p-10">
         <div>
           <div className="flex justify-between text-sm">
             <strong className=" ">닉네임</strong>
             <span>{`${nicknameInputByteCount}/${NicknameMaxLimitByte}`}</span>
           </div>
-          <Input
+          <input
             className="mt-2 w-72"
             onChange={handleNicknameInput}
             defaultValue={nickname}
@@ -57,7 +59,7 @@ export default function ProfileEditModalContent() {
             <strong className=" ">한 줄 자기소개</strong>
             <span>{`${introduceInputByteCount}/${IntroduceMaxLimitByte}`}</span>
           </div>
-          <Input
+          <input
             className="mt-2 w-72 "
             placeholder="자기소개를 입력해주세요."
             defaultValue={introduce || ""}

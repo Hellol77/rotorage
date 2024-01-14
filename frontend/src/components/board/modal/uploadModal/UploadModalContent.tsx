@@ -9,7 +9,6 @@ import React, {
 } from "react";
 import { toast } from "react-toastify";
 
-import { Input, Textarea } from "@nextui-org/react";
 import Image from "next/image";
 
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
@@ -108,9 +107,8 @@ export default function UploadModalContent() {
         onChange={handleChange}
       />
       <label
-        className={`mx-4 mt-4 flex h-[100vw]  w-[80vw] items-center justify-center hover:bg-slate-800 md:h-[36vw] md:w-[28vw] ${
-          !file && "border-2 border-dashed border-sky-500"
-        } `}
+        className={`mx-4 mt-4 flex h-[100vw]  w-[80vw] items-center justify-center hover:bg-slate-800 md:h-[36vw] md:w-[28vw] ${!file && "border-2 border-dashed border-sky-500"
+          } `}
         htmlFor="input-upload"
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
@@ -139,7 +137,7 @@ export default function UploadModalContent() {
           </div>
         )}
       </label>
-      <Textarea
+      <input
         placeholder="제목을 입력해주세요"
         className=" relative z-50 mb-1 mt-2 w-full px-4 font-poorStory text-2xl tracking-wider"
         name="title"
@@ -147,7 +145,7 @@ export default function UploadModalContent() {
         ref={titleTextRef}
         required
       />
-      <Input
+      <input
         name="content"
         placeholder="내용을 입력해주세요"
         className="  z-50 mb-2 h-10  w-full break-all px-4 font-poorStory tracking-wide "

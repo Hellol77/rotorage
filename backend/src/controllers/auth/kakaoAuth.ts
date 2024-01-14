@@ -162,7 +162,7 @@ export const validateAccessToken = async (req: Request, res: Response) => {
       }
     );
     const userId = tokenInfo.data.id.toString();
-    const userInfo = await User.findOne({ _id: userId }, { _id: 1 }).lean();
+    const userInfo = await User.findOne({ userId: userId }, { _id: 1 }).lean();
     if (tokenInfo.data.expires_in < 60 * 60) {
       const refreshInfo = await axios.post(
         "https://kauth.kakao.com/oauth/token",

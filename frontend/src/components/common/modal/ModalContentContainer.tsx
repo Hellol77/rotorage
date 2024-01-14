@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import { Button } from "@nextui-org/react";
+// import { Button } from "@nextui-org/react";
 import { motion } from "framer-motion";
 
 export function ModalContentContainer({
@@ -48,23 +48,21 @@ export function ModalEditContentContainer({
     >
       {children}
       <div className="mb-3 flex  w-full items-center justify-center gap-2 px-4 font-poorStory">
-        <Button
+        <button
           onClick={handleCloseOnClick}
           color="default"
-          size="md"
           className="w-full"
         >
           닫기
-        </Button>
-        <Button
+        </button>
+        <button
           onClick={handleSubmit}
           color="primary"
-          size="md"
           className="w-full"
-          isDisabled={disabled}
+          disabled={disabled}
         >
           {submitText}
-        </Button>
+        </button>
       </div>
     </motion.div>
   );

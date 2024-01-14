@@ -3,6 +3,7 @@ const withVideos = require("next-videos");
 const nextConfig = {
   ...withVideos(),
   images: {
+    unoptimized: true,
     domains: ["hanroro-fanpage.s3.ap-northeast-2.amazonaws.com"],
   },
   async rewrites() {

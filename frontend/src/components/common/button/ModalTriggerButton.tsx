@@ -2,7 +2,7 @@
 import React, { ReactNode, useContext, useState } from "react";
 import { toast } from "react-toastify";
 
-import { Button } from "@nextui-org/react";
+// import { Button } from "@nextui-org/react";
 
 import PostMoreIcon from "@/components/common/icon/PostMoreIcon";
 import UploadIcon from "@/components/common/icon/UploadIcon";
@@ -43,17 +43,17 @@ export default function ModalTriggerButton({
   };
   return (
     <>
-      <Button
+      <button
         className=" flex items-center justify-center font-poorStory"
-        size={size}
+        // size={size}
         // variant="bordered"
-        isLoading={isLoading}
+        // isLoading={isLoading}
         color="primary"
-        endContent={content ? ContentIcon[content] : null}
+        // endContent={content ? ContentIcon[content] : null}
         onClick={handleOnClick}
       >
         {text}
-      </Button>
+      </button>
       <ModalTriggerButtonProvider
         onClick={onClick}
         handleCloseOnClick={handleCloseOnClick}
