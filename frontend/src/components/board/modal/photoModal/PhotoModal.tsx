@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 
 import PhotoModalContent from "@/components/board/modal/photoModal/PhotoModalContent";

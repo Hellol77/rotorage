@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
+import { ModalTextAreaInput } from "@/components/common/modal/ModalTextAreaInput";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
 import { useUploadBoardPost } from "@/hooks/queries/useUploadBoardPost";
@@ -88,7 +89,7 @@ export default function UploadModalContent() {
       submitText="등록하기"
       handleSubmit={handleSubmit}
       handleCloseOnClick={handleCloseOnClick}
-      className="-top-20 left-0 right-0 "
+      className="-top-20 left-0 right-0 p-4 "
     >
       <input
         accept="image/*"
@@ -100,7 +101,7 @@ export default function UploadModalContent() {
         onChange={handleChange}
       />
       <label
-        className={`mx-4 mt-4 flex h-[100vw]  w-[80vw] items-center justify-center hover:bg-slate-800 md:h-[36vw] md:w-[28vw] ${
+        className={` flex h-[100vw]  w-[80vw] items-center justify-center hover:bg-slate-800 md:h-[36vw] md:w-[28vw] ${
           !file && "border-2 border-dashed border-sky-500"
         } `}
         htmlFor="input-upload"
@@ -127,18 +128,26 @@ export default function UploadModalContent() {
           </div>
         )}
       </label>
-      <input
+      {/* <input
         placeholder="제목을 입력해주세요"
         className=" relative z-50 mb-1 mt-2 w-full px-4 font-poorStory text-2xl tracking-wider"
         name="title"
         id="input-text"
         ref={titleTextRef}
         required
+      /> */}
+      <ModalTextAreaInput
+        className={`mt-2 w-full rounded-xl bg-[#27272a] px-2 py-2 `}
+        placeholder="제목을 입력해주세요"
+        name="title"
+        id="input-text"
+        ref={titleTextRef}
+        required
       />
-      <input
+      <ModalTextAreaInput
+        className={`mt-2 w-full rounded-xl bg-[#27272a] px-2 py-2 `}
         name="content"
         placeholder="내용을 입력해주세요"
-        className="  z-50 mb-2 h-10  w-full break-all px-4 font-poorStory tracking-wide "
         ref={contentTextRef}
         required
       />

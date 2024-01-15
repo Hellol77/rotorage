@@ -13,21 +13,9 @@ export default function ProfileForm({ children, user }: { children?: ReactNode; 
     <>
       <ProfileInfoContainer className="flex">
         <div className="h-full">
-          {/* <span
-            tabIndex={-1}
-            className=" relative z-10 mr-8 box-border flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-default align-middle text-tiny text-default-foreground outline-none ring-2 ring-default ring-offset-2 ring-offset-background data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-offset-2 data-[focus-visible=true]:outline-focus md:h-36 md:w-36"
-          >
-            <Image
-              src={gallery11}
-              className=" flex h-full w-full object-cover  transition-opacity !duration-500"
-              alt="profile"
-              width={144}
-              height={144}
-            />
-          </span> */}
-          <ProfileAvatar />
+          <ProfileAvatar className="mr-8" />
         </div>
-        <div className=" flex h-8  w-full min-w-fit items-center justify-between">
+        <div className=" flex w-full min-w-fit items-center justify-between">
           <div className="w-full min-w-fit">
             <span className=" font-Pretendard-SemiBold text-2xl">{user?.nickname}</span>
             <p className=" mt-2 text-sm text-[#c9cedc]">

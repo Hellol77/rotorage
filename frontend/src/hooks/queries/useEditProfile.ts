@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
 
-import { editProfile, getProfileInfo } from "@/apis/user";
+import { editProfile, getMyProfileInfo } from "@/apis/user";
 import { LogoutContext, SetUserDataContext } from "@/contexts/AuthContext";
 import { UserEditProfileType } from "@/types/user";
 import { useMutation } from "@tanstack/react-query";
@@ -25,7 +25,8 @@ export default function useEditProfile({
       });
     },
     onError: async (err: AxiosError) => {
-      const userData = await getProfileInfo(accessToken);
+      const userData = await getMyProfileInfo(accessToken);
+      console.log(userData);
       if (!setUserData) return;
       setUserData((prev) => ({ ...prev, user: userData }));
       if (err.request.status === 401) {

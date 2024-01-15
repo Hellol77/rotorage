@@ -38,6 +38,7 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
 
     const userExists = await User.exists({ userId: kakaoUserId });
 
+    const userInfo = await User.findOne({ userId: kakaoUserId }).lean();
     if (!userExists) {
       const newUser = new User({
         userId: kakaoUserId,
@@ -45,8 +46,8 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
       });
       await newUser.save();
 
-      const userInfo = await User.findOne({ userId: kakaoUserId }).lean();
       const newUserInfo = {
+        ...userInfo,
         nickname: getUserInfo.data.properties.nickname,
         userId: userInfo?._id,
       };
@@ -57,7 +58,6 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
       return res.status(200).send(userData);
     }
 
-    const userInfo = await User.findOne({ userId: kakaoUserId }).lean();
     const newUserInfo = {
       ...userInfo,
       userId: userInfo?._id,
@@ -186,13 +186,13 @@ export const validateAccessToken = async (req: Request, res: Response) => {
       const refreshedAccessToken = refreshInfo.data.access_token;
 
       const data = { userId: userInfo?._id, accessToken: refreshedAccessToken };
-      res.status(200).send(data);
+      return res.status(200).send(data);
     }
 
-    const data = { userId, accessToken };
-    res.status(200).send(data);
+    const data = { userId: userInfo?._id, accessToken };
+    return res.status(200).send(data);
   } catch (err) {
     console.log(err);
-    res.status(401).send("Unauthorized");
+    return res.status(401).send("Unauthorized");
   }
 };

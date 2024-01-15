@@ -1,4 +1,3 @@
-"use client";
 import React, { Fragment, useEffect, useRef } from "react";
 
 import BoardPhotoCard from "@/components/common/card/BoardPhotoCard";

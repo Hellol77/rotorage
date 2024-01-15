@@ -3,11 +3,10 @@ import React, { useContext, useEffect } from "react";
 
 import { queryKeys } from "@/apis/querykeys";
 import InfiniteBoardGrid from "@/components/board/grid/InfiniteBoardGrid";
+import ProfileEditModal from "@/components/board/modal/profileModal/ProfileEditModal";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
-import MainContainer from "@/components/common/ui/container/MainContainer";
 import ProfileInfoContainer from "@/components/common/ui/container/ProfileInfoContainer";
-import ProfileEditModal from "@/components/profile/modal/ProfileEditModal";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useGetLikedPosts } from "@/hooks/queries/useGetLikedPosts";
@@ -23,6 +22,7 @@ export default function ProfilePage() {
     isFetchingNextPage: userPostsIsFetchingNextPage,
     isPending: userPostsIsPending,
   } = useGetUserPosts(user.userId);
+  console.log(user);
   const {
     data: userLikedPosts,
     fetchNextPage: userLikedPostsFetchNextPage,
@@ -35,8 +35,8 @@ export default function ProfilePage() {
     }
   }, [accessToken, router]);
   return (
-    <section className="relative mx-auto h-full w-full">
-      <h1 className="md:w-50 mb-4 mt-4 flex w-full  font-Pretendard-SemiBold text-xl ">프로필</h1>
+    <section className="mx-auto h-full w-full">
+      <h1 className="md:w-50 mb-4 mt-4 flex w-full  font-Pretendard-SemiBold text-xl">프로필</h1>
 
       {accessToken === "" ? (
         <ProfileSkeletonCard />

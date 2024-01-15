@@ -47,7 +47,7 @@ export function ModalEditContentContainer({
       className={` absolute  z-50  m-auto  flex h-fit  w-fit  flex-col  items-center  justify-center rounded-xl bg-black ${className}`}
     >
       {children}
-      <div className="mb-3 flex  w-full items-center justify-center gap-2 px-4 font-poorStory">
+      <div className="flex  w-full items-center justify-center gap-2 px-4 font-poorStory">
         <button onClick={handleCloseOnClick} color="default" className="w-full">
           닫기
         </button>

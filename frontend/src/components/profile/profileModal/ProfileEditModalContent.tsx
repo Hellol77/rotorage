@@ -4,6 +4,8 @@ import React from "react";
 
 import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
+import ModalTextInput from "@/components/common/modal/ModalTextInput";
+import Divider from "@/components/common/ui/Divider";
 
 import useProfileEdit from "@/hooks/useProfileEdit";
 
@@ -31,12 +33,11 @@ export default function ProfileEditModalContent() {
       submitText="수정하기"
       handleSubmit={handleSubmit}
       handleCloseOnClick={handleCloseOnClick}
-      className="left-0 right-0 top-10 md:-top-20  "
+      className="left-0 right-0 top-20"
       disabled={disabled}
     >
       <strong className=" p-4 font-Pretendard-Regular text-lg">프로필 편집</strong>
-      {/* <Divider /> */}
-      {/* <Avatar src="" className="mt-10 h-20 w-20 md:h-36 md:w-36" /> */}
+      <Divider className="mb-10" />
       <ProfileAvatar />
       <div className=" p-10">
         <div>
@@ -44,7 +45,7 @@ export default function ProfileEditModalContent() {
             <strong className=" ">닉네임</strong>
             <span>{`${nicknameInputByteCount}/${NicknameMaxLimitByte}`}</span>
           </div>
-          <input className="mt-2 w-72" onChange={handleNicknameInput} defaultValue={nickname} />
+          <ModalTextInput onChange={handleNicknameInput} defaultValue={nickname} />
           <div className="mt-2 px-3 font-Pretendard-Regular text-xs text-red-500">
             {validateNickname}
           </div>
@@ -54,10 +55,9 @@ export default function ProfileEditModalContent() {
             <strong className=" ">한 줄 자기소개</strong>
             <span>{`${introduceInputByteCount}/${IntroduceMaxLimitByte}`}</span>
           </div>
-          <input
-            className="mt-2 w-72 "
+          <ModalTextInput
             placeholder="자기소개를 입력해주세요."
-            defaultValue={introduce || ""}
+            defaultValue={introduce}
             onChange={handleIntroduceInput}
           />
           <div className="mt-2 px-3 font-Pretendard-Regular text-xs text-red-500">

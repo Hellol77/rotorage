@@ -1,7 +1,7 @@
 import React from "react";
 
+import ProfileEditModalContent from "@/components/board/modal/profileModal/ProfileEditModalContent";
 import ModalContainer from "@/components/common/modal/ModalContainer";
-import ProfileEditModalContent from "@/components/profile/modal/ProfileEditModalContent";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
 
 export default function ProfileEditModal() {

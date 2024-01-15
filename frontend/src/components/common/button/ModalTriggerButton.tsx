@@ -2,8 +2,7 @@
 import React, { ReactNode, useContext, useState } from "react";
 import { toast } from "react-toastify";
 
-// import { Button } from "@nextui-org/react";
-
+import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import PostMoreIcon from "@/components/common/icon/PostMoreIcon";
 import UploadIcon from "@/components/common/icon/UploadIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
@@ -12,6 +11,7 @@ import ModalTriggerButtonProvider from "@/contexts/ModalTriggerButton.context";
 const ContentIcon = {
   uploadIcon: <UploadIcon color="white" className="h-4 w-4" />,
   postMoreIcon: <PostMoreIcon />,
+  loading: <BoardLoadingIcon className="h-4 w-4" />,
 };
 
 export default function ModalTriggerButton({
@@ -44,7 +44,7 @@ export default function ModalTriggerButton({
   return (
     <>
       <button
-        className=" flex items-center justify-center font-poorStory"
+        className={`flex min-w-fit items-center justify-center gap-2 rounded-3xl border-2  bg-blue-500 px-3 py-1 font-poorStory  ${isLoading ? "bg-gray-500" : ""}`}
         // size={size}
         // variant="bordered"
         // isLoading={isLoading}
@@ -52,6 +52,7 @@ export default function ModalTriggerButton({
         // endContent={content ? ContentIcon[content] : null}
         onClick={handleOnClick}
       >
+        {isLoading ? ContentIcon.loading : content ? ContentIcon[content] : null}
         {text}
       </button>
       <ModalTriggerButtonProvider onClick={onClick} handleCloseOnClick={handleCloseOnClick}>

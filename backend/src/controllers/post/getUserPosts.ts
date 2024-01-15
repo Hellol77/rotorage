@@ -24,6 +24,7 @@ export const getUserPosts = async (
     //     },
     //   })
     //   .lean();
+    console.log('userId', userId);
     const posts = await Post.find({ user: userId }, {})
       .populate({ path: "user", select: "userId nickname" })
       .sort({ _id: -1 })
@@ -45,7 +46,7 @@ export const getUserPosts = async (
     });
     return res.status(200).json(myPostsWithLikeStatus);
   } catch (err) {
-    console.log("getMyPosts", err);
+    console.log("getUserPosts", err);
     return res.status(400).send("자신의 게시글을 불러오는데 실패했습니다.");
   }
 };
