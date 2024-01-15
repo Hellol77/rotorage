@@ -1,21 +1,14 @@
 "use client";
 import React, { ReactNode, useContext } from "react";
 
+import { UserData } from "@/types/user";
 import Image from "next/image";
 
-import { UserData } from "@/types/user";
-
 import gallery11 from "../../../public/photo/gallery/gallery11.png";
-import ProfileInfoContainer from "../common/ui/container/ProfileInfoContainer";
 import ProfileAvatar from "../common/avatar/ProfileAvatar";
+import ProfileInfoContainer from "../common/ui/container/ProfileInfoContainer";
 
-export default function ProfileForm({
-  children,
-  user,
-}: {
-  children?: ReactNode;
-  user: UserData;
-}) {
+export default function ProfileForm({ children, user }: { children?: ReactNode; user: UserData }) {
   return (
     <>
       <ProfileInfoContainer className="flex">
@@ -34,11 +27,9 @@ export default function ProfileForm({
           </span> */}
           <ProfileAvatar />
         </div>
-        <div className="flex w-full min-w-fit items-center justify-between">
+        <div className=" flex h-8  w-full min-w-fit items-center justify-between">
           <div className="w-full min-w-fit">
-            <span className=" font-Pretendard-SemiBold text-2xl">
-              {user?.nickname}
-            </span>
+            <span className=" font-Pretendard-SemiBold text-2xl">{user?.nickname}</span>
             <p className=" mt-2 text-sm text-[#c9cedc]">
               {user?.introduce === "loading"
                 ? ""

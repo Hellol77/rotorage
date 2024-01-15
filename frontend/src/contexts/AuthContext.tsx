@@ -1,18 +1,11 @@
 "use client";
 
-import React, {
-  createContext,
-  ReactNode,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-
-import { usePathname } from "next/navigation";
+import React, { createContext, ReactNode, useEffect, useMemo, useState } from "react";
 
 import { refreshAccessTokenApi } from "@/apis/auth";
 import { ACCESS_TOKEN_LOGOUT_STATE } from "@/constants/user";
 import { ClientData } from "@/types/user";
+import { usePathname } from "next/navigation";
 
 export const initailState: ClientData = {
   user: {
@@ -45,10 +38,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const [userData, setUserData] = useState<ClientData>(initailState);
   const pathname = usePathname();
   const checkLoginStatus = () => {
-    return userData &&
-      !ACCESS_TOKEN_LOGOUT_STATE.includes(userData?.accessToken)
-      ? true
-      : false;
+    return userData && !ACCESS_TOKEN_LOGOUT_STATE.includes(userData?.accessToken) ? true : false;
   };
   const [isLogin, setLogin] = useState<boolean>(checkLoginStatus());
   const handleLogout = () => {
@@ -69,8 +59,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const hasToken = useMemo(
-    () =>
-      !ACCESS_TOKEN_LOGOUT_STATE.includes(userData?.accessToken) ? true : false,
+    () => (!ACCESS_TOKEN_LOGOUT_STATE.includes(userData?.accessToken) ? true : false),
     [userData],
   );
 
@@ -82,9 +71,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     <IsLoginContext.Provider value={isLogin}>
       <UserDataContext.Provider value={userData}>
         <SetUserDataContext.Provider value={setUserData}>
-          <LogoutContext.Provider value={handleLogout}>
-            {children}
-          </LogoutContext.Provider>
+          <LogoutContext.Provider value={handleLogout}>{children}</LogoutContext.Provider>
         </SetUserDataContext.Provider>
       </UserDataContext.Provider>
     </IsLoginContext.Provider>

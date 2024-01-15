@@ -7,11 +7,9 @@ import {
 } from "@/components/profile/modal/ProfileEditModalContent";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
+import { inputByteCountCalculate, validateStringNumEngKor } from "@/utils/input/inputByteCount";
+
 import useAuth from "@/hooks/useAuth";
-import {
-  inputByteCountCalculate,
-  validateStringNumEngKor,
-} from "@/utils/input/inputByteCount";
 
 import useEditProfile from "./queries/useEditProfile";
 

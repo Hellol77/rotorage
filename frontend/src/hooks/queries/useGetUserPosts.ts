@@ -1,10 +1,9 @@
 import { useContext } from "react";
 
-import { useInfiniteQuery } from "@tanstack/react-query";
-
 import { getUserPosts } from "@/apis/post";
 import { queryKeys } from "@/apis/querykeys";
 import { UserDataContext } from "@/contexts/AuthContext";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 export default function useGetUserPosts(userId: string) {
   const { accessToken, user } = useContext(UserDataContext);

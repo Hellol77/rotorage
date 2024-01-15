@@ -1,9 +1,8 @@
 "use client";
 import React, { ReactNode } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
-
 import useScrollFixed from "@/utils/useScrollFixed";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function ModalContainer({
   children,

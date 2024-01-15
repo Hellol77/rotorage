@@ -16,10 +16,7 @@ export default function PhotoAlbumIcon({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M11.024 11.536L10 10L8 13H17L13.5 8L11.024 11.536Z"
-        fill={color}
-      />
+      <path d="M11.024 11.536L10 10L8 13H17L13.5 8L11.024 11.536Z" fill={color} />
       <path
         d="M9.503 9C10.3331 9 11.006 8.32709 11.006 7.497C11.006 6.66692 10.3331 5.994 9.503 5.994C8.67292 5.994 8 6.66692 8 7.497C8 8.32709 8.67292 9 9.503 9Z"
         fill={color}

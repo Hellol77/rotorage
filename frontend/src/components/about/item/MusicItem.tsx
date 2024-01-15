@@ -1,9 +1,8 @@
 import React from "react";
 
+import YoutubeIcon from "@/components/common/icon/YoutubeIcon";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-
-import YoutubeIcon from "@/components/common/icon/YoutubeIcon";
 
 export default function MusicItem({
   title,
@@ -22,19 +21,11 @@ export default function MusicItem({
     <ol
       className={`md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 ${className}`}
     >
-      <Image
-        src={album}
-        className=" w-20 rounded-md md:w-24 "
-        alt={`${album}`}
-      />
+      <Image src={album} className=" w-20 rounded-md md:w-24 " alt={`${album}`} />
       <div className="flex w-full flex-col justify-center md:w-full">
         <p className=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl">
           {title}
-          <Link
-            className=" mr-2 md:ml-2 md:mr-2"
-            href={`${url}`}
-            target="_blank"
-          >
+          <Link className=" mr-2 md:ml-2 md:mr-2" href={`${url}`} target="_blank">
             <YoutubeIcon size="24" />
           </Link>
         </p>

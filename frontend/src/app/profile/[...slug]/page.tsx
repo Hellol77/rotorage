@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 
-import { useParams } from "next/navigation";
-
 import { queryKeys } from "@/apis/querykeys";
 import InfiniteBoardGrid from "@/components/board/grid/InfiniteBoardGrid";
 import ExclamationIcon from "@/components/common/icon/ExclamationIcon";
@@ -11,18 +9,16 @@ import ProfileInfoContainer from "@/components/common/ui/container/ProfileInfoCo
 import ProfileForm from "@/components/profile/ProfileForm";
 import useGetUserPosts from "@/hooks/queries/useGetUserPosts";
 import useSearchProfile from "@/hooks/queries/useSearchProfile";
+import { useParams } from "next/navigation";
 
 export default function SearchProfilePage() {
   const { slug } = useParams();
   const searchUserId = slug[0];
   const { data: userProfileData, isLoading } = useSearchProfile(searchUserId);
-  const { data, fetchNextPage, isFetchingNextPage, isPending } =
-    useGetUserPosts(searchUserId);
+  const { data, fetchNextPage, isFetchingNextPage, isPending } = useGetUserPosts(searchUserId);
   return (
     <section className="relative mx-auto h-full w-screen">
-      <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-xl ">
-        프로필
-      </h1>
+      <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-xl ">프로필</h1>
       {isLoading ? (
         <ProfileSkeletonCard />
       ) : userProfileData ? (
@@ -30,9 +26,7 @@ export default function SearchProfilePage() {
       ) : (
         <ProfileInfoContainer className="flex flex-col items-center justify-center">
           <ExclamationIcon size={56} className="  mb-3 stroke-gray-500" />
-          <span className=" font-Pretendard-Regular">
-            사용자를 찾을 수 없습니다
-          </span>
+          <span className=" font-Pretendard-Regular">사용자를 찾을 수 없습니다</span>
           <span className=" font-Pretendard-Regular text-gray-300">
             클릭하신 링크가 잘못되었거나 존재하지 않는 사용자입니다.
           </span>

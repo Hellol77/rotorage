@@ -24,12 +24,7 @@ export default function LikeButton({
           cursor: "pointer",
         }}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-          width="32"
-          height="32"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32">
           {!isLiked && (
             <path
               className=" fill-white"

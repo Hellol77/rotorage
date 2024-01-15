@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { Navigation } from "./Navigation";
 
 const meta = {
@@ -14,4 +15,3 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-

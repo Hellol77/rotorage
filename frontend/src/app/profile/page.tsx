@@ -1,8 +1,6 @@
 "use client";
 import React, { useContext, useEffect } from "react";
 
-import { useRouter } from "next/navigation";
-
 import { queryKeys } from "@/apis/querykeys";
 import InfiniteBoardGrid from "@/components/board/grid/InfiniteBoardGrid";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
@@ -14,6 +12,7 @@ import ProfileForm from "@/components/profile/ProfileForm";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useGetLikedPosts } from "@/hooks/queries/useGetLikedPosts";
 import useGetUserPosts from "@/hooks/queries/useGetUserPosts";
+import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -37,9 +36,7 @@ export default function ProfilePage() {
   }, [accessToken, router]);
   return (
     <section className="relative mx-auto h-full w-full">
-      <h1 className="md:w-50 mb-4 mt-4 flex w-full  font-Pretendard-SemiBold text-xl ">
-        프로필
-      </h1>
+      <h1 className="md:w-50 mb-4 mt-4 flex w-full  font-Pretendard-SemiBold text-xl ">프로필</h1>
 
       {accessToken === "" ? (
         <ProfileSkeletonCard />

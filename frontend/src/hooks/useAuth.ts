@@ -1,15 +1,7 @@
 import { useContext } from "react";
 import { toast } from "react-toastify";
 
-import { useQueryClient } from "@tanstack/react-query";
-import { useRouter, useSearchParams } from "next/navigation";
-
-import {
-  loginApi,
-  logoutApi,
-  refreshAccessTokenApi,
-  validateAccessTokenApi,
-} from "@/apis/auth";
+import { loginApi, logoutApi, refreshAccessTokenApi, validateAccessTokenApi } from "@/apis/auth";
 import { ACCESS_TOKEN_LOGOUT_STATE } from "@/constants/user";
 import {
   IsLoginContext,
@@ -17,6 +9,8 @@ import {
   SetUserDataContext,
   UserDataContext,
 } from "@/contexts/AuthContext";
+import { useQueryClient } from "@tanstack/react-query";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function useAuth() {
   const queryClient = useQueryClient();
@@ -88,9 +82,7 @@ export default function useAuth() {
       const tokenInfo = await validateAccessTokenApi(accessToken);
 
       if (tokenInfo.accessToken !== undefined && setUserData) {
-        setUserData((prev) =>
-          prev ? { ...prev, accessToken: tokenInfo.accessToken } : prev,
-        );
+        setUserData((prev) => (prev ? { ...prev, accessToken: tokenInfo.accessToken } : prev));
       }
 
       return userId === tokenInfo.userId;
@@ -98,7 +90,7 @@ export default function useAuth() {
       // access toke이 만료되었을 경우
       const userData = await refreshAccessTokenApi("kakao");
       /*
-    
+
     모든 api를 react query로 관리 해야하나
     **/
       if (setUserData && userData.accessToken) {

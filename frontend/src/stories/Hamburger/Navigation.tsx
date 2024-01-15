@@ -1,8 +1,8 @@
 import React from "react";
 
+import { NAVIGATION_TITLE } from "@/constants/navigation";
 import { motion } from "framer-motion";
 
-import { NAVIGATION_TITLE } from "@/constants/navigation";
 import useAuth from "@/hooks/useAuth";
 
 import { MenuItem } from "./MenuItem";
@@ -36,10 +36,7 @@ export const Navigation = ({ toggle }: { toggle: React.MouseEventHandler }) => {
   };
 
   return (
-    <motion.ul
-      variants={variants}
-      className={`absolute right-10 top-10 w-20 p-2`}
-    >
+    <motion.ul variants={variants} className={`absolute right-10 top-10 w-20 p-2`}>
       {isLoginNaviation()}
       {NAVIGATION_TITLE.map(({ title }) => (
         <MenuItem title={title} key={title} toggle={toggle} />

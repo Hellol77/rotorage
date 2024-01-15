@@ -6,8 +6,6 @@ export default function useScrollFixed(onClick: boolean | undefined) {
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
       return;
     }
-    document
-      .getElementsByTagName("body")[0]
-      .classList.remove("overflow-hidden");
+    document.getElementsByTagName("body")[0].classList.remove("overflow-hidden");
   }, [onClick]);
 }

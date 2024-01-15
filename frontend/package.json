@@ -71,5 +71,10 @@
     "tailwindcss": "^3",
     "typescript": "^5.3.3"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "dependenciesMeta": {
+    "prettier-plugin-tailwindcss@0.5.11": {
+      "unplugged": true
+    }
+  }
 }

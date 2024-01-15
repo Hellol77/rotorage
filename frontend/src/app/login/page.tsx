@@ -12,7 +12,7 @@ export default function LoginPage() {
         로그인시 이미지 업로드와<br></br>
         좋아요한 이미지 저장이 가능합니다.
       </h1>
-      <div className="relative mb-16 w-full border-1 md:w-full " />
+      <div className="border-1 relative mb-16 w-full md:w-full " />
       <LoginButton
         title="kakao"
         image={kakao}

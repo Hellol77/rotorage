@@ -44,9 +44,7 @@ export const uploadBoardPost = async ({
   return api;
 };
 
-export const getRecentPosts = async <T = Post[]>(
-  accessToken: string,
-): Promise<T> => {
+export const getRecentPosts = async <T = Post[]>(accessToken: string): Promise<T> => {
   const { data } = await defaultApi.get<T>(`/api/post/recent`, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
@@ -58,19 +56,9 @@ export const getRecentPosts = async <T = Post[]>(
   return data;
 };
 
-export const likePost = async ({
-  _id,
-  accessToken,
-}: {
-  _id: string;
-  accessToken: string;
-}) => {
+export const likePost = async ({ _id, accessToken }: { _id: string; accessToken: string }) => {
   const api = await defaultApi
-    .post(
-      "/api/post/like",
-      { _id },
-      { headers: { Authorization: `Bearer ${accessToken}` } },
-    )
+    .post("/api/post/like", { _id }, { headers: { Authorization: `Bearer ${accessToken}` } })
     .then()
     .catch((err) => {
       console.log(err);
@@ -89,10 +77,9 @@ export const getUserPosts = async ({
   userId: string;
 }) => {
   try {
-    const { data } = await defaultApi.get(
-      `/api/post/user/${userId}?page=${pageParam}`,
-      { headers: { Authorization: `Bearer ${accessToken}` } },
-    );
+    const { data } = await defaultApi.get(`/api/post/user/${userId}?page=${pageParam}`, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
     return { pages: data, pageParams: pageParam + 1 };
   } catch (err) {
     toast.error("게시글을 불러오는데 실패했습니다.");
@@ -108,10 +95,9 @@ export const getLikedPosts = async ({
   accessToken?: string;
 }) => {
   try {
-    const { data } = await defaultApi.get(
-      `/api/post/like?page=${pageParam}`,
-      { headers: { Authorization: `Bearer ${accessToken}` } },
-    );
+    const { data } = await defaultApi.get(`/api/post/like?page=${pageParam}`, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
     return { pages: data, pageParams: pageParam + 1 };
   } catch (err) {
     toast.error("게시글을 불러오는데 실패했습니다.");

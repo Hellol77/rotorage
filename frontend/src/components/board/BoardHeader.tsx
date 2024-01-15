@@ -10,9 +10,7 @@ export default function BoardHeader() {
 
   return (
     <div className="mb-6  flex w-full items-center justify-between    md:mb-16  ">
-      <div className="text-xl font-bold tracking-wider md:text-3xl md:tracking-widest">
-        Board
-      </div>
+      <div className="text-xl font-bold tracking-wider md:text-3xl md:tracking-widest">Board</div>
       <ModalTriggerButton
         loginRequired
         content="uploadIcon"

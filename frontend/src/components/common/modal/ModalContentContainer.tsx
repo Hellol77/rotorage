@@ -48,19 +48,10 @@ export function ModalEditContentContainer({
     >
       {children}
       <div className="mb-3 flex  w-full items-center justify-center gap-2 px-4 font-poorStory">
-        <button
-          onClick={handleCloseOnClick}
-          color="default"
-          className="w-full"
-        >
+        <button onClick={handleCloseOnClick} color="default" className="w-full">
           닫기
         </button>
-        <button
-          onClick={handleSubmit}
-          color="primary"
-          className="w-full"
-          disabled={disabled}
-        >
+        <button onClick={handleSubmit} color="primary" className="w-full" disabled={disabled}>
           {submitText}
         </button>
       </div>

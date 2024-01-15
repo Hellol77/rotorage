@@ -2,12 +2,7 @@ import React from "react";
 
 export default function InstagramIcon({ size }: { size: string }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 48 48"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 48 48">
       <radialGradient
         id="yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1"
         cx="19.38"

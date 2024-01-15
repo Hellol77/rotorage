@@ -17,10 +17,7 @@ export type UpdatedPost = Omit<
   imageUrl: File;
 };
 
-export type DefaultUpdatePostType = Omit<
-  Post,
-  "user" | "imageUrl" | "title" | "content"
->;
+export type DefaultUpdatePostType = Omit<Post, "user" | "imageUrl" | "title" | "content">;
 // export type UpdatedPost = Omit<Post, 'user'> & { user: string; imageUrl: File };
 
 export interface Comment {

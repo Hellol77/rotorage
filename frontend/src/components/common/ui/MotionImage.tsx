@@ -13,15 +13,8 @@ export default function MotionImage({
   gridSpanType?: string;
 }) {
   return (
-    <motion.div
-      className={`${gridSpanType} h-full`}
-      whileHover={{ scale: 1.02 }}
-    >
-      <Image
-        src={image}
-        className="h-full w-full object-cover"
-        alt={`${image}`}
-      />
+    <motion.div className={`${gridSpanType} h-full`} whileHover={{ scale: 1.02 }}>
+      <Image src={image} className="h-full w-full object-cover" alt={`${image}`} />
     </motion.div>
   );
 }

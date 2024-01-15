@@ -5,8 +5,7 @@ const ModalTriggerButtonContext = createContext({
   handleCloseOnClick: () => {},
 });
 
-export const useModalTriggerButtonContext = () =>
-  useContext(ModalTriggerButtonContext);
+export const useModalTriggerButtonContext = () => useContext(ModalTriggerButtonContext);
 
 export default function ModalTriggerButtonProvider({
   onClick,

@@ -54,10 +54,7 @@ export default function ModalTriggerButton({
       >
         {text}
       </button>
-      <ModalTriggerButtonProvider
-        onClick={onClick}
-        handleCloseOnClick={handleCloseOnClick}
-      >
+      <ModalTriggerButtonProvider onClick={onClick} handleCloseOnClick={handleCloseOnClick}>
         {children}
       </ModalTriggerButtonProvider>
     </>

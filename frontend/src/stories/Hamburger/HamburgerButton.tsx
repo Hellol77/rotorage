@@ -1,9 +1,10 @@
 "use client";
 import * as React from "react";
-import { motion, useCycle } from "framer-motion";
-import { Navigation } from "./Navigation";
-import { MenuToggle } from "./MenuToggle";
 
+import { motion, useCycle } from "framer-motion";
+
+import { MenuToggle } from "./MenuToggle";
+import { Navigation } from "./Navigation";
 
 const sidebar = {
   open: (height = 1000) => ({

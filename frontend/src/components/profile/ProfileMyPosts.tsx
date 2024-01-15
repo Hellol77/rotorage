@@ -12,10 +12,7 @@ interface ProfileMYPostsProps {
   userData: Post[];
 }
 
-export default function ProfileMyPosts({
-  isLoading,
-  userData,
-}: ProfileMYPostsProps) {
+export default function ProfileMyPosts({ isLoading, userData }: ProfileMYPostsProps) {
   const { user, accessToken } = useContext(UserDataContext);
 
   return (

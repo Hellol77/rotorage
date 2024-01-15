@@ -5,7 +5,4 @@ export const NAVIGATION_TITLE = [
   { title: "Board" },
 ];
 
-export const LOGIN_NAVIGATION_TITLE = [
-  { title: "Profile" },
-  { title: "Logout" },
-];
+export const LOGIN_NAVIGATION_TITLE = [{ title: "Profile" }, { title: "Logout" }];

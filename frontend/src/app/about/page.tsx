@@ -15,19 +15,9 @@ export default function AboutPage() {
         <Carousel images={images} />
         <Line text={`Even if you leave `} color="red" deg="4deg" vector={-1} />
         <Introduce />
-        <Line
-          text="Let Me Love My Youth "
-          color="yellow"
-          deg="-4deg"
-          vector={1}
-        />
+        <Line text="Let Me Love My Youth " color="yellow" deg="-4deg" vector={1} />
         <Music />
-        <Line
-          text="The last stop of our pain "
-          color="green"
-          deg="3deg"
-          vector={-1}
-        />
+        <Line text="The last stop of our pain " color="green" deg="3deg" vector={-1} />
         <Discography />
         <Line text="Landing in Love " color="blue" deg="-4.717deg" vector={1} />
         <Interview />

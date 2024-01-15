@@ -1,9 +1,7 @@
 import { defaultApi } from "@/apis/index";
 import { ClientData, ValidateAccessToken } from "@/types/user";
 
-export const refreshAccessTokenApi = async <T = ClientData>(
-  oAuthType: string,
-): Promise<T> => {
+export const refreshAccessTokenApi = async <T = ClientData>(oAuthType: string): Promise<T> => {
   const { data } = await defaultApi.post<T>(`/api/auth/${oAuthType}/refresh`);
   return data;
 };

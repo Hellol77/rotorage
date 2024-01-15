@@ -1,10 +1,9 @@
 import { useContext } from "react";
 
-import { useInfiniteQuery } from "@tanstack/react-query";
-
 import { getLikedPosts } from "@/apis/post/index";
 import { queryKeys } from "@/apis/querykeys";
 import { UserDataContext } from "@/contexts/AuthContext";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 export function useGetLikedPosts() {
   const { accessToken } = useContext(UserDataContext);

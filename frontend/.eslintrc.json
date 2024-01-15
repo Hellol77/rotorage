@@ -2,11 +2,14 @@
   "plugins": ["import"],
   "extends": [
     "next/core-web-vitals",
+
     "plugin:storybook/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
   ],
   "settings": {
+    // "import/external-module-folders": [".yarn:"],
     // import/resolver` 는 `eslint-plugin-import` 의 경로 설정 옵션
     "import/resolver": {
       "node": {
@@ -44,17 +47,17 @@
             "position": "before"
           },
           {
-            "pattern": "@hooks/*",
+            "pattern": "@/hooks/*",
             "group": "internal",
             "position": "after"
           },
           {
-            "pattern": "@pages/*",
+            "pattern": "@/pages/*",
             "group": "internal",
             "position": "after"
           },
           {
-            "pattern": "@components/*",
+            "pattern": "@/components/*",
             "group": "internal",
             "position": "after"
           }

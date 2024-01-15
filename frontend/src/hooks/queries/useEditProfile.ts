@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { toast } from "react-toastify";
 
-import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
 import { editProfile, getProfileInfo } from "@/apis/user";
 import { LogoutContext, SetUserDataContext } from "@/contexts/AuthContext";
 import { UserEditProfileType } from "@/types/user";
+import { useMutation } from "@tanstack/react-query";
 
 export default function useEditProfile({
   nickname,

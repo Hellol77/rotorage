@@ -16,13 +16,7 @@ export default function LoginButton({
 }) {
   return (
     <Link href={href} className="w-full">
-      <Image
-        src={image}
-        width={500}
-        height={50}
-        alt={title}
-        className="w-full"
-      />
+      <Image src={image} width={500} height={50} alt={title} className="w-full" />
     </Link>
   );
 }

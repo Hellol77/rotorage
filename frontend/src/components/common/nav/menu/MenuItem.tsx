@@ -23,13 +23,7 @@ const variants = {
   },
 };
 
-export const MenuItem = ({
-  title,
-  toggle,
-}: {
-  title: string;
-  toggle: React.MouseEventHandler;
-}) => {
+export const MenuItem = ({ title, toggle }: { title: string; toggle: React.MouseEventHandler }) => {
   const router = useRouter();
   const handleOnclick = (e: React.MouseEvent) => {
     toggle(e);

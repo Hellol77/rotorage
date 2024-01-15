@@ -1,19 +1,18 @@
 "use client";
 import React, { Fragment, useEffect, useRef } from "react";
 
-import {
-  FetchNextPageOptions,
-  InfiniteData,
-  InfiniteQueryObserverResult,
-} from "@tanstack/react-query";
-import { useInView } from "framer-motion";
-
 import BoardPhotoCard from "@/components/common/card/BoardPhotoCard";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import PostSkeletonGrid from "@/components/common/skeleton/PostSkeletonGrid";
 import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
 import { Post } from "@/types/post";
 import useRefreshScrollReset from "@/utils/useRefreshScrollReset";
+import {
+  FetchNextPageOptions,
+  InfiniteData,
+  InfiniteQueryObserverResult,
+} from "@tanstack/react-query";
+import { useInView } from "framer-motion";
 
 interface InfiniteBoardGridProps {
   isPending: boolean;
@@ -78,12 +77,7 @@ export default function InfiniteBoardGrid({
             {data?.pages?.map(({ pages, pageParams }) => (
               <Fragment key={pageParams || 0}>
                 {pages.map((post: Post) => (
-                  <BoardPhotoCard
-                    key={post._id}
-                    post={post}
-                    type="infinite"
-                    queryKey={queryKey}
-                  />
+                  <BoardPhotoCard key={post._id} post={post} type="infinite" queryKey={queryKey} />
                 ))}
               </Fragment>
             ))}
@@ -92,11 +86,7 @@ export default function InfiniteBoardGrid({
       </BoardGridContainer>
 
       <div ref={ref} className="my-[10%] flex h-4 w-full justify-center">
-        {isFetchingNextPage ? (
-          <BoardLoadingIcon className="h-8 w-8 text-black" />
-        ) : (
-          ""
-        )}
+        {isFetchingNextPage ? <BoardLoadingIcon className="h-8 w-8 text-black" /> : ""}
       </div>
     </>
   );

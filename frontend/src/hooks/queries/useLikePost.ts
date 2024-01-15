@@ -1,14 +1,9 @@
 import { toast } from "react-toastify";
 
-import {
-  InfiniteData,
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
-
 import { likePost } from "@/apis/post";
 import { queryKeys } from "@/apis/querykeys";
 import { BoardPosts, Post } from "@/types/post";
+import { InfiniteData, useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function useLikePost({
   _id,
@@ -53,23 +48,20 @@ export default function useLikePost({
       onMutate: async () => {
         const previousBoardPosts = queryClient.getQueryData(queryKey);
         await queryClient.cancelQueries({ queryKey });
-        queryClient.setQueryData(
-          queryKey,
-          (old: InfiniteData<BoardPosts>) => {
-            const newPages = old.pages.map((page) => {
-              const newPost = page.pages.map((post) => {
-                if (post._id === _id) {
-                  return { ...post, isLiked: !post.isLiked };
-                }
-                return post;
-              });
-
-              const newPage = { ...page, pages: newPost };
-              return newPage;
+        queryClient.setQueryData(queryKey, (old: InfiniteData<BoardPosts>) => {
+          const newPages = old.pages.map((page) => {
+            const newPost = page.pages.map((post) => {
+              if (post._id === _id) {
+                return { ...post, isLiked: !post.isLiked };
+              }
+              return post;
             });
-            return { ...old, pages: newPages };
-          },
-        );
+
+            const newPage = { ...page, pages: newPost };
+            return newPage;
+          });
+          return { ...old, pages: newPages };
+        });
         return { previousBoardPosts };
       },
       onError: (err, newPost, context) => {

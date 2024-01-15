@@ -1,11 +1,7 @@
-import React, { useMemo } from 'react'
+import React, { useMemo } from "react";
 
 export default function Skeleton() {
-  return (
-    <div className=''>Skeleton</div>
-  )
+  return <div className="">Skeleton</div>;
 }
 
-const SkeletonType = ()=>{
-
-}
+const SkeletonType = () => {};

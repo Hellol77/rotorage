@@ -1,19 +1,15 @@
 import { useContext } from "react";
 import { toast } from "react-toastify";
 
-import {
-  InfiniteData,
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { useRouter } from "next/navigation";
 
 import { uploadBoardPost } from "@/apis/post";
 import { queryKeys } from "@/apis/querykeys";
 import { DEFAULT_UPDATED_POST } from "@/constants/updatedPost";
 import { LogoutContext, UserDataContext } from "@/contexts/AuthContext";
 import { BoardPosts, UpdatedPost } from "@/types/post";
+import { InfiniteData, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 export function useUploadBoardPost() {
   const queryClient = useQueryClient();
@@ -46,26 +42,20 @@ export function useUploadBoardPost() {
         },
         imageUrl: newImageUrl,
       };
-      const previousBoardPosts = queryClient.getQueryData<
-        InfiniteData<BoardPosts>
-      >(queryKeys.boardPosts);
-
-      queryClient.setQueryData(
+      const previousBoardPosts = queryClient.getQueryData<InfiniteData<BoardPosts>>(
         queryKeys.boardPosts,
-        (old: InfiniteData<BoardPosts>) => {
-          const newArray = [...old.pages[0].pages];
-          newArray.unshift(copyNewPost);
-          return { ...old, pages: [{ ...old.pages[0], pages: newArray }] };
-        },
       );
+
+      queryClient.setQueryData(queryKeys.boardPosts, (old: InfiniteData<BoardPosts>) => {
+        const newArray = [...old.pages[0].pages];
+        newArray.unshift(copyNewPost);
+        return { ...old, pages: [{ ...old.pages[0], pages: newArray }] };
+      });
 
       return { previousBoardPosts };
     },
     onError: async (err: AxiosError, newPost, context) => {
-      queryClient.setQueryData(
-        queryKeys.boardPosts,
-        context?.previousBoardPosts,
-      );
+      queryClient.setQueryData(queryKeys.boardPosts, context?.previousBoardPosts);
       if (err.request.status === 401) {
         toast.error("로그인이 만료되었습니다.");
         handleLogout();

@@ -2,10 +2,9 @@
 
 import React, { useMemo, useState } from "react";
 
-import { motion } from "framer-motion";
-
 import PhotoModal from "@/components/board/modal/photoModal/PhotoModal";
 import { Post, PostGridType } from "@/types/post";
+import { motion } from "framer-motion";
 
 import BoardPhotoContent from "./BoardPhotoContent";
 

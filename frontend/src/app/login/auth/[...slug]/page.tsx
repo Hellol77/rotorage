@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import CenterContainer from "@/components/common/ui/container/CenterContainer";
+
 import useAuth from "@/hooks/useAuth";
 
 export default function AuthPage() {

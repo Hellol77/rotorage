@@ -1,8 +1,7 @@
 import React from "react";
 
-import Link from "next/link";
-
 import RightArrow from "@/components/common/icon/RightArrow";
+import Link from "next/link";
 
 export default function MoreText({
   text,

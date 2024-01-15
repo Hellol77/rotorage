@@ -8,8 +8,7 @@ import MainContainer from "@/components/common/ui/container/MainContainer";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
 
 export default function BoradPage() {
-  const { data, fetchNextPage, isFetchingNextPage, isPending } =
-    useGetBoardPosts();
+  const { data, fetchNextPage, isFetchingNextPage, isPending } = useGetBoardPosts();
   return (
     <MainContainer>
       <section className="relative mx-auto h-full w-screen">

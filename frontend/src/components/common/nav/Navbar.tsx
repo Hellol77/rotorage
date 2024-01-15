@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
 import MainLogoIcon from "@/components/common/icon/MainLogoIcon";
 import { Menu } from "@/components/common/nav/menu/Menu";
 import { NAVIGATION_TITLE } from "@/constants/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import useAuth from "@/hooks/useAuth";
 
 export default function Navbar() {
@@ -49,9 +49,7 @@ export default function Navbar() {
           </li>
         ))}
       </ul>
-      <ul className="flex gap-8 text-sm font-extrabold">
-        {isLoginNavigation()}
-      </ul>
+      <ul className="flex gap-8 text-sm font-extrabold">{isLoginNavigation()}</ul>
       <Menu />
     </div>
   );

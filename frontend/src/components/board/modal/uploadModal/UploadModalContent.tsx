@@ -1,21 +1,14 @@
 "use client";
-import React, {
-  ChangeEvent,
-  DragEvent,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { ChangeEvent, DragEvent, useContext, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-
-import Image from "next/image";
 
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
 import { useUploadBoardPost } from "@/hooks/queries/useUploadBoardPost";
+import Image from "next/image";
+
 import useAuth from "@/hooks/useAuth";
 
 export default function UploadModalContent() {
@@ -107,23 +100,20 @@ export default function UploadModalContent() {
         onChange={handleChange}
       />
       <label
-        className={`mx-4 mt-4 flex h-[100vw]  w-[80vw] items-center justify-center hover:bg-slate-800 md:h-[36vw] md:w-[28vw] ${!file && "border-2 border-dashed border-sky-500"
-          } `}
+        className={`mx-4 mt-4 flex h-[100vw]  w-[80vw] items-center justify-center hover:bg-slate-800 md:h-[36vw] md:w-[28vw] ${
+          !file && "border-2 border-dashed border-sky-500"
+        } `}
         htmlFor="input-upload"
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
-        {dragging && (
-          <div className="pointer-events-none absolute inset-0 z-10 bg-sky-500/20" />
-        )}
+        {dragging && <div className="pointer-events-none absolute inset-0 z-10 bg-sky-500/20" />}
         {!file && (
           <div className="pointer-events-none flex flex-col items-center">
             <PhotoAlbumIcon color="#3e3e45" className="h-8 w-8" />
-            <p className=" text-slate-300">
-              Drag and Drop a image here or click
-            </p>
+            <p className=" text-slate-300">Drag and Drop a image here or click</p>
           </div>
         )}
         {file && (

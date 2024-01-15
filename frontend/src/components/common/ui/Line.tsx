@@ -1,9 +1,8 @@
 "use client";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import { motion } from "framer-motion";
-
 import useResizeObserver from "@/utils/useResizeObserver";
+import { motion } from "framer-motion";
 
 type Color = "red" | "blue" | "green" | "yellow";
 type Props = {
@@ -35,17 +34,12 @@ export default function Line({ text, deg, color, vector }: Props) {
   const ref = useResizeObserver(onResize);
 
   const calculateCount = useCallback((vector: number) => {
-    if (
-      textDivRef.current &&
-      numberRef.current > textDivRef.current.scrollWidth / 2
-    ) {
+    if (textDivRef.current && numberRef.current > textDivRef.current.scrollWidth / 2) {
       textDivRef.current.style.transform = "translateX(0)";
       numberRef.current = 0;
     }
     if (textDivRef.current) {
-      textDivRef.current.style.transform = `translateX(${
-        numberRef.current * vector
-      }px)`;
+      textDivRef.current.style.transform = `translateX(${numberRef.current * vector}px)`;
     }
     return numberRef.current;
   }, []);

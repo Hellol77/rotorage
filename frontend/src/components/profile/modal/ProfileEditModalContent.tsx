@@ -2,9 +2,10 @@ import React from "react";
 
 // import { Avatar, Divider, Input } from "@nextui-org/react";
 
-import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
-import useProfileEdit from "@/hooks/useProfileEdit";
 import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
+import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
+
+import useProfileEdit from "@/hooks/useProfileEdit";
 
 export const NicknameMaxLimitByte = 30;
 export const NicknameMinLimitByte = 3;
@@ -33,9 +34,7 @@ export default function ProfileEditModalContent() {
       className="left-0 right-0 top-10 md:-top-20  "
       disabled={disabled}
     >
-      <strong className=" p-4 font-Pretendard-Regular text-lg">
-        프로필 편집
-      </strong>
+      <strong className=" p-4 font-Pretendard-Regular text-lg">프로필 편집</strong>
       {/* <Divider /> */}
       {/* <Avatar src="" className="mt-10 h-20 w-20 md:h-36 md:w-36" /> */}
       <ProfileAvatar />
@@ -45,11 +44,7 @@ export default function ProfileEditModalContent() {
             <strong className=" ">닉네임</strong>
             <span>{`${nicknameInputByteCount}/${NicknameMaxLimitByte}`}</span>
           </div>
-          <input
-            className="mt-2 w-72"
-            onChange={handleNicknameInput}
-            defaultValue={nickname}
-          />
+          <input className="mt-2 w-72" onChange={handleNicknameInput} defaultValue={nickname} />
           <div className="mt-2 px-3 font-Pretendard-Regular text-xs text-red-500">
             {validateNickname}
           </div>

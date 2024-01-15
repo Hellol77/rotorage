@@ -2,11 +2,11 @@
 import * as React from "react";
 import { useState } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { StaticImageData } from "next/image";
 import { wrap } from "popmotion";
 
 import CarouselButton from "@/components/about/carousel/CarouselButton";
+import { AnimatePresence, motion } from "framer-motion";
+import { StaticImageData } from "next/image";
 
 const variants = {
   enter: (direction: number) => ({
@@ -26,8 +26,7 @@ const variants = {
 };
 
 const swipeConfidenceThreshold = 10000;
-const swipePower = (offset: number, velocity: number) =>
-  Math.abs(offset) * velocity;
+const swipePower = (offset: number, velocity: number) => Math.abs(offset) * velocity;
 
 export const Carousel = ({ images }: { images: StaticImageData[] }) => {
   const [[page, direction], setPage] = useState([0, 0]);

@@ -5,6 +5,6 @@ export const axiosApi = (url: string | undefined) =>
     baseURL: url,
   });
 
-const baseUrl = '';
+const baseUrl = "";
 
 export const defaultApi = axiosApi(baseUrl);
