@@ -5,7 +5,7 @@ import CommentIcon from "@/components/common/icon/CommentIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useLikePost from "@/hooks/queries/useLikePost";
 import { Post, PostGridType } from "@/types/post";
-import { formatLikeCount } from "@/utils/formatLikeCount";
+import { formatLikeCount } from "@/utils/formatCount";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -19,7 +19,7 @@ export default function BoardPhotoContent({
   queryKey: string[];
 }) {
   const { accessToken } = useContext(UserDataContext);
-  const { title, content, imageUrl, _id, isLiked, likeCount } = post;
+  const { title, content, imageUrl, _id, isLiked, likeCount, commentsCount } = post;
   const [likeState, setLikeState] = useState(isLiked);
   const [likeCountState, setLikeCountState] = useState(likeCount);
   const { mutateLikeInfinitePost } = useLikePost({
@@ -67,7 +67,7 @@ export default function BoardPhotoContent({
               <LikeButton isLiked={likeState} onClick={handleLikeButtonOnclick} size="24" />
             </div>
             <div className="flex flex-col items-center justify-center">
-              <p className="  text-xs">{formatLikeCount(likeCountState)}</p>
+              <p className="  text-xs">{formatLikeCount(commentsCount)}</p>
               <CommentIcon size="24" />
             </div>
           </div>

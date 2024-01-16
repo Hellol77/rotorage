@@ -4,8 +4,8 @@ import React from "react";
 import CircleImage from "@/components/common/ui/CircleImage";
 import Lines from "@/components/common/ui/Lines";
 
-import hanroro2 from "../../../public/photo/circle/hanroro2.png";
-import hanroroMainImage from "../../../public/photo/circle/hanroromain.png";
+import hanroro2 from "../../../../public/photo/circle/hanroro2.png";
+import hanroroMainImage from "../../../../public/photo/circle/hanroromain.png";
 
 export default function CircleImageSection() {
   const circlePhotoList = [hanroroMainImage, hanroro2];

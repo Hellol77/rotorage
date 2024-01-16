@@ -5,4 +5,6 @@ export const DEFAULT_UPDATED_POST: DefaultUpdatePostType = {
   isLiked: false,
   comments: [],
   likeCount: 0,
+  commentsCount: 0,
+  createdAt: new Date(),
 };

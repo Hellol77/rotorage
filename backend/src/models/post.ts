@@ -34,6 +34,7 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
+    commentsCount: { type: Number, default: 0 },
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comment" }],
   },
   { versionKey: false }

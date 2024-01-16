@@ -7,11 +7,13 @@ export type Post = {
   imageUrl: string;
   isLiked: boolean;
   _id: string;
+  createdAt: Date;
+  commentsCount: number;
 };
 
 export type UpdatedPost = Omit<
   Post,
-  "user" | "_id" | "comments" | "likeCount" | "imageUrl" | "isLiked"
+  "user" | "_id" | "comments" | "likeCount" | "imageUrl" | "isLiked" | "createdAt" | "commentsCount"
 > & {
   user: string;
   imageUrl: File;
