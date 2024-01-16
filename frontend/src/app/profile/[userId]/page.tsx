@@ -2,7 +2,7 @@
 import React from "react";
 
 import { queryKeys } from "@/apis/querykeys";
-import InfiniteBoardGrid from "@/components/board/grid/InfiniteBoardGrid";
+import InfiniteBoardGrid from "@/components/common/grid/InfiniteBoardGrid";
 import ExclamationIcon from "@/components/common/icon/ExclamationIcon";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
 import ProfileInfoContainer from "@/components/common/ui/container/ProfileInfoContainer";

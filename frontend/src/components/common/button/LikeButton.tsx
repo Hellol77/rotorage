@@ -12,7 +12,7 @@ export default function LikeButton({
 }: {
   isLiked: boolean;
   onClick: () => void;
-  className: string;
+  className?: string;
   size?: string;
 }) {
   const handleOnClick = (e: MouseEvent) => {
@@ -30,9 +30,7 @@ export default function LikeButton({
         cursor: "pointer",
       }}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width={size} height={size}>
-        {!isLiked ? <HeartEmptyIcon /> : <HeartFillIcon />}
-      </svg>
+      {!isLiked ? <HeartEmptyIcon size={size} /> : <HeartFillIcon size={size} />}
     </motion.div>
   );
 }

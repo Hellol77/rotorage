@@ -52,7 +52,11 @@ export default function useLikePost({
           const newPages = old.pages.map((page) => {
             const newPost = page.pages.map((post) => {
               if (post._id === _id) {
-                return { ...post, isLiked: !post.isLiked };
+                return {
+                  ...post,
+                  likeCount: post.isLiked ? post.likeCount - 1 : post.likeCount + 1,
+                  isLiked: !post.isLiked,
+                };
               }
               return post;
             });

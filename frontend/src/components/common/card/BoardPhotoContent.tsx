@@ -4,6 +4,7 @@ import LikeButton from "@/components/common/button/LikeButton";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useLikePost from "@/hooks/queries/useLikePost";
 import { Post, PostGridType } from "@/types/post";
+import { formatLikeCount } from "@/utils/formatLikeCount";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -17,7 +18,7 @@ export default function BoardPhotoContent({
   queryKey: string[];
 }) {
   const { accessToken } = useContext(UserDataContext);
-  const { title, content, imageUrl, _id, isLiked } = post;
+  const { title, content, imageUrl, _id, isLiked, likeCount } = post;
   const [likeState, setLikeState] = useState(isLiked);
   const { mutateLikeDefailtPost, mutateLikeInfinitePost } = useLikePost({
     _id,
@@ -56,12 +57,19 @@ export default function BoardPhotoContent({
         />
       </div>
       <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2  md:px-4 md:py-4">
-        <h1 className="text-md truncate font-poorStory font-bold tracking-wider md:mb-1 md:text-2xl">
-          {title}
-        </h1>
-        <LikeButton isLiked={likeState} onClick={handleLikeButtonOnclick} />
-        <div className=" flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
-          {content}
+        <div className="flex justify-between">
+          <div className="flex flex-col ">
+            <h1 className="truncate font-poorStory text-sm font-bold tracking-wider md:mb-1 md:text-lg">
+              {title}
+            </h1>
+            <div className=" flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
+              {content}
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <p className="  text-xs">{formatLikeCount(likeCount)}</p>
+            <LikeButton isLiked={likeState} onClick={handleLikeButtonOnclick} size="24" />
+          </div>
         </div>
       </div>
     </>

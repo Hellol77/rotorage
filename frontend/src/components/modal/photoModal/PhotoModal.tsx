@@ -1,6 +1,6 @@
 import React from "react";
 
-import PhotoModalContent from "@/components/board/modal/photoModal/PhotoModalContent";
+import PhotoModalContent from "@/components/modal/photoModal/PhotoModalContent";
 import ModalContainer from "@/components/common/modal/ModalContainer";
 import { Post } from "@/types/post";
 

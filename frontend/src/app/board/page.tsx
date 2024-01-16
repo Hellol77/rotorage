@@ -3,7 +3,7 @@ import React from "react";
 
 import { queryKeys } from "@/apis/querykeys";
 import BoardHeader from "@/components/board/BoardHeader";
-import InfiniteBoardGrid from "@/components/board/grid/InfiniteBoardGrid";
+import InfiniteBoardGrid from "@/components/common/grid/InfiniteBoardGrid";
 import MainContainer from "@/components/common/ui/container/MainContainer";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
 

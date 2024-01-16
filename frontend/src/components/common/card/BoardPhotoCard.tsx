@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 
-import PhotoModal from "@/components/board/modal/photoModal/PhotoModal";
+import PhotoModal from "@/components/modal/photoModal/PhotoModal";
 import { Post, PostGridType } from "@/types/post";
 import { motion } from "framer-motion";
 

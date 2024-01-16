@@ -2,7 +2,7 @@
 import { queryKeys } from "@/apis/querykeys";
 import BoardPhotoCard from "@/components/common/card/BoardPhotoCard";
 import BoardGridContainer from "@/components/common/ui/container/BoardGridContainer";
-import CircleImageSection from "@/components/section/CircleImageSection";
+import CircleImageSection from "@/components/common/section/CircleImageSection";
 import useGetRecentPosts from "@/hooks/queries/useGetRecentPosts";
 
 export default function Home() {

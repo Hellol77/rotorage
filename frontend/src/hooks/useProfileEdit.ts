@@ -4,7 +4,7 @@ import {
   IntroduceMaxLimitByte,
   NicknameMaxLimitByte,
   NicknameMinLimitByte,
-} from "@/components/board/modal/profileModal/ProfileEditModalContent";
+} from "@/components/modal/profileModal/ProfileEditModalContent";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
 import { inputByteCountCalculate, validateStringNumEngKor } from "@/utils/input/inputByteCount";
