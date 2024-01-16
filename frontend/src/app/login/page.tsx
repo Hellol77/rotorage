@@ -1,6 +1,6 @@
 import React from "react";
 
-import CenterContainer from "@/components/common/ui/container/CenterContainer";
+import CenterContainer from "@/components/common/container/CenterContainer";
 import LoginButton from "@/components/common/ui/LoginButton";
 
 import kakao from "../../../public/kakao-Login.png";

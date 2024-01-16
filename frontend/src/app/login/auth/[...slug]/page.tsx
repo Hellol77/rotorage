@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect } from "react";
 
+import CenterContainer from "@/components/common/container/CenterContainer";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
-import CenterContainer from "@/components/common/ui/container/CenterContainer";
 
 import useAuth from "@/hooks/useAuth";
 

@@ -3,9 +3,9 @@ import React, { useContext, useEffect } from "react";
 
 import { queryKeys } from "@/apis/querykeys";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
+import ProfileInfoContainer from "@/components/common/container/ProfileInfoContainer";
 import InfiniteBoardGrid from "@/components/common/grid/InfiniteBoardGrid";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
-import ProfileInfoContainer from "@/components/common/ui/container/ProfileInfoContainer";
 import ProfileEditModal from "@/components/modal/profileModal/ProfileEditModal";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { UserDataContext } from "@/contexts/AuthContext";

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import LikeButton from "@/components/common/button/LikeButton";
+import CommentIcon from "@/components/common/icon/CommentIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useLikePost from "@/hooks/queries/useLikePost";
 import { Post, PostGridType } from "@/types/post";
@@ -43,7 +44,7 @@ export default function BoardPhotoContent({
       <div className="relative h-full w-full rounded-md">
         <Image
           src={imageUrl}
-          alt={title}
+          alt={_id}
           priority
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
@@ -53,16 +54,22 @@ export default function BoardPhotoContent({
       <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2  md:px-4 md:py-4">
         <div className="flex justify-between">
           <div className="flex flex-col ">
-            <h1 className="truncate font-poorStory text-sm font-bold tracking-wider md:mb-1 md:text-lg">
+            <h1 className="w-40 truncate font-poorStory text-sm font-bold tracking-wider md:mb-1 md:text-lg">
               {title}
             </h1>
-            <div className=" flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
+            <div className=" w-40 flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
               {content}
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <p className="  text-xs">{formatLikeCount(likeCountState)}</p>
-            <LikeButton isLiked={likeState} onClick={handleLikeButtonOnclick} size="24" />
+          <div className="flex gap-2">
+            <div className="flex flex-col items-center justify-center">
+              <p className="  text-xs">{formatLikeCount(likeCountState)}</p>
+              <LikeButton isLiked={likeState} onClick={handleLikeButtonOnclick} size="24" />
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <p className="  text-xs">{formatLikeCount(likeCountState)}</p>
+              <CommentIcon size="24" />
+            </div>
           </div>
         </div>
       </div>

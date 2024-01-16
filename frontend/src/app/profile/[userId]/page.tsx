@@ -2,10 +2,10 @@
 import React from "react";
 
 import { queryKeys } from "@/apis/querykeys";
+import ProfileInfoContainer from "@/components/common/container/ProfileInfoContainer";
 import InfiniteBoardGrid from "@/components/common/grid/InfiniteBoardGrid";
 import ExclamationIcon from "@/components/common/icon/ExclamationIcon";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
-import ProfileInfoContainer from "@/components/common/ui/container/ProfileInfoContainer";
 import ProfileForm from "@/components/profile/ProfileForm";
 import useGetUserPosts from "@/hooks/queries/useGetUserPosts";
 import useSearchProfile from "@/hooks/queries/useSearchProfile";

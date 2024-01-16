@@ -39,7 +39,7 @@ export const likePost = async (req: Request, res: Response) => {
       },
       { new: true }
     ).lean();
-    const updateLikeCount = await Post.findOneAndUpdate(
+    await Post.updateOne(
       { _id: postId },
       {
         $set: {

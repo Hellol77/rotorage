@@ -39,7 +39,7 @@ export const dislikePost = async (req: Request, res: Response) => {
       },
       { new: true }
     );
-    const updateDisLikeCount = await Post.findOneAndUpdate(
+    await Post.updateOne(
       { _id: postId },
       {
         $set: {

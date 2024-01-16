@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import gallery11 from "../../../public/photo/gallery/gallery11.png";
 import ProfileAvatar from "../common/avatar/ProfileAvatar";
-import ProfileInfoContainer from "../common/ui/container/ProfileInfoContainer";
+import ProfileInfoContainer from "../common/container/ProfileInfoContainer";
 
 export default function ProfileForm({ children, user }: { children?: ReactNode; user: UserData }) {
   return (

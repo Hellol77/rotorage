@@ -1,9 +1,9 @@
 "use client";
 import ProfileLinkButton from "@/components/common/button/ProfileLinkButton";
+import MainContainer from "@/components/common/container/MainContainer";
 import BoardIcon from "@/components/common/icon/BoardIcon";
 import HeartEmptyIcon from "@/components/common/icon/HeartEmptyIcon";
 import ProfileIcon from "@/components/common/icon/ProfileIcon";
-import MainContainer from "@/components/common/ui/container/MainContainer";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 

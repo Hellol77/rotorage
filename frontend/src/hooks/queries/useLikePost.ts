@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 import { dislikePost, likePost } from "@/apis/post";
 import { Post } from "@/types/post";
-import {  useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function useLikePost({
   _id,
