@@ -11,7 +11,7 @@ import ProfileInfoContainer from "../common/ui/container/ProfileInfoContainer";
 export default function ProfileForm({ children, user }: { children?: ReactNode; user: UserData }) {
   return (
     <>
-      <ProfileInfoContainer className="flex">
+      <ProfileInfoContainer className="flex bg-[#18181b]">
         <div className="h-full">
           <ProfileAvatar className="mr-8" />
         </div>

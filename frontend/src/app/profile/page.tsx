@@ -13,7 +13,7 @@ import { useGetLikedPosts } from "@/hooks/queries/useGetLikedPosts";
 import useGetUserPosts from "@/hooks/queries/useGetUserPosts";
 import { useRouter } from "next/navigation";
 
-export default function ProfilePage() {
+function ProfilePage() {
   const router = useRouter();
   const { user, accessToken } = useContext(UserDataContext);
   const {
@@ -34,8 +34,9 @@ export default function ProfilePage() {
       router.replace("/");
     }
   }, [accessToken, router]);
+
   return (
-    <section className="mx-auto h-full w-full">
+    <section className=" mx-auto h-full w-full">
       <h1 className="md:w-50 mb-4 mt-4 flex w-full  font-Pretendard-SemiBold text-xl">프로필</h1>
 
       {accessToken === "" ? (
@@ -50,7 +51,7 @@ export default function ProfilePage() {
       <h1 className="md:w-50 mb-4 mt-4 flex w-full  font-Pretendard-SemiBold text-xl ">
         좋아요한 게시물
       </h1>
-      <ProfileInfoContainer>
+      <ProfileInfoContainer className="bg-[#18181b]">
         <InfiniteBoardGrid
           data={userLikedPosts}
           fetchNextPage={userLikedPostsFetchNextPage}
@@ -74,3 +75,5 @@ export default function ProfilePage() {
     </section>
   );
 }
+
+export default React.memo(ProfilePage);
