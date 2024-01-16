@@ -56,17 +56,6 @@ export const getRecentPosts = async <T = Post[]>(accessToken: string): Promise<T
   return data;
 };
 
-export const likePost = async ({ _id, accessToken }: { _id: string; accessToken: string }) => {
-  const api = await defaultApi
-    .post("/api/post/like", { _id }, { headers: { Authorization: `Bearer ${accessToken}` } })
-    .then()
-    .catch((err) => {
-      console.log(err);
-    });
-
-  return api;
-};
-
 export const getUserPosts = async ({
   pageParam,
   accessToken,
@@ -104,4 +93,26 @@ export const getLikedPosts = async ({
     toast.error("게시글을 불러오는데 실패했습니다.");
     return { pages: [], pageParams: undefined };
   }
+};
+
+export const dislikePost = async ({ _id, accessToken }: { _id: string; accessToken: string }) => {
+  const api = await defaultApi
+    .post("/api/post/dislike", { _id }, { headers: { Authorization: `Bearer ${accessToken}` } })
+    .then()
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return api;
+};
+
+export const likePost = async ({ _id, accessToken }: { _id: string; accessToken: string }) => {
+  const api = await defaultApi
+    .post("/api/post/like", { _id }, { headers: { Authorization: `Bearer ${accessToken}` } })
+    .then()
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return api;
 };

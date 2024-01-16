@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import UploadModal from "@/components/modal/uploadModal/UploadModal";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
+import UploadModal from "@/components/modal/uploadModal/UploadModal";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
 
 export default function BoardHeader() {

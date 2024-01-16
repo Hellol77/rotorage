@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useMemo, useRef } from "react";
 
 import BoardPhotoCard from "@/components/common/card/BoardPhotoCard";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
@@ -66,6 +66,15 @@ export default function InfiniteBoardGrid({
   }, [fetchNextPage, isInView, data, isPending]);
   useRefreshScrollReset();
 
+  const useMemoBoardLoading = useMemo(
+    () => (
+      <div ref={ref} className="my-8 flex h-4 w-full justify-center">
+        {isFetchingNextPage ? <BoardLoadingIcon className="h-8 w-8 text-black" /> : ""}
+      </div>
+    ),
+    [isFetchingNextPage],
+  );
+
   return (
     <>
       <BoardGridContainer>
@@ -84,9 +93,10 @@ export default function InfiniteBoardGrid({
         )}
       </BoardGridContainer>
 
-      <div ref={ref} className="my-8 flex h-4 w-full justify-center">
+      {/* <div ref={ref} className="my-8 flex h-4 w-full justify-center">
         {isFetchingNextPage ? <BoardLoadingIcon className="h-8 w-8 text-black" /> : ""}
-      </div>
+      </div> */}
+      {useMemoBoardLoading}
     </>
   );
 }

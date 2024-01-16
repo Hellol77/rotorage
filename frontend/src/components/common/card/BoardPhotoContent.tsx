@@ -20,7 +20,8 @@ export default function BoardPhotoContent({
   const { accessToken } = useContext(UserDataContext);
   const { title, content, imageUrl, _id, isLiked, likeCount } = post;
   const [likeState, setLikeState] = useState(isLiked);
-  const { mutateLikeDefailtPost, mutateLikeInfinitePost } = useLikePost({
+  const [likeCountState, setLikeCountState] = useState(likeCount);
+  const { mutateLikeInfinitePost } = useLikePost({
     _id,
     accessToken,
     queryKey,
@@ -32,16 +33,9 @@ export default function BoardPhotoContent({
       router.push("login");
       return;
     }
+    mutateLikeInfinitePost({ likeState });
+    setLikeCountState((prev) => (likeState ? prev - 1 : prev + 1));
     setLikeState((prev) => !prev);
-
-    switch (type) {
-      case "infinite":
-        mutateLikeInfinitePost();
-        break;
-      case "default":
-        mutateLikeDefailtPost();
-        return;
-    }
   };
 
   return (
@@ -67,7 +61,7 @@ export default function BoardPhotoContent({
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <p className="  text-xs">{formatLikeCount(likeCount)}</p>
+            <p className="  text-xs">{formatLikeCount(likeCountState)}</p>
             <LikeButton isLiked={likeState} onClick={handleLikeButtonOnclick} size="24" />
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, useState } from "react";
 
 import HeartEmptyIcon from "@/components/common/icon/HeartEmptyIcon";
 import HeartFillIcon from "@/components/common/icon/HeartFillIcon";

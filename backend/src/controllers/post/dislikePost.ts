@@ -5,7 +5,7 @@ import { getUserObjectId } from "../../utils/getUserObjectId";
 import { getAccessTokenToheader } from "../../utils/getAccessTokenToHeader";
 import { User } from "../../models/user";
 
-export const likePost = async (req: Request, res: Response) => {
+export const dislikePost = async (req: Request, res: Response) => {
   const accessToken = getAccessTokenToheader(req);
 
   console.log("accessToken", accessToken);
@@ -35,11 +35,11 @@ export const likePost = async (req: Request, res: Response) => {
     const updatedPost = await Post.findOneAndUpdate(
       { _id: postId },
       {
-        $push: { likers: _id }, // likers 배열에 userId 추가
+        $pull: { likers: _id }, // likers 배열에서 userId 제거
       },
       { new: true }
-    ).lean();
-    const updateLikeCount = await Post.findOneAndUpdate(
+    );
+    const updateDisLikeCount = await Post.findOneAndUpdate(
       { _id: postId },
       {
         $set: {
@@ -48,7 +48,6 @@ export const likePost = async (req: Request, res: Response) => {
       },
       { new: true }
     );
-
     if (!updatedPost) {
       return res.status(400).json({ error: "Failed to toggle like status" });
     }
