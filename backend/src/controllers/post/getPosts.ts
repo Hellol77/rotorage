@@ -13,7 +13,7 @@ export const getPosts = async (
     const accessToken = getAccessTokenToheader(req);
     const _id = await getUserObjectId(req, res, accessToken);
     const page = Number(req.params.page);
-    const limit = 12;
+    const limit = 24;
 
     const posts = await Post.find({}, {})
       .populate({ path: "user", select: "userId nickname" })

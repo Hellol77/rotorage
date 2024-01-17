@@ -12,7 +12,7 @@ export const getUserPosts = async (
     const accessToken = getAccessTokenToheader(req);
     const accessTokenUserId = await getUserObjectId(req, res, accessToken);
 
-    const limit = 12;
+    const limit = 24;
     const page = Number(req.query.page);
     const userId = req.params.userId;
 

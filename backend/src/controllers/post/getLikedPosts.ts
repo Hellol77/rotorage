@@ -12,7 +12,7 @@ export const getLikedPosts = async (
     const accessToken = getAccessTokenToheader(req);
     const _id = await getUserObjectId(req, res, accessToken);
 
-    const limit = 12;
+    const limit = 24;
     const page = Number(req.query.page);
     const posts = await Post.find({ likers: { $in: [_id] } }, {})
       .populate({
