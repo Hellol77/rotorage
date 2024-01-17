@@ -26,7 +26,7 @@ export default function PhotoModalContent({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         layoutId={_id + queryKey}
-        className="  fixed left-0 right-0 top-20 z-50 mx-auto flex h-4/5 w-4/5  flex-col items-center  justify-center   rounded-lg  bg-black  "
+        className="  fixed left-0 right-0 top-20 z-50 mx-auto flex h-4/5 max-h-[1080px] w-4/5 max-w-[1440px]  flex-col items-center  justify-center   rounded-lg  bg-black  "
       >
         <div className="flex h-full w-full flex-col md:grid-cols-2 md:flex-row">
           <CloseIcon
