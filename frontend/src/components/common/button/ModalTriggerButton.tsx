@@ -19,7 +19,8 @@ export default function ModalTriggerButton({
   content,
   children,
   isLoading,
-  size = "lg",
+  size = "sm",
+  color = "primary",
   loginRequired = false,
 }: {
   text: string;
@@ -28,6 +29,7 @@ export default function ModalTriggerButton({
   loginRequired?: boolean;
   isLoading?: boolean;
   size?: "sm" | "md" | "lg";
+  color?: "primary" | "secondary" | "danger" | "success";
 }) {
   const userData = useContext(UserDataContext);
   const [onClick, setOnClick] = useState(false);
@@ -44,12 +46,8 @@ export default function ModalTriggerButton({
   return (
     <>
       <button
-        className={`flex min-w-fit items-center justify-center gap-2 rounded-3xl border-2  bg-blue-500 px-3 py-1 font-poorStory  ${isLoading ? "bg-gray-500" : ""}`}
-        // size={size}
-        // variant="bordered"
-        // isLoading={isLoading}
+        className={`flex min-w-fit items-center justify-center gap-2 rounded-3xl border-2   ${getColor(color)} ${getSize(size)} font-poorStory  ${isLoading ? "bg-gray-500" : ""}`}
         color="primary"
-        // endContent={content ? ContentIcon[content] : null}
         onClick={handleOnClick}
       >
         {isLoading ? ContentIcon.loading : content ? ContentIcon[content] : null}
@@ -61,3 +59,31 @@ export default function ModalTriggerButton({
     </>
   );
 }
+
+const getColor = (color: string) => {
+  switch (color) {
+    case "primary":
+      return "bg-blue-500 hover:bg-blue-600";
+    case "secondary":
+      return "bg-gray-500 hover:bg-gray-600";
+    case "danger":
+      return "bg-red-500 hover:bg-red-600";
+    case "success":
+      return "bg-green-500 hover:bg-green-600";
+    default:
+      return "bg-blue-500 hover:bg-blue-600";
+  }
+};
+
+const getSize = (size: string) => {
+  switch (size) {
+    case "sm":
+      return "px-3 py-1 text-sm";
+    case "md":
+      return "px-4 py-2 text-md";
+    case "lg":
+      return "px-5 py-3 text-lg";
+    default:
+      return "px-5 py-3 text-lg";
+  }
+};
