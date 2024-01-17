@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
+import ProfileTitleText from "@/components/common/text/ProfileTitleText";
 import ProfileEditModal from "@/components/modal/profileModal/ProfileEditModal";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { UserDataContext } from "@/contexts/AuthContext";
@@ -20,13 +21,12 @@ function MyProfilePage() {
 
   return (
     <section className=" mx-auto h-full w-full">
-      <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-xl">프로필</h1>
-
+      <ProfileTitleText text="프로필" />
       {accessToken === "" ? (
         <ProfileSkeletonCard />
       ) : (
         <ProfileForm user={user}>
-          <ModalTriggerButton loginRequired text="프로필 편집">
+          <ModalTriggerButton color="primary" size="sm" loginRequired text="프로필 편집">
             <ProfileEditModal />
           </ModalTriggerButton>
         </ProfileForm>

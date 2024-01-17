@@ -1,8 +1,8 @@
 import React from "react";
 
+import MainContainer from "@/components/common/container/MainContainer";
 import NextIcon from "@/components/common/icon/NextIcon";
 import PrevIcon from "@/components/common/icon/PrevIcon";
-import MainContainer from "@/components/common/container/MainContainer";
 import MotionImage from "@/components/common/ui/MotionImage";
 
 import gallery1 from "../../../public/photo/gallery/gallery1.png";

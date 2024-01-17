@@ -1,7 +1,7 @@
 import React from "react";
 
+import LoginButton from "@/components/common/button/LoginButton";
 import CenterContainer from "@/components/common/container/CenterContainer";
-import LoginButton from "@/components/common/ui/LoginButton";
 
 import kakao from "../../../public/kakao-Login.png";
 

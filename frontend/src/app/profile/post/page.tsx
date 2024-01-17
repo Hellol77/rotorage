@@ -16,7 +16,7 @@ export default function MyPostsPage() {
   } = useGetUserPosts(user.userId);
   return (
     <section className=" mx-auto h-full w-full">
-      <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-xl ">
+      <h1 className="md:w-50 mb-4 mt-4 flex w-full font-Pretendard-SemiBold  text-xl md:mt-0 ">
         업로드한 게시물
       </h1>
       <ProfileInfoContainer>

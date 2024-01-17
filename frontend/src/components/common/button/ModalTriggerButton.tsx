@@ -1,8 +1,9 @@
 "use client";
-import React, { ReactNode, useContext, useState } from "react";
+import React, { MouseEvent, ReactNode, useContext, useState } from "react";
 import { toast } from "react-toastify";
 
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
+import DotsHorizontalIcon from "@/components/common/icon/DotsHorizontalIcon";
 import PostMoreIcon from "@/components/common/icon/PostMoreIcon";
 import UploadIcon from "@/components/common/icon/UploadIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
@@ -12,6 +13,7 @@ const ContentIcon = {
   uploadIcon: <UploadIcon color="white" className="h-4 w-4" />,
   postMoreIcon: <PostMoreIcon />,
   loading: <BoardLoadingIcon className="h-4 w-4" />,
+  dotsHorizontalIcon: <DotsHorizontalIcon size="32 " />,
 };
 
 export default function ModalTriggerButton({
@@ -20,24 +22,28 @@ export default function ModalTriggerButton({
   children,
   isLoading,
   size = "sm",
-  color = "primary",
+  color,
   loginRequired = false,
+  className,
 }: {
-  text: string;
   children: ReactNode;
+  text?: string;
   content?: keyof typeof ContentIcon;
   loginRequired?: boolean;
   isLoading?: boolean;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "icon";
   color?: "primary" | "secondary" | "danger" | "success";
+  className?: string;
 }) {
   const userData = useContext(UserDataContext);
   const [onClick, setOnClick] = useState(false);
-  const handleOnClick = () => {
+  const handleOnClick = (e: MouseEvent) => {
+    e.stopPropagation();
     if (loginRequired && !userData?.user.userId) {
       toast.warn("로그인이 필요합니다.");
       return;
     }
+
     setOnClick(true);
   };
   const handleCloseOnClick = () => {
@@ -45,14 +51,14 @@ export default function ModalTriggerButton({
   };
   return (
     <>
-      <button
-        className={`flex min-w-fit items-center justify-center gap-2 rounded-3xl border-2   ${getColor(color)} ${getSize(size)} font-poorStory  ${isLoading ? "bg-gray-500" : ""}`}
+      <div
+        className={`flex min-w-fit cursor-pointer items-center justify-center gap-2 rounded-3xl   ${getColor(color)} ${getSize(size)} font-poorStory  ${isLoading ? "bg-gray-500" : ""} ${className}}`}
         color="primary"
         onClick={handleOnClick}
       >
         {isLoading ? ContentIcon.loading : content ? ContentIcon[content] : null}
         {text}
-      </button>
+      </div>
       <ModalTriggerButtonProvider onClick={onClick} handleCloseOnClick={handleCloseOnClick}>
         {children}
       </ModalTriggerButtonProvider>
@@ -60,18 +66,18 @@ export default function ModalTriggerButton({
   );
 }
 
-const getColor = (color: string) => {
+const getColor = (color: string | undefined) => {
   switch (color) {
     case "primary":
-      return "bg-blue-500 hover:bg-blue-600";
+      return "bg-blue-500 hover:bg-blue-600 border-2 z-10";
     case "secondary":
-      return "bg-gray-500 hover:bg-gray-600";
+      return "bg-blue-500 hover:bg-blue-600 border-2 z-10";
     case "danger":
-      return "bg-red-500 hover:bg-red-600";
+      return "bg-blue-500 hover:bg-blue-600 border-2 z-10";
     case "success":
-      return "bg-green-500 hover:bg-green-600";
+      return "bg-blue-500 hover:bg-blue-600 border-2 z-10";
     default:
-      return "bg-blue-500 hover:bg-blue-600";
+      return "";
   }
 };
 
@@ -83,7 +89,9 @@ const getSize = (size: string) => {
       return "px-4 py-2 text-md";
     case "lg":
       return "px-5 py-3 text-lg";
+    case "icon":
+      return "z-50";
     default:
-      return "px-5 py-3 text-lg";
+      return "";
   }
 };

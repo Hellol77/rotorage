@@ -12,8 +12,10 @@ export default function BoardHeader() {
     <div className="mb-6  flex w-full items-center justify-between    md:mb-16  ">
       <div className="text-xl font-bold tracking-wider md:text-3xl md:tracking-widest">Board</div>
       <ModalTriggerButton
+        color="primary"
         loginRequired
         content="uploadIcon"
+        size="sm"
         text={"등록하기"}
         isLoading={isPending}
       >

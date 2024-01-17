@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import LikeButton from "@/components/common/button/LikeButton";
+import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import CommentIcon from "@/components/common/icon/CommentIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useLikePost from "@/hooks/queries/useLikePost";
@@ -42,6 +43,17 @@ export default function BoardPhotoContent({
   return (
     <>
       <div className="relative h-full w-full rounded-md">
+        <ModalTriggerButton
+          className="absolute right-0 top-0"
+          size="icon"
+          content="dotsHorizontalIcon"
+        >
+          <div>안녕</div>
+        </ModalTriggerButton>
+        {/* <DotsHorizontalIcon
+          size="32"
+          className="absolute right-2 top-2 z-20  h-fit w-fit rounded-full hover:bg-slate-400"
+        /> */}
         <Image
           src={imageUrl}
           alt={_id}
@@ -51,9 +63,9 @@ export default function BoardPhotoContent({
           className="relative z-10 rounded-md object-cover"
         />
       </div>
-      <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2  md:px-4 md:py-4">
+      <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] p-1  md:px-2">
         <div className="flex w-full justify-between">
-          <div className="flex w-3/4 flex-col">
+          <div className="flex w-3/5 flex-col">
             <h1 className=" truncate font-poorStory text-sm font-bold tracking-wider md:mb-1 md:text-lg">
               {title}
             </h1>

@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 
 import CloseIcon from "@/components/common/icon/CloseIcon";
 import useScrollFixed from "@/utils/useScrollFixed";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function ModalContainer({
   children,
@@ -28,12 +28,14 @@ export default function ModalContainer({
             onClick={handleModalClose}
             className="fixed left-0 top-0 z-40 h-screen w-screen overflow-hidden bg-[#101010] opacity-20"
           >
-            <div
-              className="absolute right-1  top-2 z-[60]  hidden h-10  w-10 cursor-pointer items-center justify-center md:flex"
-              onClick={handleModalClose}
-            >
-              <CloseIcon size="24" className=" stroke-white" />
-            </div>
+            {handleModalClose && (
+              <div
+                className="absolute right-1  top-2 z-[60]  hidden h-10  w-10 cursor-pointer items-center justify-center md:flex"
+                onClick={handleModalClose}
+              >
+                <CloseIcon size="24" className=" stroke-white" />
+              </div>
+            )}
           </motion.div>
           {children}
         </>

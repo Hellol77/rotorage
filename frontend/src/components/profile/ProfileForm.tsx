@@ -2,16 +2,14 @@
 import React, { ReactNode, useContext } from "react";
 
 import { UserData } from "@/types/user";
-import Image from "next/image";
 
-import gallery11 from "../../../public/photo/gallery/gallery11.png";
 import ProfileAvatar from "../common/avatar/ProfileAvatar";
 import ProfileInfoContainer from "../common/container/ProfileInfoContainer";
 
 export default function ProfileForm({ children, user }: { children?: ReactNode; user: UserData }) {
   return (
     <>
-      <ProfileInfoContainer className="flex bg-[#18181b]">
+      <ProfileInfoContainer className="flex w-full min-w-fit dark:bg-[#18181b]">
         <div className="h-full">
           <ProfileAvatar size="large" className="mr-8" />
         </div>

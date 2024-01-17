@@ -1,25 +1,21 @@
 "use client";
 import React from "react";
 
-import { queryKeys } from "@/apis/querykeys";
 import ProfileInfoContainer from "@/components/common/container/ProfileInfoContainer";
-import InfiniteBoardGrid from "@/components/common/grid/InfiniteBoardGrid";
 import ExclamationIcon from "@/components/common/icon/ExclamationIcon";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
+import ProfileTitleText from "@/components/common/text/ProfileTitleText";
 import ProfileForm from "@/components/profile/ProfileForm";
-import useGetUserPosts from "@/hooks/queries/useGetUserPosts";
 import useSearchProfile from "@/hooks/queries/useSearchProfile";
 import { useParams } from "next/navigation";
 
 export default function SearchProfilePage() {
   const { userId } = useParams();
   const searchUserId = userId[0];
-  console.log(userId);
   const { data: userProfileData, isLoading } = useSearchProfile(searchUserId);
-  const { data, fetchNextPage, isFetchingNextPage, isPending } = useGetUserPosts(searchUserId);
   return (
     <section className="mx-auto h-full w-full">
-      <h1 className="md:w-50 mb-4 flex w-full  font-Pretendard-SemiBold text-xl ">프로필</h1>
+      <ProfileTitleText text="프로필" />
       {isLoading ? (
         <ProfileSkeletonCard />
       ) : userProfileData ? (
