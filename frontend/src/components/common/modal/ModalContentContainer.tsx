@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 
 // import { Button } from "@nextui-org/react";
+import DefaultButton from "@/components/common/button/DefaultButton";
 import { motion } from "framer-motion";
 
 export function ModalContentContainer({
@@ -44,16 +45,23 @@ export function ModalEditContentContainer({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={` absolute  z-50  m-auto  flex h-fit  w-fit  flex-col  items-center  justify-center rounded-xl bg-black ${className}`}
+      className={` absolute z-50 m-auto  flex  h-fit  w-fit flex-col  items-center  justify-center  rounded-xl  bg-black px-8 pb-8 ${className}`}
     >
       {children}
-      <div className="flex  w-full items-center justify-center gap-2 px-4 font-poorStory">
-        <button onClick={handleCloseOnClick} color="default" className="w-full">
-          닫기
-        </button>
-        <button onClick={handleSubmit} color="primary" className="w-full" disabled={disabled}>
-          {submitText}
-        </button>
+      <div className="mt-4  flex h-9 w-full items-center justify-center gap-2 font-poorStory">
+        <DefaultButton
+          onClick={handleCloseOnClick}
+          color="default"
+          className="w-full"
+          text="닫기"
+        />
+        <DefaultButton
+          color="primary"
+          onClick={handleSubmit}
+          className="w-full"
+          disabled={disabled}
+          text={submitText}
+        />
       </div>
     </motion.div>
   );
