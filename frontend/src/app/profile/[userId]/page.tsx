@@ -33,19 +33,6 @@ export default function SearchProfilePage() {
           </span>
         </ProfileInfoContainer>
       )}
-
-      <h1 className="md:w-50 mb-4 mt-10 flex w-full  font-Pretendard-SemiBold text-xl ">
-        업로드한 게시물
-      </h1>
-      <ProfileInfoContainer>
-        <InfiniteBoardGrid
-          data={data}
-          fetchNextPage={fetchNextPage}
-          isFetchingNextPage={isFetchingNextPage}
-          isPending={isPending}
-          queryKey={queryKeys.getUserPosts(searchUserId)}
-        />
-      </ProfileInfoContainer>
     </section>
   );
 }
