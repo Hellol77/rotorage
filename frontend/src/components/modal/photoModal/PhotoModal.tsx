@@ -1,7 +1,7 @@
 import React from "react";
 
-import PhotoModalContent from "@/components/modal/photoModal/PhotoModalContent";
 import ModalContainer from "@/components/common/modal/ModalContainer";
+import PhotoModalContent from "@/components/modal/photoModal/PhotoModalContent";
 import { Post } from "@/types/post";
 
 export default function PhotoModal({

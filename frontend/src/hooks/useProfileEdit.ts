@@ -4,7 +4,7 @@ import {
   IntroduceMaxLimitByte,
   NicknameMaxLimitByte,
   NicknameMinLimitByte,
-} from "@/components/modal/profileModal/ProfileEditModalContent";
+} from "@/constants/stringLimit";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
 import { inputByteCountCalculate, validateStringNumEngKor } from "@/utils/input/inputByteCount";
@@ -50,7 +50,7 @@ export default function useProfileEdit() {
   const validateNickname = useMemo(() => {
     if (nicknameInputByteCount < NicknameMinLimitByte) {
       setNicknameWarning(true);
-      return "닉네임은 3byte이상 입력해주세요.";
+      return `닉네임은 ${NicknameMinLimitByte}byte이상 입력해주세요.`;
     }
     if (validateStringNumEngKor(nickname)) {
       setNicknameWarning(true);
@@ -58,7 +58,7 @@ export default function useProfileEdit() {
     }
     if (nicknameInputByteCount > NicknameMaxLimitByte) {
       setNicknameWarning(true);
-      return "닉네임은 30byte이상 초과할 수 없어요.";
+      return `닉네임은 ${NicknameMaxLimitByte}byte이상 초과할 수 없어요.`;
     }
     setNicknameWarning(false);
     return "";
@@ -71,7 +71,7 @@ export default function useProfileEdit() {
     }
     if (introduceInputByteCount > IntroduceMaxLimitByte) {
       setIntroduceWarning(true);
-      return "자기소개는 60byte이상 초과할 수 없어요.";
+      return `자기소개는 ${IntroduceMaxLimitByte}byte이상 초과할 수 없어요.`;
     }
     setIntroduceWarning(false);
     return "";

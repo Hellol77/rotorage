@@ -13,7 +13,7 @@ export default function ProfileForm({ children, user }: { children?: ReactNode; 
     <>
       <ProfileInfoContainer className="flex bg-[#18181b]">
         <div className="h-full">
-          <ProfileAvatar className="mr-8" />
+          <ProfileAvatar size="large" className="mr-8" />
         </div>
         <div className=" flex w-full min-w-fit items-center justify-between">
           <div className="w-full min-w-fit">

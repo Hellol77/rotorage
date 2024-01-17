@@ -8,7 +8,7 @@ import useGetRecentPosts from "@/hooks/queries/useGetRecentPosts";
 export default function Home() {
   const { data } = useGetRecentPosts();
   return (
-    <main className="z-1  h-full w-screen  items-center overflow-y-scroll scrollbar-hide ">
+    <main className="z-1 relative  h-full w-screen  items-center overflow-y-scroll scrollbar-hide ">
       <CircleImageSection />
       <section className=" mx-auto mt-20 w-full max-w-[1280px] px-6 md:mt-40 md:px-20">
         <h1 className=" mb-8 font-poorStory text-3xl">Recent Posts</h1>

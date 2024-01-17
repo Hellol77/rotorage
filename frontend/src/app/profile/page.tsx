@@ -9,11 +9,10 @@ import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCar
 import ProfileEditModal from "@/components/modal/profileModal/ProfileEditModal";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { UserDataContext } from "@/contexts/AuthContext";
-import { useGetLikedPosts } from "@/hooks/queries/useGetLikedPosts";
 import useGetUserPosts from "@/hooks/queries/useGetUserPosts";
 import { useRouter } from "next/navigation";
 
-function ProfilePage() {
+function MyProfilePage() {
   const router = useRouter();
   const { user, accessToken } = useContext(UserDataContext);
   const {
@@ -23,12 +22,7 @@ function ProfilePage() {
     isPending: userPostsIsPending,
   } = useGetUserPosts(user.userId);
   console.log(user);
-  const {
-    data: userLikedPosts,
-    fetchNextPage: userLikedPostsFetchNextPage,
-    isFetchingNextPage: userLikedPostsIsFetchingNextPage,
-    isPending: userLikedPostsIsPending,
-  } = useGetLikedPosts();
+
   useEffect(() => {
     if (accessToken === "logout") {
       router.replace("/");
@@ -48,18 +42,7 @@ function ProfilePage() {
           </ModalTriggerButton>
         </ProfileForm>
       )}
-      <h1 className="md:w-50 mb-4 mt-4 flex w-full  font-Pretendard-SemiBold text-xl ">
-        좋아요한 게시물
-      </h1>
-      <ProfileInfoContainer className="bg-[#18181b]">
-        <InfiniteBoardGrid
-          data={userLikedPosts}
-          fetchNextPage={userLikedPostsFetchNextPage}
-          isFetchingNextPage={userLikedPostsIsFetchingNextPage}
-          isPending={userLikedPostsIsPending}
-          queryKey={queryKeys.getLikedPosts}
-        />
-      </ProfileInfoContainer>
+
       <h1 className="md:w-50 mb-4 mt-10 flex w-full  font-Pretendard-SemiBold text-xl ">
         업로드한 게시물
       </h1>
@@ -76,4 +59,4 @@ function ProfilePage() {
   );
 }
 
-export default React.memo(ProfilePage);
+export default React.memo(MyProfilePage);

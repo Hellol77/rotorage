@@ -4,7 +4,7 @@ import React, { useMemo, useState } from "react";
 
 import PhotoModal from "@/components/modal/photoModal/PhotoModal";
 import { Post, PostGridType } from "@/types/post";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import BoardPhotoContent from "./BoardPhotoContent";
 
@@ -35,12 +35,14 @@ export default function BoardPhotoCard({
 
   return (
     <>
-      <PhotoModal
-        post={post}
-        onClick={onPhotoClicked}
-        handleModalClose={handleModalClose}
-        queryKey={queryKey}
-      />
+      <AnimatePresence>
+        <PhotoModal
+          post={post}
+          onClick={onPhotoClicked}
+          handleModalClose={handleModalClose}
+          queryKey={queryKey}
+        />
+      </AnimatePresence>
       <motion.div
         onClick={handleModalOpen}
         key={_id}

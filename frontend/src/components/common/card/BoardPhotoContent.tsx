@@ -52,12 +52,12 @@ export default function BoardPhotoContent({
         />
       </div>
       <div className="absolute top-0 z-10 flex h-full w-full flex-col justify-end bg-transparent bg-gradient-to-b from-transparent from-[40%] to-[#101010] px-2 py-2  md:px-4 md:py-4">
-        <div className="flex justify-between">
-          <div className="flex flex-col ">
-            <h1 className="w-40 truncate font-poorStory text-sm font-bold tracking-wider md:mb-1 md:text-lg">
+        <div className="flex w-full justify-between">
+          <div className="flex w-3/4 flex-col">
+            <h1 className=" truncate font-poorStory text-sm font-bold tracking-wider md:mb-1 md:text-lg">
               {title}
             </h1>
-            <div className=" w-40 flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
+            <div className=" flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
               {content}
             </div>
           </div>

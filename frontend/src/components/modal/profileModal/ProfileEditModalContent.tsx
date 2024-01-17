@@ -6,12 +6,9 @@ import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
 import ModalTextInput from "@/components/common/modal/ModalTextInput";
 import Divider from "@/components/common/ui/Divider";
+import { IntroduceMaxLimitByte, NicknameMaxLimitByte } from "@/constants/stringLimit";
 
 import useProfileEdit from "@/hooks/useProfileEdit";
-
-export const NicknameMaxLimitByte = 30;
-export const NicknameMinLimitByte = 3;
-export const IntroduceMaxLimitByte = 60;
 
 export default function ProfileEditModalContent() {
   const {
@@ -38,9 +35,9 @@ export default function ProfileEditModalContent() {
     >
       <strong className=" p-4 font-Pretendard-Regular text-lg">프로필 편집</strong>
       <Divider className="mb-10" />
-      <ProfileAvatar />
-      <div className=" p-10">
-        <div>
+      <ProfileAvatar size="large" />
+      <div className=" ">
+        <div className=" mt-6">
           <div className="flex justify-between text-sm">
             <strong className=" ">닉네임</strong>
             <span>{`${nicknameInputByteCount}/${NicknameMaxLimitByte}`}</span>
