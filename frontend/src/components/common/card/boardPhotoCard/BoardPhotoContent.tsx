@@ -43,17 +43,9 @@ export default function BoardPhotoContent({
   return (
     <>
       <div className="relative h-full w-full rounded-md">
-        <ModalTriggerButton
-          className="absolute right-0 top-0"
-          size="icon"
-          content="dotsHorizontalIcon"
-        >
+        <ModalTriggerButton className="absolute right-2 top-0" size="icon" content="more">
           <div>안녕</div>
         </ModalTriggerButton>
-        {/* <DotsHorizontalIcon
-          size="32"
-          className="absolute right-2 top-2 z-20  h-fit w-fit rounded-full hover:bg-slate-400"
-        /> */}
         <Image
           src={imageUrl}
           alt={_id}

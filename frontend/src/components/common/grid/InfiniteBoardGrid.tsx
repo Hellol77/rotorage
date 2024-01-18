@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useMemo, useRef } from "react";
 
-import BoardPhotoCard from "@/components/common/card/BoardPhotoCard";
+import BoardPhotoCard from "@/components/common/card/boardPhotoCard/BoardPhotoCard";
 import BoardGridContainer from "@/components/common/container/BoardGridContainer";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import PostSkeletonGrid from "@/components/common/skeleton/PostSkeletonGrid";

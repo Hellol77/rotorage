@@ -3,8 +3,8 @@ import React, { ChangeEvent, DragEvent, useContext, useEffect, useRef, useState 
 import { toast } from "react-toastify";
 
 import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
+import { ModalTextAreaInput } from "@/components/common/modal/input/ModalTextAreaInput";
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
-import { ModalTextAreaInput } from "@/components/common/modal/ModalTextAreaInput";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.context";
 import { useUploadBoardPost } from "@/hooks/queries/useUploadBoardPost";

@@ -18,7 +18,7 @@ export default function ProfileAvatar({
     >
       <Image
         src={gallery11}
-        className="  h-full w-full   object-cover transition-opacity !duration-500"
+        className="  h-full    object-cover transition-opacity !duration-500"
         alt="profile"
         width={144}
         height={144}
@@ -30,7 +30,7 @@ export default function ProfileAvatar({
 const getSize = (size: "small" | "medium" | "large") => {
   switch (size) {
     case "small":
-      return "h-8 w-8 md:h-16 md:w-16";
+      return "h-10 w-10 md:h-12 md:w-12";
     case "medium":
       return "h-12 w-12 md:h-16 md:w-16";
     case "large":

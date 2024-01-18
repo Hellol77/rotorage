@@ -3,8 +3,8 @@ import React from "react";
 // import { Avatar, Divider, Input } from "@nextui-org/react";
 
 import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
+import ModalTextInput from "@/components/common/modal/input/ModalTextInput";
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
-import ModalTextInput from "@/components/common/modal/ModalTextInput";
 import Divider from "@/components/common/ui/Divider";
 import { IntroduceMaxLimitByte, NicknameMaxLimitByte } from "@/constants/stringLimit";
 

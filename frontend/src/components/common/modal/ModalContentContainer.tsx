@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 
-// import { Button } from "@nextui-org/react";
 import DefaultButton from "@/components/common/button/DefaultButton";
 import { motion } from "framer-motion";
 

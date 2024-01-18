@@ -1,8 +1,9 @@
 import React from "react";
 
 import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
+import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import CloseIcon from "@/components/common/icon/CloseIcon";
-import DotsHorizontalIcon from "@/components/common/icon/DotsHorizontalIcon";
+import MoreModal from "@/components/modal/moreModal/MoreModal";
 import { PostUserType } from "@/types/user";
 import { relativeDate } from "@/utils/relativeDate";
 
@@ -20,23 +21,23 @@ export default function WriterInfo({
   profileImage?: string;
 }) {
   return (
-    <div
-      className={` ${isMobile ? "flex md:hidden" : "hidden md:flex"} pl-3 pr-2 md:w-[400px] md:flex-col`}
-    >
+    <div className={`z-40 ml-4  md:w-[400px] md:flex-col`}>
       <div className=" flex  h-fit w-full  py-2 ">
         <div className="flex w-full items-center">
-          <ProfileAvatar size="medium" />
+          <ProfileAvatar size="small" />
           <div className="ml-3 flex w-full items-center justify-center ">
-            <div className="flex w-full flex-col justify-between font-poorStory text-2xl tracking-wide">
-              <span>{user.nickname}</span>
-              <time className="ml-2 font-poorStory text-xs tracking-wide">
+            <div className="flex w-full flex-col justify-between font-poorStory  tracking-wide">
+              <span className="text-lg">{user.nickname}</span>
+              <time className="font-poorStory text-xs tracking-wide">
                 {relativeDate(createdAt)}
               </time>
             </div>
           </div>
           <div className="flex h-fit flex-col items-center justify-center">
             <CloseIcon size="20" className=" mt-2 md:hidden" onClick={handleModalClose} />
-            <DotsHorizontalIcon size="32" />
+            <ModalTriggerButton content="more">
+              <MoreModal />
+            </ModalTriggerButton>
           </div>
         </div>
       </div>

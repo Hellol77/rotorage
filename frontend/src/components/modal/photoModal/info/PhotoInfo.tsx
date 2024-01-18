@@ -10,20 +10,18 @@ export default function PhotoInfo({
   content: string;
 }) {
   return (
-    <div className="flex w-fit flex-col">
+    <div className="order-2 flex w-fit flex-col md:order-1">
       <Image
         src={imageUrl}
         alt={title}
-        width={500}
-        height={500}
-        className="object-cover h-full md:min-h-[600px] md:object-contain"
+        width={800}
+        height={800}
+        className="h-fit max-h-[53vh] w-[90vw] object-cover md:max-h-[600px] md:min-h-[600px] md:w-auto md:object-contain"
       />
-      <div className=" z-50 mt-4 h-fit w-full justify-end px-4 font-poorStory text-2xl tracking-wider">
+      <div className=" mt-4 h-fit w-full justify-end px-4 font-poorStory text-2xl tracking-wider">
         {title}
       </div>
-      <div className="z-50 h-fit break-all px-4 pb-6 pt-2 font-poorStory tracking-wide ">
-        {content}
-      </div>
+      <div className=" h-fit break-all px-4 pb-6 pt-2 font-poorStory tracking-wide ">{content}</div>
     </div>
   );
 }

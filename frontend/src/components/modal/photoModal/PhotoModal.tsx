@@ -27,17 +27,22 @@ export default function PhotoModal({
         animate={{ opacity: 1, zIndex: 60 }}
         exit={{ opacity: 0 }}
         layoutId={_id + queryKey}
-        className="fixed left-0 right-0 top-5 z-50 mx-auto flex w-80  flex-col rounded-lg bg-black md:max-h-[800px]  md:w-fit  md:min-w-[600px]   md:max-w-[1280px]"
+        className="fixed left-0 right-0 top-5 z-50 mx-auto flex  w-fit flex-col rounded-lg bg-black  md:max-h-[800px] md:w-fit  md:min-w-[600px]   md:max-w-[1280px]"
       >
-        <div className="flex h-full w-full  flex-col  md:flex-row">
-          <WriterInfo
+        <div className="   h-full w-full flex-col md:flex md:flex-row">
+          {/* <WriterInfo
             isMobile={true}
             user={user}
             createdAt={createdAt}
             handleModalClose={handleModalClose}
-          />
+          /> */}
+          <div className="order-1 h-full overflow-y-auto md:order-2">
+            <WriterInfo user={user} createdAt={createdAt} handleModalClose={handleModalClose} />
+            <div className="hidden max-h-[600px] overflow-y-auto md:flex md:flex-col">
+              <div>안녕하영</div>
+            </div>
+          </div>
           <PhotoInfo title={title} imageUrl={imageUrl} content={content} />
-          <WriterInfo user={user} createdAt={createdAt} />
         </div>
       </motion.article>
     </ModalContainer>

@@ -13,7 +13,7 @@ const ContentIcon = {
   uploadIcon: <UploadIcon color="white" className="h-4 w-4" />,
   postMoreIcon: <PostMoreIcon />,
   loading: <BoardLoadingIcon className="h-4 w-4" />,
-  dotsHorizontalIcon: <DotsHorizontalIcon size="32 " />,
+  more: <DotsHorizontalIcon size="32 " />,
 };
 
 export default function ModalTriggerButton({

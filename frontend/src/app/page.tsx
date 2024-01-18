@@ -1,6 +1,6 @@
 "use client";
 import { queryKeys } from "@/apis/querykeys";
-import BoardPhotoCard from "@/components/common/card/BoardPhotoCard";
+import BoardPhotoCard from "@/components/common/card/boardPhotoCard/BoardPhotoCard";
 import BoardGridContainer from "@/components/common/container/BoardGridContainer";
 import CircleImageSection from "@/components/common/section/CircleImageSection";
 import useGetRecentPosts from "@/hooks/queries/useGetRecentPosts";

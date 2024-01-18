@@ -1,4 +1,4 @@
-import { forwardRef, RefObject } from "react";
+import { forwardRef } from "react";
 interface ModalTextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
 }
