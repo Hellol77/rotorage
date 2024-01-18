@@ -3,18 +3,20 @@ import React from "react";
 import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
 import CloseIcon from "@/components/common/icon/CloseIcon";
 import DotsHorizontalIcon from "@/components/common/icon/DotsHorizontalIcon";
-import { PostUserType, UserData } from "@/types/user";
+import { PostUserType } from "@/types/user";
 import { relativeDate } from "@/utils/relativeDate";
 
 export default function WriterInfo({
   createdAt,
   user,
   isMobile = false,
+  handleModalClose,
   profileImage,
 }: {
   createdAt: Date;
   user: PostUserType;
   isMobile?: boolean;
+  handleModalClose?: () => void;
   profileImage?: string;
 }) {
   return (
@@ -33,19 +35,11 @@ export default function WriterInfo({
             </div>
           </div>
           <div className="flex h-fit flex-col items-center justify-center">
-            <CloseIcon size="20" className=" mt-2 stroke-white md:hidden" />
+            <CloseIcon size="20" className=" mt-2 md:hidden" onClick={handleModalClose} />
             <DotsHorizontalIcon size="32" />
           </div>
         </div>
       </div>
     </div>
   );
-}
-{
-  /* <div
-className="absolute right-1  top-2 z-[60]   h-10  w-10 cursor-pointer items-center justify-center md:flex"
-onClick={() => {}}
->
-<CloseIcon size="24" className=" stroke-white" />
-</div> */
 }

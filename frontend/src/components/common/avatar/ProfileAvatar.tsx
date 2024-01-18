@@ -2,7 +2,6 @@ import React from "react";
 
 import Image from "next/image";
 
-// import gallery11 from "/../../public/photo/gallery/gallery11.png";
 import gallery11 from "../../../../public/photo/gallery/gallery11.png";
 
 export default function ProfileAvatar({

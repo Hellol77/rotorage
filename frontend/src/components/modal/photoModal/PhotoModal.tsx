@@ -1,6 +1,5 @@
 import React from "react";
 
-import CloseIcon from "@/components/common/icon/CloseIcon";
 import ModalContainer from "@/components/common/modal/ModalContainer";
 import PhotoInfo from "@/components/modal/photoModal/info/PhotoInfo";
 import WriterInfo from "@/components/modal/photoModal/info/WriterInfo";
@@ -31,7 +30,12 @@ export default function PhotoModal({
         className="fixed left-0 right-0 top-5 z-50 mx-auto flex w-80  flex-col rounded-lg bg-black md:max-h-[800px]  md:w-fit  md:min-w-[600px]   md:max-w-[1280px]"
       >
         <div className="flex h-full w-full  flex-col  md:flex-row">
-          <WriterInfo isMobile={true} user={user} createdAt={createdAt} />
+          <WriterInfo
+            isMobile={true}
+            user={user}
+            createdAt={createdAt}
+            handleModalClose={handleModalClose}
+          />
           <PhotoInfo title={title} imageUrl={imageUrl} content={content} />
           <WriterInfo user={user} createdAt={createdAt} />
         </div>
