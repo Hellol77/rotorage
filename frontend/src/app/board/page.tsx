@@ -2,7 +2,7 @@
 import React from "react";
 
 import { queryKeys } from "@/apis/querykeys";
-import BoardHeader from "@/components/board/BoardHeader";
+import BoardHeader from "@/components/board/header/BoardHeader";
 import MainContainer from "@/components/common/container/MainContainer";
 import InfiniteBoardGrid from "@/components/common/grid/InfiniteBoardGrid";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";

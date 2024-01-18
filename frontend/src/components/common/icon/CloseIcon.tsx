@@ -12,10 +12,10 @@ export default function CloseIcon({
   return (
     <svg
       onClick={onClick}
-      className={`stroke-white ${className} cursor-pointer`}
+      className={`stroke-white ${className} flex cursor-pointer items-center justify-center`}
       width={size}
       height={size}
-      viewBox="0 0 23 23"
+      viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M 3 16.5 L 17 2.5" strokeWidth={3} strokeLinecap="round" />

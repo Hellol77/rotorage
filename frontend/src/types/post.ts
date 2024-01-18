@@ -1,5 +1,7 @@
+import { PostUserType } from "@/types/user";
+
 export type Post = {
-  user: { userId: string; nickname: string };
+  user: PostUserType;
   title: string;
   content: string;
   comments: Comment[];

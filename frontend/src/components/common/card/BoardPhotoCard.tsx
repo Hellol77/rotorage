@@ -2,7 +2,6 @@
 
 import React, { useMemo, useState } from "react";
 
-import DotsHorizontalIcon from "@/components/common/icon/DotsHorizontalIcon";
 import PhotoModal from "@/components/modal/photoModal/PhotoModal";
 import { Post, PostGridType } from "@/types/post";
 import { AnimatePresence, motion } from "framer-motion";

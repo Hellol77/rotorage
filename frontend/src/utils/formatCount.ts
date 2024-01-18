@@ -1,5 +1,4 @@
 export const formatLikeCount = (count: number | undefined) => {
-  console.log(count);
   if (!count) {
     return "0";
   }

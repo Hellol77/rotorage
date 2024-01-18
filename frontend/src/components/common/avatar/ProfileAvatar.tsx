@@ -13,18 +13,18 @@ export default function ProfileAvatar({
   size: "small" | "medium" | "large";
 }) {
   return (
-    <span
+    <div
       tabIndex={-1}
-      className={` text-tiny text-default-foreground  ring-default ring-offset-background data-[focus-visible=true]:outline-focus h- relative z-10 box-border flex  items-center justify-center overflow-hidden rounded-full align-middle outline-none ring-2 ring-offset-2 data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-offset-2   ${getSize(size)} ${className}`}
+      className={`text-tiny text-default-foreground ring-default ring-offset-background  data-[focus-visible=true]:outline-focus relative z-10  box-border flex flex-shrink-0   items-center justify-center overflow-hidden rounded-full align-middle outline-none ring-2 ring-offset-2 data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-offset-2   ${getSize(size)} ${className}`}
     >
       <Image
         src={gallery11}
-        className=" flex h-full w-full   object-cover transition-opacity !duration-500"
+        className="  h-full w-full   object-cover transition-opacity !duration-500"
         alt="profile"
         width={144}
         height={144}
       />
-    </span>
+    </div>
   );
 }
 
