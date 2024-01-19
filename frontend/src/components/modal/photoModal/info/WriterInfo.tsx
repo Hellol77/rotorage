@@ -21,7 +21,7 @@ export default function WriterInfo({
   profileImage?: string;
 }) {
   return (
-    <div className={`z-40 ml-4  md:w-[400px] md:flex-col`}>
+    <div className={`z-40 pl-5   md:flex-col`}>
       <div className=" flex  h-fit w-full  py-2 ">
         <div className="flex w-full items-center">
           <ProfileAvatar size="small" />

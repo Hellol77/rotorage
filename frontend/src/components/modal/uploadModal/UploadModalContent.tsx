@@ -18,7 +18,7 @@ export default function UploadModalContent() {
   const titleTextRef = useRef<HTMLInputElement>(null);
   const contentTextRef = useRef<HTMLInputElement>(null);
   const userData = useContext(UserDataContext);
-  const { mutate } = useUploadBoardPost();
+  const { mutateAsync } = useUploadBoardPost();
   const { validateLogin } = useAuth();
   const { handleCloseOnClick } = useModalTriggerButtonContext();
   const fileSizeCheck = (file: File) => {
@@ -80,7 +80,7 @@ export default function UploadModalContent() {
     const content = contentTextRef.current?.value ?? "";
     const userId = userData?.user.userId;
     const formData = { imageUrl, title, content, user: userId };
-    mutate(formData);
+    await mutateAsync(formData);
     handleCloseEvent();
   };
 

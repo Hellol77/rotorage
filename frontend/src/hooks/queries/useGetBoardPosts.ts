@@ -16,6 +16,8 @@ export function useGetBoardPosts() {
 
     enabled: accessToken !== "",
 
+    // 다시 생각해봐야 할 부분
+    gcTime: Infinity,
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) =>
       lastPage.pages.length >= 12 ? lastPage.pageParams : undefined,
