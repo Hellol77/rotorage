@@ -3,6 +3,7 @@ import React from "react";
 // import { Avatar, Divider, Input } from "@nextui-org/react";
 
 import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
+import PhotoAlbumIcon from "@/components/common/icon/PhotoAlbumIcon";
 import ModalTextInput from "@/components/common/modal/input/ModalTextInput";
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
 import Divider from "@/components/common/ui/Divider";
@@ -35,6 +36,7 @@ export default function ProfileEditModalContent() {
     >
       <strong className=" p-4 font-Pretendard-Regular text-lg">프로필 편집</strong>
       <Divider className="mb-10" />
+      <PhotoAlbumIcon />
       <ProfileAvatar size="large" />
       <div className=" ">
         <div className=" mt-6">

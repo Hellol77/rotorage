@@ -6,15 +6,17 @@ export default function ProfileLinkButton({
   text,
   href,
   children,
+  className,
 }: {
   text: string;
   href: string;
   children: ReactNode;
+  className?: string;
 }) {
   return (
     <Link
       href={href}
-      className="flex h-full w-full items-center justify-center gap-4 rounded-xl hover:bg-[#272727] md:h-12 md:justify-start md:pl-2"
+      className={`${className} } flex h-full w-full items-center justify-center gap-4 rounded-xl hover:bg-[#272727] md:h-12 md:justify-start md:pl-2`}
     >
       {children}
       <p>{text}</p>

@@ -9,18 +9,21 @@ import ProfileInfoContainer from "../common/container/ProfileInfoContainer";
 export default function ProfileForm({ children, user }: { children?: ReactNode; user: UserData }) {
   return (
     <>
-      <ProfileInfoContainer className="flex w-full min-w-fit dark:bg-[#18181b]">
-        <div className="h-full">
-          <ProfileAvatar size="large" className="mr-8" />
-        </div>
-        <div className=" flex w-full min-w-fit items-center justify-between">
-          <div className="w-full min-w-fit">
-            <span className=" font-Pretendard-SemiBold text-2xl">{user?.nickname}</span>
-            <p className=" mt-2 text-sm text-[#c9cedc]">
-              {user?.introduce === "loading"
-                ? ""
-                : user?.introduce || "한줄 자기소개를 작성해보세요."}
-            </p>
+      <ProfileInfoContainer className="flex w-full min-w-fit p-4  dark:bg-[#18181b]">
+        <div className="h-full"></div>
+        <div className="ml-3  flex min-w-fit flex-col  items-end  md:w-full md:flex-row md:items-center md:justify-between">
+          <div className="mb-4 flex w-full min-w-fit items-center md:mb-0 ">
+            <ProfileAvatar size="large" className="mr-4 md:mr-8" />
+            <div>
+              <span className=" text-md font-Pretendard-SemiBold md:text-2xl">
+                {user?.nickname}
+              </span>
+              <p className=" md:text-md mt-1 w-40 whitespace-normal break-all text-xs text-[#c9cedc] md:mt-2 md:w-full">
+                {user?.introduce === "loading"
+                  ? ""
+                  : user?.introduce || "한줄 자기소개를 작성해보세요."}
+              </p>
+            </div>
           </div>
           {children}
         </div>
