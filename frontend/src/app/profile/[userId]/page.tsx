@@ -10,8 +10,9 @@ import useSearchProfile from "@/hooks/queries/useSearchProfile";
 import { useParams } from "next/navigation";
 
 export default function SearchProfilePage() {
-  const { userId } = useParams();
-  const searchUserId = userId[0];
+  const { userId } = useParams<{ userId: string }>();
+  const searchUserId = userId;
+  console.log(searchUserId);
   const { data: userProfileData, isLoading } = useSearchProfile(searchUserId);
   return (
     <section className="mx-auto h-full w-full">

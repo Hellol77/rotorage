@@ -9,14 +9,14 @@ import useGetUserPosts from "@/hooks/queries/useGetUserPosts";
 import { useParams } from "next/navigation";
 
 export default function SearchUserPostspage() {
-  const { userId } = useParams();
+  const { userId } = useParams<{ userId: string }>();
 
   const {
     data: userPostsData,
     fetchNextPage: userPostsFetchNextPage,
     isFetchingNextPage: userPostsIsFetchingNextPage,
     isPending: userPostsIsPending,
-  } = useGetUserPosts(userId[0]);
+  } = useGetUserPosts(userId);
   return (
     <section className=" mx-auto h-full w-full">
       <ProfileTitleText text="업로드한 게시물" />
