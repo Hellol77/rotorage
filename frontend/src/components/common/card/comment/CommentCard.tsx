@@ -22,7 +22,7 @@ export default function CommentCard({
             {commentContent}
           </span>
         </div>
-        <div className=" text-xs tracking-wide">{relativeDate(commentCreatedAt)}</div>
+        <div className=" text-xs tracking-wide text-gray-400">{relativeDate(commentCreatedAt)}</div>
       </div>
     </ul>
   );

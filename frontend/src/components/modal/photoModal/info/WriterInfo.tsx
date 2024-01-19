@@ -10,13 +10,11 @@ import { relativeDate } from "@/utils/relativeDate";
 export default function WriterInfo({
   createdAt,
   user,
-  isMobile = false,
   handleModalClose,
   profileImage,
 }: {
   createdAt: Date;
   user: PostUserType;
-  isMobile?: boolean;
   handleModalClose?: () => void;
   profileImage?: string;
 }) {
@@ -28,7 +26,7 @@ export default function WriterInfo({
           <div className="ml-3 flex w-full items-center justify-center ">
             <div className="flex w-full flex-col justify-between font-poorStory  tracking-wide">
               <span className="text-lg">{user.nickname}</span>
-              <time className="font-poorStory text-xs tracking-wide">
+              <time className="font-poorStory text-xs tracking-wide text-gray-400">
                 {relativeDate(createdAt)}
               </time>
             </div>

@@ -55,8 +55,6 @@ export default function InfiniteBoardGrid({
   isPending,
   queryKey,
 }: InfiniteBoardGridProps) {
-  // const { data, fetchNextPage, isFetchingNextPage, isPending } =
-  //   useGetBoardPosts();
   const ref = useRef(null);
   const isInView = useInView(ref);
   useEffect(() => {
