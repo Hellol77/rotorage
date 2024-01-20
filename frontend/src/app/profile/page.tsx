@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from "react";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
 import ProfileTitleText from "@/components/common/text/ProfileTitleText";
-import ProfileEditModal from "@/components/modal/profileEditModal/ProfileEditModal";
+import ProfileEditModal from "@/components/modalTemplate/profileEditModal/ProfileEditModal";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";

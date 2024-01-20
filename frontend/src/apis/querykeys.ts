@@ -5,4 +5,5 @@ export const queryKeys = {
   searchProfile: (_id: string) => ["searchProfile", _id],
   getUserPosts: (user_id: string) => ["getUserPosts", user_id],
   getLikedPosts: ["getLikedPosts"],
+  addComment: (postId: string) => ["addComment", postId],
 };

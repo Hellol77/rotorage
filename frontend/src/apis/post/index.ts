@@ -111,3 +111,22 @@ export const likePost = async ({ _id, accessToken }: { _id: string; accessToken:
 
   return api;
 };
+
+export const addComment = async ({
+  postId,
+  content,
+  accessToken,
+}: {
+  postId: string;
+  content: string;
+  accessToken: string;
+}) => {
+  try {
+    const api = await defaultApi.post(
+      "/api/comment",
+      { postId, content },
+      { headers: { Authorization: `Bearer ${accessToken}` } },
+    );
+    return api;
+  } catch (err) {}
+};

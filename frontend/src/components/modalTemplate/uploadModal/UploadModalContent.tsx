@@ -15,8 +15,8 @@ import useAuth from "@/hooks/useAuth";
 export default function UploadModalContent() {
   const [dragging, setDragging] = useState(false);
   const [file, setFile] = useState<File | null>(null);
-  const titleTextRef = useRef<HTMLInputElement>(null);
-  const contentTextRef = useRef<HTMLInputElement>(null);
+  const titleTextRef = useRef<HTMLTextAreaElement>(null);
+  const contentTextRef = useRef<HTMLTextAreaElement>(null);
   const userData = useContext(UserDataContext);
   const { mutateAsync } = useUploadBoardPost();
   const { validateLogin } = useAuth();
@@ -97,11 +97,11 @@ export default function UploadModalContent() {
         type="file"
         id="input-upload"
         required
-        className="relative z-50 hidden h-[100vw] w-[80vw] rounded-md object-cover md:h-[40vw] md:w-[30vw]"
+        className="relative z-50 hidden h-[100vw] w-[80vw] rounded-md object-cover md:h-96 md:w-80"
         onChange={handleChange}
       />
       <label
-        className={` flex h-[100vw]  w-[80vw] items-center justify-center hover:bg-slate-800 md:h-[36vw] md:w-[28vw] ${
+        className={` flex h-[100vw]  w-[80vw] items-center justify-center hover:bg-slate-800 md:h-96 md:w-80 ${
           !file && "border-2 border-dashed border-sky-500"
         } `}
         htmlFor="input-upload"
@@ -128,25 +128,19 @@ export default function UploadModalContent() {
           </div>
         )}
       </label>
-      {/* <input
-        placeholder="제목을 입력해주세요"
-        className=" relative z-50 mb-1 mt-2 w-full px-4 font-poorStory text-2xl tracking-wider"
-        name="title"
-        id="input-text"
-        ref={titleTextRef}
-        required
-      /> */}
       <ModalTextAreaInput
-        className={`mt-2 w-full rounded-xl bg-[#27272a] px-2 py-2 `}
+        className={`mt-2 w-80 resize-none rounded-xl bg-[#27272a] px-2 py-2 `}
         placeholder="제목을 입력해주세요"
         name="title"
+        rows={1}
         id="input-text"
         ref={titleTextRef}
         required
       />
       <ModalTextAreaInput
-        className={`mt-2 w-full rounded-xl bg-[#27272a] px-2 py-2 `}
+        className={`mt-2  w-80 rounded-xl bg-[#27272a] px-2 py-2 `}
         name="content"
+        rows={2}
         placeholder="내용을 입력해주세요"
         ref={contentTextRef}
         required

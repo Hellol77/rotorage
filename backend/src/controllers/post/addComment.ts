@@ -13,7 +13,21 @@ export const addComment = async (
   try {
     const accessToken = getAccessTokenToheader(req);
     const _id = await getUserObjectId(req, res, accessToken);
-
-    
-  } catch (err) {}
+    if (!_id) {
+      return res.status(401).send("Unauthorized. Fail to get user object id");
+    }
+    const postId = req.body.postId;
+    const comment = await new Comment(
+      {
+        user: _id,
+        content: req.body.content,
+        createdAt: new Date(),
+      },
+      { versionKey: false }
+    );
+    Post.updateOne({ _id: postId }, { $push: { comments: comment } });
+    return res.status(200).send("Success add comment");
+  } catch (err) {
+    return res.status(400).send("Fail add comment");
+  }
 };

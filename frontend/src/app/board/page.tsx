@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { queryKeys } from "@/apis/querykeys";
 import BoardHeader from "@/components/board/header/BoardHeader";
@@ -8,7 +8,8 @@ import InfiniteBoardGrid from "@/components/common/grid/InfiniteBoardGrid";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
 
 export default function BoradPage() {
-  const { data, fetchNextPage, isFetchingNextPage, isPending } = useGetBoardPosts();
+  const { data, fetchNextPage, isFetchingNextPage, isPending, isFetching } = useGetBoardPosts();
+
   return (
     <MainContainer>
       <section className="relative mx-auto h-full w-screen">
@@ -19,6 +20,7 @@ export default function BoradPage() {
           isFetchingNextPage={isFetchingNextPage}
           isPending={isPending}
           queryKey={queryKeys.boardPosts}
+          isFetching={isFetching}
         />
       </section>
     </MainContainer>

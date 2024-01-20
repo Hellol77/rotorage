@@ -18,6 +18,8 @@ export function useGetBoardPosts() {
 
     // 다시 생각해봐야 할 부분
     gcTime: Infinity,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) =>
       lastPage.pages.length >= 12 ? lastPage.pageParams : undefined,

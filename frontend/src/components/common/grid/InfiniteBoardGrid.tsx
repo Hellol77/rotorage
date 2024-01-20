@@ -15,6 +15,7 @@ import { useInView } from "framer-motion";
 
 interface InfiniteBoardGridProps {
   isPending: boolean;
+  isFetching: boolean;
   isFetchingNextPage: boolean;
   fetchNextPage: (options?: FetchNextPageOptions | undefined) => Promise<
     InfiniteQueryObserverResult<
@@ -53,15 +54,16 @@ export default function InfiniteBoardGrid({
   fetchNextPage,
   isFetchingNextPage,
   isPending,
+  isFetching,
   queryKey,
 }: InfiniteBoardGridProps) {
   const ref = useRef(null);
   const isInView = useInView(ref);
   useEffect(() => {
-    if (isInView && !isPending) {
+    if (isInView && !isPending && !isFetching) {
       fetchNextPage();
     }
-  }, [fetchNextPage, isInView, data, isPending]);
+  }, [fetchNextPage, isInView, data, isPending, isFetching]);
   useRefreshScrollReset();
 
   const useMemoBoardLoading = useMemo(

@@ -2,7 +2,7 @@
 import React from "react";
 
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
-import UploadModal from "@/components/modal/uploadModal/UploadModal";
+import UploadModal from "@/components/modalTemplate/uploadModal/UploadModal";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
 
 export default function BoardHeader() {

@@ -25,7 +25,7 @@ export default function PhotoInfo({
           width={800}
           height={800}
           id={imageUrl}
-          className="h-fit  max-h-[53vh] w-[90vw] object-cover md:max-h-[600px] md:min-h-[600px] md:w-auto md:object-contain"
+          className="h-fit max-h-[53vh] w-[90vw]  rounded-t-lg border-[0.5px] border-gray-800 object-cover md:max-h-[600px] md:min-h-[600px] md:w-auto md:object-contain"
         />
       </div>
       <div className="flex  flex-col flex-wrap">

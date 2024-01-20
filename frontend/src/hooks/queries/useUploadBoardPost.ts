@@ -6,6 +6,7 @@ import { AxiosError } from "axios";
 import { uploadBoardPost } from "@/apis/post";
 import { queryKeys } from "@/apis/querykeys";
 import { DEFAULT_UPDATED_POST } from "@/constants/updatedPost";
+import { ACCESS_TOKEN_LOGOUT_STATE } from "@/constants/user";
 import { LogoutContext, UserDataContext } from "@/contexts/AuthContext";
 import { BoardPosts, UpdatedPost } from "@/types/post";
 import { InfiniteData, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -15,7 +16,7 @@ export function useUploadBoardPost() {
   const queryClient = useQueryClient();
   const handleLogout = useContext(LogoutContext);
   const router = useRouter();
-  const userData = useContext(UserDataContext);
+  const { accessToken, user } = useContext(UserDataContext);
   return useMutation({
     mutationFn: (formData: UpdatedPost) =>
       uploadBoardPost({
@@ -23,23 +24,20 @@ export function useUploadBoardPost() {
         title: formData.title,
         content: formData.content,
         user: formData.user,
-        accessToken: userData?.accessToken,
+        accessToken: accessToken,
       }),
     onMutate: async (newPost) => {
       await queryClient.cancelQueries({ queryKey: queryKeys.boardPosts });
 
       const newImageUrl = URL.createObjectURL(newPost.imageUrl);
-      if (!userData) {
+      if (ACCESS_TOKEN_LOGOUT_STATE.includes(accessToken)) {
         toast.warn("로그인이 필요합니다.");
         return;
       }
       let copyNewPost = {
         ...DEFAULT_UPDATED_POST,
         ...newPost,
-        user: {
-          userId: userData.user.userId,
-          nickname: userData.user.nickname,
-        },
+        user,
         imageUrl: newImageUrl,
       };
       const previousBoardPosts = queryClient.getQueryData<InfiniteData<BoardPosts>>(
@@ -53,6 +51,9 @@ export function useUploadBoardPost() {
       });
 
       return { previousBoardPosts };
+    },
+    onSuccess: () => {
+      toast.success("게시글이 업로드되었습니다.");
     },
     onError: async (err: AxiosError, newPost, context) => {
       queryClient.setQueryData(queryKeys.boardPosts, context?.previousBoardPosts);

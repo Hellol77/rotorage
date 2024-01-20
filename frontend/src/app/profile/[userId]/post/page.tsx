@@ -16,6 +16,7 @@ export default function SearchUserPostspage() {
     fetchNextPage: userPostsFetchNextPage,
     isFetchingNextPage: userPostsIsFetchingNextPage,
     isPending: userPostsIsPending,
+    isFetching,
   } = useGetUserPosts(userId);
   return (
     <section className=" mx-auto h-full w-full">
@@ -27,6 +28,7 @@ export default function SearchUserPostspage() {
           isFetchingNextPage={userPostsIsFetchingNextPage}
           isPending={userPostsIsPending}
           queryKey={queryKeys.getUserPosts(userId[0])}
+          isFetching={isFetching}
         />
       </ProfileInfoContainer>
     </section>

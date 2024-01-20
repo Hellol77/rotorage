@@ -3,7 +3,7 @@ import React from "react";
 import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import CloseIcon from "@/components/common/icon/CloseIcon";
-import MoreModal from "@/components/modal/moreModal/MoreModal";
+import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import { PostUserType } from "@/types/user";
 import { relativeDate } from "@/utils/relativeDate";
 
