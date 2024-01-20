@@ -36,7 +36,7 @@ export default function PhotoModal({
         <div className="   h-full w-full flex-col md:flex md:flex-row">
           <div className="order-1 h-full overflow-hidden md:order-2  md:w-[420px]">
             <WriterInfo user={user} createdAt={createdAt} handleModalClose={handleModalClose} />
-            <Divider />
+            <Divider className="h-[1px] w-full" />
             <form className="z-20 hidden flex-shrink-0 flex-col overflow-hidden md:flex">
               <div className="z-20 h-[700px]  overflow-y-auto overflow-x-hidden p-3 px-5 font-poorStory scrollbar-hide ">
                 <CommentCard

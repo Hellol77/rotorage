@@ -11,21 +11,20 @@ export default function WriterInfo({
   createdAt,
   user,
   handleModalClose,
-  profileImage,
 }: {
   createdAt: Date;
   user: PostUserType;
   handleModalClose?: () => void;
-  profileImage?: string;
 }) {
+  const { nickname, profileImage } = user;
   return (
-    <div className={`z-40 pl-5   md:flex-col`}>
+    <div className={`z-40 py-3 pl-5  md:flex-col`}>
       <div className=" flex  h-fit w-full  py-2 ">
         <div className="flex w-full items-center">
-          <ProfileAvatar size="small" />
+          <ProfileAvatar size="small" profileImage={profileImage} />
           <div className="ml-3 flex w-full items-center justify-center ">
             <div className="flex w-full flex-col justify-between font-poorStory  tracking-wide">
-              <span className="text-lg">{user.nickname}</span>
+              <span className="text-lg">{nickname}</span>
               <time className="font-poorStory text-xs tracking-wide text-gray-400">
                 {relativeDate(createdAt)}
               </time>

@@ -35,7 +35,7 @@ export default function ProfileEditModalContent() {
       disabled={disabled}
     >
       <strong className=" p-4 font-Pretendard-Regular text-lg">프로필 편집</strong>
-      <Divider className="mb-10" />
+      <Divider className="mb-10 h-[1px] w-full" />
       <label className={` relative`} htmlFor="input-upload">
         <PencilIcon
           size="24"

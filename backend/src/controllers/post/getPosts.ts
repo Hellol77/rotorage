@@ -16,7 +16,7 @@ export const getPosts = async (
     const limit = 24;
 
     const posts = await Post.find({}, {})
-      .populate({ path: "user", select: "userId nickname" })
+      .populate({ path: "user" })
       .sort({ _id: -1 })
       .limit(limit)
       .skip((page - 1) * limit)
