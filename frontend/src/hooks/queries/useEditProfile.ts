@@ -9,19 +9,31 @@ import { UserEditProfileType } from "@/types/user";
 import { useMutation } from "@tanstack/react-query";
 
 export default function useEditProfile({
-  nickname,
-  introduce,
-  accessToken,
   handleCloseOnClick,
-}: UserEditProfileType & { handleCloseOnClick: () => void }) {
+  accessToken,
+}: {
+  handleCloseOnClick: () => void;
+  accessToken: string;
+}) {
   const handleLogout = useContext(LogoutContext);
   const setUserData = useContext(SetUserDataContext);
   return useMutation({
-    mutationFn: () => editProfile({ nickname, introduce, accessToken }),
-    onMutate: () => {
+    mutationFn: ({ nickname, introduce, accessToken, profileImage }: UserEditProfileType) =>
+      editProfile({ nickname, introduce, profileImage, accessToken }),
+    onMutate: ({ nickname, introduce, profileImage }) => {
       if (!setUserData) return;
       setUserData((prev) => {
-        return { ...prev, user: { ...prev.user, nickname, introduce } };
+        const { user } = prev;
+        return {
+          ...prev,
+          user: {
+            ...user,
+            nickname,
+            introduce,
+            profileImage:
+              profileImage instanceof File ? URL.createObjectURL(profileImage) : user.profileImage,
+          },
+        };
       });
     },
     onError: async (err: AxiosError) => {

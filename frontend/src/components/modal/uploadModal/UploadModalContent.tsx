@@ -22,9 +22,9 @@ export default function UploadModalContent() {
   const { validateLogin } = useAuth();
   const { handleCloseOnClick } = useModalTriggerButtonContext();
   const fileSizeCheck = (file: File) => {
-    if (file.size > 1024 * 1024 * 10) {
+    if (file.size > 1024 * 1024 * 5) {
       setFile(null);
-      toast.warn("파일 사이즈는 10MB를 넘을 수 없습니다.");
+      toast.warn("이미지 사이즈는 5MB를 넘을 수 없습니다.");
     }
   };
 

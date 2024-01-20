@@ -19,6 +19,7 @@ export interface UserEditProfileType extends UserProfile {
 export interface UserProfile {
   nickname: string;
   introduce: string;
+  profileImage: File | string;
 }
 
 export type PostUserType = Omit<UserData, "accessToken" | "introduce">;

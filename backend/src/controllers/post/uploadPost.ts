@@ -12,7 +12,7 @@ export const uploadPost = async (
 ) => {
   const accessToken = getAccessTokenToheader(req);
   if (!accessToken) {
-    res.status(401).send("you need to login (Don't have accesToken)");
+    return res.status(401).send("you need to login (Don't have accesToken)");
   }
   const _id = await getUserObjectId(req, res, accessToken);
   if (!_id) {
@@ -20,7 +20,7 @@ export const uploadPost = async (
   }
 
   if (!req.file) {
-    return res.status(400).send("file");
+    return res.status(400).send("이미지 파일이 존재하지 않습니다.");
   }
   const title = req.body.title;
   const content = req.body.content;

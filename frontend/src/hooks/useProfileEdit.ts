@@ -1,4 +1,5 @@
-import { ChangeEvent, useContext, useMemo, useState } from "react";
+import { ChangeEvent, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 
 import {
   IntroduceMaxLimitByte,
@@ -16,6 +17,7 @@ export default function useProfileEdit() {
   const { user, accessToken } = useContext(UserDataContext);
   const [nickname, setNickname] = useState(user?.nickname);
   const [introduce, setIntroduce] = useState(user?.introduce);
+  const [profileImage, setProfileImage] = useState<File | string>(user?.profileImage);
   const [nicknameInputByteCount, setNicknameInputByteCount] = useState(
     inputByteCountCalculate(user.nickname),
   );
@@ -25,15 +27,29 @@ export default function useProfileEdit() {
   const [nicknameWarning, setNicknameWarning] = useState(false);
   const [introduceWarning, setIntroduceWarning] = useState(false);
   const { mutate, failureReason } = useEditProfile({
-    nickname,
-    introduce,
     accessToken,
     handleCloseOnClick,
   });
+
+  const fileSizeCheck = useCallback(
+    (file: File | string) => {
+      if (typeof file !== "string" && file.size > 1024 * 1024 * 5) {
+        setProfileImage(user.profileImage);
+        toast.warn("이미지 사이즈는 5MB를 넘을 수 없습니다.");
+      }
+    },
+    [user.profileImage],
+  );
+
+  useEffect(() => {
+    if (profileImage) {
+      fileSizeCheck(profileImage);
+    }
+  }, [fileSizeCheck, profileImage]);
+
   const handleSubmit = async () => {
     if (disabled) return;
-
-    mutate();
+    mutate({ nickname, introduce, accessToken, profileImage });
   };
   const handleNicknameInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -47,6 +63,14 @@ export default function useProfileEdit() {
     const count = inputByteCountCalculate(value);
     setIntroduceInputByteCount(count);
   };
+  const handleProfileImageInput = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const files = e.target?.files;
+    if (files && files[0]) {
+      setProfileImage(files[0]);
+    }
+  };
+
   const validateNickname = useMemo(() => {
     if (nicknameInputByteCount < NicknameMinLimitByte) {
       setNicknameWarning(true);
@@ -79,20 +103,33 @@ export default function useProfileEdit() {
 
   const disabled = useMemo(
     () =>
-      (nickname === user.nickname && introduce === user.introduce) ||
+      (nickname === user.nickname &&
+        introduce === user.introduce &&
+        profileImage === user.profileImage) ||
       nicknameWarning ||
       introduceWarning,
-    [nickname, user, introduce, nicknameWarning, introduceWarning],
+    [
+      user.nickname,
+      user.introduce,
+      user.profileImage,
+      nickname,
+      introduce,
+      profileImage,
+      nicknameWarning,
+      introduceWarning,
+    ],
   );
   return {
     disabled,
     handleSubmit,
     handleCloseOnClick,
+    handleProfileImageInput,
     nickname,
     validateNickname,
     nicknameInputByteCount,
     handleNicknameInput,
     introduce,
+    profileImage,
     handleIntroduceInput,
     introduceInputByteCount,
     validateIntroduce,

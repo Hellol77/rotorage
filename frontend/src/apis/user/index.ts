@@ -8,12 +8,16 @@ export const getMyProfileInfo = async (accessToken: string): Promise<UserData> =
   return data;
 };
 
-export const editProfile = async ({ nickname, introduce, accessToken }: UserEditProfileType) => {
-  const api = await defaultApi.post(
-    `/api/user/profile/edit`,
-    { nickname, introduce },
-    { headers: { Authorization: `Bearer ${accessToken}` } },
-  );
+export const editProfile = async (data: UserEditProfileType) => {
+  const formData = new FormData();
+  const { accessToken, ...restData } = data;
+  Object.entries(restData).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+
+  const api = await defaultApi.post(`/api/user/profile/edit`, formData, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
   return api;
 };
 

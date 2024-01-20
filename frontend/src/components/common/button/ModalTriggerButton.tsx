@@ -52,7 +52,7 @@ export default function ModalTriggerButton({
   return (
     <>
       <div
-        className={`flex min-w-fit cursor-pointer items-center justify-center gap-2 rounded-3xl   ${getColor(color)} ${getSize(size)} font-poorStory  ${isLoading ? "bg-gray-500" : ""} ${className}}`}
+        className={`flex min-w-fit cursor-pointer items-center justify-center gap-2 rounded-3xl    ${getColor(color, isLoading)} ${getSize(size)} font-poorStory  ${isLoading ? "bg-gray-500" : ""} ${className}}`}
         color="primary"
         onClick={handleOnClick}
       >
@@ -66,16 +66,16 @@ export default function ModalTriggerButton({
   );
 }
 
-const getColor = (color: string | undefined) => {
+const getColor = (color: string | undefined, isLoading: boolean | undefined) => {
   switch (color) {
     case "primary":
-      return "bg-blue-500 hover:bg-blue-600 border-2 z-10";
+      return `bg-blue-500  border-2 z-10 ${isLoading ? "" : "hover:bg-blue-600"}`;
     case "secondary":
-      return "bg-blue-500 hover:bg-blue-600 border-2 z-10";
+      return `bg-gray-500  border-2 z-10 ${isLoading ? "" : "hover:bg-gray-600"}`;
     case "danger":
-      return "bg-blue-500 hover:bg-blue-600 border-2 z-10";
+      return `bg-red-500  border-2 z-10 ${isLoading ? "" : "hover:bg-red-600"}`;
     case "success":
-      return "bg-blue-500 hover:bg-blue-600 border-2 z-10";
+      return `bg-green-500  border-2 z-10 ${isLoading ? "" : "hover:bg-green-600"}`;
     default:
       return "";
   }

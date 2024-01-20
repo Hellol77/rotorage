@@ -10,7 +10,7 @@ import { getLikedPosts } from "../controllers/post/getLikedPosts";
 import { dislikePost } from "../controllers/post/dislikePost";
 
 const postRouter = Router();
-postRouter.post("/", awsUpload.single("imgFile"), uploadPost);
+postRouter.post("/", awsUpload.single("imageUrl"), uploadPost);
 postRouter.get("/page/:page", getPosts);
 postRouter.get("/recent", getRecentPosts);
 postRouter.post("/like", likePost);

@@ -25,18 +25,13 @@ export const getBoardPosts = async ({
   return api;
 };
 
-export const uploadBoardPost = async ({
-  imageUrl,
-  title,
-  content,
-  user,
-  accessToken,
-}: UpdatePostPropsType) => {
+export const uploadBoardPost = async (data: UpdatePostPropsType) => {
   const formData = new FormData();
-  formData.append("imgFile", imageUrl);
-  formData.append("title", title);
-  formData.append("content", content);
-  formData.append("user", user);
+  const { accessToken, ...restData } = data;
+  Object.entries(restData).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+  console.log(formData);
   const api = await defaultApi.post("/api/post", formData, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });

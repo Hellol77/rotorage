@@ -1,8 +1,8 @@
 import { getAccessTokenToheader } from "./../../utils/getAccessTokenToHeader";
-import axios from "axios";
 import { NextFunction, Request, Response } from "express";
 import { User } from "../../models/user";
 import { MongoError } from "mongodb";
+import { getUserObjectId } from "../../utils/getUserObjectId";
 
 export const editProfileInfo = async (
   req: Request,
@@ -11,29 +11,45 @@ export const editProfileInfo = async (
 ) => {
   const accessToken = getAccessTokenToheader(req);
   if (!accessToken) {
-    res.status(401).send("accessToken이 없습니다.");
+    return res.status(401).send("accessToken이 없습니다.");
+  }
+  const _id = await getUserObjectId(req, res, accessToken);
+  if (!_id) {
+    return res.status(401).send("Unauthorized. Fail to get user object id");
   }
   try {
     const newNickname = req.body.nickname;
     const newIntroduce = req.body.introduce;
-    const profileInfo = await axios.get(
-      "https://kapi.kakao.com/v1/user/access_token_info",
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
+
+    const profileImage = req.file as Express.MulterS3.File;
+    console.log("profileImage", profileImage);
+    if (!profileImage) {
+      const profileImageUrl = req.body.profileImage;
+      console.log("profileImageUrl", profileImageUrl);
+
+      const userData = await User.findOneAndUpdate(
+        { _id },
+        {
+          nickname: newNickname,
+          introduce: newIntroduce,
+          profileImage: profileImageUrl,
+        }
+      );
+      return res.status(200).send("Success Edit Profile");
+    }
+    console.log("profileImage.location", profileImage.location);
+    console.log("_id", _id);
 
     const userData = await User.findOneAndUpdate(
-      { userId: profileInfo.data.id },
+      { _id },
       {
         nickname: newNickname,
         introduce: newIntroduce,
+        profileImage: profileImage.location,
       }
     );
     console.log("userData", userData);
-    res.status(200).send("Success Edit Profile");
+    return res.status(200).send("Success Edit Profile");
   } catch (err) {
     console.log("err", err instanceof MongoError);
     if (err instanceof MongoError && err.code === 11000) {
