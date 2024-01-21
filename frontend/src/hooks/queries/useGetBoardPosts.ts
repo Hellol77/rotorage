@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import { getBoardPosts } from "@/apis/post/index";
 import { queryKeys } from "@/apis/querykeys";
+import { BOARD_POSTS_LIMIT } from "@/constants/boardPosts";
 import { UserDataContext } from "@/contexts/AuthContext";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
@@ -20,8 +21,11 @@ export function useGetBoardPosts() {
     gcTime: Infinity,
     refetchOnWindowFocus: true,
     refetchOnReconnect: true,
+    refetchOnMount: true,
     initialPageParam: 1,
-    getNextPageParam: (lastPage, allPage) =>
-      lastPage.pages.length >= 12 ? lastPage.pageParams : undefined,
+    getNextPageParam: (lastPage, allPage) => {
+      console.log(lastPage.pages?.length, BOARD_POSTS_LIMIT);
+      return lastPage.pages?.length || 0 >= BOARD_POSTS_LIMIT ? lastPage.pageParams : undefined;
+    },
   });
 }

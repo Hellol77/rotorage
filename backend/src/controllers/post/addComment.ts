@@ -17,7 +17,7 @@ export const addComment = async (
       return res.status(401).send("Unauthorized. Fail to get user object id");
     }
     const postId = req.body.postId;
-    const comment = await new Comment(
+    const comment = new Comment(
       {
         user: _id,
         content: req.body.content,
@@ -25,7 +25,8 @@ export const addComment = async (
       },
       { versionKey: false }
     );
-    Post.updateOne({ _id: postId }, { $push: { comments: comment } });
+    await Post.updateOne({ _id: postId }, { $push: { comments: comment._id } });
+    await comment.save();
     return res.status(200).send("Success add comment");
   } catch (err) {
     return res.status(400).send("Fail add comment");

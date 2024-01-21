@@ -16,6 +16,13 @@ functions:
           method: POST
           path: /post
           cors: true
+  addComment:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: POST
+          path: /post/comment
+          cors: true
   getPosts:
     handler: src/index.handler
     events:

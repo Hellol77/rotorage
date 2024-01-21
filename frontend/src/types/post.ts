@@ -1,4 +1,4 @@
-import { PostUserType } from "@/types/user";
+import { PostUserType, UserData } from "@/types/user";
 
 export type Post = {
   user: PostUserType;
@@ -25,7 +25,8 @@ export type DefaultUpdatePostType = Omit<Post, "user" | "imageUrl" | "title" | "
 // export type UpdatedPost = Omit<Post, 'user'> & { user: string; imageUrl: File };
 
 export interface Comment {
-  user: string;
+  _id: string;
+  user: UserData;
   content: string;
   createdAt: Date;
 }
@@ -35,6 +36,10 @@ export interface BoardPosts {
   pageParams: number;
 }
 
+export interface InfiniteBoardPosts {
+  pages: BoardPosts[];
+  pageParams: number;
+}
 export type PostGridType = "default" | "infinite";
 
 export type UpdatePostPropsType = { accessToken: string } & UpdatedPost;

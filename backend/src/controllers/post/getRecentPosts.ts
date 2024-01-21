@@ -17,7 +17,11 @@ export const getRecentPosts = async (
     const posts = await Post.find({}, {})
       .populate({
         path: "user",
-        select: "userId nickname",
+      })
+      .populate({
+        path: "comments",
+        populate: { path: "user" },
+        options: { sort: { _id: -1 } },
       })
       .sort({ _id: -1 })
       .limit(limit)

@@ -122,11 +122,13 @@ export const addComment = async ({
   accessToken: string;
 }) => {
   try {
-    const api = await defaultApi.post(
-      "/api/comment",
+    await defaultApi.post(
+      "/api/post/comment",
       { postId, content },
       { headers: { Authorization: `Bearer ${accessToken}` } },
     );
-    return api;
-  } catch (err) {}
+  } catch (err) {
+    console.log("err");
+    throw err;
+  }
 };

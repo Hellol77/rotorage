@@ -17,6 +17,11 @@ export const getPosts = async (
 
     const posts = await Post.find({}, {})
       .populate({ path: "user" })
+      .populate({
+        path: "comments",
+        populate: { path: "user" },
+        options: { sort: { _id: -1 } },
+      })
       .sort({ _id: -1 })
       .limit(limit)
       .skip((page - 1) * limit)

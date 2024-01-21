@@ -1,10 +1,8 @@
 import React, { useRef } from "react";
 
-import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
-import CommentCard from "@/components/common/card/comment/CommentCard";
-import { ModalTextAreaInput } from "@/components/common/modal/input/ModalTextAreaInput";
 import ModalContainer from "@/components/common/modal/ModalContainer";
 import Divider from "@/components/common/ui/Divider";
+import CommentInfo from "@/components/modalTemplate/photoModal/info/CommentInfo";
 import PhotoInfo from "@/components/modalTemplate/photoModal/info/PhotoInfo";
 import WriterInfo from "@/components/modalTemplate/photoModal/info/WriterInfo";
 import { Post } from "@/types/post";
@@ -24,7 +22,6 @@ export default function PhotoModal({
 }) {
   //TODO PhotoInfo 높이를 구해서 article의 높이를 정해줘야함
   const { _id, user, createdAt, imageUrl, title, content, comments } = post;
-  const commentContent = useRef<HTMLTextAreaElement>(null);
   return (
     <ModalContainer handleModalClose={handleModalClose} onClick={onClick}>
       <motion.article
@@ -39,20 +36,7 @@ export default function PhotoModal({
           <div className="order-1 h-full overflow-hidden md:order-2  md:w-[470px]">
             <WriterInfo user={user} createdAt={createdAt} handleModalClose={handleModalClose} />
             <Divider className="h-[1px] w-full" />
-            <form className="z-20 hidden flex-shrink-0 flex-col overflow-hidden md:flex">
-              <div className="z-20 h-[660px]  overflow-y-auto overflow-x-hidden p-3 px-5 font-poorStory scrollbar-hide ">
-                <CommentCard
-                  commentUserNickname="나는나는"
-                  commentContent="ㄴㄴㄴㅇㄴㅇㅈㅂㅁㅇㅂ"
-                  commentCreatedAt={new Date()}
-                />
-              </div>
-              <textarea
-                rows={3}
-                className="h-12 max-h-40 w-full whitespace-normal  border-t-[1px] bg-black"
-                ref={commentContent}
-              />
-            </form>
+            <CommentInfo comments={comments} postId={_id} />
           </div>
           <PhotoInfo title={title} imageUrl={imageUrl} content={content} />
         </div>

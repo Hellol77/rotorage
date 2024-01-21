@@ -60,10 +60,10 @@ export default function InfiniteBoardGrid({
   const ref = useRef(null);
   const isInView = useInView(ref);
   useEffect(() => {
-    if (isInView && !isPending && !isFetching) {
+    if (isInView && !isPending) {
       fetchNextPage();
     }
-  }, [fetchNextPage, isInView, data, isPending, isFetching]);
+  }, [fetchNextPage, isInView, isPending]);
   useRefreshScrollReset();
 
   const useMemoBoardLoading = useMemo(
