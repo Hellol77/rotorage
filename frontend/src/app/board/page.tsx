@@ -1,6 +1,4 @@
 "use client";
-import React, { useEffect } from "react";
-
 import { queryKeys } from "@/apis/querykeys";
 import BoardHeader from "@/components/board/header/BoardHeader";
 import MainContainer from "@/components/common/container/MainContainer";
@@ -20,7 +18,6 @@ export default function BoradPage() {
           isFetchingNextPage={isFetchingNextPage}
           isPending={isPending}
           queryKey={queryKeys.boardPosts}
-          isFetching={isFetching}
         />
       </section>
     </MainContainer>

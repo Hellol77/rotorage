@@ -24,9 +24,14 @@ export const getUserPosts = async (
     //     },
     //   })
     //   .lean();
-    console.log('userId', userId);
+    console.log("userId", userId);
     const posts = await Post.find({ user: userId }, {})
-      .populate({ path: "user", select: "userId nickname" })
+      .populate({ path: "user" })
+      .populate({
+        path: "comments",
+        populate: { path: "user" },
+        options: { sort: { _id: -1 } },
+      })
       .sort({ _id: -1 })
       .limit(limit)
       .skip((page - 1) * limit)

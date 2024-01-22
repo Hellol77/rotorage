@@ -25,10 +25,23 @@ export const addComment = async (
       },
       { versionKey: false }
     );
-    await Post.updateOne({ _id: postId }, { $push: { comments: comment._id } });
+    const addedPost = await Post.findOneAndUpdate(
+      { _id: postId },
+      { $push: { comments: comment._id } }
+    );
+    await Post.updateOne(
+      { _id: postId },
+      {
+        $set: {
+          commentsCount: addedPost?.comments.length,
+        },
+      },
+      { new: true }
+    );
     await comment.save();
     return res.status(200).send("Success add comment");
   } catch (err) {
+    console.log("addComment", err);
     return res.status(400).send("Fail add comment");
   }
 };

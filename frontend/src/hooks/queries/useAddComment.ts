@@ -5,13 +5,11 @@ import { AxiosError } from "axios";
 
 import { addComment } from "@/apis/post";
 import { queryKeys } from "@/apis/querykeys";
-import { ACCESS_TOKEN_LOGOUT_STATE } from "@/constants/user";
 import { LogoutContext, UserDataContext } from "@/contexts/AuthContext";
-import { BoardPosts, InfiniteBoardPosts, Post } from "@/types/post";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export default function useAddComment(postId: string) {
-  const { accessToken, user } = useContext(UserDataContext);
+export default function useAddComment(postId: string, queryKey: string[]) {
+  const { accessToken } = useContext(UserDataContext);
   const handleLogout = useContext(LogoutContext);
 
   const queryClient = useQueryClient();
@@ -62,8 +60,7 @@ export default function useAddComment(postId: string) {
       console.log("성공");
     },
     onSettled: async () => {
-      await queryClient.invalidateQueries({ queryKey: queryKeys.boardPosts });
-      await queryClient.invalidateQueries({ queryKey: queryKeys.recentPosts });
+      queryClient.invalidateQueries({ queryKey });
     },
   });
 }

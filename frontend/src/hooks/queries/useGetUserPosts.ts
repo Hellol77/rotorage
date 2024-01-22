@@ -8,7 +8,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 export default function useGetUserPosts(userId: string) {
   const { accessToken, user } = useContext(UserDataContext);
   return useInfiniteQuery({
-    queryKey: queryKeys.getUserPosts(user.userId),
+    queryKey: queryKeys.getUserPosts,
     queryFn: async ({ pageParam }) => {
       const res = await getUserPosts({ pageParam, accessToken, userId });
       return res;

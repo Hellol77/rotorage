@@ -27,8 +27,7 @@ export default function SearchUserPostspage() {
           fetchNextPage={userPostsFetchNextPage}
           isFetchingNextPage={userPostsIsFetchingNextPage}
           isPending={userPostsIsPending}
-          queryKey={queryKeys.getUserPosts(userId[0])}
-          isFetching={isFetching}
+          queryKey={queryKeys.getUserPosts}
         />
       </ProfileInfoContainer>
     </section>

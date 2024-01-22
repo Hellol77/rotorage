@@ -13,6 +13,7 @@ export default function LikedPostsPage() {
     fetchNextPage: userLikedPostsFetchNextPage,
     isFetchingNextPage: userLikedPostsIsFetchingNextPage,
     isPending: userLikedPostsIsPending,
+    isFetching,
   } = useGetLikedPosts();
   return (
     <section className=" mx-auto h-full w-full">

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import ModalContainer from "@/components/common/modal/ModalContainer";
 import Divider from "@/components/common/ui/Divider";
@@ -22,6 +22,16 @@ export default function PhotoModal({
 }) {
   //TODO PhotoInfo 높이를 구해서 article의 높이를 정해줘야함
   const { _id, user, createdAt, imageUrl, title, content, comments } = post;
+
+  useEffect(() => {
+    const close = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleModalClose();
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [handleModalClose]);
   return (
     <ModalContainer handleModalClose={handleModalClose} onClick={onClick}>
       <motion.article
@@ -36,7 +46,7 @@ export default function PhotoModal({
           <div className="order-1 h-full overflow-hidden md:order-2  md:w-[470px]">
             <WriterInfo user={user} createdAt={createdAt} handleModalClose={handleModalClose} />
             <Divider className="h-[1px] w-full" />
-            <CommentInfo comments={comments} postId={_id} />
+            <CommentInfo comments={comments} postId={_id} queryKey={queryKey} />
           </div>
           <PhotoInfo title={title} imageUrl={imageUrl} content={content} />
         </div>

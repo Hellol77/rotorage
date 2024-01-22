@@ -3,7 +3,7 @@ export const queryKeys = {
   recentPosts: ["recentPosts"],
   getProfile: ["getProfile"],
   searchProfile: (_id: string) => ["searchProfile", _id],
-  getUserPosts: (user_id: string) => ["getUserPosts", user_id],
+  getUserPosts: ["getUserPosts"],
   getLikedPosts: ["getLikedPosts"],
   addComment: (postId: string) => ["addComment", postId],
 };

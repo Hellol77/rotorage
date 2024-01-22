@@ -17,7 +17,11 @@ export const getLikedPosts = async (
     const posts = await Post.find({ likers: { $in: [_id] } }, {})
       .populate({
         path: "user",
-        select: "userId nickname",
+      })
+      .populate({
+        path: "comments",
+        populate: { path: "user" },
+        options: { sort: { _id: -1 } },
       })
       .sort({ _id: -1 })
       .limit(limit)

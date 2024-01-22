@@ -25,7 +25,7 @@ export default function MyPostsPage() {
           fetchNextPage={userPostsFetchNextPage}
           isFetchingNextPage={userPostsIsFetchingNextPage}
           isPending={userPostsIsPending}
-          queryKey={queryKeys.getUserPosts(user.userId)}
+          queryKey={queryKeys.getUserPosts}
         />
       </ProfileInfoContainer>
     </section>

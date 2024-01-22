@@ -18,7 +18,6 @@ export function useGetBoardPosts() {
     enabled: accessToken !== "",
 
     // 다시 생각해봐야 할 부분
-    gcTime: Infinity,
     refetchOnWindowFocus: true,
     refetchOnReconnect: true,
     refetchOnMount: true,
