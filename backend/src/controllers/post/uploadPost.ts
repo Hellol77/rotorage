@@ -45,6 +45,7 @@ export const uploadPost = async (
       return res.status(200).send("db 저장 성공");
     })
     .catch((err: Error) => {
+      console.log("post save err", err);
       return res.status(400).send("db 저장 실패");
     });
 };

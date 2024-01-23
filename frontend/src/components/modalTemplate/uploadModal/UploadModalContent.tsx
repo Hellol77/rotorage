@@ -72,9 +72,15 @@ export default function UploadModalContent() {
     if (!(await validateLogin())) {
       return;
     }
-    if (!file) return;
-    if (!titleTextRef.current?.value) return;
-    if (!contentTextRef.current?.value) return;
+    if (!file) {
+      toast.warn("파일이 업로드 해주세요.");
+      return;
+    }
+    if (!titleTextRef.current?.value) {
+      toast.warn("제목을 입력해주세요.");
+      return;
+    }
+    // if (!contentTextRef.current?.value) return;
     const imageUrl = file;
     const title = titleTextRef.current?.value ?? "";
     const content = contentTextRef.current?.value ?? "";
@@ -143,7 +149,6 @@ export default function UploadModalContent() {
         rows={2}
         placeholder="내용을 입력해주세요"
         ref={contentTextRef}
-        required
       />
     </ModalEditContentContainer>
   );

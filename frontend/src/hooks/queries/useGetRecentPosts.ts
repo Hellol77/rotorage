@@ -11,5 +11,8 @@ export default function useGetRecentPosts() {
     queryKey: queryKeys.recentPosts,
     queryFn: async () => getRecentPosts(accessToken),
     enabled: accessToken !== "",
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    refetchOnMount: true,
   });
 }

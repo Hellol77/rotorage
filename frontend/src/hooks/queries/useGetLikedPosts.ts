@@ -15,7 +15,9 @@ export function useGetLikedPosts() {
     },
 
     enabled: accessToken !== "",
-
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    refetchOnMount: true,
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) =>
       lastPage.pages.length >= 12 ? lastPage.pageParams : undefined,

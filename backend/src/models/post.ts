@@ -24,8 +24,8 @@ const postSchema = new Schema(
       required: true,
     },
     content: {
+      default: "",
       type: String,
-      required: true,
     },
     createdAt: { type: Date, default: Date.now, required: true },
     likeCount: { type: Number, default: 0 },

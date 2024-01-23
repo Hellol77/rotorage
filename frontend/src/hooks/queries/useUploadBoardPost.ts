@@ -58,6 +58,7 @@ export function useUploadBoardPost() {
       toast.success("게시글이 업로드되었습니다.");
     },
     onError: async (err: AxiosError, newPost, context) => {
+      console.log("update post err", err);
       queryClient.setQueryData(queryKeys.boardPosts, context?.previousBoardPosts);
       if (err.response?.status === 401) {
         toast.error("로그인이 만료되었습니다.");

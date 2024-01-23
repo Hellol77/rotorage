@@ -15,7 +15,9 @@ export default function useGetUserPosts(userId: string) {
     },
 
     enabled: accessToken !== "" && user._id !== "",
-
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    refetchOnMount: true,
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) =>
       lastPage.pages.length >= 12 ? lastPage.pageParams : undefined,
