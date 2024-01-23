@@ -25,7 +25,6 @@ export default function ProfileEditModalContent() {
     introduceInputByteCount,
     validateIntroduce,
   } = useProfileEdit();
-  console.log("profileImage", profileImage);
   return (
     <ModalEditContentContainer
       submitText="수정하기"

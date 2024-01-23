@@ -19,6 +19,7 @@ export const addComment = async (
     const postId = req.body.postId;
     const comment = new Comment(
       {
+        post: postId,
         user: _id,
         content: req.body.content,
         createdAt: new Date(),
@@ -27,7 +28,8 @@ export const addComment = async (
     );
     const addedPost = await Post.findOneAndUpdate(
       { _id: postId },
-      { $push: { comments: comment._id } }
+      { $push: { comments: comment._id } },
+      { new: true }
     );
     await Post.updateOne(
       { _id: postId },

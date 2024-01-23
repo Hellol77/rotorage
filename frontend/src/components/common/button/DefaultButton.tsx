@@ -29,14 +29,14 @@ export default function DefaultButton({
 const getColor = (color: string) => {
   switch (color) {
     case "default":
-      return "bg-[#27272a] text-white";
+      return "bg-[#27272a] text-white hover:bg-[#363636]";
     case "primary":
       return "bg-[#2f80ed] text-white";
     case "danger":
-      return "bg-[#eb5757] text-white";
+      return "bg-[#eb5757] text-white ";
     case "success":
       return "bg-[#6fcf97] text-white";
     default:
-      return "bg-[#27272a] text-white";
+      return "bg-[#27272a] text-white ";
   }
 };

@@ -11,10 +11,12 @@ export default function WriterInfo({
   createdAt,
   user,
   handleModalClose,
+  postId,
 }: {
   createdAt: Date;
   user: PostUserType;
   handleModalClose?: () => void;
+  postId: string;
 }) {
   const { nickname, profileImage } = user;
   return (
@@ -33,7 +35,7 @@ export default function WriterInfo({
           <div className="flex h-fit flex-col items-center justify-center">
             <CloseIcon size="20" className=" mt-2 md:hidden" onClick={handleModalClose} />
             <ModalTriggerButton loginRequired content="more">
-              <MoreModal targetUser={user} />
+              <MoreModal targetId={postId} type="post" targetUser={user} />
             </ModalTriggerButton>
           </div>
         </div>

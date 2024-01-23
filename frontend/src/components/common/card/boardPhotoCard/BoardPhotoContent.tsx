@@ -5,6 +5,7 @@ import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import CommentIcon from "@/components/common/icon/CommentIcon";
 import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import { UserDataContext } from "@/contexts/AuthContext";
+import useDeletePost from "@/hooks/queries/useDeletePost";
 import useLikePost from "@/hooks/queries/useLikePost";
 import { Post, PostGridType } from "@/types/post";
 import { formatLikeCount } from "@/utils/formatCount";
@@ -50,7 +51,7 @@ export default function BoardPhotoContent({
           size="icon"
           content="more"
         >
-          <MoreModal targetUser={user} />
+          <MoreModal type="post" targetId={_id} targetUser={user} />
         </ModalTriggerButton>
         <Image
           src={imageUrl}

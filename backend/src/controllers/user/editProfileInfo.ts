@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import { User } from "../../models/user";
 import { MongoError } from "mongodb";
 import { getUserObjectId } from "../../utils/getUserObjectId";
+import s3 from "../../../config/s3Config";
 
 export const editProfileInfo = async (
   req: Request,
@@ -37,9 +38,15 @@ export const editProfileInfo = async (
       );
       return res.status(200).send("Success Edit Profile");
     }
-    console.log("profileImage.location", profileImage.location);
-    console.log("_id", _id);
-
+    const beforeUserData = await User.findOne({ _id });
+    if (beforeUserData?.profileImage) {
+      await s3.deleteObject({
+        Bucket: process.env.AWS_S3_POST_BUCKET,
+        Key: beforeUserData?.profileImage.split(
+          process.env.AWS_S3_URL as string
+        )[1],
+      });
+    }
     const userData = await User.findOneAndUpdate(
       { _id },
       {
@@ -52,6 +59,7 @@ export const editProfileInfo = async (
     return res.status(200).send("Success Edit Profile");
   } catch (err) {
     console.log("err", err instanceof MongoError);
+    console.log("err", err);
     if (err instanceof MongoError && err.code === 11000) {
       return res.status(409).send("이미 존재하는 닉네임입니다.");
     }

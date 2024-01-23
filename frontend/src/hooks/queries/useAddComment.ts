@@ -15,8 +15,7 @@ export default function useAddComment(postId: string, queryKey: string[]) {
   const queryClient = useQueryClient();
   return useMutation({
     mutationKey: queryKeys.addComment(postId),
-    mutationFn: async ({ content }: { content: string }) =>
-      await addComment({ content, postId, accessToken }),
+    mutationFn: ({ content }: { content: string }) => addComment({ content, postId, accessToken }),
     // onMutate: async (newComment) => {
     // await queryClient.cancelQueries({ queryKey: queryKeys.boardPosts });
     // if (ACCESS_TOKEN_LOGOUT_STATE.includes(accessToken)) {

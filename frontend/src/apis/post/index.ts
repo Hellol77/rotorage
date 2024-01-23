@@ -128,7 +128,43 @@ export const addComment = async ({
       { headers: { Authorization: `Bearer ${accessToken}` } },
     );
   } catch (err) {
-    console.log("err");
+    console.log("addComment err");
+    throw err;
+  }
+};
+
+export const deletePost = async ({
+  postId,
+  accessToken,
+}: {
+  postId: string;
+  accessToken: string;
+}) => {
+  try {
+    await defaultApi.delete(`/api/post`, {
+      data: { postId },
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+  } catch (err) {
+    console.log("deletePost err ", err);
+    throw err;
+  }
+};
+
+export const deleteComment = async ({
+  commentId,
+  accessToken,
+}: {
+  commentId: string;
+  accessToken: string;
+}) => {
+  try {
+    await defaultApi.delete(`/api/post/comment`, {
+      data: { commentId },
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+  } catch (err) {
+    console.log("deleteComment err ", err);
     throw err;
   }
 };

@@ -6,6 +6,7 @@ import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import { ModalTextAreaInput } from "@/components/common/modal/input/ModalTextAreaInput";
 import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import useAddComment from "@/hooks/queries/useAddComment";
+import useDeletePost from "@/hooks/queries/useDeletePost";
 import { Comment } from "@/types/post";
 
 export default function CommentInfo({
@@ -19,6 +20,7 @@ export default function CommentInfo({
 }) {
   const commentContent = useRef<HTMLTextAreaElement>(null);
   const { mutateAsync, isPending } = useAddComment(postId, queryKey);
+  const { mutate } = useDeletePost();
   const handleTextArea: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     const content = commentContent.current?.value ?? "";
     if (e.key === "Enter" && content.trim() !== "") {
@@ -46,7 +48,7 @@ export default function CommentInfo({
             commentCreatedAt={createdAt}
           >
             <ModalTriggerButton loginRequired content="more">
-              <MoreModal targetUser={user} />
+              <MoreModal type="comment" targetId={_id} targetUser={user} />
             </ModalTriggerButton>
           </CommentCard>
         ))}

@@ -7,7 +7,6 @@ import ProfileAvatar from "../common/avatar/ProfileAvatar";
 import ProfileInfoContainer from "../common/container/ProfileInfoContainer";
 
 export default function ProfileForm({ children, user }: { children?: ReactNode; user: UserData }) {
-  console.log(user);
   return (
     <>
       <ProfileInfoContainer className="flex w-full min-w-fit p-4  dark:bg-[#18181b]">

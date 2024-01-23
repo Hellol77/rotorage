@@ -9,6 +9,20 @@ provider:
   environment:
     NODE_ENV: production
 functions:
+  addComment:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: POST
+          path: /post/comment
+          cors: true
+  deleteComment:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: DELETE
+          path: /post/comment
+          cors: true
   uploadPost:
     handler: src/index.handler
     events:
@@ -16,12 +30,12 @@ functions:
           method: POST
           path: /post
           cors: true
-  addComment:
+  deletePost:
     handler: src/index.handler
     events:
       - httpApi:
-          method: POST
-          path: /post/comment
+          method: DELETE
+          path: /post
           cors: true
   getPosts:
     handler: src/index.handler

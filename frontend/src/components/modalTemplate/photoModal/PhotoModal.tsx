@@ -44,7 +44,12 @@ export default function PhotoModal({
       >
         <div className="   h-full w-full flex-col md:flex md:flex-row">
           <div className="order-1 h-full overflow-hidden md:order-2  md:w-[470px]">
-            <WriterInfo user={user} createdAt={createdAt} handleModalClose={handleModalClose} />
+            <WriterInfo
+              postId={_id}
+              user={user}
+              createdAt={createdAt}
+              handleModalClose={handleModalClose}
+            />
             <Divider className="h-[1px] w-full" />
             <CommentInfo comments={comments} postId={_id} queryKey={queryKey} />
           </div>
