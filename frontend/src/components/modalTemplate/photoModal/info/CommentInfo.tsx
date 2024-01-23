@@ -1,8 +1,10 @@
 import { KeyboardEventHandler, useRef } from "react";
 
+import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import CommentCard from "@/components/common/card/comment/CommentCard";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import { ModalTextAreaInput } from "@/components/common/modal/input/ModalTextAreaInput";
+import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import useAddComment from "@/hooks/queries/useAddComment";
 import { Comment } from "@/types/post";
 
@@ -43,7 +45,9 @@ export default function CommentInfo({
             commentContent={content}
             commentCreatedAt={createdAt}
           >
-            w
+            <ModalTriggerButton loginRequired content="more">
+              <MoreModal targetUser={user} />
+            </ModalTriggerButton>
           </CommentCard>
         ))}
       </div>

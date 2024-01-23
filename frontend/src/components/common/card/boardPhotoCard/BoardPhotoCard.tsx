@@ -48,7 +48,7 @@ export default function BoardPhotoCard({
         key={_id}
         layoutId={_id + queryKey}
         transition={{ duration: 0.2 }}
-        className="relative z-30 h-60 w-full cursor-pointer md:h-96 "
+        className="relative h-60 w-full cursor-pointer md:h-96 "
       >
         {useMemoBoardPhotoContent}
       </motion.div>

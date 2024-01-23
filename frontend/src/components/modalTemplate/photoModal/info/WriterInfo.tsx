@@ -32,8 +32,8 @@ export default function WriterInfo({
           </div>
           <div className="flex h-fit flex-col items-center justify-center">
             <CloseIcon size="20" className=" mt-2 md:hidden" onClick={handleModalClose} />
-            <ModalTriggerButton content="more">
-              <MoreModal />
+            <ModalTriggerButton loginRequired content="more">
+              <MoreModal targetUser={user} />
             </ModalTriggerButton>
           </div>
         </div>

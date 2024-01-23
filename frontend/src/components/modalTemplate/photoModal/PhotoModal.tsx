@@ -40,7 +40,7 @@ export default function PhotoModal({
         animate={{ opacity: 1, zIndex: 60 }}
         exit={{ opacity: 0 }}
         layoutId={_id + queryKey}
-        className="fixed left-0 right-0 top-5 z-50 mx-auto flex  w-fit flex-col rounded-lg bg-black  md:h-[800px] md:w-fit  md:min-w-[600px]   md:max-w-[1180px]"
+        className="fixed left-0 right-0 top-5 z-[110] mx-auto flex  w-fit flex-col rounded-lg bg-black  md:h-[800px] md:w-fit  md:min-w-[600px]   md:max-w-[1180px]"
       >
         <div className="   h-full w-full flex-col md:flex md:flex-row">
           <div className="order-1 h-full overflow-hidden md:order-2  md:w-[470px]">

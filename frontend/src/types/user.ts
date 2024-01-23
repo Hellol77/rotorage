@@ -9,7 +9,7 @@ export interface ValidateAccessToken {
 }
 
 export interface UserData extends UserProfile {
-  userId: string;
+  _id: string;
 }
 
 export interface UserEditProfileType extends UserProfile {

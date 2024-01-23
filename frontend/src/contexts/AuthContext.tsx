@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 
 export const initailState: ClientData = {
   user: {
-    userId: "",
+    _id: "",
     nickname: "",
     introduce: "loading",
     profileImage: "",
@@ -19,7 +19,7 @@ export const initailState: ClientData = {
 
 export const logoutState: ClientData = {
   user: {
-    userId: "",
+    _id: "",
     nickname: "",
     introduce: "",
     profileImage: "",

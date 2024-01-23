@@ -14,7 +14,7 @@ export default function useGetUserPosts(userId: string) {
       return res;
     },
 
-    enabled: accessToken !== "" && user.userId !== "",
+    enabled: accessToken !== "" && user._id !== "",
 
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) =>

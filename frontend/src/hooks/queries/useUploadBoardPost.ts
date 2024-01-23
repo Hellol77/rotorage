@@ -27,6 +27,8 @@ export function useUploadBoardPost() {
         accessToken: accessToken,
       }),
     onMutate: async (newPost) => {
+      await queryClient.invalidateQueries({ queryKey: queryKeys.boardPosts });
+
       await queryClient.cancelQueries({ queryKey: queryKeys.boardPosts });
 
       const newImageUrl = URL.createObjectURL(newPost.imageUrl);
@@ -57,14 +59,14 @@ export function useUploadBoardPost() {
     },
     onError: async (err: AxiosError, newPost, context) => {
       queryClient.setQueryData(queryKeys.boardPosts, context?.previousBoardPosts);
-      if (err.request.status === 401) {
+      if (err.response?.status === 401) {
         toast.error("로그인이 만료되었습니다.");
         handleLogout();
         router.replace("/");
         return;
       }
 
-      toast.error("이미지 파일을 업로드하는데 실패했습니다.");
+      toast.error("게시물 업로드에 실패했습니다.");
       return;
     },
     onSettled: () => {

@@ -78,9 +78,9 @@ export default function UploadModalContent() {
     const imageUrl = file;
     const title = titleTextRef.current?.value ?? "";
     const content = contentTextRef.current?.value ?? "";
-    const userId = userData?.user.userId;
+    const userId = userData?.user._id;
     const formData = { imageUrl, title, content, user: userId };
-    await mutateAsync(formData);
+    mutateAsync(formData);
     handleCloseEvent();
   };
 
@@ -89,7 +89,7 @@ export default function UploadModalContent() {
       submitText="등록하기"
       handleSubmit={handleSubmit}
       handleCloseOnClick={handleCloseOnClick}
-      className="-top-20 left-0 right-0 p-4 "
+      className="absolute  -top-20 left-0 right-0 z-[100] p-4"
     >
       <input
         accept="image/*"

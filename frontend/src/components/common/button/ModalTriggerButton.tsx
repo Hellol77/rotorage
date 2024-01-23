@@ -39,7 +39,7 @@ export default function ModalTriggerButton({
   const [onClick, setOnClick] = useState(false);
   const handleOnClick = (e: MouseEvent) => {
     e.stopPropagation();
-    if (loginRequired && !userData?.user.userId) {
+    if (loginRequired && !userData?.user._id) {
       toast.warn("로그인이 필요합니다.");
       return;
     }

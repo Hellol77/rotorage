@@ -45,10 +45,10 @@ export default function useAuth() {
     if (handleLogout && userData) {
       try {
         const accessToken = userData.accessToken;
-        const { userId } = userData.user;
+        const { _id } = userData.user;
 
-        if (accessToken && userId) {
-          await logoutApi(accessToken, userId);
+        if (accessToken && _id) {
+          await logoutApi(accessToken, _id);
         }
       } catch (err) {
         console.log("Logout failed", err);
@@ -69,7 +69,7 @@ export default function useAuth() {
       return false;
     }
     const accessToken = userData.accessToken;
-    const { userId } = userData.user;
+    const { _id } = userData.user;
 
     if (ACCESS_TOKEN_LOGOUT_STATE.includes(userData?.accessToken)) {
       toast.warn("로그인이 필요합니다.");
@@ -85,7 +85,7 @@ export default function useAuth() {
         setUserData((prev) => (prev ? { ...prev, accessToken: tokenInfo.accessToken } : prev));
       }
 
-      return userId === tokenInfo.userId;
+      return _id === tokenInfo.userId;
     } catch (err) {
       // access toke이 만료되었을 경우
       const userData = await refreshAccessTokenApi("kakao");

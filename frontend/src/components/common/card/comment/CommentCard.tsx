@@ -32,7 +32,7 @@ export default function CommentCard({
           {relativeDate(commentCreatedAt)}
         </div>
       </div>
-      <ModalTriggerButton content="more">{children}</ModalTriggerButton>
+      {children}
     </ul>
   );
 }

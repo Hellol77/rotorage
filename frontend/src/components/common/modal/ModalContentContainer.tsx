@@ -13,10 +13,11 @@ export function ModalContentContainer({
   return (
     <motion.div
       key={"modal"}
+      onClick={(e) => e.stopPropagation()}
       //   initial={{ opacity: 0 }}
       //   animate={{ opacity: 1 }}
       //   exit={{ opacity: 0 }}
-      className={`${className} absolute -top-20 left-0 right-0 z-50  m-auto  flex h-fit  w-fit  flex-col  items-center  justify-center rounded-xl bg-black`}
+      className={`${className} absolute left-0 right-0 top-10 z-50  m-auto  flex  flex-col     rounded-xl `}
     >
       {children}
     </motion.div>

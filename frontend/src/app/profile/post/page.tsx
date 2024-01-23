@@ -13,7 +13,7 @@ export default function MyPostsPage() {
     fetchNextPage: userPostsFetchNextPage,
     isFetchingNextPage: userPostsIsFetchingNextPage,
     isPending: userPostsIsPending,
-  } = useGetUserPosts(user.userId);
+  } = useGetUserPosts(user._id);
   return (
     <section className=" mx-auto h-full w-full">
       <h1 className="md:w-50 mb-4 mt-4 flex w-full font-Pretendard-SemiBold  text-xl md:mt-0 ">

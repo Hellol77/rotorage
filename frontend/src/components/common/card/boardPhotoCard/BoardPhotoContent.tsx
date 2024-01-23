@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import LikeButton from "@/components/common/button/LikeButton";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import CommentIcon from "@/components/common/icon/CommentIcon";
+import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import { UserDataContext } from "@/contexts/AuthContext";
 import useLikePost from "@/hooks/queries/useLikePost";
 import { Post, PostGridType } from "@/types/post";
@@ -20,7 +21,7 @@ export default function BoardPhotoContent({
   queryKey: string[];
 }) {
   const { accessToken } = useContext(UserDataContext);
-  const { title, content, imageUrl, _id, isLiked, likeCount, commentsCount } = post;
+  const { title, content, imageUrl, _id, isLiked, likeCount, commentsCount, user } = post;
   const [likeState, setLikeState] = useState(isLiked);
   const [likeCountState, setLikeCountState] = useState(likeCount);
   const { mutateLikeInfinitePost } = useLikePost({
@@ -43,8 +44,13 @@ export default function BoardPhotoContent({
   return (
     <>
       <div className="relative h-full w-full rounded-md">
-        <ModalTriggerButton className="absolute right-2 top-0" size="icon" content="more">
-          <div>안녕</div>
+        <ModalTriggerButton
+          loginRequired
+          className="absolute right-2 top-0 "
+          size="icon"
+          content="more"
+        >
+          <MoreModal targetUser={user} />
         </ModalTriggerButton>
         <Image
           src={imageUrl}
