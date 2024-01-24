@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, useContext } from "react";
+import React, { ReactNode } from "react";
 
 import CloseIcon from "@/components/common/icon/CloseIcon";
 import useScrollFixed from "@/utils/useScrollFixed";
@@ -33,13 +33,10 @@ export default function ModalContainer({
       {onClick && (
         <>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.7 }}
-            exit={{ opacity: 0 }}
             onClick={handleCloseOnClick}
             tabIndex={0}
             onKeyDown={handleKeyDown}
-            className="fixed left-0  top-0 z-[60] h-screen w-screen cursor-default overflow-hidden bg-[#101010] opacity-20"
+            className="fixed left-0 top-0 z-[60] h-screen w-screen cursor-default overflow-hidden bg-[#101010] bg-opacity-70"
           >
             {handleModalClose && (
               <div
@@ -50,8 +47,8 @@ export default function ModalContainer({
                 <CloseIcon size="24" className=" stroke-white" />
               </div>
             )}
+            {children}
           </motion.div>
-          {children}
         </>
       )}
     </>

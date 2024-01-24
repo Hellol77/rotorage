@@ -51,7 +51,7 @@ export default function BoardPhotoContent({
           size="icon"
           content="more"
         >
-          <MoreModal type="post" targetId={_id} targetUser={user} />
+          <MoreModal post={post} type="post" targetId={_id} targetUser={user} />
         </ModalTriggerButton>
         <Image
           src={imageUrl}

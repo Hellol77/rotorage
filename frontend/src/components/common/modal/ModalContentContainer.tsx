@@ -45,7 +45,8 @@ export function ModalEditContentContainer({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={` absolute z-[110] m-auto  flex  h-fit  w-fit flex-col  items-center  justify-center  rounded-xl  bg-black px-8 pb-8 ${className}`}
+      onClick={(e) => e.stopPropagation()}
+      className={`  absolute z-[110] m-auto flex  h-fit  w-fit  flex-col items-center  justify-center  rounded-xl  bg-black   px-8 pb-8 ${className}`}
     >
       {children}
       <div className="mt-4  flex h-9 w-full items-center justify-center gap-2 font-poorStory">

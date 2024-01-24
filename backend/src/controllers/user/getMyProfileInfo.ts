@@ -17,15 +17,9 @@ export const getMyProfileInfo = async (req: Request, res: Response) => {
         },
       }
     );
-    const userData = await User.findOne(
-      { userId: profileInfo.data.id },
-      { _id: 1 }
-    );
-    const myProfileInfo = {
-      ...userData,
-      userId: userData?._id,
-    };
-    res.status(200).send(myProfileInfo);
+    const userData = await User.findOne({ userId: profileInfo.data.id }).lean();
+
+    res.status(200).send(userData);
   } catch (err) {
     console.log("err", err);
     res.status(401).send("Unauthorized");

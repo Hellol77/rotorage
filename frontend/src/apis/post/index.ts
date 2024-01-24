@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 import { defaultApi } from "@/apis/index";
-import { Post, UpdatePostPropsType } from "@/types/post";
+import { Post, UpdatedPost } from "@/types/post";
 
 export const getBoardPosts = async ({
   pageParam,
@@ -25,14 +25,20 @@ export const getBoardPosts = async ({
   return api;
 };
 
-export const uploadBoardPost = async (data: UpdatePostPropsType) => {
-  const formData = new FormData();
-  const { accessToken, ...restData } = data;
-  Object.entries(restData).forEach(([key, value]) => {
-    formData.append(key, value);
-  });
-  console.log(formData);
-  const api = await defaultApi.post("/api/post", formData, {
+export const uploadBoardPost = async ({
+  data,
+  accessToken,
+}: {
+  data: FormData;
+  accessToken: string;
+}) => {
+  // const formData = new FormData();
+  // const { accessToken, ...restData } = data;
+  // Object.entries(restData).forEach(([key, value]) => {
+  //   formData.append(key, value);
+  // });
+  // console.log(formData);
+  const api = await defaultApi.post("/api/post", data, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
@@ -165,6 +171,32 @@ export const deleteComment = async ({
     });
   } catch (err) {
     console.log("deleteComment err ", err);
+    throw err;
+  }
+};
+
+export const editPost = async ({
+  data,
+  accessToken,
+  postId,
+}: {
+  data: UpdatedPost;
+  accessToken: string;
+  postId: string;
+}) => {
+  // const formData = new FormData();
+  // const { accessToken, ...restData } = data;
+  // Object.entries(restData).forEach(([key, value]) => {
+  //   formData.append(key, value);
+  // });
+  const newData = { ...data, postId };
+  try {
+    const api = await defaultApi.patch(`/api/post`, newData, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    return api;
+  } catch (err) {
+    console.log("editPost err ", err);
     throw err;
   }
 };

@@ -35,6 +35,7 @@ export default function PhotoModal({
   return (
     <ModalContainer handleModalClose={handleModalClose} onClick={onClick}>
       <motion.article
+        onClick={(e) => e.stopPropagation()}
         key={_id}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, zIndex: 60 }}
@@ -45,7 +46,7 @@ export default function PhotoModal({
         <div className="   h-full w-full flex-col md:flex md:flex-row">
           <div className="order-1 h-full overflow-hidden md:order-2  md:w-[470px]">
             <WriterInfo
-              postId={_id}
+              post={post}
               user={user}
               createdAt={createdAt}
               handleModalClose={handleModalClose}

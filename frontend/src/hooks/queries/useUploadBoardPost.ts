@@ -18,20 +18,25 @@ export function useUploadBoardPost() {
   const router = useRouter();
   const { accessToken, user } = useContext(UserDataContext);
   return useMutation({
-    mutationFn: (formData: UpdatedPost) =>
-      uploadBoardPost({
-        imageUrl: formData.imageUrl,
-        title: formData.title,
-        content: formData.content,
-        user: formData.user,
-        accessToken: accessToken,
-      }),
+    mutationFn: (data: UpdatedPost) => {
+      const formData = new FormData();
+      const { ...restData } = data;
+      Object.entries(restData).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      console.log(formData);
+      return uploadBoardPost({
+        data: formData,
+        accessToken,
+      });
+    },
     onMutate: async (newPost) => {
       await queryClient.invalidateQueries({ queryKey: queryKeys.boardPosts });
 
       await queryClient.cancelQueries({ queryKey: queryKeys.boardPosts });
 
-      const newImageUrl = URL.createObjectURL(newPost.imageUrl);
+      const newImageUrl =
+        newPost.imageUrl instanceof File ? URL.createObjectURL(newPost.imageUrl) : newPost.imageUrl;
       if (ACCESS_TOKEN_LOGOUT_STATE.includes(accessToken)) {
         toast.warn("로그인이 필요합니다.");
         return;

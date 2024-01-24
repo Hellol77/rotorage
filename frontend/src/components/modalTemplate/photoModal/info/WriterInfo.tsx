@@ -4,6 +4,7 @@ import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import CloseIcon from "@/components/common/icon/CloseIcon";
 import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
+import { Post } from "@/types/post";
 import { PostUserType } from "@/types/user";
 import { relativeDate } from "@/utils/relativeDate";
 
@@ -11,12 +12,12 @@ export default function WriterInfo({
   createdAt,
   user,
   handleModalClose,
-  postId,
+  post,
 }: {
   createdAt: Date;
   user: PostUserType;
   handleModalClose?: () => void;
-  postId: string;
+  post: Post;
 }) {
   const { nickname, profileImage } = user;
   return (
@@ -35,7 +36,7 @@ export default function WriterInfo({
           <div className="flex h-fit flex-col items-center justify-center">
             <CloseIcon size="20" className=" mt-2 md:hidden" onClick={handleModalClose} />
             <ModalTriggerButton loginRequired content="more">
-              <MoreModal targetId={postId} type="post" targetUser={user} />
+              <MoreModal post={post} targetId={post._id} type="post" targetUser={user} />
             </ModalTriggerButton>
           </div>
         </div>

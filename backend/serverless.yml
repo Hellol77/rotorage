@@ -56,6 +56,13 @@ functions:
           method: GET
           path: /post/like
           cors: true
+  editPost:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: PATCH
+          path: /post
+          cors: true
   authKakao:
     handler: src/index.handler
     events:

@@ -39,16 +39,16 @@ export default function CommentInfo({
   return (
     <form className="z-20 hidden flex-shrink-0 flex-col overflow-hidden  md:flex">
       <div className="z-20 h-[610px] overflow-y-auto overflow-x-hidden  pl-5 font-poorStory scrollbar-hide ">
-        {comments.map(({ user, content, createdAt, _id }) => (
+        {comments.map(({ user, content, createdAt, _id: commentId }) => (
           <CommentCard
-            key={_id}
+            key={commentId}
             commentProfileImage={user.profileImage}
             commentUserNickname={user.nickname}
             commentContent={content}
             commentCreatedAt={createdAt}
           >
             <ModalTriggerButton loginRequired content="more">
-              <MoreModal type="comment" targetId={_id} targetUser={user} />
+              <MoreModal type="comment" targetId={commentId} targetUser={user} />
             </ModalTriggerButton>
           </CommentCard>
         ))}

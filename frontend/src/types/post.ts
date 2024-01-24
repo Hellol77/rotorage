@@ -17,8 +17,7 @@ export type UpdatedPost = Omit<
   Post,
   "user" | "_id" | "comments" | "likeCount" | "imageUrl" | "isLiked" | "createdAt" | "commentsCount"
 > & {
-  user: string;
-  imageUrl: File;
+  imageUrl: File | string;
 };
 
 export type DefaultUpdatePostType = Omit<Post, "user" | "imageUrl" | "title" | "content">;
