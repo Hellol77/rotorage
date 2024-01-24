@@ -70,7 +70,9 @@ export default function useProfileEdit() {
       setProfileImage(files[0]);
     }
   };
-
+  const handleProfileImageReset = () => {
+    setProfileImage("");
+  };
   const validateNickname = useMemo(() => {
     if (nicknameInputByteCount < NicknameMinLimitByte) {
       setNicknameWarning(true);
@@ -89,17 +91,13 @@ export default function useProfileEdit() {
   }, [nickname, nicknameInputByteCount]);
 
   const validateIntroduce = useMemo(() => {
-    if (validateStringNumEngKor(introduce)) {
-      setIntroduceWarning(true);
-      return "자기소개는 한글, 영문, 숫자만 입력 가능해요.";
-    }
     if (introduceInputByteCount > IntroduceMaxLimitByte) {
       setIntroduceWarning(true);
       return `자기소개는 ${IntroduceMaxLimitByte}byte이상 초과할 수 없어요.`;
     }
     setIntroduceWarning(false);
     return "";
-  }, [introduce, introduceInputByteCount]);
+  }, [introduceInputByteCount]);
 
   const disabled = useMemo(
     () =>
@@ -124,6 +122,7 @@ export default function useProfileEdit() {
     handleSubmit,
     handleCloseOnClick,
     handleProfileImageInput,
+    handleProfileImageReset,
     nickname,
     validateNickname,
     nicknameInputByteCount,

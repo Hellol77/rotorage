@@ -1,10 +1,11 @@
 import React from "react";
 
 import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
-import PencilIcon from "@/components/common/icon/PencilIcon";
+import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import ModalTextInput from "@/components/common/modal/input/ModalTextInput";
 import { ModalEditContentContainer } from "@/components/common/modal/ModalContentContainer";
 import Divider from "@/components/common/ui/Divider";
+import ProfileImageEditModal from "@/components/modalTemplate/profileImageEditModal/ProfileImageEditModal";
 import { IntroduceMaxLimitByte, NicknameMaxLimitByte } from "@/constants/stringLimit";
 
 import useProfileEdit from "@/hooks/useProfileEdit";
@@ -19,6 +20,7 @@ export default function ProfileEditModalContent() {
     nickname,
     profileImage,
     handleProfileImageInput,
+    handleProfileImageReset,
     validateNickname,
     introduce,
     handleIntroduceInput,
@@ -35,25 +37,15 @@ export default function ProfileEditModalContent() {
     >
       <strong className=" p-4 font-Pretendard-Regular text-lg">프로필 편집</strong>
       <Divider className="mb-10 h-[1px] w-full" />
-      <label className={` relative`} htmlFor="input-upload">
-        <PencilIcon
-          size="24"
-          className="absolute bottom-5 right-3 z-50 translate-x-1/2 translate-y-1/2 transform cursor-pointer "
-          onClick={() => {
-            console.log("erer");
-          }}
-        />
+      <div className="relative">
+        <ModalTriggerButton content="pencil">
+          <ProfileImageEditModal
+            handleProfileImageInput={handleProfileImageInput}
+            handleProfileImageReset={handleProfileImageReset}
+          />
+        </ModalTriggerButton>
         <ProfileAvatar size="large" profileImage={profileImage} />
-        <input
-          accept="image/gif, image/jpeg, image/png"
-          name="imgFile"
-          type="file"
-          id="input-upload"
-          required
-          className="relative z-50 hidden h-[100vw] w-[80vw] rounded-md object-cover md:h-[40vw] md:w-[30vw]"
-          onChange={handleProfileImageInput}
-        />
-      </label>
+      </div>
       <div className=" ">
         <div className=" mt-6">
           <div className="flex justify-between text-sm">

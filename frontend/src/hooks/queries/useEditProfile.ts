@@ -31,7 +31,7 @@ export default function useEditProfile({
             nickname,
             introduce,
             profileImage:
-              profileImage instanceof File ? URL.createObjectURL(profileImage) : user.profileImage,
+              profileImage instanceof File ? URL.createObjectURL(profileImage) : profileImage,
           },
         };
       });

@@ -25,11 +25,15 @@ export const editProfileInfo = async (
     const profileImage = req.file as Express.MulterS3.File;
     console.log("profileImage", profileImage);
     if (!profileImage) {
+
+      // 초기화했을 경우
+      const profileImage = req.body.profileImage;
       const userData = await User.findOneAndUpdate(
         { _id },
         {
           nickname: newNickname,
           introduce: newIntroduce,
+          profileImage: profileImage,
         }
       );
       return res.status(200).send("Success Edit Profile");

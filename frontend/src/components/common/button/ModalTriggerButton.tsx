@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 import DotsHorizontalIcon from "@/components/common/icon/DotsHorizontalIcon";
+import PencilIcon from "@/components/common/icon/PencilIcon";
 import PostMoreIcon from "@/components/common/icon/PostMoreIcon";
 import UploadIcon from "@/components/common/icon/UploadIcon";
 import { UserDataContext } from "@/contexts/AuthContext";
@@ -14,6 +15,15 @@ const ContentIcon = {
   postMoreIcon: <PostMoreIcon />,
   loading: <BoardLoadingIcon className="h-4 w-4" />,
   more: <DotsHorizontalIcon size="32 " />,
+  pencil: (
+    <PencilIcon
+      size="24"
+      className="absolute bottom-5 right-3 z-50 translate-x-1/2 translate-y-1/2 transform cursor-pointer "
+      onClick={() => {
+        console.log("erer");
+      }}
+    />
+  ),
 };
 
 export default function ModalTriggerButton({

@@ -48,7 +48,6 @@ export default function MoreModal({
       return;
     }
     if (confirmString === "삭제" && type === "comment") {
-      //댓글 삭제 mutate
       mutateDeleteComment(targetId);
       return;
     }
@@ -58,7 +57,7 @@ export default function MoreModal({
   };
   return (
     <ModalContainer onClick={onClick} handleModalClose={handleMoreModalClose}>
-      <ModalContentContainer className=" text-md z-[60] h-fit w-[90%] justify-center bg-[#262626] text-center md:w-60">
+      <ModalContentContainer className=" text-md top-40 z-[60] h-fit w-[60%] justify-center bg-[#262626] text-center md:w-60">
         {!confirmString || confirmString === "수정" ? (
           <>
             <button
@@ -96,7 +95,7 @@ export default function MoreModal({
             )}
             <Link
               href={`/profile/${targetUser._id}`}
-              className="flex h-12 w-full items-center justify-center  rounded-b-xl border-gray-400  text-center hover:bg-[#383838]"
+              className="flex   h-12 w-full items-center justify-center  rounded-b-xl border-gray-400  text-center hover:bg-[#383838]"
             >
               사용자 정보
             </Link>
