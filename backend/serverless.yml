@@ -9,6 +9,20 @@ provider:
   environment:
     NODE_ENV: production
 functions:
+  reportComment:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: POST
+          path: /post/comment/report
+          cors: true
+  reportPost:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: POST
+          path: /post/report
+          cors: true
   addComment:
     handler: src/index.handler
     events:
@@ -108,6 +122,21 @@ functions:
       - httpApi:
           method: POST
           path: /post/dislike
+          cors: true
+  admin:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          method: GET
+          path: /admin
+          cors: true
+      - httpApi:
+          method: GET
+          path: /admin/post/{proxy+}
+          cors: true
+      - httpApi:
+          method: GET
+          path: /admin/comment/{proxy+}
           cors: true
 plugins:
   - serverless-webpack

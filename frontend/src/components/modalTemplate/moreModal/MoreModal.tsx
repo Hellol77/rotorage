@@ -9,6 +9,8 @@ import { useModalTriggerButtonContext } from "@/contexts/ModalTriggerButton.cont
 import useDeleteComment from "@/hooks/queries/useDeleteComment";
 import useDeletePost from "@/hooks/queries/useDeletePost";
 import useEditPost from "@/hooks/queries/useEditPost";
+import useReportComment from "@/hooks/queries/useReportComment";
+import useReportPost from "@/hooks/queries/useReportPost";
 import { Post } from "@/types/post";
 import { PostUserType } from "@/types/user";
 import Link from "next/link";
@@ -29,6 +31,8 @@ export default function MoreModal({
   const [confirmString, setConfirmString] = useState<string>("");
   const { mutate: mutateDeletePost } = useDeletePost();
   const { mutate: mutateDeleteComment } = useDeleteComment();
+  const { mutate: mutateReportPost } = useReportPost();
+  const { mutate: mutateReportComment } = useReportComment();
   const { mutateAsync } = useEditPost(post ? post._id : "");
   const handleOnClick = (text: string) => {
     setConfirmString(text);
@@ -51,8 +55,12 @@ export default function MoreModal({
       mutateDeleteComment(targetId);
       return;
     }
-    if (confirmString === "신고") {
-      //신고하기 mutate
+    if (confirmString === "신고" && type === "post") {
+      mutateReportPost(targetId);
+    }
+    if (confirmString === "신고" && type === "comment") {
+      mutateReportComment(targetId);
+      // 댓글 신고 mutate
     }
   };
   return (
@@ -60,17 +68,19 @@ export default function MoreModal({
       <ModalContentContainer className=" text-md top-40 z-[60] h-fit w-[60%] justify-center bg-[#262626] text-center md:w-60">
         {!confirmString || confirmString === "수정" ? (
           <>
-            <button
-              onClick={() => handleOnClick("신고")}
-              className="h-12 w-full rounded-t-xl border-b-[1px] border-gray-400 text-red-500 hover:bg-[#383838]"
-            >
-              신고
-            </button>
-            {targetUser._id === user._id && (
+            {targetUser._id !== user._id && (
+              <button
+                onClick={() => handleOnClick("신고")}
+                className="h-12 w-full rounded-t-xl border-b-[1px] border-gray-400 text-red-500 hover:bg-[#383838]"
+              >
+                신고
+              </button>
+            )}
+            {(user.type === "admin" || targetUser._id === user._id) && (
               <>
                 <button
                   onClick={() => handleOnClick("삭제")}
-                  className="h-12 w-full border-gray-400 text-red-500 hover:bg-[#383838]"
+                  className="h-12 w-full rounded-xl border-gray-400 text-red-500 hover:bg-[#383838]"
                 >
                   삭제
                 </button>
@@ -78,7 +88,7 @@ export default function MoreModal({
                   <>
                     <button
                       onClick={() => handleOnClick("수정")}
-                      className="h-12 w-full border-b-[1px] border-t-[1px] border-gray-400 hover:bg-[#383838]"
+                      className="h-12 w-full rounded-xl border-b-[1px] border-t-[1px] border-gray-400 hover:bg-[#383838]"
                     >
                       수정
                     </button>
@@ -95,7 +105,7 @@ export default function MoreModal({
             )}
             <Link
               href={`/profile/${targetUser._id}`}
-              className="flex   h-12 w-full items-center justify-center  rounded-b-xl border-gray-400  text-center hover:bg-[#383838]"
+              className="flex  h-12 w-full items-center justify-center rounded-xl  border-gray-400  text-center hover:bg-[#383838]"
             >
               사용자 정보
             </Link>

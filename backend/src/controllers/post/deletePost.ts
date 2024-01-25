@@ -5,6 +5,8 @@ import { Post } from "../../models/post";
 import { User } from "../../models/user";
 import { Comment } from "../../models/comment";
 import s3 from "../../../config/s3Config";
+import { ReportedPost } from "../../models/reportPost";
+import { ReportedComment } from "../../models/repostComment";
 
 export const deletePost = async (req: Request, res: Response) => {
   const accessToken = getAccessTokenToheader(req);
@@ -18,7 +20,11 @@ export const deletePost = async (req: Request, res: Response) => {
   try {
     const postId = req.body.postId;
     const deletedPost = await Post.findOneAndDelete({ _id: postId });
-
+    const user = await User.findOne({ _id }).lean();
+    if (user?.type === "admin") {
+      await ReportedPost.deleteMany({ post: postId });
+      await ReportedComment.deleteMany({ post: postId });
+    }
     await s3.deleteObject({
       Bucket: process.env.AWS_S3_POST_BUCKET,
       Key: deletedPost?.imageUrl.split(process.env.AWS_S3_URL as string)[1],

@@ -6,7 +6,7 @@ import InfiniteBoardGrid from "@/components/common/grid/InfiniteBoardGrid";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
 
 export default function BoradPage() {
-  const { data, fetchNextPage, isFetchingNextPage, isPending, isFetching } = useGetBoardPosts();
+  const { data, fetchNextPage, isFetchingNextPage, isPending } = useGetBoardPosts();
 
   return (
     <MainContainer>

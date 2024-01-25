@@ -85,7 +85,7 @@ export default function useAuth() {
         setUserData((prev) => (prev ? { ...prev, accessToken: tokenInfo.accessToken } : prev));
       }
 
-      return _id === tokenInfo.userId;
+      return _id === tokenInfo._id;
     } catch (err) {
       // access toke이 만료되었을 경우
       const userData = await refreshAccessTokenApi("kakao");

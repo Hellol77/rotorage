@@ -13,6 +13,7 @@ export const initailState: ClientData = {
     nickname: "",
     introduce: "loading",
     profileImage: "",
+    type: "",
   },
   accessToken: ACCESS_TOKEN_LOGOUT_STATE[0],
 };
@@ -23,6 +24,7 @@ export const logoutState: ClientData = {
     nickname: "",
     introduce: "",
     profileImage: "",
+    type: "",
   },
   accessToken: ACCESS_TOKEN_LOGOUT_STATE[1],
 };

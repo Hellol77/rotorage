@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 import { postRouter } from "./routes/post";
 import { kakaoAuthRouter } from "./routes/kakaoAuth";
 import { userRouter } from "./routes/user";
+import { adminRouter } from "./routes/admin";
 
 const app = express();
 
@@ -27,4 +28,5 @@ app.use(express.json());
 app.use("/post", postRouter);
 app.use("/auth/kakao", kakaoAuthRouter);
 app.use("/user", userRouter);
+app.use("/admin", adminRouter);
 export const handler = serverless(app);

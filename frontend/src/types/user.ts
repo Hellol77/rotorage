@@ -4,12 +4,13 @@ export interface ClientData {
 }
 
 export interface ValidateAccessToken {
-  userId: string;
+  _id: string;
   accessToken: string;
 }
 
 export interface UserData extends UserProfile {
   _id: string;
+  type: string;
 }
 
 export interface UserEditProfileType extends UserProfile {

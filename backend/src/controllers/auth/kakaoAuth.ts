@@ -49,7 +49,7 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
       const newUserInfo = {
         ...userInfo,
         nickname: getUserInfo.data.properties.nickname,
-        userId: userInfo?._id,
+        _id: userInfo?._id,
       };
       const userData = {
         user: newUserInfo,
@@ -60,7 +60,7 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
 
     const newUserInfo = {
       ...userInfo,
-      userId: userInfo?._id,
+      _id: userInfo?._id,
     };
     const userData = {
       user: newUserInfo,
@@ -113,7 +113,7 @@ export const refreshKakaoAccessToken = async (req: Request, res: Response) => {
     }).lean();
     const refreshUserInfo = {
       ...userInfo,
-      userId: userInfo?._id,
+      _id: userInfo?._id,
     };
     const userData = {
       user: refreshUserInfo,
@@ -185,11 +185,11 @@ export const validateAccessToken = async (req: Request, res: Response) => {
       }
       const refreshedAccessToken = refreshInfo.data.access_token;
 
-      const data = { userId: userInfo?._id, accessToken: refreshedAccessToken };
+      const data = { _id: userInfo?._id, accessToken: refreshedAccessToken };
       return res.status(200).send(data);
     }
 
-    const data = { userId: userInfo?._id, accessToken };
+    const data = { _id: userInfo?._id, accessToken };
     return res.status(200).send(data);
   } catch (err) {
     console.log(err);

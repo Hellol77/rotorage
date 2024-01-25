@@ -12,6 +12,8 @@ import { addComment } from "../controllers/post/addComment";
 import { deletePost } from "../controllers/post/deletePost";
 import { deleteComment } from "../controllers/post/deleteComment";
 import { editPost } from "../controllers/post/editPost";
+import { reportPost } from "../controllers/post/reportPost";
+import { reportComment } from "../controllers/post/reportComment";
 
 const postRouter = Router();
 postRouter.post("/", awsUpload.single("imageUrl"), uploadPost);
@@ -25,4 +27,6 @@ postRouter.post("/comment", addComment);
 postRouter.delete("/", deletePost);
 postRouter.delete("/comment", deleteComment);
 postRouter.patch("/", editPost);
+postRouter.post("/report", reportPost);
+postRouter.post("/comment/report", reportComment);
 export { postRouter };

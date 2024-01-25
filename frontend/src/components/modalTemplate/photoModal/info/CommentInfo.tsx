@@ -24,9 +24,11 @@ export default function CommentInfo({
   const handleTextArea: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     const content = commentContent.current?.value ?? "";
     if (e.key === "Enter" && content.trim() !== "") {
-      e.preventDefault();
-      commentContent.current!.value = "";
-      mutateAsync({ content });
+      if (e.nativeEvent.isComposing === false) {
+        e.preventDefault();
+        commentContent.current!.value = "";
+        mutateAsync({ content });
+      }
     }
   };
   const handleOnClick = () => {

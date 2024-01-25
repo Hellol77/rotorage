@@ -6,4 +6,7 @@ export const queryKeys = {
   getUserPosts: ["getUserPosts"],
   getLikedPosts: ["getLikedPosts"],
   addComment: (postId: string) => ["addComment", postId],
+  checkAdmin: ["checkAdmin"],
+  getReportedPosts: ["getReportedPosts"],
+  getReportedComments: ["getReportedComments"],
 };

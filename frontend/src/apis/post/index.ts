@@ -200,3 +200,41 @@ export const editPost = async ({
     throw err;
   }
 };
+
+export const reportPost = async ({
+  postId,
+  accessToken,
+}: {
+  postId: string;
+  accessToken: string;
+}) => {
+  try {
+    await defaultApi.post(
+      "/api/post/report",
+      { postId },
+      { headers: { Authorization: `Bearer ${accessToken}` } },
+    );
+  } catch (err) {
+    console.log("reportPost err ", err);
+    throw err;
+  }
+};
+
+export const reportComment = async ({
+  commentId,
+  accessToken,
+}: {
+  commentId: string;
+  accessToken: string;
+}) => {
+  try {
+    await defaultApi.post(
+      "/api/post/comment/report",
+      { commentId },
+      { headers: { Authorization: `Bearer ${accessToken}` } },
+    );
+  } catch (err) {
+    console.log("reportComment err ", err);
+    throw err;
+  }
+};

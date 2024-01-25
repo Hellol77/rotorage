@@ -23,6 +23,11 @@ const userSchema = new Schema(
     },
     myPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }], // 추가된 부분
     likedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }],
+    type: {
+      type: String,
+      enum: ["admin", "user"],
+      default: "user",
+    },
   },
   { versionKey: false }
 );
