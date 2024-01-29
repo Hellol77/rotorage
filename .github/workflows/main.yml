@@ -20,7 +20,7 @@ jobs:
 
       - name: frontend yarn deploy
         env:
-          NEXT_PUBLIC_API_URL: ${{secrets.NEXT_PUBLIC_BASE_URL}}
+          NEXT_PUBLIC_BASE_URL: ${{secrets.NEXT_PUBLIC_BASE_URL}}
           NEXT_PUBLIC_KAKAO_REDIRECT_URI: ${{secrets.NEXT_PUBLIC_KAKAO_REDIRECT_URI}}
           NEXT_PUBLIC_KAKAO_REST_API_KEY: ${{secrets.NEXT_PUBLIC_KAKAO_REST_API_KEY}}
         run: |
