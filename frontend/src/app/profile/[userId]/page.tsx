@@ -12,6 +12,9 @@ import { useParams } from "next/navigation";
 export async function getStaticPaths() {
   return { paths: [], fallback: "blocking" };
 }
+export async function getStaticProps() {
+  return { props: {} };
+}
 export default function SearchProfilePage() {
   const { userId } = useParams<{ userId: string }>();
   const searchUserId = userId;
