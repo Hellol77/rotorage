@@ -104,7 +104,7 @@ export default function MoreModal({
               </>
             )}
             <Link
-              href={`/profile/${targetUser._id}`}
+              href={`/profile/?id=${targetUser._id}`}
               className="flex  h-12 w-full items-center justify-center rounded-xl    text-center hover:bg-[#383838]"
             >
               사용자 정보

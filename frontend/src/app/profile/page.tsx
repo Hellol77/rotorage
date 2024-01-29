@@ -7,10 +7,15 @@ import ProfileTitleText from "@/components/common/text/ProfileTitleText";
 import ProfileEditModal from "@/components/modalTemplate/profileEditModal/ProfileEditModal";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { UserDataContext } from "@/contexts/AuthContext";
-import { useRouter } from "next/navigation";
+import useSearchProfile from "@/hooks/queries/useSearchProfile";
+import { useRouter, useSearchParams } from "next/navigation";
 
 function MyProfilePage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const userId = searchParams.get("id");
+  const { data: userProfileData, isLoading } = useSearchProfile(userId || "");
+
   const { user, accessToken } = useContext(UserDataContext);
 
   useEffect(() => {
@@ -25,7 +30,7 @@ function MyProfilePage() {
       {accessToken === "" ? (
         <ProfileSkeletonCard />
       ) : (
-        <ProfileForm user={user}>
+        <ProfileForm user={userId ? userProfileData : user}>
           <ModalTriggerButton color="primary" size="sm" loginRequired text="프로필 편집">
             <ProfileEditModal />
           </ModalTriggerButton>
