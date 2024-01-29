@@ -11,14 +11,14 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@v3
 
-      - name: Use Node.js version 16.x
+      - name: Use Node.js version 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: yarn
           cache-dependency-path: yarn.lock
 
-      - name: yarn deploy
+      - name: frontend yarn deploy
         env:
           NEXT_PUBLIC_API_URL: ${{secret.NEXT_PUBLIC_BASE_URL}}
           NEXT_PUBLIC_KAKAO_REDIRECT_URI: ${{secret.NEXT_PUBLIC_KAKAO_REDIRECT_URI}}
@@ -29,6 +29,12 @@ jobs:
           yarn install --frozen-lockfile
           yarn deploy
 
+      - name: Enter dir and deploy
+        uses: serverless/github-action@v3.2
+        with:
+          args: -c "cd backend && serverless plugin install --name serverless-webpack && serverless deploy"
+          entrypoint: /bin/sh
+        
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
