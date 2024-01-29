@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 18.x
           cache: yarn
-          cache-dependency-path: yarn.lock
+          cache-dependency-path: /frontend/yarn.lock
 
       - name: frontend yarn deploy
         env:
