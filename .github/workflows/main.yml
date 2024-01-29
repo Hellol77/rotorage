@@ -32,7 +32,7 @@ jobs:
       - name: Enter dir and backend deploy
         uses: serverless/github-action@v3.2
         with:
-          args: -c "cd backend && serverless plugin install --name serverless-webpack && serverless deploy"
+          args: -c "cd backend && serverless plugin install --name serverless-webpack && serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }} && serverless deploy"
           entrypoint: /bin/sh
         
       - name: Configure AWS Credentials
