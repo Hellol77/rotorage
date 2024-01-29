@@ -18,7 +18,7 @@ jobs:
           cache: yarn
           cache-dependency-path: frontend/yarn.lock
 
-      - name: frontend yarn deploy
+      - name: frontend yarn build
         env:
           NEXT_PUBLIC_BASE_URL: ${{secrets.NEXT_PUBLIC_BASE_URL}}
           NEXT_PUBLIC_KAKAO_REDIRECT_URI: ${{secrets.NEXT_PUBLIC_KAKAO_REDIRECT_URI}}
@@ -27,9 +27,9 @@ jobs:
           cd frontend
           npm install -g yarn
           yarn install --frozen-lockfile
-          yarn deploy
+          yarn build
 
-      - name: Enter dir and deploy
+      - name: Enter dir and backend deploy
         uses: serverless/github-action@v3.2
         with:
           args: -c "cd backend && serverless plugin install --name serverless-webpack && serverless deploy"
