@@ -4,7 +4,7 @@ const nextConfig = {
     unoptimized: true,
     domains: ["hanroro-fanpage.s3.ap-northeast-2.amazonaws.com"],
   },
-  output: "export",
+  output: process.env.NODE_ENV === "development" ? undefined : "export",
   reactStrictMode: false,
 };
 if (process.env.NODE_ENV === "development") {
