@@ -3,6 +3,7 @@ import { getAccessTokenToheader } from "../../utils/getAccessTokenToHeader";
 import { getUserObjectId } from "../../utils/getUserObjectId";
 import { Comment } from "../../models/comment";
 import { Post } from "../../models/post";
+import { ReportedComment } from "../../models/repostComment";
 
 export const deleteComment = async (
   req: Request,
@@ -34,6 +35,7 @@ export const deleteComment = async (
         $set: { commentsCount: targetPost?.comments.length },
       }
     );
+    await ReportedComment.deleteOne({ comment: commentId });
     return res.status(200).send("Success delete comment");
   } catch (err) {
     console.log("deleteComment", err);

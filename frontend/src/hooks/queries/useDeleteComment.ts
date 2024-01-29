@@ -14,9 +14,11 @@ export default function useDeleteComment() {
   const { accessToken } = useContext(UserDataContext);
   return useMutation({
     mutationFn: (commentId: string) => deleteComment({ commentId, accessToken }),
-    onSuccess: async () => {
+    onSettled: async () => {
       await queryClient.invalidateQueries({ queryKey: queryKeys.boardPosts });
       await queryClient.invalidateQueries({ queryKey: queryKeys.recentPosts });
+    },
+    onSuccess: async () => {
       toast.success("댓글이 삭제되었습니다.");
     },
     onError: async (err: AxiosError) => {

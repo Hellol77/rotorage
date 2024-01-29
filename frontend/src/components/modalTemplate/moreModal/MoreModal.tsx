@@ -71,7 +71,7 @@ export default function MoreModal({
             {targetUser._id !== user._id && (
               <button
                 onClick={() => handleOnClick("신고")}
-                className="h-12 w-full rounded-t-xl border-b-[1px] border-gray-400 text-red-500 hover:bg-[#383838]"
+                className="h-12 w-full rounded-t-xl   text-red-500 hover:bg-[#383838]"
               >
                 신고
               </button>
@@ -80,7 +80,7 @@ export default function MoreModal({
               <>
                 <button
                   onClick={() => handleOnClick("삭제")}
-                  className="h-12 w-full rounded-xl border-gray-400 text-red-500 hover:bg-[#383838]"
+                  className="h-12 w-full rounded-xl  text-red-500 hover:bg-[#383838]"
                 >
                   삭제
                 </button>
@@ -88,7 +88,7 @@ export default function MoreModal({
                   <>
                     <button
                       onClick={() => handleOnClick("수정")}
-                      className="h-12 w-full rounded-xl border-b-[1px] border-t-[1px] border-gray-400 hover:bg-[#383838]"
+                      className="h-12 w-full rounded-xl  hover:bg-[#383838]"
                     >
                       수정
                     </button>
@@ -105,7 +105,7 @@ export default function MoreModal({
             )}
             <Link
               href={`/profile/${targetUser._id}`}
-              className="flex  h-12 w-full items-center justify-center rounded-xl  border-gray-400  text-center hover:bg-[#383838]"
+              className="flex  h-12 w-full items-center justify-center rounded-xl    text-center hover:bg-[#383838]"
             >
               사용자 정보
             </Link>

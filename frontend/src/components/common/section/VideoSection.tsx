@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
+import YouTube, { YouTubeProps } from "react-youtube";
 
 import YoutubeIcon from "@/components/common/icon/YoutubeIcon";
 import { motion, useInView, Variants } from "framer-motion";
@@ -12,8 +13,9 @@ type PropsType = { title: SongType };
 type ContentType = {
   title: SongType;
   text: string;
-  video: string;
-  youtube: string;
+  // video: string;
+  youtubeLink: string;
+  youtubeId: string;
 };
 
 type GetPropsContent = {
@@ -52,8 +54,9 @@ const getPropsContent: GetPropsContent = {
 
     이 벅찬 봄날이 시들 때
     한 번만 나를 돌아봐요`,
-    video: require("/public/video/video1.mp4"),
-    youtube: "https://www.youtube.com/watch?v=kIiW3XRP7bU",
+    // video: require("/public/video/video1.mp4"),
+    youtubeLink: "https://www.youtube.com/watch?v=kIiW3XRP7bU",
+    youtubeId: "kIiW3XRP7bU",
   },
   정류장: {
     title: "정류장",
@@ -80,8 +83,9 @@ const getPropsContent: GetPropsContent = {
     코끝이 시려 올 때
     그럴 때 마침 일어설래요
     `,
-    video: require("/public/video/video2.mp4"),
-    youtube: "https://www.youtube.com/watch?v=2EMgY5E5Ook",
+    // video: require("/public/video/video2.mp4"),
+    youtubeLink: "https://www.youtube.com/watch?v=2EMgY5E5Ook",
+    youtubeId: "2EMgY5E5Ook",
   },
   화해: {
     title: "화해",
@@ -107,8 +111,9 @@ const getPropsContent: GetPropsContent = {
     붉은 눈가 언저리 새살이 돋았으니
     차가운 세상도 녹여내고 싶단
     꿈을 가득 품어냈으니`,
-    video: require("/public/video/video3.mp4"),
-    youtube: "https://www.youtube.com/watch?v=gC2zA8NRzXk",
+    // video: require("/public/video/video3.mp4"),
+    youtubeLink: "https://www.youtube.com/watch?v=gC2zA8NRzXk",
+    youtubeId: "gC2zA8NRzXk",
   },
   "사랑하게 될 거야": {
     title: "사랑하게 될 거야",
@@ -132,9 +137,14 @@ const getPropsContent: GetPropsContent = {
     불안한 내게 모난 돌을 쥐여주던
     깨진 조각 틈 새어 나온 눈물
     터뜨려 보네`,
-    video: require("/public/video/video4.mp4"),
-    youtube: "https://www.youtube.com/watch?v=h0KIWaUEIgQ",
+    // video: require("/public/video/video4.mp4"),
+    youtubeLink: "https://www.youtube.com/watch?v=h0KIWaUEIgQ",
+    youtubeId: "h0KIWaUEIgQ",
   },
+};
+
+const opts: YouTubeProps["opts"] = {
+  playerVars: { autoplay: 1 },
 };
 export default function VideoSection({ title }: PropsType) {
   const ref = useRef(null);
@@ -142,14 +152,22 @@ export default function VideoSection({ title }: PropsType) {
 
   return (
     <section className="relative inset-0 z-10 flex min-h-[100lvh] w-screen snap-start  overflow-hidden ">
-      <video
+      {/* <video
         className="absolute z-30 h-full w-screen overflow-y-hidden object-cover opacity-30 md:object-cover md:opacity-90"
         src={getPropsContent[title].video}
         autoPlay
         muted
         playsInline
         loop
-      ></video>
+      ></video> */}
+      <YouTube
+        iframeClassName="absolute z-30 h-screen w-screen overflow-y-hidden object-fit opacity-30 md:object-cover md:opacity-90"
+        videoId={getPropsContent[title].youtubeId}
+        opts={opts}
+        onReady={(e) => {
+          e.target.mute(); //소리 끔
+        }}
+      />
       <div className="absolute top-0 z-30 flex h-full w-screen bg-transparent bg-gradient-to-l from-transparent from-40%  via-[#101010] to-[#101010] md:from-0% md:via-70%" />
       <motion.div
         initial="onscreen"
@@ -165,7 +183,7 @@ export default function VideoSection({ title }: PropsType) {
         >
           {getPropsContent[title].title}
           <Link
-            href={getPropsContent[title].youtube}
+            href={getPropsContent[title].youtubeLink}
             className="flex items-center justify-center gap-8"
             target="_blank"
           >

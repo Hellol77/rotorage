@@ -15,17 +15,16 @@ export const getReportedComments = async (req: Request, res: Response) => {
     if (adminUser?.type !== "admin") {
       return res.status(401).send("Unauthorized. Fail to get access token");
     }
-    const repostedComments = await ReportedComment.find({})
+    const repostedComments = await ReportedComment.find({}, { comment: 1 })
       .populate({
         path: "comment",
-        populate: { path: "user" },
+        populate: { path: "user comments" },
       })
       .sort({ reportCount: -1 })
       .limit(limit)
-      .skip((page - 1) * limit)
-      .lean();
+      .skip((page - 1) * limit);
     const comments = repostedComments.map((post: any) => post.comment);
-
+    console.log("getCommentReport", comments);
     return res.status(200).send(comments);
   } catch (err) {
     console.log("getCommentReport", err);
