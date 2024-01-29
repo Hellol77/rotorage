@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "NODE_ENV=development next dev",
     "build": "next build",
-    "deploy": "next build && next export",
     "start": "next start",
     "lint": "next lint",
     "prepare": "cd .. && husky install frontend/.husky",
