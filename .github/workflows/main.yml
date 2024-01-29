@@ -1,0 +1,45 @@
+name: fantorage
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js version 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+
+      - name: yarn deploy
+        env:
+          NEXT_PUBLIC_API_URL: ${{secret.NEXT_PUBLIC_BASE_URL}}
+          NEXT_PUBLIC_KAKAO_REDIRECT_URI: ${{secret.NEXT_PUBLIC_KAKAO_REDIRECT_URI}}
+          NEXT_PUBLIC_KAKAO_REST_API_KEY: ${{secret.NEXT_PUBLIC_KAKAO_REST_API_KEY}}
+        run: |
+          cd frontend
+          npm install -g yarn
+          yarn install --frozen-lockfile
+          yarn deploy
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secret.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secret.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secret.AWS_REGION }}
+
+      - name: Deploy to S3
+        env:
+          aws-access-key-id: ${{ secret.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secret.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 rm s3://${{secret.AWS_BUCKET_NAME}} --recursive
+          aws s3 cp --recursive --region ap-northeast-2 ./out s3://${{secret.AWS_BUCKET_NAME}}
