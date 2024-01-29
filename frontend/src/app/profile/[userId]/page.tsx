@@ -9,6 +9,9 @@ import ProfileForm from "@/components/profile/ProfileForm";
 import useSearchProfile from "@/hooks/queries/useSearchProfile";
 import { useParams } from "next/navigation";
 
+export async function getStaticPaths() {
+  return { paths: [], fallback: "blocking" };
+}
 export default function SearchProfilePage() {
   const { userId } = useParams<{ userId: string }>();
   const searchUserId = userId;
