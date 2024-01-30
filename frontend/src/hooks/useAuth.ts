@@ -25,6 +25,7 @@ export default function useAuth() {
   const login = async () => {
     if (search === null) {
       toast.error("유효하지 않은 로그인 코드입니다.");
+      router.replace("/");
       return;
     }
     try {
