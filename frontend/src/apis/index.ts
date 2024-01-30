@@ -5,6 +5,6 @@ export const axiosApi = (url: string | undefined) =>
     baseURL: url,
   });
 
-const baseUrl = "";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const defaultApi = axiosApi(baseUrl);
