@@ -13,7 +13,7 @@ import { adminRouter } from "./routes/admin";
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://fantorage.com"],
   credentials: true,
 };
 app.use(cors(corsOptions));
