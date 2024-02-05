@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-import { defaultApi } from "@/apis/index";
+import { defaultApi } from "@/apis";
 
 export const checkAdmin = async (accessToken: string) => {
   try {
