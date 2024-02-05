@@ -33,7 +33,6 @@ export default function UploadModal({
   const [file, setFile] = useState<File | null>(null);
   const titleTextRef = useRef<HTMLTextAreaElement>(null);
   const contentTextRef = useRef<HTMLTextAreaElement>(null);
-  const userData = useContext(UserDataContext);
   const { validateLogin } = useAuth();
   const { handleCloseOnClick } = useModalTriggerButtonContext();
   const { onClick } = useModalTriggerButtonContext();
