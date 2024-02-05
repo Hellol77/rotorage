@@ -38,7 +38,6 @@ export const getRecentPosts = async (
     });
     res.status(200).json(postsWithLikeStatus);
   } catch (err) {
-    console.log(err);
     return res
       .status(500)
       .json({ error: "Recent Posts Internal Server Error " });

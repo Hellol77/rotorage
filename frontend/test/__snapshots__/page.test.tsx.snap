@@ -1,0 +1,984 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged: fwfqw 1`] = `
+<div>
+  <main
+    class=" flex h-full w-screen  overflow-x-hidden scrollbar-hide md:pt-48"
+  >
+    <section
+      class="relative z-20 h-full w-screen"
+    >
+      <div
+        class="relative mb-8 h-[80vh] bg-[#101010] md:fixed   md:bottom-0 md:left-1/2 md:z-10  md:mb-0 md:justify-center md:bg-transparent md:pt-4"
+      >
+        <div
+          class="absolute bottom-0 z-30 flex h-[40vh] w-screen bg-transparent bg-gradient-to-b from-transparent from-[1%] to-[#101010] md:hidden"
+        />
+        <div
+          class=" md:flex md:justify-center  "
+        >
+          <img
+            class="absolute z-0 h-full w-screen object-cover md:bottom-0 md:h-[90vh] md:w-[40vw]  md:max-w-[80vw] "
+            draggable="false"
+            src="/img.jpg"
+            style="z-index: 1; opacity: 1; transform: none; user-select: none;"
+          />
+          <div
+            class="relative top-64 z-50 flex select-none   justify-between fill-slate-200 stroke-slate-200 text-lg font-bold md:fixed  md:top-80  md:w-screen"
+          >
+            <div
+              tabindex="0"
+            >
+              <svg
+                class=" fill-slate-200 stroke-slate-200 right-20 top-40"
+                height="24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.293 3.293 6.586 12l8.707 8.707 1.414-1.414L9.414 12l7.293-7.293-1.414-1.414z"
+                />
+              </svg>
+            </div>
+            <div
+              tabindex="0"
+            >
+              <svg
+                class=" fill-slate-200 stroke-slate-200  right-0 top-80"
+                height="24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-[#FF0060]   relative flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest "
+        style="opacity: 0; transform: scale(0.5) rotate(4deg) translateZ(0);"
+      >
+        <div
+          class="text-black"
+        />
+      </div>
+      <ul
+        class="relative z-20 mb-4 mt-4 w-fit border-slate-400 bg-[#101010] bg-opacity-40 px-4 text-white md:ml-20 md:border-l-4 md:pl-7"
+      >
+        <li
+          class=" text-3xl font-bold tracking-wider text-white"
+        >
+          <span
+            class="index-module_type__E-SaG"
+          />
+        </li>
+        <h1
+          class="  text-6xl font-extrabold tracking-wider text-white md:text-7xl"
+        >
+          HANRORO
+        </h1>
+        <li
+          class="mb-6 text-xl text-slate-300"
+        >
+          2000.11.11
+        </li>
+        <li
+          class=" mb-4 font-poorStory text-slate-300 md:w-[27rem] "
+        >
+          다가올 미래를 두려워하는 청춘에게 손을 건네는 것으로 그의 작품은 시작됩니다. 누구보다 자신의 두려움이 크지만, 못지않은 용기로 한로로는 분연히 시대의 아픔을 관통하고 우리와 유대합니다.
+        </li>
+        <li
+          class="flex"
+        >
+          <a
+            href="https://www.youtube.com/@hanroro6055"
+            target="_blank"
+          >
+            <svg
+              height="44"
+              viewBox="0 0 48 48"
+              width="44"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                fill="#FF3D00"
+              />
+              <path
+                d="M20 31L20 17 32 24z"
+                fill="#FFF"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com/hanr0r0/"
+            target="_blank"
+          >
+            <svg
+              height="44"
+              viewBox="0 0 48 48"
+              width="44"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <radialgradient
+                cx="19.38"
+                cy="42.035"
+                gradientUnits="userSpaceOnUse"
+                id="yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1"
+                r="44.899"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#fd5"
+                />
+                <stop
+                  offset=".328"
+                  stop-color="#ff543f"
+                />
+                <stop
+                  offset=".348"
+                  stop-color="#fc5245"
+                />
+                <stop
+                  offset=".504"
+                  stop-color="#e64771"
+                />
+                <stop
+                  offset=".643"
+                  stop-color="#d53e91"
+                />
+                <stop
+                  offset=".761"
+                  stop-color="#cc39a4"
+                />
+                <stop
+                  offset=".841"
+                  stop-color="#c837ab"
+                />
+              </radialgradient>
+              <path
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20 c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20 C42.014,38.383,38.417,41.986,34.017,41.99z"
+                fill="url(#yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1)"
+              />
+              <radialgradient
+                cx="11.786"
+                cy="5.54"
+                gradientTransform="matrix(1 0 0 .6663 0 1.849)"
+                gradientUnits="userSpaceOnUse"
+                id="yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2"
+                r="29.813"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#4168c9"
+                />
+                <stop
+                  offset=".999"
+                  stop-color="#4168c9"
+                  stop-opacity="0"
+                />
+              </radialgradient>
+              <path
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20 c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20 C42.014,38.383,38.417,41.986,34.017,41.99z"
+                fill="url(#yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2)"
+              />
+              <path
+                d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5 s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z"
+                fill="#fff"
+              />
+              <circle
+                cx="31.5"
+                cy="16.5"
+                fill="#fff"
+                r="1.5"
+              />
+              <path
+                d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12 C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z"
+                fill="#fff"
+              />
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <div
+        class="bg-[#F6FA70]  justify-end relative flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest "
+        style="opacity: 0; transform: scale(0.5) rotate(-4deg) translateZ(0);"
+      >
+        <div
+          class="text-black"
+        />
+      </div>
+      <ul
+        class="relative z-20 mb-12 mt-12 px-4 text-white md:mb-8 md:mt-4  md:flex md:w-full md:flex-col md:items-end md:px-20"
+      >
+        <li
+          class=" mb-4  text-3xl font-bold tracking-wider md:text-4xl"
+        >
+          Music
+        </li>
+        <div
+          class="grid h-8  w-full  gap-4 sm:grid-cols-1 md:w-fit md:grid-cols-2   "
+        >
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                입춘
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=pNi9PjmbUrI"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                디지털 싱글
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                거울
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=OV668xgCau8"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                디지털 싱글
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                비틀비틀 짝짜꿍
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=XBiMV9kVhwQ"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                디지털 싱글
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                정류장
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=2EMgY5E5Ook"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                디지털 싱글
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                자처
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=JyoltvsJ9Fw"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                디지털 싱글
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                이상비행
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=yXDraJ33aLM&t=601s"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                EP
+              </p>
+            </div>
+          </ol>
+        </div>
+        <a
+          class="mt-4 flex w-fit items-center border-b-2 border-[#00cd3c] fill-[#00cd3c] stroke-[#00cd3c] text-[#00cd3c]  font-poorStory text-xl "
+          href="https://www.melon.com/search/song/index.htm?q=%ED%95%9C%EB%A1%9C%EB%A1%9C&section=artist&searchGnbYn=Y&kkoSpl=Y&kkoDpType="
+          target="_blank"
+        >
+          MELON
+          <svg
+            height="22"
+            viewBox="0 0 24 24"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M13.4697 5.46967C13.7626 5.17678 14.2374 5.17678 14.5303 5.46967L20.5303 11.4697C20.8232 11.7626 20.8232 12.2374 20.5303 12.5303L14.5303 18.5303C14.2374 18.8232 13.7626 18.8232 13.4697 18.5303C13.1768 18.2374 13.1768 17.7626 13.4697 17.4697L18.1893 12.75H4C3.58579 12.75 3.25 12.4142 3.25 12C3.25 11.5858 3.58579 11.25 4 11.25H18.1893L13.4697 6.53033C13.1768 6.23744 13.1768 5.76256 13.4697 5.46967Z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </a>
+      </ul>
+      <div
+        class="bg-[#00DFA2]   relative flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest "
+        style="opacity: 0; transform: scale(0.5) rotate(3deg) translateZ(0);"
+      >
+        <div
+          class="text-black"
+        />
+      </div>
+      <ul
+        class=" relative z-20 mb-12 mt-6 px-4 text-white md:mx-20 md:mb-8  md:mt-4 md:flex md:w-fit md:flex-col md:items-start"
+      >
+        <li
+          class=" mb-4  text-3xl font-bold tracking-wider md:text-4xl"
+        >
+          Discography
+        </li>
+        <div
+          class=" grid w-full  gap-4  sm:grid-cols-1 md:w-fit md:grid-cols-2 md:justify-between "
+        >
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                그런 날
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=8SSTQDQu6mI"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                작사 첨여
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                다이아몬드
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=Qvavpj87i-A"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                작사 참여
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                Do What You Like
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=6ec5v1ndt18"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                OST
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                Like my groove
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=HvocbPnnbhk"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                콜라보 싱글
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                당신의 밤은 나의 밤과 
+같습니까 (feat.숨비)
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=tFEe3pwlQgE"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                프로젝트 싱글
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                Romantico (feat. 한로로)
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=kKf4_VMlKec"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                피쳐링
+              </p>
+            </div>
+          </ol>
+          <ol
+            class="md:w-min-[14rem]  flex w-full  gap-4 rounded-lg bg-gray-800 bg-opacity-20  md:gap-4 undefined"
+          >
+            <img
+              alt="[object Object]"
+              class=" w-20 rounded-md md:w-24 "
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-full flex-col justify-center md:w-full"
+            >
+              <p
+                class=" flex w-full items-center justify-between whitespace-pre-wrap font-poorStory  text-xl md:w-full    md:text-xl"
+              >
+                물수제비
+                <a
+                  class=" mr-2 md:ml-2 md:mr-2"
+                  href="https://www.youtube.com/watch?v=At4xTbav5ic"
+                  target="_blank"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
+                      fill="#FF3D00"
+                    />
+                    <path
+                      d="M20 31L20 17 32 24z"
+                      fill="#FFF"
+                    />
+                  </svg>
+                </a>
+              </p>
+              <p
+                class="w-full text-sm text-slate-300"
+              >
+                프로듀싱 참여
+              </p>
+            </div>
+          </ol>
+        </div>
+      </ul>
+      <div
+        class="bg-[#0079FF]  justify-end relative flex w-screen overflow-hidden whitespace-nowrap  font-yellowTail text-2xl tracking-widest "
+        style="opacity: 0; transform: scale(0.5) rotate(-4.717deg) translateZ(0);"
+      >
+        <div
+          class="text-black"
+        />
+      </div>
+      <ul
+        class="relative z-20 mb-12 mt-12 px-4 text-white md:mt-4  md:flex md:w-full md:flex-col md:items-end md:px-20"
+      >
+        <div
+          class=" w-full md:w-96 md:text-xl"
+        >
+          <li
+            class=" mb-4 text-3xl font-bold tracking-wider md:text-4xl"
+          >
+            Interview
+          </li>
+          <ol>
+            <p
+              class="font-poorStory text-slate-300"
+            >
+              “저는 일단 노래를 시작하게 된 이유가 제 이야기를 어딘가에
+풀어내보고 싶단 생각에서였어요. 말로 하기엔 뭔가 민망하고, 얼굴을
+모르는 사람들에게도 내 메세지를 전하면서 소통할 수 있으면 좋겠다는
+생각을 하며 노래를 시작하게 된 것 같아요.”...
+            </p>
+            <a
+              class="mt-4 flex w-fit items-center border-b-2 border-slate-400 fill-slate-400 stroke-slate-400 text-slate-400  font-poorStory text-xl "
+              href="https://www.indiepost.co.kr/post/16936"
+              target="_blank"
+            >
+              MORE
+              <svg
+                height="22"
+                viewBox="0 0 24 24"
+                width="22"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M13.4697 5.46967C13.7626 5.17678 14.2374 5.17678 14.5303 5.46967L20.5303 11.4697C20.8232 11.7626 20.8232 12.2374 20.5303 12.5303L14.5303 18.5303C14.2374 18.8232 13.7626 18.8232 13.4697 18.5303C13.1768 18.2374 13.1768 17.7626 13.4697 17.4697L18.1893 12.75H4C3.58579 12.75 3.25 12.4142 3.25 12C3.25 11.5858 3.58579 11.25 4 11.25H18.1893L13.4697 6.53033C13.1768 6.23744 13.1768 5.76256 13.4697 5.46967Z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </ol>
+        </div>
+      </ul>
+    </section>
+  </main>
+</div>
+`;

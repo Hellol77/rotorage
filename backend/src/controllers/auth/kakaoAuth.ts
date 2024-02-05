@@ -70,7 +70,7 @@ export const getKakaoLogin = async (req: Request, res: Response) => {
     console.log(userData);
     return res.status(200).send(userData);
   } catch (err) {
-    console.log("error");
+    console.log("loginerror", err);
     res.status(401).send("Unauthorized");
   }
 };

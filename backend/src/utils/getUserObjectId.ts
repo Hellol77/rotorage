@@ -22,7 +22,6 @@ export const getUserObjectId = async (
     ).lean();
     return userData?._id;
   } catch (err) {
-    console.log("getUserObjectId error", err);
     return null;
   }
 };
