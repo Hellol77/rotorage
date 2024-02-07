@@ -11,7 +11,7 @@ export const getBoardPosts = async ({
   accessToken?: string;
 }) => {
   const api = defaultApi
-    .get(`/post/page/${pageParam}`, {
+    .get(`/api/post/page/${pageParam}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
     .then(async (data) => {
@@ -38,7 +38,7 @@ export const uploadBoardPost = async ({
   //   formData.append(key, value);
   // });
   // console.log(formData);
-  const api = await defaultApi.post("/post", data, {
+  const api = await defaultApi.post("/api/post", data, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
@@ -46,7 +46,7 @@ export const uploadBoardPost = async ({
 };
 
 export const getRecentPosts = async <T = Post[]>(accessToken: string): Promise<T> => {
-  const { data } = await defaultApi.get<T>(`/post/recent`, {
+  const { data } = await defaultApi.get<T>(`/api/post/recent`, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
   try {
@@ -67,7 +67,7 @@ export const getUserPosts = async ({
   userId: string;
 }) => {
   try {
-    const { data } = await defaultApi.get(`/post/user/${userId}?page=${pageParam}`, {
+    const { data } = await defaultApi.get(`/api/post/user/${userId}?page=${pageParam}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return { pages: data, pageParams: pageParam + 1 };
@@ -86,7 +86,7 @@ export const getLikedPosts = async ({
   accessToken?: string;
 }) => {
   try {
-    const { data } = await defaultApi.get(`/post/like?page=${pageParam}`, {
+    const { data } = await defaultApi.get(`/api/post/like?page=${pageParam}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return { pages: data, pageParams: pageParam + 1 };
@@ -98,7 +98,7 @@ export const getLikedPosts = async ({
 
 export const dislikePost = async ({ _id, accessToken }: { _id: string; accessToken: string }) => {
   const api = await defaultApi
-    .post("/post/dislike", { _id }, { headers: { Authorization: `Bearer ${accessToken}` } })
+    .post("/api/post/dislike", { _id }, { headers: { Authorization: `Bearer ${accessToken}` } })
     .then()
     .catch((err) => {
       console.log(err);
@@ -109,7 +109,7 @@ export const dislikePost = async ({ _id, accessToken }: { _id: string; accessTok
 
 export const likePost = async ({ _id, accessToken }: { _id: string; accessToken: string }) => {
   const api = await defaultApi
-    .post("/post/like", { _id }, { headers: { Authorization: `Bearer ${accessToken}` } })
+    .post("/api/post/like", { _id }, { headers: { Authorization: `Bearer ${accessToken}` } })
     .then()
     .catch((err) => {
       console.log(err);
@@ -129,7 +129,7 @@ export const addComment = async ({
 }) => {
   try {
     await defaultApi.post(
-      "/post/comment",
+      "/api/post/comment",
       { postId, content },
       { headers: { Authorization: `Bearer ${accessToken}` } },
     );
@@ -147,7 +147,7 @@ export const deletePost = async ({
   accessToken: string;
 }) => {
   try {
-    await defaultApi.delete(`/post`, {
+    await defaultApi.delete(`/api/post`, {
       data: { postId },
       headers: { Authorization: `Bearer ${accessToken}` },
     });
@@ -165,7 +165,7 @@ export const deleteComment = async ({
   accessToken: string;
 }) => {
   try {
-    await defaultApi.delete(`/post/comment`, {
+    await defaultApi.delete(`/api/post/comment`, {
       data: { commentId },
       headers: { Authorization: `Bearer ${accessToken}` },
     });
@@ -191,7 +191,7 @@ export const editPost = async ({
   // });
   const newData = { ...data, postId };
   try {
-    const api = await defaultApi.patch(`/post`, newData, {
+    const api = await defaultApi.patch(`/api/post`, newData, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return api;
@@ -210,7 +210,7 @@ export const reportPost = async ({
 }) => {
   try {
     await defaultApi.post(
-      "/post/report",
+      "/api/post/report",
       { postId },
       { headers: { Authorization: `Bearer ${accessToken}` } },
     );
@@ -229,7 +229,7 @@ export const reportComment = async ({
 }) => {
   try {
     await defaultApi.post(
-      "/post/comment/report",
+      "/api/post/comment/report",
       { commentId },
       { headers: { Authorization: `Bearer ${accessToken}` } },
     );

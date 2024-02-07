@@ -4,7 +4,7 @@ import { defaultApi } from "@/apis";
 
 export const checkAdmin = async (accessToken: string) => {
   try {
-    const { data } = await defaultApi.get("/admin", {
+    const { data } = await defaultApi.get("/api/admin", {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return data;
@@ -22,7 +22,7 @@ export const getReportedPosts = async ({
   accessToken?: string;
 }) => {
   const api = defaultApi
-    .get(`/admin/post/${pageParam}`, {
+    .get(`/api/admin/post/${pageParam}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
     .then(async (data) => {
@@ -44,7 +44,7 @@ export const getReportedComments = async ({
   accessToken?: string;
 }) => {
   const api = defaultApi
-    .get(`/admin/comment/${pageParam}`, {
+    .get(`/api/admin/comment/${pageParam}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
     .then(async (data) => {
