@@ -6,6 +6,6 @@ export const axiosApi = (url: string | undefined) =>
     headers: { withCredentials: true },
   });
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = "";
 
 export const defaultApi = axiosApi(baseUrl);
