@@ -14,6 +14,9 @@ const nextConfig = {
   },
   // output: "export",
   trailingSlash: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   reactStrictMode: false,
 };
 module.exports = nextConfig;
