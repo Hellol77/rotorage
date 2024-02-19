@@ -42,7 +42,7 @@ export default function ModalTriggerButton({
   loginRequired?: boolean;
   isLoading?: boolean;
   size?: "sm" | "md" | "lg" | "icon";
-  color?: "primary" | "secondary" | "danger" | "success";
+  color?: "primary" | "secondary" | "danger" | "success" | "text-warning";
   className?: string;
 }) {
   const userData = useContext(UserDataContext);
@@ -62,7 +62,7 @@ export default function ModalTriggerButton({
   return (
     <>
       <div
-        className={`flex min-w-fit cursor-pointer items-center justify-center gap-2 rounded-3xl    ${getColor(color, isLoading)} ${getSize(size)} font-poorStory  ${isLoading ? "bg-gray-500" : ""} ${className}}`}
+        className={`flex w-fit min-w-fit cursor-pointer items-center justify-center gap-2 rounded-3xl    ${getColor(color, isLoading)} ${getSize(size)} font-poorStory  ${isLoading ? "bg-gray-500" : ""} ${className}}`}
         color="primary"
         onClick={handleOnClick}
       >
@@ -86,6 +86,8 @@ const getColor = (color: string | undefined, isLoading: boolean | undefined) => 
       return `bg-red-500  border-2 z-10 ${isLoading ? "" : "hover:bg-red-600"}`;
     case "success":
       return `bg-green-500  border-2 z-10 ${isLoading ? "" : "hover:bg-green-600"}`;
+    case "text-warning":
+      return `bg-transparent text-red-500 border-0 z-10 ${isLoading ? "" : "hover:text-red-400"}`;
     default:
       return "";
   }

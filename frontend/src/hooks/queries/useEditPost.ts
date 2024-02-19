@@ -6,7 +6,7 @@ import { AxiosError } from "axios";
 import { editPost } from "@/apis/post";
 import { queryKeys } from "@/apis/querykeys";
 import { LogoutContext, UserDataContext } from "@/contexts/AuthContext";
-import { UpdatedPost, UpdatePostPropsType } from "@/types/post";
+import { UpdatedPost } from "@/types/post";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
@@ -19,13 +19,6 @@ export default function useEditPost(postId: string) {
 
   return useMutation({
     mutationFn: (data: UpdatedPost) => {
-      // const formData = new FormData();
-      // const formDataWithPostId = { ...data, postId };
-      // console.log("postid", postId);
-      // Object.entries(formDataWithPostId).forEach(([key, value]) => {
-      //   formData.append(key, value);
-      // });
-      // console.log(formData);
       return editPost({ data, postId, accessToken });
     },
     onError: async (err: AxiosError) => {

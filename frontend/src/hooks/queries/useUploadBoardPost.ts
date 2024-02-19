@@ -24,7 +24,7 @@ export function useUploadBoardPost() {
       Object.entries(restData).forEach(([key, value]) => {
         formData.append(key, value);
       });
-      console.log(formData);
+
       return uploadBoardPost({
         data: formData,
         accessToken,

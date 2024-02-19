@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${libreFranklin.className} dark `}>
-      <body className="z-1    max-w-full overflow-x-hidden   text-white scrollbar-hide dark:bg-[#101010]">
+      <body className="z-1    max-w-full overflow-x-hidden text-[#F9F9F9]   scrollbar-hide dark:bg-[#101010]">
         <Providers>
           <header className="fixed top-0 z-[60] w-screen items-center justify-between md:w-auto">
-            <div className=" mx-auto w-full  text-white">
+            <div className=" mx-auto w-full ">
               <Navbar />
             </div>
           </header>

@@ -25,3 +25,14 @@ export const searchProfile = async (_id: string) => {
   const { data } = await defaultApi.get(`/api/user/profile/${_id}`);
   return data;
 };
+
+export const deleteUser = async (accessToken: string) => {
+  const api = await defaultApi.post(
+    `/api/user/delete`,
+    {},
+    {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    },
+  );
+  return api;
+};

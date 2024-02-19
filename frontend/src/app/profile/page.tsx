@@ -4,6 +4,7 @@ import React, { useContext, useEffect } from "react";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
 import ProfileTitleText from "@/components/common/text/ProfileTitleText";
+import DeleteUserModal from "@/components/modalTemplate/deleteUserModal/DeleteUserModal";
 import ProfileEditModal from "@/components/modalTemplate/profileEditModal/ProfileEditModal";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { UserDataContext } from "@/contexts/AuthContext";
@@ -14,7 +15,7 @@ function MyProfilePage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const userId = searchParams.get("id");
-  const { data: userProfileData, isLoading } = useSearchProfile(userId || "");
+  const { data: userProfileData } = useSearchProfile(userId || "");
 
   const { user, accessToken } = useContext(UserDataContext);
 
@@ -25,16 +26,21 @@ function MyProfilePage() {
   }, [accessToken, router]);
 
   return (
-    <section className=" mx-auto h-full w-full">
+    <section className="mx-auto flex h-full w-full flex-col items-center">
       <ProfileTitleText text="프로필" />
       {accessToken === "" ? (
         <ProfileSkeletonCard />
       ) : (
-        <ProfileForm user={userId ? userProfileData : user}>
-          <ModalTriggerButton color="primary" size="sm" loginRequired text="프로필 편집">
-            <ProfileEditModal />
+        <>
+          <ProfileForm user={userId ? userProfileData : user}>
+            <ModalTriggerButton color="primary" size="sm" loginRequired text="프로필 편집">
+              <ProfileEditModal />
+            </ModalTriggerButton>
+          </ProfileForm>
+          <ModalTriggerButton color="text-warning" size="sm" loginRequired text="탈퇴하기">
+            <DeleteUserModal />
           </ModalTriggerButton>
-        </ProfileForm>
+        </>
       )}
     </section>
   );
