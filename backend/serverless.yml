@@ -112,6 +112,10 @@ functions:
           method: GET
           path: /user/profile/{proxy+}
           cors: true
+      - httpApi:
+          method: POST
+          path: /user/delete
+          cors: true
   likePost:
     handler: src/index.handler
     events:
