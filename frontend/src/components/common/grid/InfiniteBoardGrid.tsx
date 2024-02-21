@@ -90,10 +90,6 @@ export default function InfiniteBoardGrid({
           </>
         )}
       </BoardGridContainer>
-
-      {/* <div ref={ref} className="my-8 flex h-4 w-full justify-center">
-        {isFetchingNextPage ? <BoardLoadingIcon className="h-8 w-8 text-black" /> : ""}
-      </div> */}
       {useMemoBoardLoading}
     </>
   );
