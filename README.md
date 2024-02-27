@@ -85,3 +85,9 @@ https://www.rotorage.site/
 ## 🛠️ Skills
 
 [![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1709042099100?alt=media&token=cfee09df-a9bb-4ed1-a1ac-853b42663ed3)](https://github.com/msdio/stackticon)
+
+## ⚙️ Infra
+
+![아키텍쳐](https://github.com/Hellol77/rotorage/assets/76903801/2ddf5a0b-ac78-40fd-a5f8-547b28fc2c1b)
+
+
