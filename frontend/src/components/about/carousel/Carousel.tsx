@@ -87,3 +87,5 @@ export const Carousel = ({ images }: { images: StaticImageData[] }) => {
     </>
   );
 };
+
+export default Carousel;

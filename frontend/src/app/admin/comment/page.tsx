@@ -8,7 +8,6 @@ import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import useCheckAdmin from "@/hooks/queries/admin/useCheckAdmin";
 import { useGetReportedComments } from "@/hooks/queries/admin/useGetReportedComments";
 import { Comment } from "@/types/post";
-import { useInView } from "framer-motion";
 
 export default function AdminCommentPage() {
   const { isError, isFetching: isCheckFetching, isSuccess } = useCheckAdmin();

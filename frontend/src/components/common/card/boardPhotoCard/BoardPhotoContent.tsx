@@ -34,7 +34,7 @@ export default function BoardPhotoContent({
 
   const handleLikeButtonOnclick = () => {
     if (accessToken == "logout" || accessToken == "") {
-      router.push("login");
+      router.push("/login");
       return;
     }
     mutateLikeInfinitePost({ likeState });

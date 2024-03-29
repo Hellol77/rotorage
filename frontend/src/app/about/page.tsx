@@ -1,12 +1,14 @@
 import React from "react";
 
-import { Carousel } from "@/components/about/carousel/Carousel";
 import { images } from "@/components/about/carousel/profileImage";
-import Discography from "@/components/about/Discography";
-import Interview from "@/components/about/Interview";
-import Introduce from "@/components/about/Introduce";
-import Music from "@/components/about/music/Music";
-import Line from "@/components/common/ui/Line";
+import dynamic from "next/dynamic";
+
+const Carousel = dynamic(() => import("@/components/about/carousel/Carousel"));
+const Discography = dynamic(() => import("@/components/about/Discography"));
+const Interview = dynamic(() => import("@/components/about/Interview"));
+const Introduce = dynamic(() => import("@/components/about/Introduce"));
+const Music = dynamic(() => import("@/components/about/music/Music"));
+const Line = dynamic(() => import("@/components/common/ui/Line"));
 
 export default function AboutPage() {
   return (
