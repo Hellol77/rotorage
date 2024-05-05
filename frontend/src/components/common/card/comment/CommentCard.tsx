@@ -21,9 +21,9 @@ export default function CommentCard({
     <ul className="flex w-full flex-shrink-0 pt-5">
       <ProfileAvatar size="small" profileImage={commentProfileImage} />
       <div className="ml-3 w-full">
-        <div className="w-fit whitespace-normal text-lg leading-4">
+        <div className="w-fit whitespace-normal text-sm leading-4 text-gray-200 md:text-lg ">
           {commentUserNickname}&nbsp;&nbsp;&nbsp;
-          <span className="w-full whitespace-normal break-all font-Pretendard-Regular text-sm">
+          <span className="w-full whitespace-normal break-all font-Pretendard-Regular text-xs text-white  md:text-sm">
             {commentContent}
           </span>
         </div>
