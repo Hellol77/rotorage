@@ -23,7 +23,6 @@ export default function useAuth() {
   const handleLogout = useContext(LogoutContext);
 
   const login = async () => {
-    console.log(search);
     if (search === null) {
       toast.error("유효하지 않은 로그인 코드입니다.");
       router.replace("/");
@@ -37,7 +36,7 @@ export default function useAuth() {
       queryClient.clear();
     } catch (err) {
       console.log("Login Failed", err);
-      toast.error("로그인에 실패했습니다.");
+      toast.error("로그인에 실패했습니다. 다시 시도해 주세요.");
     } finally {
       router.replace("/");
     }
