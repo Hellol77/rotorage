@@ -7,14 +7,12 @@ import useLikePost from "@/hooks/queries/useLikePost";
 import { Post } from "@/types/post";
 import { formatLikeCount } from "@/utils/formatCount";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: string[] }) {
   const { title, content, imageUrl, isLiked, likeCount, _id } = post;
   const [imageWidth, setImageWidth] = useState<number | undefined>();
   const [likeCountState, setLikeCountState] = useState(likeCount);
   const [likeState, setLikeState] = useState(isLiked);
-  const router = useRouter();
   const { accessToken } = useContext(UserDataContext);
   const { mutateLikeInfinitePost } = useLikePost({
     _id,
@@ -36,7 +34,7 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
     setImageWidth(imageElement?.clientWidth);
   }, [imageUrl]);
   return (
-    <div className="order-2 w-[90vw] flex-col flex-wrap md:order-1 md:w-fit md:rounded-lg md:border-[1px] md:border-gray-800">
+    <div className="order-2  w-[90vw] flex-col flex-wrap md:order-1 md:w-fit md:rounded-lg md:border-[1px] md:border-gray-800">
       <div className="flex  justify-center overflow-hidden md:rounded-t-lg">
         <Image
           src={imageUrl}
@@ -44,7 +42,7 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
           width={800}
           height={800}
           id={imageUrl}
-          className="h-fit max-h-[53vh] w-[90vw]  border-[0.5px] border-gray-800 object-cover md:max-h-[600px] md:min-h-[600px] md:w-auto md:rounded-t-lg md:object-contain"
+          className="h-fit max-h-[45vh] w-[90vw]  border-[0.5px] border-gray-800 object-cover md:max-h-[600px] md:min-h-[600px] md:w-auto md:rounded-t-lg md:object-contain"
         />
       </div>
       <div className="flex w-full  justify-between px-4 py-2">
@@ -57,9 +55,10 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
           </h2>
           <p
             style={{ maxWidth: imageWidth ? `${imageWidth}px` : "380px" }}
-            className={`text-md  mb-2 h-fit max-h-[100px] max-w-[90vw] overflow-y-auto  whitespace-normal break-all pt-1 font-poorStory tracking-wide scrollbar-hide md:max-w-[380px] `}
+            className={`md:text-md mb-2  h-fit max-h-[100px] max-w-[90vw] overflow-y-auto whitespace-normal  break-all pt-1 font-poorStory text-sm tracking-wide scrollbar-hide md:max-w-[380px] `}
           >
             {content}
+            sfdkjvnaskjvnjsdnvskdjvsdkjvnaskdjnvsdvjksdnkvjnsdkjnkvsjnvkasdkvasdkjvasdkjvnasdkjvnaksdjsaknvkjsanvaksdjnvksdnvksdnkvasnkdnvkasndkjvnaskjdnvkadnkjv
           </p>
         </section>
         <section className="flex flex-col items-center ">

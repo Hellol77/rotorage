@@ -24,7 +24,7 @@ export default function PhotoModal({
   queryKey: string[];
 }) {
   //TODO PhotoInfo 높이를 구해서 article의 높이를 정해줘야함
-  const { _id, user, createdAt, imageUrl, title, content, comments, commentsCount } = post;
+  const { _id, user, createdAt, comments } = post;
 
   useEffect(() => {
     const close = (e: KeyboardEvent) => {
