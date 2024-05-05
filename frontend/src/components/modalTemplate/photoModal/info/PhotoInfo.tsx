@@ -58,7 +58,6 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
             className={`md:text-md mb-2  h-fit max-h-[100px] max-w-[90vw] overflow-y-auto whitespace-normal  break-all pt-1 font-poorStory text-sm tracking-wide scrollbar-hide md:max-w-[380px] `}
           >
             {content}
-            sfdkjvnaskjvnjsdnvskdjvsdkjvnaskdjnvsdvjksdnkvjnsdkjnkvsjnvkasdkvasdkjvasdkjvnasdkjvnaksdjsaknvkjsanvaksdjnvksdnvksdnkvasnkdnvkasndkjvnaskjdnvkadnkjv
           </p>
         </section>
         <section className="flex flex-col items-center ">
