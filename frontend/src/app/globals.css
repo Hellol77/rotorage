@@ -5,7 +5,9 @@
 
 html,
 body {
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: auto !important;
+
+  /* -webkit-overflow-scrolling: touch; */
   @supports (-webkit-touch-callout: none) {
     min-height: -webkit-fill-available;
   }

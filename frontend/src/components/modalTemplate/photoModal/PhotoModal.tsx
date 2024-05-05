@@ -13,7 +13,6 @@ export default function PhotoModal({
   onClick,
   post,
   queryKey,
-  ...props
 }: {
   post: Post;
   onClick: boolean;
@@ -54,7 +53,7 @@ export default function PhotoModal({
             <Divider className="h-[1px] w-full" />
             <CommentInfo comments={comments} postId={_id} queryKey={queryKey} />
           </div>
-          <PhotoInfo title={title} imageUrl={imageUrl} content={content} />
+          <PhotoInfo queryKey={queryKey} post={post} />
         </div>
       </motion.article>
     </ModalContainer>

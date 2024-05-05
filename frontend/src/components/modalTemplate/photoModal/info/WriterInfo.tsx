@@ -21,8 +21,8 @@ export default function WriterInfo({
 }) {
   const { nickname, profileImage } = user;
   return (
-    <div className={`z-40 py-3 pl-5  md:flex-col`}>
-      <div className=" flex  h-fit w-full  py-2 ">
+    <div className={`z-40 py-1 pl-5 md:flex-col  md:py-3`}>
+      <div className=" flex  h-fit w-full  md:py-2 ">
         <div className="flex w-full items-center">
           <ProfileAvatar size="small" profileImage={profileImage} />
           <div className="ml-3 flex w-full items-center justify-center ">

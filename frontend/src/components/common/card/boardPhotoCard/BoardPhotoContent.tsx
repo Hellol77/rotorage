@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 import LikeButton from "@/components/common/button/LikeButton";
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
@@ -9,6 +10,7 @@ import useDeletePost from "@/hooks/queries/useDeletePost";
 import useLikePost from "@/hooks/queries/useLikePost";
 import { Post, PostGridType } from "@/types/post";
 import { formatLikeCount } from "@/utils/formatCount";
+import { relativeDate } from "@/utils/relativeDate";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -22,7 +24,8 @@ export default function BoardPhotoContent({
   queryKey: string[];
 }) {
   const { accessToken } = useContext(UserDataContext);
-  const { title, content, imageUrl, _id, isLiked, likeCount, commentsCount, user } = post;
+  const { title, content, imageUrl, _id, isLiked, likeCount, commentsCount, user, createdAt } =
+    post;
   const [likeState, setLikeState] = useState(isLiked);
   const [likeCountState, setLikeCountState] = useState(likeCount);
   const { mutateLikeInfinitePost } = useLikePost({
@@ -34,14 +37,13 @@ export default function BoardPhotoContent({
 
   const handleLikeButtonOnclick = () => {
     if (accessToken == "logout" || accessToken == "") {
-      router.push("/login");
+      toast.warning("로그인이 필요합니다.");
       return;
     }
     mutateLikeInfinitePost({ likeState });
     setLikeCountState((prev) => (likeState ? prev - 1 : prev + 1));
     setLikeState((prev) => !prev);
   };
-
   return (
     <>
       <div className="relative h-full w-full rounded-md">
@@ -69,7 +71,7 @@ export default function BoardPhotoContent({
               {title}
             </h1>
             <div className=" flex-nowrap truncate font-poorStory  text-sm tracking-wide text-slate-200">
-              {content}
+              {relativeDate(createdAt)}
             </div>
           </div>
           <div className="flex gap-2">
