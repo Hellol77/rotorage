@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 
 import ProfileAvatar from "@/components/common/avatar/ProfileAvatar";
-import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import { relativeDate } from "@/utils/relativeDate";
 
 export default function CommentCard({
