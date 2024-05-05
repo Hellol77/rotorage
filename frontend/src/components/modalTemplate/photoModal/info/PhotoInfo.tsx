@@ -48,7 +48,7 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
         />
       </div>
       <div className="flex w-full  justify-between px-4 py-2">
-        <section className="flex flex-col flex-nowrap md:min-w-96 md:max-w-full">
+        <section className="flex h-full flex-col flex-nowrap md:min-w-96 md:max-w-full">
           <h2
             style={{ maxWidth: imageWidth ? `${imageWidth}px` : "380px" }}
             className="h-fit max-h-[50px] max-w-[90vw] overflow-y-auto   break-all  rounded-lg font-poorStory text-xl tracking-wider scrollbar-hide md:h-full md:max-h-[150px]"

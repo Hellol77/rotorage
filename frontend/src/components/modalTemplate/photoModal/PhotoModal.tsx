@@ -6,6 +6,7 @@ import ModalContainer from "@/components/common/modal/ModalContainer";
 import Divider from "@/components/common/ui/Divider";
 import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import CommentInfo from "@/components/modalTemplate/photoModal/info/CommentInfo";
+import MobileCommentInfo from "@/components/modalTemplate/photoModal/info/MobileCommentInfo";
 import PhotoInfo from "@/components/modalTemplate/photoModal/info/PhotoInfo";
 import WriterInfo from "@/components/modalTemplate/photoModal/info/WriterInfo";
 import { Post } from "@/types/post";
@@ -57,22 +58,7 @@ export default function PhotoModal({
             <CommentInfo comments={comments} postId={_id} queryKey={queryKey} />
           </div>
           <PhotoInfo queryKey={queryKey} post={post} />
-          <h4 className="px-4">댓글 {commentsCount}</h4>
-          <section className="mb-2 flex h-20 flex-col overflow-scroll px-4 md:hidden">
-            {comments.map(({ user, content, createdAt, _id: commentId }) => (
-              <CommentCard
-                key={commentId}
-                commentProfileImage={user.profileImage}
-                commentUserNickname={user.nickname}
-                commentContent={content}
-                commentCreatedAt={createdAt}
-              >
-                <ModalTriggerButton loginRequired content="more">
-                  <MoreModal type="comment" targetId={commentId} targetUser={user} />
-                </ModalTriggerButton>
-              </CommentCard>
-            ))}
-          </section>
+          <MobileCommentInfo post={post} />
         </div>
       </motion.article>
     </ModalContainer>
