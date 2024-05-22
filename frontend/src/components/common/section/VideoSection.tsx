@@ -149,7 +149,7 @@ const opts: YouTubeProps["opts"] = {
 export default function VideoSection({ title }: PropsType) {
   const ref = useRef(null);
   const isInView = useInView(ref);
-
+  const videoRef = useRef<YouTube>(null);
   return (
     <section className="relative inset-0 z-10 flex min-h-[100lvh] w-screen snap-start  overflow-hidden ">
       {/* <video
@@ -164,6 +164,7 @@ export default function VideoSection({ title }: PropsType) {
         iframeClassName="absolute z-30 h-screen w-screen overflow-y-hidden object-fit opacity-30 md:object-cover md:opacity-90"
         videoId={getPropsContent[title].youtubeId}
         opts={opts}
+        ref={videoRef}
         onReady={(e) => {
           e.target.mute(); //소리 끔
         }}

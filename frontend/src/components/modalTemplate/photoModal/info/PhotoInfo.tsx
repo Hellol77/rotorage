@@ -62,7 +62,6 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
         </section>
         <section className="flex flex-col items-center ">
           <p className="  text-xs">{formatLikeCount(likeCountState)}</p>
-
           <LikeButton size="30" onClick={handleLikeButtonOnclick} isLiked={likeState} />
         </section>
       </div>
