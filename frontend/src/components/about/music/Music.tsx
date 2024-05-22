@@ -8,7 +8,7 @@ export default function Music() {
   return (
     <ul className="relative z-20 mb-12 mt-12 px-4 text-white md:mb-8 md:mt-4  md:flex md:w-full md:flex-col md:items-end md:px-20">
       <li className=" mb-4  text-3xl font-bold tracking-wider md:text-4xl">Music</li>
-      <div className="grid h-8  w-full  gap-4 sm:grid-cols-1 md:w-fit md:grid-cols-2   ">
+      <div className="grid h-fit w-full  gap-4 sm:grid-cols-1 md:w-fit md:grid-cols-2   ">
         {MUSIC_LIST.map((music) => (
           <MusicItem
             key={music.title}

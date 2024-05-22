@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 
-import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
-import CommentCard from "@/components/common/card/comment/CommentCard";
 import ModalContainer from "@/components/common/modal/ModalContainer";
 import Divider from "@/components/common/ui/Divider";
-import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import CommentInfo from "@/components/modalTemplate/photoModal/info/CommentInfo";
 import MobileCommentInfo from "@/components/modalTemplate/photoModal/info/MobileCommentInfo";
 import PhotoInfo from "@/components/modalTemplate/photoModal/info/PhotoInfo";
