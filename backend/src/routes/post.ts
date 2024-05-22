@@ -14,6 +14,7 @@ import { deleteComment } from "../controllers/post/deleteComment";
 import { editPost } from "../controllers/post/editPost";
 import { reportPost } from "../controllers/post/reportPost";
 import { reportComment } from "../controllers/post/reportComment";
+import { getLikedRankPosts } from "../controllers/post/getLikedRankPosts";
 
 const postRouter = Router();
 postRouter.post("/", awsUpload.single("imageUrl"), uploadPost);
@@ -29,4 +30,6 @@ postRouter.delete("/comment", deleteComment);
 postRouter.patch("/", editPost);
 postRouter.post("/report", reportPost);
 postRouter.post("/comment/report", reportComment);
+postRouter.get("/top-liked", getLikedRankPosts);
+
 export { postRouter };
