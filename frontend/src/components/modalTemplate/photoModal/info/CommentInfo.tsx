@@ -1,13 +1,7 @@
-import { KeyboardEventHandler, useRef } from "react";
-
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import CommentCard from "@/components/common/card/comment/CommentCard";
-import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
-import { ModalTextAreaInput } from "@/components/common/modal/input/ModalTextAreaInput";
 import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import CommentInput from "@/components/modalTemplate/photoModal/info/CommentInput";
-import useAddComment from "@/hooks/queries/useAddComment";
-import useDeletePost from "@/hooks/queries/useDeletePost";
 import { Comment } from "@/types/post";
 
 export default function CommentInfo({
