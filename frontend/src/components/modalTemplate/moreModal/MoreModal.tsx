@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 
 import DefaultButton from "@/components/common/button/DefaultButton";
-import ModalContainer from "@/components/common/modal/ModalContainer";
 import { ModalContentContainer } from "@/components/common/modal/ModalContentContainer";
 import UploadModal from "@/components/modalTemplate/uploadModal/UploadModal";
 import { UserDataContext } from "@/contexts/AuthContext";
@@ -64,67 +63,76 @@ export default function MoreModal({
     }
   };
   return (
-    <ModalContainer onClick={onClick} handleModalClose={handleMoreModalClose}>
-      <ModalContentContainer className=" text-md top-40 z-[60] h-fit w-[60%] justify-center bg-[#262626] text-center md:w-60">
-        {!confirmString || confirmString === "수정" ? (
-          <>
-            {targetUser._id !== user._id && (
-              <button
-                onClick={() => handleOnClick("신고")}
-                className="h-12 w-full rounded-t-xl   text-red-500 hover:bg-[#383838]"
-              >
-                신고
-              </button>
-            )}
-            {(user.type === "admin" || targetUser._id === user._id) && (
+    <>
+      {onClick && (
+        <section
+          onClick={handleMoreModalClose}
+          className="fixed left-0 top-0 z-[60] h-screen w-screen cursor-default overflow-hidden bg-[#101010] bg-opacity-70"
+        >
+          <ModalContentContainer className=" text-md top-40 z-[60] h-fit w-[60%] justify-center bg-[#262626] text-center md:w-60">
+            {!confirmString || confirmString === "수정" ? (
               <>
-                <button
-                  onClick={() => handleOnClick("삭제")}
-                  className="h-12 w-full rounded-xl  text-red-500 hover:bg-[#383838]"
-                >
-                  삭제
-                </button>
-                {type === "post" && (
+                {targetUser._id !== user._id && (
+                  <button
+                    onClick={() => handleOnClick("신고")}
+                    className="h-12 w-full rounded-t-xl   text-red-500 hover:bg-[#383838]"
+                  >
+                    신고
+                  </button>
+                )}
+                {(user.type === "admin" || targetUser._id === user._id) && (
                   <>
                     <button
-                      onClick={() => handleOnClick("수정")}
-                      className="h-12 w-full rounded-xl  hover:bg-[#383838]"
+                      onClick={() => handleOnClick("삭제")}
+                      className="h-12 w-full rounded-xl  text-red-500 hover:bg-[#383838]"
                     >
-                      수정
+                      삭제
                     </button>
-                    {confirmString === "수정" && (
-                      <UploadModal
-                        submitMutate={mutateAsync}
-                        beforePost={post}
-                        handleMoreModalClose={handleMoreModalClose}
-                      />
+                    {type === "post" && (
+                      <>
+                        <button
+                          onClick={() => handleOnClick("수정")}
+                          className="h-12 w-full rounded-xl  hover:bg-[#383838]"
+                        >
+                          수정
+                        </button>
+                        {confirmString === "수정" && (
+                          <UploadModal
+                            submitMutate={mutateAsync}
+                            beforePost={post}
+                            handleMoreModalClose={handleMoreModalClose}
+                          />
+                        )}
+                      </>
                     )}
                   </>
                 )}
+                <Link
+                  href={`/profile/?id=${targetUser._id}`}
+                  className="flex  h-12 w-full items-center justify-center rounded-xl    text-center hover:bg-[#383838]"
+                >
+                  사용자 정보
+                </Link>
+              </>
+            ) : (
+              <>
+                <h1 className="flex h-14 items-center justify-center">
+                  {confirmString}하시겠습니까?
+                </h1>
+                <div className="flex h-10">
+                  <DefaultButton text="취소" className="w-full" onClick={handleCloseConfirm} />
+                  <DefaultButton
+                    color="danger"
+                    className="w-full"
+                    text={confirmString}
+                    onClick={() => handleMutateConfirm(confirmString)}
+                  />
+                </div>
               </>
             )}
-            <Link
-              href={`/profile/?id=${targetUser._id}`}
-              className="flex  h-12 w-full items-center justify-center rounded-xl    text-center hover:bg-[#383838]"
-            >
-              사용자 정보
-            </Link>
-          </>
-        ) : (
-          <>
-            <h1 className="flex h-14 items-center justify-center">{confirmString}하시겠습니까?</h1>
-            <div className="flex h-10">
-              <DefaultButton text="취소" className="w-full" onClick={handleCloseConfirm} />
-              <DefaultButton
-                color="danger"
-                className="w-full"
-                text={confirmString}
-                onClick={() => handleMutateConfirm(confirmString)}
-              />
-            </div>
-          </>
-        )}
-      </ModalContentContainer>
-    </ModalContainer>
+          </ModalContentContainer>
+        </section>
+      )}
+    </>
   );
 }
