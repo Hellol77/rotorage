@@ -11,8 +11,7 @@ import Image from "next/image";
 export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: string[] }) {
   const { title, content, imageUrl, isLiked, likeCount, _id } = post;
   const [imageWidth, setImageWidth] = useState<number | undefined>();
-  const [likeCountState, setLikeCountState] = useState(likeCount);
-  const [likeState, setLikeState] = useState(isLiked);
+
   const { accessToken } = useContext(UserDataContext);
   const { mutate } = useLikePost({
     _id,
@@ -24,9 +23,7 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
       toast.warning("로그인이 필요합니다.");
       return;
     }
-    mutate({ likeState });
-    setLikeCountState((prev) => (likeState ? prev - 1 : prev + 1));
-    setLikeState((prev) => !prev);
+    mutate({ likeState: isLiked });
   };
 
   useEffect(() => {
@@ -61,8 +58,8 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
           </p>
         </section>
         <section className="flex flex-col items-center ">
-          <p className="  text-xs">{formatLikeCount(likeCountState)}</p>
-          <LikeButton size="30" onClick={handleLikeButtonOnclick} isLiked={likeState} />
+          <p className="  text-xs">{formatLikeCount(likeCount)}</p>
+          <LikeButton size="30" onClick={handleLikeButtonOnclick} isLiked={isLiked} />
         </section>
       </div>
     </div>

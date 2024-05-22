@@ -24,8 +24,6 @@ export default function BoardPhotoContent({
 }) {
   const { accessToken } = useContext(UserDataContext);
   const { title, imageUrl, _id, isLiked, likeCount, commentsCount, user, createdAt } = post;
-  const [likeState, setLikeState] = useState(isLiked);
-  const [likeCountState, setLikeCountState] = useState(likeCount);
   const { mutate } = useLikePost({
     _id,
     accessToken,
@@ -38,9 +36,7 @@ export default function BoardPhotoContent({
       toast.warning("로그인이 필요합니다.");
       return;
     }
-    mutate({ likeState });
-    setLikeCountState((prev) => (likeState ? prev - 1 : prev + 1));
-    setLikeState((prev) => !prev);
+    mutate({ likeState: isLiked });
   };
   return (
     <>
@@ -74,8 +70,8 @@ export default function BoardPhotoContent({
           </div>
           <div className="flex gap-2">
             <div className="flex flex-col items-center justify-center">
-              <p className="  text-xs">{formatLikeCount(likeCountState)}</p>
-              <LikeButton isLiked={likeState} onClick={handleLikeButtonOnclick} size="24" />
+              <p className="  text-xs">{formatLikeCount(likeCount)}</p>
+              <LikeButton isLiked={isLiked} onClick={handleLikeButtonOnclick} size="24" />
             </div>
             <div className="flex flex-col items-center justify-center">
               <p className="  text-xs">{formatLikeCount(commentsCount)}</p>
