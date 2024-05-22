@@ -9,4 +9,5 @@ export const queryKeys = {
   checkAdmin: ["checkAdmin"],
   getReportedPosts: ["getReportedPosts"],
   getReportedComments: ["getReportedComments"],
+  likePost: (postId: string) => ["likePost", postId],
 };

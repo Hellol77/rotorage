@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 
 import { dislikePost, likePost } from "@/apis/post";
 // import { Post } from "@/types/post";
+import { queryKeys } from "@/apis/querykeys";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function useLikePost({
@@ -42,6 +43,7 @@ export default function useLikePost({
   // };
 
   return useMutation({
+    mutationKey: queryKeys.likePost(_id),
     mutationFn: ({ likeState }: { likeState: boolean }) => {
       if (likeState) return dislikePost({ accessToken, _id });
       return likePost({ accessToken, _id });
