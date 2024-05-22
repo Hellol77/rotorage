@@ -14,7 +14,7 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
   const [likeCountState, setLikeCountState] = useState(likeCount);
   const [likeState, setLikeState] = useState(isLiked);
   const { accessToken } = useContext(UserDataContext);
-  const { mutateLikeInfinitePost } = useLikePost({
+  const { mutate } = useLikePost({
     _id,
     accessToken,
     queryKey,
@@ -24,7 +24,7 @@ export default function PhotoInfo({ post, queryKey }: { post: Post; queryKey: st
       toast.warning("로그인이 필요합니다.");
       return;
     }
-    mutateLikeInfinitePost({ likeState });
+    mutate({ likeState });
     setLikeCountState((prev) => (likeState ? prev - 1 : prev + 1));
     setLikeState((prev) => !prev);
   };

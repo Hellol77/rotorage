@@ -6,7 +6,6 @@ import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import CommentIcon from "@/components/common/icon/CommentIcon";
 import MoreModal from "@/components/modalTemplate/moreModal/MoreModal";
 import { UserDataContext } from "@/contexts/AuthContext";
-import useDeletePost from "@/hooks/queries/useDeletePost";
 import useLikePost from "@/hooks/queries/useLikePost";
 import { Post, PostGridType } from "@/types/post";
 import { formatLikeCount } from "@/utils/formatCount";
@@ -24,11 +23,10 @@ export default function BoardPhotoContent({
   queryKey: string[];
 }) {
   const { accessToken } = useContext(UserDataContext);
-  const { title, content, imageUrl, _id, isLiked, likeCount, commentsCount, user, createdAt } =
-    post;
+  const { title, imageUrl, _id, isLiked, likeCount, commentsCount, user, createdAt } = post;
   const [likeState, setLikeState] = useState(isLiked);
   const [likeCountState, setLikeCountState] = useState(likeCount);
-  const { mutateLikeInfinitePost } = useLikePost({
+  const { mutate } = useLikePost({
     _id,
     accessToken,
     queryKey,
@@ -40,7 +38,7 @@ export default function BoardPhotoContent({
       toast.warning("로그인이 필요합니다.");
       return;
     }
-    mutateLikeInfinitePost({ likeState });
+    mutate({ likeState });
     setLikeCountState((prev) => (likeState ? prev - 1 : prev + 1));
     setLikeState((prev) => !prev);
   };

@@ -238,3 +238,15 @@ export const reportComment = async ({
     throw err;
   }
 };
+
+export const getLikedRank = async <T = Post[]>(accessToken: string): Promise<T> => {
+  const { data } = await defaultApi.get<T>(`/api/post/top-liked`, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+  try {
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+  return data;
+};
