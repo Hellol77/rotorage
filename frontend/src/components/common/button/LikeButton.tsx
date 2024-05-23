@@ -21,14 +21,11 @@ export default function LikeButton({
   };
   return (
     <motion.div
-      className={`${className}`}
+      className={`${className} cursor-pointer`}
       whileTap={{ scale: 3 }}
       whileHover={{ scale: 1.2 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, type: "spring" }}
       onClick={handleOnClick}
-      style={{
-        cursor: "pointer",
-      }}
     >
       {!isLiked ? <HeartEmptyIcon size={size} /> : <HeartFillIcon size={size} />}
     </motion.div>
