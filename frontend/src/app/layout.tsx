@@ -1,3 +1,4 @@
+import GoogleAnalytics from "@/app/googleAnalytics";
 import "./globals.css";
 import { Providers } from "@/app/providers";
 import Navbar from "@/components/common/nav/Navbar";
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </header>
           {children}
         </Providers>
+        <GoogleAnalytics />
       </body>
     </html>
   );
