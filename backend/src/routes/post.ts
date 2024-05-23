@@ -30,6 +30,6 @@ postRouter.delete("/comment", deleteComment);
 postRouter.patch("/", editPost);
 postRouter.post("/report", reportPost);
 postRouter.post("/comment/report", reportComment);
-postRouter.get("/top-liked", getLikedRankPosts);
+postRouter.get("/top-liked/:page", getLikedRankPosts);
 
 export { postRouter };
