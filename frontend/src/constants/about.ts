@@ -5,6 +5,7 @@ import album10 from "../../public/photo/album/10.jpg";
 import album11 from "../../public/photo/album/11.jpg";
 import album12 from "../../public/photo/album/12.webp";
 import album13 from "../../public/photo/album/13.webp";
+import album14 from "../../public/photo/album/14.webp";
 import album2 from "../../public/photo/album/2.jpg";
 import album3 from "../../public/photo/album/3.jpg";
 import album4 from "../../public/photo/album/4.jpg";
@@ -107,6 +108,12 @@ export const DISCOGRAPHY_LIST: MusicListType = [
     subtitle: "프로듀싱 참여",
     album: album13,
     url: "https://www.youtube.com/watch?v=At4xTbav5ic",
+  },
+  {
+    title: "악몽 (Nightmare)",
+    subtitle: "작사 참여",
+    album: album14,
+    url: "https://www.youtube.com/watch?v=cH8IByNcKqc",
   },
 ];
 
