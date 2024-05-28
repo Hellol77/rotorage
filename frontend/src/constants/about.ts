@@ -6,6 +6,7 @@ import album11 from "../../public/photo/album/11.jpg";
 import album12 from "../../public/photo/album/12.webp";
 import album13 from "../../public/photo/album/13.webp";
 import album14 from "../../public/photo/album/14.webp";
+import album15 from "../../public/photo/album/15.jpg";
 import album2 from "../../public/photo/album/2.jpg";
 import album3 from "../../public/photo/album/3.jpg";
 import album4 from "../../public/photo/album/4.jpg";
@@ -61,9 +62,15 @@ export const MUSIC_LIST: MusicListType = [
   },
   {
     title: "이상비행",
-    subtitle: "EP",
+    subtitle: "1st EP",
     album: album6,
     url: "https://www.youtube.com/watch?v=yXDraJ33aLM&t=601s",
+  },
+  {
+    title: "집",
+    subtitle: "2nd EP",
+    album: album15,
+    url: "https://www.youtube.com/watch?v=VQPnYg1a3hk&list=OLAK5uy_n0m2Rbi5WAFiMDRXnv_r7pmwgb7QuOphI",
   },
 ];
 export const DISCOGRAPHY_LIST: MusicListType = [
