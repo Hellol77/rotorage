@@ -1,11 +1,14 @@
+"use client";
 import React from "react";
 
 import HomeIcon from "@/components/common/icon/HomeIcon";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
   return (
-    <footer className="mt-40">
+    <footer className={`mt-40 ${pathname === "/video/" && "hidden"}`}>
       <div className="flex flex-col items-center justify-center gap-1 p-4 text-sm text-gray-500">
         <p>개발자: 헬롤 (Hellol)</p>
         <div className=" flex w-full justify-center">

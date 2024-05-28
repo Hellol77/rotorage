@@ -5,7 +5,6 @@ import BoardIcon from "@/components/common/icon/BoardIcon";
 import HeartEmptyIcon from "@/components/common/icon/HeartEmptyIcon";
 import ProfileIcon from "@/components/common/icon/ProfileIcon";
 import Divider from "@/components/common/ui/Divider";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
