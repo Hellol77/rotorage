@@ -39,7 +39,7 @@ export default function Navbar() {
         pathname === "/video" || "/" ? "bg-transparent" : "bg-[#101010]"
       } px-6 md:w-screen md:px-20 md:pt-4`}
     >
-      <Link href={"/"} className="mr-8">
+      <Link href={"/"} className="mr-8 cursor-pointer">
         <MainLogoIcon className="h-20 w-20" textColor="black" bgColor="white" />
       </Link>
       <ul className=" hidden h-20 w-full items-center  gap-8 text-sm font-extrabold md:flex">
