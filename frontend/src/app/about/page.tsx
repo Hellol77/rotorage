@@ -12,7 +12,7 @@ export default function AboutPage() {
     <main className=" flex h-full w-screen  overflow-x-hidden scrollbar-hide md:pt-48">
       <section className="relative z-20 h-full min-h-screen w-screen">
         <Carousel images={images} />
-        <Line text={`Even if you leave `} color="red" deg="4deg" vector={-1} />
+        <Line text="Even if you leave " color="red" deg="4deg" vector={-1} />
         <Introduce />
         <Line text="Let Me Love My Youth " color="yellow" deg="-4deg" vector={1} />
         <Music />
