@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 
+import GithubIcon from "@/components/common/icon/GithubIcon";
 import HomeIcon from "@/components/common/icon/HomeIcon";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,10 +11,10 @@ export default function Footer() {
   return (
     <footer className={`mt-40 ${pathname === "/video/" && "hidden"}`}>
       <div className="flex flex-col items-center justify-center gap-1 p-4 text-sm text-gray-500">
-        <p>개발자: 헬롤 (Hellol)</p>
-        <div className=" flex w-full justify-center">
-          <Link href={"https://www.hellol.site/"} target="_blank">
-            <HomeIcon />
+        <div className=" flex w-full justify-center gap-4">
+          <p>개발자: 헬롤 (Hellol)</p>
+          <Link href={"https://github.com/Hellol77"} target="_blank">
+            <GithubIcon />
           </Link>
         </div>
         <Link href={"mailto:dhe7700@naver.com"} className=" cursor-auto  hover:text-gray-700">
