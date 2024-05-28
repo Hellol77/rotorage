@@ -1,8 +1,5 @@
-import React from "react";
-
 import { images } from "@/components/about/carousel/profileImage";
 import dynamic from "next/dynamic";
-
 const Carousel = dynamic(() => import("@/components/about/carousel/Carousel"));
 const Discography = dynamic(() => import("@/components/about/Discography"));
 const Interview = dynamic(() => import("@/components/about/Interview"));
@@ -13,7 +10,7 @@ const Line = dynamic(() => import("@/components/common/ui/Line"));
 export default function AboutPage() {
   return (
     <main className=" flex h-full w-screen  overflow-x-hidden scrollbar-hide md:pt-48">
-      <section className="relative z-20 h-full w-screen">
+      <section className="relative z-20 h-full min-h-screen w-screen">
         <Carousel images={images} />
         <Line text={`Even if you leave `} color="red" deg="4deg" vector={-1} />
         <Introduce />

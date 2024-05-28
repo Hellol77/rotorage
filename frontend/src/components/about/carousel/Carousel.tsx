@@ -28,7 +28,7 @@ const variants = {
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset: number, velocity: number) => Math.abs(offset) * velocity;
 
-export const Carousel = ({ images }: { images: StaticImageData[] }) => {
+export default function Carousel({ images }: { images: StaticImageData[] }) {
   const [[page, direction], setPage] = useState([0, 0]);
   const imageIndex = wrap(0, images.length, page);
 
@@ -86,6 +86,4 @@ export const Carousel = ({ images }: { images: StaticImageData[] }) => {
       </div>
     </>
   );
-};
-
-export default Carousel;
+}
