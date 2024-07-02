@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { dislikePost, likePost } from "@/apis/post";
 // import { Post } from "@/types/post";
 import { queryKeys } from "@/apis/querykeys";
-import { BoardPosts } from "@/types/post";
+import { BoardPosts, Post } from "@/types/post";
 import { InfiniteData, useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function useLikePost({
@@ -16,32 +16,32 @@ export default function useLikePost({
   queryKey?: string[];
 }) {
   const queryClient = useQueryClient();
-  // const useLikeDefaultPost = (queryKey: string[]) => {
-  //   return useMutation({
-  //     mutationFn: () => likePost({ accessToken, _id }),
-  //     onMutate: async () => {
-  //       const previousBoardPosts = queryClient.getQueryData(queryKey);
-  //       await queryClient.cancelQueries({ queryKey });
-  //       queryClient.setQueryData(queryKey, (old: Post[]) => {
-  //         const newPosts = old.map((post) => {
-  //           if (post._id === _id) {
-  //             return { ...post, isLiked: !post.isLiked };
-  //           }
-  //           return post;
-  //         });
-  //         return newPosts;
-  //       });
-  //       return { previousBoardPosts };
-  //     },
-  //     onError: (err, newPost, context) => {
-  //       queryClient.setQueryData(queryKey, context?.previousBoardPosts);
-  //       toast.error("다시 시도해주세요.");
-  //     },
-  //     onSettled: () => {
-  //       queryClient.invalidateQueries({ queryKey });
-  //     },
-  //   });
-  // };
+  const useLikeDefaultPost = (queryKey: string[]) => {
+    return useMutation({
+      mutationFn: () => likePost({ accessToken, _id }),
+      onMutate: async () => {
+        const previousBoardPosts = queryClient.getQueryData(queryKey);
+        await queryClient.cancelQueries({ queryKey });
+        queryClient.setQueryData(queryKey, (old: Post[]) => {
+          const newPosts = old.map((post) => {
+            if (post._id === _id) {
+              return { ...post, isLiked: !post.isLiked };
+            }
+            return post;
+          });
+          return newPosts;
+        });
+        return { previousBoardPosts };
+      },
+      onError: (err, newPost, context) => {
+        queryClient.setQueryData(queryKey, context?.previousBoardPosts);
+        toast.error("다시 시도해주세요.");
+      },
+      onSettled: () => {
+        queryClient.invalidateQueries({ queryKey });
+      },
+    });
+  };
 
   return useMutation({
     mutationKey: queryKeys.likePost(_id),
@@ -50,6 +50,20 @@ export default function useLikePost({
       return likePost({ accessToken, _id });
     },
     onMutate: async () => {
+      if(queryKey === queryKeys.recentPosts ){
+        const previousBoardPosts = queryClient.getQueryData(queryKey);
+        await queryClient.cancelQueries({ queryKey });
+        queryClient.setQueryData(queryKey, (old: Post[]) => {
+          const newPosts = old.map((post) => {
+            if (post._id === _id) {
+              return { ...post, isLiked: !post.isLiked, likeCount: post.isLiked ? post.likeCount - 1 : post.likeCount + 1};
+            }
+            return post;
+          });
+          return newPosts;
+        });
+        return { previousBoardPosts };
+      }
       const previousBoardPosts = queryClient.getQueryData(queryKey || []);
       await queryClient.cancelQueries({ queryKey });
       queryClient.setQueryData(queryKey || [], (old: InfiniteData<BoardPosts>) => {
