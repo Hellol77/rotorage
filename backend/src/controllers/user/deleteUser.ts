@@ -17,10 +17,14 @@ export const deleteUser = async (req: Request, res: Response) => {
   if (!_id) {
     return res.status(401).send("Unauthorized. Fail to get user object id");
   }
+  const kakaoId = await User.findOne({ _id }, { userId: 1 }).lean();
   try {
     const deleteUserData = await axios.post(
       "https://kapi.kakao.com/v1/user/unlink",
-      {},
+      {
+        target_id_type: "user_id",
+        target_id: kakaoId,
+      },
       {
         headers: {
           Authorization: "Bearer " + accessToken,
