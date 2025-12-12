@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { Suspense, useContext } from "react";
 
 import { queryKeys } from "@/apis/querykeys";
 import ProfileInfoContainer from "@/components/common/container/ProfileInfoContainer";
@@ -9,7 +9,7 @@ import { UserDataContext } from "@/contexts/AuthContext";
 import useGetUserPosts from "@/hooks/queries/useGetUserPosts";
 import { useSearchParams } from "next/navigation";
 
-export default function MyPostsPage() {
+function MyPostsPageContent() {
   const searchParams = useSearchParams();
   const userId = searchParams.get("id");
   const { user, accessToken } = useContext(UserDataContext);
@@ -33,5 +33,13 @@ export default function MyPostsPage() {
         />
       </ProfileInfoContainer>
     </section>
+  );
+}
+
+export default function MyPostsPage() {
+  return (
+    <Suspense>
+      <MyPostsPageContent />
+    </Suspense>
   );
 }

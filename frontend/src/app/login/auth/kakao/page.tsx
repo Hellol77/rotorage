@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 
 import CenterContainer from "@/components/common/container/CenterContainer";
 import BoardLoadingIcon from "@/components/common/icon/BoardLoadingIcon";
 
 import useAuth from "@/hooks/useAuth";
 
-export default function AuthPage() {
+function AuthPageContent() {
   const { login } = useAuth();
 
   useEffect(() => {
@@ -23,5 +23,13 @@ export default function AuthPage() {
         <BoardLoadingIcon className="flex h-12 w-12 justify-center" />
       </div>
     </CenterContainer>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense>
+      <AuthPageContent />
+    </Suspense>
   );
 }

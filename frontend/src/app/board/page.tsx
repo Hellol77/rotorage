@@ -4,8 +4,9 @@ import BoardHeader from "@/components/board/header/BoardHeader";
 import MainContainer from "@/components/common/container/MainContainer";
 import InfiniteBoardGrid from "@/components/common/grid/InfiniteBoardGrid";
 import { useGetBoardPosts } from "@/hooks/queries/useGetBoardPosts";
+import { Suspense } from "react";
 
-export default function BoradPage() {
+function BoardContent() {
   const { data, fetchNextPage, isFetchingNextPage, isPending } = useGetBoardPosts();
 
   return (
@@ -21,5 +22,13 @@ export default function BoradPage() {
         />
       </section>
     </MainContainer>
+  );
+}
+
+export default function BoradPage() {
+  return (
+    <Suspense>
+      <BoardContent />
+    </Suspense>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { Suspense, useContext, useEffect } from "react";
 
 import ModalTriggerButton from "@/components/common/button/ModalTriggerButton";
 import ProfileSkeletonCard from "@/components/common/skeleton/ProfileSkeletonCard";
@@ -11,7 +11,7 @@ import { UserDataContext } from "@/contexts/AuthContext";
 import useSearchProfile from "@/hooks/queries/useSearchProfile";
 import { useRouter, useSearchParams } from "next/navigation";
 
-function MyProfilePage() {
+function MyProfilePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const userId = searchParams.get("id");
@@ -43,6 +43,14 @@ function MyProfilePage() {
         </>
       )}
     </section>
+  );
+}
+
+function MyProfilePage() {
+  return (
+    <Suspense>
+      <MyProfilePageContent />
+    </Suspense>
   );
 }
 

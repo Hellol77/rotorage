@@ -5,6 +5,7 @@ import Footer from "@/components/common/footer/Footer";
 import Navbar from "@/components/common/nav/Navbar";
 import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";
+import { Suspense } from "react";
 
 const libreFranklin = Libre_Franklin({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <header className="fixed top-0 z-[60] w-screen items-center justify-between md:w-auto">
             <div className=" mx-auto w-full ">
-              <Navbar />
+              <Suspense>
+                <Navbar />
+              </Suspense>
             </div>
           </header>
           {children}
